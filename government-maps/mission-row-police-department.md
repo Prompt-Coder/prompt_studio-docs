@@ -8,44 +8,6 @@ The **Mission Row Police Department** is a fully detailed MLO for FiveM — a co
 
 ***
 
-### 🧩 Base vs Full
-
-| Tier | Resource | What you get |
-| --- | --- | --- |
-| **Base** | `prompt_mrpd` | The map — interiors, exterior, garage, elevator shell. Runs on its own. |
-| **Full** | `+ prompt_mrpd_scripts` | Adds training, custody, gym, animations, audio, and banners. |
-
-When the **Full** pack runs, the map's standalone layer steps aside automatically. → [**MRPD Police Feature Pack**](../scripts/mrpd/README.md)
-
-***
-
-### 📍 Map Location
-
-Mission Row Police Department. Teleport inside the station to verify the load:\
-**455.91, -999.01, 27.47**
-
-***
-
-### 🛠️ Features
-
-* Detailed **interior** — briefing room, holding cells, garage, gym area, and offices
-* Reworked **exterior** building, decals, and signage
-* Scripted **garage** door
-* Multi-floor **elevator** shell
-* Animated props, PA audio, and banners *(with the [Full pack](../scripts/mrpd/README.md))*
-
-***
-
-### 🚪 Doorlock System
-
-The station is fully compatible with [`ox_doorlock`](https://github.com/overextended/ox_doorlock). Door positions for this map aren't collected yet.
-
-{% hint style="info" %}
-**Already set up doorlocks for MRPD?** Send us your SQL and we'll give you **20% off your next purchase.**
-{% endhint %}
-
-***
-
 ### 🚀 Installation
 
 {% stepper %}
@@ -81,6 +43,44 @@ ensure prompt_mrpd_scripts
 Restart the server and teleport to **455.91, -999.01, 27.47** to confirm the interior loads ✅
 {% endstep %}
 {% endstepper %}
+
+***
+
+### 🧩 Base vs Full
+
+| Tier | Resource | What you get |
+| --- | --- | --- |
+| **Base** | `prompt_mrpd` | The map — interiors, exterior, garage, elevator shell. Runs on its own. |
+| **Full** | `+ prompt_mrpd_scripts` | Adds training, custody, gym, animations, audio, and banners. |
+
+When the **Full** pack runs, the map's standalone layer steps aside automatically. → [**MRPD Police Feature Pack**](../scripts/mrpd/README.md)
+
+***
+
+### 📍 Map Location
+
+Mission Row Police Department. Teleport inside the station to verify the load:\
+**455.91, -999.01, 27.47**
+
+***
+
+### 🛠️ Features
+
+* Detailed **interior** — briefing room, holding cells, garage, gym area, and offices
+* Reworked **exterior** building, decals, and signage
+* Scripted **garage** door
+* Multi-floor **elevator** shell
+* Animated props, PA audio, and banners *(with the [Full pack](../scripts/mrpd/README.md))*
+
+***
+
+### 🚪 Doorlock System
+
+The station is fully compatible with [`ox_doorlock`](https://github.com/overextended/ox_doorlock). Door positions for this map aren't collected yet.
+
+{% hint style="info" %}
+**Already set up doorlocks for MRPD?** Send us your SQL and we'll give you **20% off your next purchase.**
+{% endhint %}
 
 ***
 
