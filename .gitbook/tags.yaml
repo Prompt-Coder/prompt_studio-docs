@@ -1,0 +1,4 @@
+- tag: script
+  label: script
+  icon: gear
+  color: $success
