@@ -36,11 +36,13 @@ Mission Row Police Department. Teleport inside the station to verify the load:\
 
 ***
 
-### 🚪 Doorlock System (optional)
+### 🚪 Doorlock System
 
-The station is compatible with [`ox_doorlock`](https://github.com/overextended/ox_doorlock). If you use it, import the provided SQL to enable the door setup.
+The station is fully compatible with [`ox_doorlock`](https://github.com/overextended/ox_doorlock). Door positions for this map aren't collected yet.
 
-<!-- TODO: paste the MRPD ox_doorlock SQL INSERT block here (same format as the other map pages) -->
+{% hint style="info" %}
+**Already set up doorlocks for MRPD?** Send us your SQL and we'll give you **20% off your next purchase.**
+{% endhint %}
 
 ***
 
@@ -74,13 +76,7 @@ ensure prompt_mrpd_scripts
 {% endstep %}
 
 {% step %}
-#### Step 3 — Doorlocks (optional)
-
-If you use `ox_doorlock`, import the SQL above into your database.
-{% endstep %}
-
-{% step %}
-#### Step 4 — Restart & verify
+#### Step 3 — Restart & verify
 
 Restart the server and teleport to **455.91, -999.01, 27.47** to confirm the interior loads ✅
 {% endstep %}
