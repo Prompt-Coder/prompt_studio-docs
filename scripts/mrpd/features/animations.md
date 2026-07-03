@@ -7,7 +7,7 @@ icon: person-running
 
 The largest module — **60+ animated interaction points** across the station, from lockers and evidence shelves to a coffee machine, a two-officer interrogation, and a walk-along prisoner escort. Everything is **job-gated** and routed through your target system.
 
-<!-- TODO: showcase video. Repo file limit is 100 MB (the raw preview is 249 MB), so upload to YouTube and embed here like the other pages, e.g. {% embed url="https://youtu.be/VIDEO_ID" %} — or ask us to compress + self-host. -->
+{% embed url="https://youtu.be/8jMv6DvZw0Y" %}
 
 ***
 
