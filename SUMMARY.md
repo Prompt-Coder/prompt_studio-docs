@@ -4,6 +4,21 @@
 
 ## Scripts
 
+* [MRPD Police Feature Pack](scripts/mrpd/README.md)
+  * [Configuration](scripts/mrpd/configuration.md)
+  * [Features](scripts/mrpd/features/README.md)
+    * [Training](scripts/mrpd/features/training.md)
+    * [Custody](scripts/mrpd/features/custody.md)
+    * [Gym](scripts/mrpd/features/gym.md)
+    * [Elevator](scripts/mrpd/features/elevator.md)
+    * [Animations](scripts/mrpd/features/animations.md)
+    * [Audio](scripts/mrpd/features/audio.md)
+    * [Banners](scripts/mrpd/features/banners.md)
+  * [For Developers](scripts/mrpd/developers/README.md)
+    * [Hooks](scripts/mrpd/developers/hooks.md)
+    * [Providers](scripts/mrpd/developers/providers.md)
+    * [Exports & Commands](scripts/mrpd/developers/exports-and-commands.md)
+  * [Troubleshooting](scripts/mrpd/troubleshooting.md)
 * [Train Script](scripts/train-script/README.md)
   * [Configuration](scripts/train-script/configuration.md)
   * [Frameworks](scripts/train-script/frameworks.md)
@@ -46,6 +61,7 @@
 
 ## Government Maps
 
+* [🚓 Mission Row Police Department](government-maps/mission-row-police-department.md)
 * [⛓️ BolingBroke Prison](government-maps/bolingbroke-prison.md)
 * [🚓 San Andreas Highway Patrol (2 Locations)](government-maps/san-andreas-highway-patrol-2-locations.md)
 * [🚒 Vespucci Fire Department](government-maps/vespucci-fire-department.md)
