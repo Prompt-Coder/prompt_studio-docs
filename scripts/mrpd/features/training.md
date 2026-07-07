@@ -31,14 +31,16 @@ See [Configuration → Instructor tier](../configuration.md) to set who instruct
 
 ### Weapons — native or inventory
 
-By default training weapons are given **natively** on the client. Inventory / weapon-anticheat servers flip one switch and route them through their own system:
+**ox\_inventory servers: it just works.** Since v1.1.0 the default `provider = 'auto'` detects ox\_inventory and delivers training weapons as flagged items — removed on exit, dupe-proof (they can't be dropped, stashed or given away), swept on disconnect. No code needed.
+
+Other inventory / weapon-anticheat servers route delivery through their own system:
 
 ```lua
 -- config/training.lua
-Config.Weapons = { custom = true, give = ..., remove = ... }
+Config.Weapons = { provider = 'auto', custom = true, give = ..., remove = ... }
 ```
 
-A ready-to-use `ox_inventory` example ships in the file. See [Providers](../developers/providers.md).
+A ready-to-use example ships in the file. Full details in [Providers](../developers/providers.md).
 
 ***
 
