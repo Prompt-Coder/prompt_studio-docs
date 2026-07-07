@@ -1,4 +1,4 @@
-# 🏦 Sandy Bank
+﻿# 🏦 Sandy Bank
 
 ## Sandy Bank
 
@@ -100,7 +100,7 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES (1916, 'Sandy Shores Ban
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES (1917, 'Sandy Shores Bank 0-3', '{"coords":{"x":1834.3983154296876,"y":3859.997802734375,"z":31.96230697631836},"state":0,"model":961976194,"heading":296,"doors":false,"maxDistance":2}');
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES (1918, 'Sandy Shores Bank G-1', '{"coords":{"x":1806.99169921875,"y":3835.034423828125,"z":33.04075622558594},"state":0,"doors":[{"coords":{"x":1803.8599853515626,"y":3840.458740234375,"z":33.15008544921875},"model":1939805166,"heading":120},{"coords":{"x":1810.1234130859376,"y":3829.610107421875,"z":32.93142700195312},"model":1939805166,"heading":300}],"maxDistance":5,"doorRate":0.5}');
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES (1919, 'Sandy Shores Bank G-2', '{"coords":{"x":1815.6173095703126,"y":3838.5185546875,"z":34.36040496826172},"state":0,"doors":[{"coords":{"x":1814.760498046875,"y":3840.33642578125,"z":34.35607528686523},"model":1526539404,"heading":295},{"coords":{"x":1816.47412109375,"y":3836.700927734375,"z":34.3647346496582},"model":1526539404,"heading":115}],"maxDistance":2}');
-INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES (1920, 'Sandy Shores Bank G-3', '{"coords":{"x":1816.619384765625,"y":3842.127197265625,"z":34.36013793945312},"state":0,"model":1526539404,"heading":205,"doors":false,"maxDistance":2}');
+INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES (3007, 'Sandy Shores Bank G-3', '{"coords":{"x":1816.619384765625,"y":3842.127197265625,"z":34.36013793945312},"state":0,"model":1526539404,"heading":205,"doors":false,"maxDistance":2}');
 
 ```
 
