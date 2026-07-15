@@ -10,7 +10,8 @@ The **Sandy Shores Bank** is a compact, fully reworked interior that fits the re
 
 Supported Robbery Scripts: \
 2\. [https://www.youtube.com/watch?v=XR3tYCygYKs](https://www.youtube.com/watch?v=XR3tYCygYKs) \
-1\. [https://store.fearlessdev.me/package/6963949](https://store.fearlessdev.me/package/6963949) (USE CODE: "PROMPTBANK50" FOR 50% OFF)
+1\. [https://store.fearlessdev.me/package/6963949](https://store.fearlessdev.me/package/6963949) (USE CODE: "PROMPTBANK50" FOR 50% OFF) \
+3\. [https://estscripts.tebex.io/package/7559312](https://estscripts.tebex.io/package/7559312)
 
 {% embed url="https://www.youtube.com/watch?v=wEYiFR6KQKA" %}
 
