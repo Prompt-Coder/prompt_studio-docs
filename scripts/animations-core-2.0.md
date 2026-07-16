@@ -6,9 +6,7 @@ icon: transporter-1
 
 ## Animations Core 2.0
 
-### Animations Core 2.0
-
-#### Prompt Anim Core
+### Prompt Anim Core
 
 ***
 
@@ -29,35 +27,64 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 * Optional **boxing ring** support
 * Admin placement tool: **`/gymcreator`**
 * Developer exports for spawning/removing equipment, managing locations, and membership
+* **Hooks** — per-machine custom logic (allow/deny, on start, on end) without touching core files
+* **3D sound cues** per machine (entrance / rep / exit / loop), synced client-side to the animation
 * Client-server synchronization + resource-based cleanup
 
 </details>
 
 ***
 
-#### Installation Instructions
+<details>
+
+<summary><strong>What's new in 1.3.0</strong></summary>
+
+<br>
+
+**Rebuilt synchronization engine.** The server no longer spawns networked props — every client renders its own local equipment, viewers pin the user's ped at the exact seat position (no floating or sliding on machines), and exercises replay in step on every screen. This fixes the long-standing issues where other players saw someone standing inside a machine, saw no equipment motion, or saw a "ghost rep" when someone sat down. Late joiners now see machines in use correctly, and cleanup is identical whether a player exits normally or crashes.
+
+**New features:**
+
+* **Hooks system** (`hooks/` folder) — gate machine use and react to start/end per spot, server- and client-side, crash-safe (fail-open)
+* **3D sound cues** — optional `sounds` block per equipment type (start / rep / stop / loop), played per prop and per client
+* **`restAnimation`** — dedicated rest loop per machine (the bench ships with one)
+* **Per-call membership** — `CreateGymLocation(..., { requireMembership = true/false })` plus `GetDynamicLocation` / `SetLocationMembership` exports
+* **Client exports** — `IsPlayerAnimated()` / `StopPlayerAnim(instant)` so death/cuff/admin scripts can release a player cleanly
+* **ultraDebug** — live sync telemetry from every client into the server console for support
+
+**Updating from 1.2.x:** drop-in — configs and exports are backward compatible. The update adds new files, so do a **full server restart** and have players **reconnect** (a plain `restart` won't load new files).
+
+</details>
+
+***
+
+### Installation Instructions
 
 {% stepper %}
 {% step %}
-### Install dependencies
+
+#### Step 1 — Install dependencies
 
 Ensure these resources are installed:
 
 * **ox\_lib** (required)
 * **ox\_target** (optional, recommended)
-{% endstep %}
+  {% endstep %}
 
 {% step %}
-### Install Prompt Anim Core
+
+#### Step 2 — Install Prompt Anim Core
 
 Place the resource folder in your `resources` directory:
 
 <pre><code><strong>resources/prompt_anim_core_2_new
 </strong></code></pre>
+
 {% endstep %}
 
 {% step %}
-### Start order (server.cfg)
+
+#### Step 3 — Start order (server.cfg)
 
 Add this to your `server.cfg` (keep the order):
 
@@ -65,10 +92,12 @@ Add this to your `server.cfg` (keep the order):
 </strong><strong>ensure ox_target   # Optional but recommended
 </strong><strong>ensure prompt_anim_core_2_new
 </strong></code></pre>
+
 {% endstep %}
 
 {% step %}
-### Restart & test
+
+#### Step 4 — Restart & test
 
 Restart your server and run:
 
@@ -79,6 +108,8 @@ If you can place equipment and interact with it (target or TextUI), installation
 [![Join Discord](https://img.shields.io/badge/Join-Discord-5865F2?style=for-the-badge)](https://discord.gg/rKbHHdfZFU)
 {% endstep %}
 {% endstepper %}
+
+***
 
 {% hint style="info" %}
 **Tip:** Keep `ox_lib` above this resource in your cfg. It provides menus, callbacks, notifications, and fallback zones used by the system.
@@ -92,12 +123,12 @@ If you can place equipment and interact with it (target or TextUI), installation
 
 <br>
 
-**Server Config (`config/config_s.lua`)**
+#### Server Config (`config/config_s.lua`)
 
 ```lua
 {
-    debug = false,            -- Enable debug logging (prints membership checks, machine usage, etc.)
-    syncDistance = 50.0,      -- Distance (in meters) for synchronizing equipment between players
+    debug = false,            -- Debug logging: also relays every client's sync log into the SERVER console
+    ultraDebug = false,       -- With debug: doer + viewers stream live anim/prop state 2x/sec (support tool)
 
     enableMinigame = false,   -- Enable skill check minigame when starting exercises
 
@@ -135,7 +166,7 @@ If you can place equipment and interact with it (target or TextUI), installation
 
 ***
 
-**Client Config (`config/config_c.lua`)**
+#### Client Config (`config/config_c.lua`)
 
 Key sections:
 
@@ -174,7 +205,7 @@ Key sections:
 
 ***
 
-**Editable Server Functions (`config/server.lua`)**
+#### Editable Server Functions (`config/server.lua`)
 
 This file contains functions you can customize:
 
@@ -195,7 +226,7 @@ This file contains functions you can customize:
 
 The groups system lets you create, edit, and manage gym equipment setups entirely in-game, without editing config files. Groups are saved to `groups/saved_groups.json` and persist across server restarts.
 
-**How to Use**
+#### How to Use
 
 1. Run `/gymcreator` and select **Manage Groups**
 2. **Create New Group** — give it a name
@@ -203,7 +234,7 @@ The groups system lets you create, edit, and manage gym equipment setups entirel
 4. **Mark Props for Despawn** — aim at world props you want removed, press E to mark, ENTER to apply
 5. **Save Group** — saves to JSON and immediately loads the gym
 
-**Group Management Menu**
+#### Group Management Menu
 
 From **Manage Groups** you can:
 
@@ -213,14 +244,14 @@ From **Manage Groups** you can:
 * **Toggle Membership Requirement** — require membership to use equipment in this group
 * **Delete** a group permanently
 
-**Permissions**
+#### Permissions
 
 * **Admins** (matching `gymCreator.restricted` ACE) can edit/delete any group
 * **Creators** can edit their own groups if `groups.creatorCanEdit = true` in config
 * **Creators** can delete their own groups if `groups.creatorCanDelete = true` in config
 * Creator identity is tracked by player license (framework-agnostic)
 
-**Persistent Prop Despawn**
+#### Persistent Prop Despawn
 
 When you mark world props for despawn in a group:
 
@@ -229,7 +260,7 @@ When you mark world props for despawn in a group:
 * Late-joining players receive despawn data and see the correct state
 * Despawn data persists in the group's JSON — survives server restarts
 
-**Files**
+#### Files
 
 * `groups/saved_groups.json` — persistent group storage
 * `groups/server_manager.lua` — server-side group logic
@@ -248,13 +279,13 @@ When you mark world props for despawn in a group:
 
 Optionally restrict gym equipment usage to players with an active membership. Disabled by default.
 
-**Quick Start**
+#### Quick Start
 
 1. Set `membership.enable = true` in `config/config_s.lua`
 2. All config gym locations now require membership
 3. Use `/gymmembership <playerId> [days]` to grant memberships
 
-**How It Works**
+#### How It Works
 
 When enabled:
 
@@ -264,14 +295,14 @@ When enabled:
 * **Groups** do NOT require membership by default — toggle per-group in the management menu
 * **Custom equipment** (placed via `/gymcreator` save, not in a group) never requires membership
 
-**Admin Commands**
+#### Admin Commands
 
 * `/gymmembership <id> [days]` — Grant membership. No days = permanent.
 * `/gymrevoke <id>` — Revoke membership from a player.
 
 Both commands require the ACE permission set in `membership.commandRestricted` (default: `group.admin`).
 
-**Membership Storage**
+#### Membership Storage
 
 Members are stored in `membership/members.json`:
 
@@ -289,7 +320,7 @@ Members are stored in `membership/members.json`:
 
 Expired memberships are automatically pruned on server start.
 
-**Exports (Server-Side)**
+#### Exports (Server-Side)
 
 Other resources can integrate with the membership system:
 
@@ -311,7 +342,7 @@ exports['prompt_anim_core_2_new']:SetMembershipCheckHandler(function(source)
 end)
 ```
 
-**Files**
+#### Files
 
 * `membership/server_membership.lua` — all membership logic, exports, commands
 * `membership/members.json` — persistent member storage
@@ -326,7 +357,7 @@ end)
 
 <br>
 
-**Defining Locations (`config/config_c.lua`)**
+#### Defining Locations (`config/config_c.lua`)
 
 Locations are defined in the `locations` table:
 
@@ -361,7 +392,7 @@ locations = {
 }
 ```
 
-**Clear Location Feature**
+#### Clear Location Feature
 
 Hides default/vanilla objects when players enter your gym area:
 
@@ -370,7 +401,7 @@ Hides default/vanilla objects when players enter your gym area:
 3. Hides matching objects while inside
 4. Restores objects when leaving (and on script restart)
 
-**Boxing Ring (Optional)**
+#### Boxing Ring (Optional)
 
 ```lua
 boxingRing = {
@@ -406,7 +437,92 @@ Available equipment types:
 * `gymrowpull`
 * `gymspeedbag`
 
-Safe to edit: labels, UI text, zone sizes. Don't edit unless you know what you're doing: model names, animation dicts/names.
+Safe to edit: labels, UI text, zone sizes.
+Don't edit unless you know what you're doing: model names, animation dicts/names.
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>Hooks — Custom Logic Per Machine</strong></summary>
+
+<br>
+
+The `hooks/` folder lets you gate machine use and react to sessions **without editing core files**. On first start the live files are created from the bundled templates — edit these (they survive updates):
+
+* `hooks/hooks_server.lua` — authoritative checks + server reactions
+* `hooks/hooks_client.lua` — hide/deny locally + client reactions
+* `hooks/hooks_shared.lua` — written once, enforced on BOTH sides
+
+Spot ids look like `'<location>:<equipmentType>:<n>'` (e.g. `'vinewood:speedbag:1'`). Events: `canUse(ctx)` (return `false` to block), `onStart(ctx)`, `onEnd(ctx)`. Every handler is crash-safe — a broken hook never blocks play.
+
+```lua
+-- hooks/hooks_server.lua
+return {
+    anim = {
+        global = {
+            canUse = function(ctx)
+                -- block all machines during a server event:
+                -- if GlobalState.lockdown then return false end
+                return true
+            end,
+        },
+        entries = {
+            ['vinewood:speedbag:1'] = {
+                onStart = function(ctx) print(ctx.source, 'started', ctx.spotId) end,
+            },
+        },
+    },
+}
+```
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>Equipment Sounds & Rest Animations</strong></summary>
+
+<br>
+
+#### 3D Sound Cues
+
+Every equipment type can define sound cues in `config_c.lua`. Sounds are attached to the machine prop and play **locally on each client, in sync with the animation that client sees** — no extra networking, no desync.
+
+```lua
+props = {
+    gymlatpull = {
+        ...,
+        sounds = {
+            set   = 'prompt_gym',       -- soundset (custom or native GTA)
+            range = 40.0,               -- audible range in meters
+            start = { name = '...' },   -- when the machine is taken
+            rep   = { name = '...' },   -- every rep, in step with the prop motion
+            stop  = { name = '...' },   -- when the machine is released
+            loop  = { name = '...' },   -- continuous while occupied (seamless loop)
+        },
+    },
+}
+```
+
+All cues are optional — add only what you need. Exact animation lengths for authoring audio are listed in `docs/anim_durations.md`.
+
+#### Rest Animation
+
+By default a player at rest holds the exercise clip's end frame. Machines can define a dedicated rest **loop** instead (smoothest result for big visible motions — the bench ships with one):
+
+```lua
+bench = {
+    ...,
+    restAnimation = {
+        dict = 'amb@prop_human_seat_muscle_bench_press@base',
+        name = 'base',
+    },
+}
+```
 
 </details>
 
@@ -447,12 +563,13 @@ Set via `gymCreator.restricted` in `config/config_s.lua` (default: `group.admin`
 
 <br>
 
-**Location Management**
+#### Location Management
 
 ```lua
 -- Create a new gym location dynamically
 exports['prompt_anim_core_2_new']:CreateGymLocation(locationName, {
     coords = vec3(x, y, z),
+    requireMembership = false,  -- optional: force-exempt (or true to force-require)
     props = {
         speedbag = { vec4(x, y, z, h) },
         bench = { { coords = vec4(x, y, z, h), bar = vec4(x, y, z, h) } },
@@ -461,9 +578,13 @@ exports['prompt_anim_core_2_new']:CreateGymLocation(locationName, {
 
 -- Remove a gym location
 exports['prompt_anim_core_2_new']:RemoveGymLocation(locationName)
+
+-- Inspect / live-update a dynamic location
+exports['prompt_anim_core_2_new']:GetDynamicLocation(locationName)
+exports['prompt_anim_core_2_new']:SetLocationMembership(locationName, true)
 ```
 
-**Equipment Management**
+#### Equipment Management
 
 ```lua
 -- Add equipment to an existing location
@@ -473,7 +594,7 @@ exports['prompt_anim_core_2_new']:AddEquipmentToLocation(locationName, equipment
 exports['prompt_anim_core_2_new']:RemoveEquipmentFromLocation(locationName, equipmentType, coords, tolerance)
 ```
 
-**Query Functions**
+#### Query Functions
 
 ```lua
 exports['prompt_anim_core_2_new']:GetLocationEquipment(locationName)
@@ -482,7 +603,7 @@ exports['prompt_anim_core_2_new']:GetAvailableEquipmentTypes()
 exports['prompt_anim_core_2_new']:GetSpawnedEquipment()
 ```
 
-**Membership Exports**
+#### Membership Exports
 
 ```lua
 exports['prompt_anim_core_2_new']:IsPlayerMember(source)
@@ -491,7 +612,17 @@ exports['prompt_anim_core_2_new']:RevokeMembership(source)
 exports['prompt_anim_core_2_new']:SetMembershipCheckHandler(handler)
 ```
 
-**Exercise Tracking Events (Server-Side)**
+#### Client Exports
+
+```lua
+-- Is the local player using a machine? (for death/cuff/admin scripts)
+local animating, spotId = exports['prompt_anim_core_2_new']:IsPlayerAnimated()
+
+-- Release the local player from a machine (true = instant, e.g. on death)
+exports['prompt_anim_core_2_new']:StopPlayerAnim(true)
+```
+
+#### Exercise Tracking Events (Server-Side)
 
 ```lua
 AddEventHandler('gym:exerciseStarted', function(data)
@@ -503,7 +634,7 @@ AddEventHandler('gym:exerciseCompleted', function(data)
 end)
 ```
 
-**Interaction Systems**
+#### Interaction Systems
 
 * **ox\_target** — Preferred. Target zones with "Use Equipment" prompts.
 * **TextUI** — Fallback. TextUI prompts when nearby (press E).
@@ -515,31 +646,30 @@ end)
 
 <details>
 
-<summary><strong>Debug Mode &#x26; Troubleshooting</strong></summary>
+<summary><strong>Debug Mode & Troubleshooting</strong></summary>
 
 <br>
 
-**Debug Mode**
+#### Debug Mode
 
-Set `debug = true` in `config/config_s.lua` to enable verbose server console logging:
+Set `debug = true` in `config/config_s.lua` to enable verbose logging. Every client's sync log is also relayed into the **server console** (prefixed `[client:<id>]`), so one console shows both sides of any sync issue:
 
-* Machine usage attempts and results
+* Machine usage attempts and results (reservations, frees, per-spot state)
 * Membership checks (allowed/denied, which location, which player)
-* Group loading/unloading
-* Despawn monitoring
-* Equipment state changes
+* Group loading/unloading, despawn monitoring, equipment state changes
 
-Disable in production for best performance.
+For deep sync issues additionally set `ultraDebug = true`: while any machine is in use, the user **and every viewer** stream their live animation/prop/pin state to the server console twice a second (`[GYM:ULTRA-DOER]` / `[GYM:ULTRA-VIEW]` lines). Attach that console block to any support report.
 
-**Troubleshooting**
+Disable both in production for best performance.
+
+#### Troubleshooting
 
 * **Props not visible** — Ensure `ox_lib` is running and the resource is started
 * **Can't use `/gymcreator`** — Check ACE permissions (`group.admin` by default)
-* **Animations not syncing** — Increase `syncDistance` in config\_s.lua
+* **Sync looks wrong for other players** — Enable `debug` + `ultraDebug` and read the server console; the doer's and viewers' phase lines should advance together
+* **Just updated and things act strange** — The update added new files: full server restart + players must reconnect (a plain `restart` is not enough)
 * **Vanilla objects clipping** — Configure `clearLocation` radius + additionalObjects
-* **Equipment stuck "in use"** — Fixed in 2.0 — denied access now properly releases the machine
 * **Membership not blocking** — Ensure `membership.enable = true` and restart the resource
-* **Wrong location in debug logs** — Fixed in 2.0 — location detection now uses coordinates
 * **Groups not loading on start** — Check `autoload` is enabled for the group
 
 [![Join Discord](https://img.shields.io/badge/Join-Discord-5865F2?style=for-the-badge)](https://discord.gg/rKbHHdfZFU)
