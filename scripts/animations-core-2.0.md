@@ -1,7 +1,6 @@
 ---
 icon: transporter-1
 ---
-
 # Animations Core 2.0
 
 ## Animations Core 2.0
@@ -30,6 +29,22 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 * **Hooks** — per-machine custom logic (allow/deny, on start, on end) without touching core files
 * **3D sound cues** per machine (entrance / rep / exit / loop), synced client-side to the animation
 * Client-server synchronization + resource-based cleanup
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>What's new in 1.3.1</strong></summary>
+
+<br>
+
+**Third-party stat providers.** anim_core can now feed **rtx\_gym** or **vms\_gym** instead of its own stat system — set `stats.provider` in `config_s.lua` and every completed rep is pushed into that resource's stat database through its public exports. The provider keeps owning decay, item boosters, and gameplay effects (anim_core's own modifiers and decay switch off automatically, so nothing double-applies), and `/gymstats` shows the provider's values — with vms\_gym it opens vms's own statistics menu. Ships with a ready mapping for vms\_gym; for rtx\_gym fill the stat names from their documentation into `stats.providerMap`.
+
+* New **`onRep`** hook event — fires server-side for every completed rep; wire any other XP/stat/drug system there
+* New **`statMultiplier`** editable function (`config/server.lua`) — scale pushed gains, e.g. to honor a provider's booster items
+* Fixed: `stats.enable = false` now also stops per-rep stat gains (previously it only stopped decay), and the exhaustion recovery loop no longer depends on the stats system being enabled
 
 </details>
 
@@ -165,8 +180,10 @@ If you can place equipment and interact with it (target or TextUI), installation
 
     stats = {
         enable = true,               -- Stat progression (4 stats: speed, stamina, combat, strength)
+        provider = 'internal',       -- 'internal' | 'rtx_gym' | 'vms_gym' — push gains into a third-party stat system instead
+        providerMap = { ... },       -- anim_core stat -> provider stat/skill name (vms mapping ships ready)
         rates = { ... },             -- Stat gains per exercise, per equipment type
-        decrease = {                 -- Stats decay over time when not training
+        decrease = {                 -- Stats decay over time when not training (internal provider only)
             enable = true,
             multiplier = 1.0,        -- Global decay speed (0.5 = half, 2.0 = double)
             -- per-stat decay per minute: speed / stamina / combat / strength
@@ -526,6 +543,8 @@ Training progresses **4 stats**, each with real gameplay effects while the resou
 * Storage is framework-aware: QBCore / QBX / ESX metadata, or a JSON file on standalone servers
 * Gains per exercise are tuned in `stats.rates`, fatigue in the `exhaustion` block
 
+**Already running rtx\_gym or vms\_gym for stats?** Set `stats.provider` in `config_s.lua` and anim_core pushes every rep's gains into **their** stat database through their public exports (names mapped in `stats.providerMap`) — the provider keeps owning decay, booster items, and gameplay effects, and anim_core's own modifiers switch off so nothing double-applies. `/gymstats` then shows the provider's values (vms\_gym opens its own statistics menu). Notes: the vms\_gym mapping ships ready (their skill is literally spelled `strenght` — keep it); for rtx\_gym fill in the stat names from their documentation; provider booster items only multiply the provider's *own* training loop — use the `statMultiplier` function in `config/server.lua` to make them scale anim_core reps too.
+
 </details>
 
 ***
@@ -542,7 +561,7 @@ The `hooks/` folder lets you gate machine use and react to sessions **without ed
 * `hooks/hooks_client.lua` — hide/deny locally + client reactions
 * `hooks/hooks_shared.lua` — written once, enforced on BOTH sides
 
-Spot ids look like `'<location>:<equipmentType>:<n>'` (e.g. `'vinewood:speedbag:1'`). Events: `canUse(ctx)` (return `false` to block), `onStart(ctx)`, `onEnd(ctx)`. Every handler is crash-safe — a broken hook never blocks play.
+Spot ids look like `'<location>:<equipmentType>:<n>'` (e.g. `'vinewood:speedbag:1'`). Events: `canUse(ctx)` (return `false` to block), `onStart(ctx)`, `onRep(ctx)` (every completed rep — wire XP or third-party stat systems here), `onEnd(ctx)`. Every handler is crash-safe — a broken hook never blocks play.
 
 ```lua
 -- hooks/hooks_server.lua
