@@ -135,12 +135,17 @@ If you can place equipment and interact with it (target or TextUI), installation
     gymCreator = {
         enable = true,
         restricted = 'group.admin',  -- ACE restriction for /gymcreator (false = unrestricted)
+        canAccess = function(source) -- Extra custom permission logic on top of the ACE check
+            return true
+        end,
     },
 
     exhaustion = {
-        enable = false,              -- Fatigue system
+        enable = false,              -- Fatigue system (slows rep speed as muscles tire)
         recoveryRate = 0.01,         -- Recovery per minute
         enableMuscleGroups = true,   -- Track per muscle group
+        muscleGroups = { ... },      -- Which equipment trains which muscle group
+        rates = { ... },             -- Exhaustion added per exercise, per equipment type
     },
 
     groups = {
@@ -159,7 +164,13 @@ If you can place equipment and interact with it (target or TextUI), installation
     },
 
     stats = {
-        enable = true,               -- Stat progression (condition + strength)
+        enable = true,               -- Stat progression (4 stats: speed, stamina, combat, strength)
+        rates = { ... },             -- Stat gains per exercise, per equipment type
+        decrease = {                 -- Stats decay over time when not training
+            enable = true,
+            multiplier = 1.0,        -- Global decay speed (0.5 = half, 2.0 = double)
+            -- per-stat decay per minute: speed / stamina / combat / strength
+        },
     },
 }
 ```
@@ -172,23 +183,35 @@ Key sections:
 
 ```lua
 {
-    renderDistance = 100.0,       -- Distance to render gym locations
-    interaction = 'auto',        -- 'auto', 'ox_target', 'textUI', 'custom'
-    progressBar = 'built-in',    -- 'built-in' or 'custom'
+    language = 'auto',           -- 'auto' or one of 12 shipped locales (en, es, fr, de, pt, ru, it, pl, zh, ko, sv, ar)
+    renderDistance = 100.0,      -- Distance to render gym locations
+    interaction = 'auto',        -- 'auto', 'ox_target', 'qb_target', 'textUI', 'custom'
+    progressBar = 'built-in',    -- 'built-in' or 'custom' (see below)
 
     blip = {
-        enable = true,
+        enable = true,           -- Master toggle for ALL gym blips
         sprite = 311,
         color = 21,
         scale = 0.9,
         label = 'Gym',
+        showLocationBlips = false, -- Also create a blip per equipment location (off = static blips only)
+        coords = {               -- Static map blips, optionally tied to resources
+            { coords = vec3(x, y, z), label = 'Vinewood Gym' },
+            -- only shows while one of these resources is running:
+            -- { coords = vec3(x, y, z), label = 'Prison Gym', resources = { 'prompt_prison_study' } },
+        },
     },
 
     boxingRing = {
         enable = true,
         model = "vision_gymboxingring",
-        roundDuration = 60,
-        coords = { ... },
+        roundDuration = 60,      -- Round duration in seconds
+        cancelDistance = 6.0,    -- Leave this radius mid-fight = you lose
+        showBoundary = true,     -- Red sphere boundary shown during the fight
+        coords = { ... },        -- Ring placements (vec4)
+        conditionalCoords = {    -- Rings that only exist while a resource is running (MLO rings)
+            { resources = { 'prompt_prison_study' }, coords = vec4(x, y, z, h), cancelDistance = 6.1 },
+        },
     },
 
     locations = {
@@ -199,8 +222,16 @@ Key sections:
         },
     },
 
-    props = { ... },  -- Equipment type definitions (models, animations)
+    props = { ... },  -- Equipment type definitions (models, animations, sounds, restAnimation)
 }
+```
+
+**Custom progress bar** — set `progressBar = 'custom'` and implement the function in the same file:
+
+```lua
+customProgressBar = function(machine, duration)
+    exports['your-progressbar']:Start(duration)
+end
 ```
 
 ***
@@ -211,8 +242,16 @@ This file contains functions you can customize:
 
 * `server.canUseMachine(source, data)` — permission check before accessing equipment (membership check runs here automatically)
 * `server.canDoExercise(source, data)` — permission check before starting an exercise
-* `server.updateStats(source, data)` — stat progression (pre-configured for QBCore, QBX, ESX)
+* `server.updateStats(source, data)` — stat progression storage (pre-configured for QBCore, QBX, ESX; JSON fallback for standalone)
 * `server.getPlayerName(source)` — player name for boxing ring display
+* `server.boxingRing.onFightStart / onFightEnd` — match hooks (pre-configured to revive both fighters)
+
+#### Editable Client Functions (`config/client.lua`)
+
+* `client.notify(title, message, type)` — swap in your own notification system
+* `client.minigame(machine)` — the skill check used when `enableMinigame = true` (default: ox_lib skillCheck)
+* `client.onExerciseStart / onExerciseEnd` — busy-state hooks (default: sets `invBusy`, disables targeting)
+* `client.boxingRing.onFightStart / onFightEnd(result)` — client-side match hooks
 
 </details>
 
@@ -403,14 +442,25 @@ Hides default/vanilla objects when players enter your gym area:
 
 #### Boxing Ring (Optional)
 
+Target a placed ring to open the **fight lobby**: two players join, ready up, and fight for the round duration — leaving the boundary (`cancelDistance`, shown as a red sphere when `showBoundary = true`) counts as a loss. Both fighters are revived on start and end (customizable via the `boxingRing` hooks in `config/server.lua` / `config/client.lua`).
+
 ```lua
 boxingRing = {
     enable = true,
     model = "vision_gymboxingring",
-    roundDuration = 60,
+    roundDuration = 60,          -- Seconds per match
+    cancelDistance = 6.0,        -- Leave this radius = you lose
+    showBoundary = true,         -- Red sphere during the fight
     coords = {
         vec4(x, y, z, heading),
-    }
+    },
+    conditionalCoords = {        -- Rings inside MLOs from other resources:
+        {                        -- only exist while one of these is running
+            resources = { 'prompt_prison_study' },
+            coords = vec4(x, y, z, heading),
+            cancelDistance = 6.1,
+        },
+    },
 }
 ```
 
@@ -426,19 +476,55 @@ boxingRing = {
 
 Available equipment types:
 
-* `bench` (supports extended bar placement)
-* `vin_chu`
-* `leg_press`
-* `speedbag`
-* `gymbike`
-* `gymlatpull`
-* `gympullmachine1`
-* `gympullmachine2`
-* `gymrowpull`
-* `gymspeedbag`
+| Type | Model | Description |
+| --- | --- | --- |
+| `bench` | `vision_gymbench1_pepe` | Bench press (supports extended fixed-bar placement) |
+| `vin_chu` | `vin_chu` | Sit-up / core station |
+| `leg_press` | `vision_gymlegpress` | Leg press machine |
+| `speedbag` | `vision_gymspeedbagwall` | Wall-mounted speed bag |
+| `gymbike` | `vision_gymbike` | Exercise bike |
+| `gymlatpull` | `vision_gymlatpull` | Lat pulldown machine |
+| `gympullmachine1` | `vision_gympullmachine1` | Cable pull machine |
+| `gympullmachine2` | `vision_gympullmachine2` | Cable pull machine (variant) |
+| `gymrowpull` | `vision_gymrowpull` | Seated rowing machine |
+| `gymspeedbag` | `vision_gymspeedbag` | Free-standing speed bag |
 
 Safe to edit: labels, UI text, zone sizes.
 Don't edit unless you know what you're doing: model names, animation dicts/names.
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>Player Controls &amp; Stats</strong></summary>
+
+<br>
+
+#### Controls
+
+* **Target / [E] prompt** — start using a machine
+* **E** — perform a rep (keybind `gym:performExercise`)
+* **X** — get off the machine (keybind `gym:exitMachine`)
+
+Both keybinds are registered through ox_lib, so players can rebind them in **GTA Settings → Key Bindings → FiveM**.
+
+#### Player Stats
+
+Training progresses **4 stats**, each with real gameplay effects while the resource is running:
+
+| Stat | Trained by | Effect |
+| --- | --- | --- |
+| Speed | Leg exercises (leg press, bike) | Faster sprint |
+| Stamina | Cardio (bike, rowing) | Better endurance, faster stamina regen, faster swimming |
+| Combat | Punching (speed bags, vin chu) | More melee damage |
+| Strength | Pulls & bench | Less melee damage taken, faster health regen |
+
+* Players check their progress with **`/gymstats`** (progress-bar menu, no permission needed)
+* Stats **decay over time** when not training (`stats.decrease` in `config_s.lua`; disable or tune per stat)
+* Storage is framework-aware: QBCore / QBX / ESX metadata, or a JSON file on standalone servers
+* Gains per exercise are tuned in `stats.rates`, fatigue in the `exhaustion` block
 
 </details>
 
@@ -600,8 +686,11 @@ exports['prompt_anim_core_2_new']:RemoveEquipmentFromLocation(locationName, equi
 exports['prompt_anim_core_2_new']:GetLocationEquipment(locationName)
 exports['prompt_anim_core_2_new']:GetAllLocations()
 exports['prompt_anim_core_2_new']:GetAvailableEquipmentTypes()
-exports['prompt_anim_core_2_new']:GetSpawnedEquipment()
 ```
+
+{% hint style="warning" %}
+**Deprecated (still work, print a warning):** `SpawnGymEquipment`, `DespawnGymEquipment`, `GetEquipmentTypes`, `IsEquipmentBusy`, `GetSpawnedEquipment`. Kept for backward compatibility — use the location-based API above for new integrations. Full reference in the resource's `exports.md`.
+{% endhint %}
 
 #### Membership Exports
 
@@ -636,7 +725,8 @@ end)
 
 #### Interaction Systems
 
-* **ox\_target** — Preferred. Target zones with "Use Equipment" prompts.
+* **ox\_target** — Preferred. Target options with "Use Equipment" prompts.
+* **qb\_target** — Fully supported (auto-detected, or set `interaction = 'qb_target'`).
 * **TextUI** — Fallback. TextUI prompts when nearby (press E).
 * **Custom** — Implement your own via `customInteraction` in config.
 
