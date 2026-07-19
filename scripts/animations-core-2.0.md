@@ -206,6 +206,14 @@ Key sections:
     language = 'auto',           -- 'auto' or one of 12 shipped locales (en, es, fr, de, pt, ru, it, pl, zh, ko, sv, ar)
     renderDistance = 100.0,      -- Distance to render gym locations
     interaction = 'auto',        -- 'auto', 'ox_target', 'qb_target', 'textUI', 'custom'
+    target = {                   -- Target option appearance (ox_target / qb-target)
+        icon = 'fa-solid fa-dumbbell',
+        distance = 2.0,
+    },
+    keybinds = {                 -- DEFAULT keys (players still rebind per-player in GTA settings)
+        rep = 'E',
+        exit = 'X',
+    },
     progressBar = 'built-in',    -- 'built-in' or 'custom' (see below)
 
     blip = {
@@ -528,7 +536,7 @@ Don't edit unless you know what you're doing: model names, animation dicts/names
 * **E** — perform a rep (keybind `gym:performExercise`)
 * **X** — get off the machine (keybind `gym:exitMachine`)
 
-Both keybinds are registered through ox_lib, so players can rebind them in **GTA Settings → Key Bindings → FiveM**.
+Both keybinds are registered through ox_lib, so players can rebind them in **GTA Settings → Key Bindings → FiveM**. Server owners change the *defaults* via `keybinds` in `config_c.lua`.
 
 #### Player Stats
 
