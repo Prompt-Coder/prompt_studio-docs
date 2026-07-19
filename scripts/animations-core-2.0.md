@@ -44,6 +44,9 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 
 * New **`onRep`** hook event — fires server-side for every completed rep; wire any other XP/stat/drug system there
 * New **`statMultiplier`** editable function (`config/server.lua`) — scale pushed gains, e.g. to honor a provider's booster items
+* **Equipment sounds ship wired** — 5 machines have 3D rep cues out of the box (wall + standing punch bags, wing chun dummy, lat pulldown, bike), each authored to its animation length, in the resource's own `promptgym` audio bank; add or swap cues per the Equipment Sounds section
+* **Blip modes** — `blip.mode = 'static' | 'locations'` picks ONE blip source, fixing double blips on the same gym; legacy `showLocationBlips` configs map over automatically
+* **Per-call blip opt-out** — `CreateGymLocation(..., { blip = false })` registers a location without a map blip (prison/interior gyms)
 * Fixed: `stats.enable = false` now also stops per-rep stat gains (previously it only stopped decay), and the exhaustion recovery loop no longer depends on the stats system being enabled
 
 </details>
@@ -211,7 +214,7 @@ Key sections:
         color = 21,
         scale = 0.9,
         label = 'Gym',
-        showLocationBlips = false, -- Also create a blip per equipment location (off = static blips only)
+        mode = 'static',          -- Blip source: 'static' (fixed coords list below) or 'locations' (one blip per active equipment location) — one mode at a time, so gyms never get double blips
         coords = {               -- Static map blips, optionally tied to resources
             { coords = vec3(x, y, z), label = 'Vinewood Gym' },
             -- only shows while one of these resources is running:
@@ -602,7 +605,7 @@ props = {
     gymlatpull = {
         ...,
         sounds = {
-            set   = 'prompt_gym',       -- soundset (custom or native GTA)
+            set   = 'promptgym',        -- soundset (custom or native GTA)
             range = 40.0,               -- audible range in meters
             start = { name = '...' },   -- when the machine is taken
             rep   = { name = '...' },   -- every rep, in step with the prop motion
@@ -675,6 +678,7 @@ Set via `gymCreator.restricted` in `config/config_s.lua` (default: `group.admin`
 exports['prompt_anim_core_2_new']:CreateGymLocation(locationName, {
     coords = vec3(x, y, z),
     requireMembership = false,  -- optional: force-exempt (or true to force-require)
+    blip = false,               -- optional: no map blip for this location (default true; used in blip.mode = 'locations')
     props = {
         speedbag = { vec4(x, y, z, h) },
         bench = { { coords = vec4(x, y, z, h), bar = vec4(x, y, z, h) } },
