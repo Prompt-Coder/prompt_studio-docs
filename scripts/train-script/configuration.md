@@ -16,13 +16,17 @@ debug = false
 Enables verbose console logging. Useful while setting up; disable in production.
 
 ```lua
-interaction = 'auto'   -- 'auto' | 'ox_target' | 'qb-target' | 'none'
+interaction = 'auto'   -- 'auto' | 'ox_target' | 'qb-target' | 'textui' | 'none'
 framework   = 'auto'   -- 'auto' | 'qbx' | 'qb' | 'esx' | 'none'
 inventory   = 'auto'   -- 'auto' | 'ox_inventory' | 'qb-inventory' | 'ps-inventory' | 'esx' | 'none'
 paymentMethod = 'cash' -- 'cash' | 'bank'
 ```
 
 `'auto'` checks which resources are running and picks automatically. Set a specific value if auto-detection fails or you want to lock a choice.
+
+{% hint style="info" %}
+None of these are hard requirements. With no target resource, `interaction = 'auto'` falls back to `'textui'` — built-in `[E]` proximity prompts. With `inventory = 'none'`, tickets are stored by the script itself (see [tickets.md](tickets.md "mention")).
+{% endhint %}
 
 ```lua
 lightRenderingMode = 'nearby' -- 'nearby' | 'inside'

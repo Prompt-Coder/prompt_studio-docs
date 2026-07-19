@@ -10,7 +10,7 @@ icon: ticket
 
 ### How It Works
 
-1. A player walks up to a ticket machine and an interaction prompt appears (via `ox_target` or `qb-target`).
+1. A player walks up to a ticket machine and an interaction prompt appears (via `ox_target`, `qb-target`, or the built-in `[E]` prompt when neither is installed).
 2. The DUI-based ticket UI opens, showing available trains and their ETAs.
 3. The player selects a destination and confirms the purchase.
 4. The server deducts money, adds a `train_ticket` item to the inventory with ticket metadata, and closes the UI.
@@ -99,6 +99,21 @@ stations = {
 ```
 
 The machine is now functional. No additional scripting is needed.
+
+***
+
+### Standalone Servers (no inventory)
+
+With `inventory = 'none'` (or when no supported inventory is detected), the whole ticket system works without any inventory resource:
+
+* Purchased tickets are stored by the script itself in `standalone_tickets.json`, keyed by the player's license — they survive server restarts and reconnects.
+* Tickets stay valid for **24 hours** after purchase.
+* Players re-display their latest ticket with the `/trainticket` command (this replaces "using" the inventory item).
+* The wagon door check (`requireTicketForDoors`) keeps working unchanged.
+
+{% hint style="info" %}
+On standalone servers you do **not** need to register the `train_ticket` item — the snippets below only apply when a real inventory resource is used.
+{% endhint %}
 
 ***
 

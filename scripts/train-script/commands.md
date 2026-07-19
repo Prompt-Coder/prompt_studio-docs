@@ -49,6 +49,12 @@ Selecting **Teleport to Train** teleports the player to the train's current posi
 
 ***
 
+### `/trainticket` Command
+
+Only available on standalone servers (`inventory = 'none'`). Re-displays the player's latest purchased ticket on screen — the standalone replacement for using the `train_ticket` inventory item. See [tickets.md](tickets.md "mention").
+
+***
+
 ### Debug Commands
 
 These commands are only available from the **server console** (not in-game chat) and require `debug = true` in config.

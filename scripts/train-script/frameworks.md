@@ -15,7 +15,7 @@ icon: gear-complex
 | QBx (`qbx_core`)    | `ox_inventory`, `qb-inventory`, `ps-inventory` |
 | QBCore (`qb-core`)  | `ox_inventory`, `qb-inventory`, `ps-inventory` |
 | ESX (`es_extended`) | `ox_inventory`, `esx` (native)                 |
-| None / custom       | Payments always succeed; items are not given   |
+| None / custom       | Tickets are free; the script stores them itself (no inventory needed) |
 
 ***
 
@@ -41,13 +41,15 @@ inventory = 'ox_inventory'
 
 ```lua
 -- config/config.lua
-interaction = 'auto'   -- 'auto' | 'ox_target' | 'qb-target' | 'none'
+interaction = 'auto'   -- 'auto' | 'ox_target' | 'qb-target' | 'textui' | 'none'
 ```
 
 This controls how players interact with ticket machines and train seats:
 
+* `'auto'` — uses `ox_target` or `qb-target` when one is installed, otherwise falls back to `'textui'`.
 * `'ox_target'` — uses `ox_target` zones and entity targeting.
 * `'qb-target'` — uses `qb-target`.
+* `'textui'` — built-in `[E]` proximity prompts (ox\_lib only — no target resource needed).
 * `'none'` — no interaction is registered (you can add your own via exported helpers).
 
 ***
@@ -93,7 +95,7 @@ Adds an item to the player's inventory. Returns `true` on success.
 | `ox_inventory`                  | `exports.ox_inventory:AddItem(...)` |
 | `qb-inventory` / `ps-inventory` | `Player.Functions.AddItem(...)`     |
 | `esx`                           | `xPlayer.addInventoryItem(...)`     |
-| None                            | Logs a warning, returns `false`     |
+| None                            | Stored in the script's own ticket store (`standalone_tickets.json`), returns `true` |
 
 #### `Bridge.removePayment(source, amount)`
 
