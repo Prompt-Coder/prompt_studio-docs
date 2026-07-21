@@ -1,17 +1,14 @@
 # Doorlock ID Ledger
 
-> Single source of truth for `ox_doorlock` id allocation across every Prompt Studio product.
-> IDs are global primary keys — two products sharing an ID break any customer who imports both.
+> Historical record of `ox_doorlock` id allocation across Prompt Studio products.
 
 ## Rule for new products
 
-1. Number the product's doors starting at **Next Free ID** below.
-2. Add a row to the table.
-3. Bump Next Free ID to your new max + 1.
+**Ship `(DEFAULT, 'name', 'data')` — never hardcode ids.** As of 2026-07-21 every product's doorlock SQL uses `DEFAULT` for the `id` column, so MySQL's AUTO_INCREMENT assigns a free id on import. A product can no longer collide with another product's doors, or with doors the buyer already has — no manual id allocation is needed.
 
-**Next Free ID: 3008**  ·  57 products  ·  span 9-3007  ·  verified 0 collisions (2026-07-06)
+The table below records the fixed ids products used **before** the DEFAULT migration. It is kept for reference only and no longer governs new work.
 
-## Allocations
+## Historical allocations (pre-DEFAULT)
 
 | Doorlock IDs | Doors | Product |
 | --- | ---: | --- |
@@ -74,9 +71,3 @@
 | 2997-3006 | 10 | `subscription-exclusives/motorcycle-paradise.md` |
 
 > Note: `sandy-bank` door **G-3** was relocated to 3007 (out of the gym 1920 collision); the rest of the bank stays 1900-1919.
-
-## Free bands (reusable for small products)
-
-- 683-1025 (343 free)
-- 1227-1599 (373 free)
-- 1713-1899 (187 free)

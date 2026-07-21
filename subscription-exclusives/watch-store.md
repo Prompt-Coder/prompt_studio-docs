@@ -29,7 +29,7 @@ The **Watch Store** map includes a customizable doorlock system to restrict acce
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES 
-(653, 'Watch Store E-1', '{"maxDistance":2,"coords":{"x":-647.3912353515625,"y":-275.84326171875,"z":36.26143264770508},"state":1,"doors":[{"model":-1368194430,"coords":{"x":-646.8906860351563,"y":-276.71136474609377,"z":36.26143264770508},"heading":300},{"model":-1368194430,"coords":{"x":-647.891845703125,"y":-274.9751892089844,"z":36.26143264770508},"heading":120}]}');
+(DEFAULT, 'Watch Store E-1', '{"maxDistance":2,"coords":{"x":-647.3912353515625,"y":-275.84326171875,"z":36.26143264770508},"state":1,"doors":[{"model":-1368194430,"coords":{"x":-646.8906860351563,"y":-276.71136474609377,"z":36.26143264770508},"heading":300},{"model":-1368194430,"coords":{"x":-647.891845703125,"y":-274.9751892089844,"z":36.26143264770508},"heading":120}]}');
 ```
 
 ***

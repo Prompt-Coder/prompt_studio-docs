@@ -22,10 +22,10 @@ The **Mosley Dealership** map includes a customizable doorlock system to restric
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-	(514, 'Mosley Dealership E-1', '{"coords":{"x":-40.3743667602539,"y":-1674.2440185546876,"z":29.62456703186035},"maxDistance":2,"state":1,"doors":[{"heading":320,"model":288089934,"coords":{"x":-39.4085693359375,"y":-1675.054443359375,"z":29.62456703186035}},{"heading":320,"model":32360658,"coords":{"x":-41.34016036987305,"y":-1673.43359375,"z":29.62456703186035}}]}'),
-	(515, 'Mosley Dealership E-2', '{"coords":{"x":-43.11420059204101,"y":-1661.8682861328126,"z":29.72961807250976},"maxDistance":2,"state":1,"doors":[{"heading":50,"model":-1490873538,"coords":{"x":-44.04762268066406,"y":-1662.980712890625,"z":29.72961807250976}},{"heading":50,"model":-647891013,"coords":{"x":-42.18077850341797,"y":-1660.755859375,"z":29.72961807250976}}]}'),
-	(516, 'Mosley Dealership G-1', '{"coords":{"x":-30.90956115722656,"y":-1647.5404052734376,"z":30.53314590454101},"heading":230,"model":-937747387,"maxDistance":2,"state":1,"doors":false}'),
-	(517, 'Mosley Dealership 1-1', '{"coords":{"x":-33.95782852172851,"y":-1663.5966796875,"z":29.67400169372558},"heading":50,"model":-2051651622,"maxDistance":2,"state":1,"doors":false}');
+	(DEFAULT, 'Mosley Dealership E-1', '{"coords":{"x":-40.3743667602539,"y":-1674.2440185546876,"z":29.62456703186035},"maxDistance":2,"state":1,"doors":[{"heading":320,"model":288089934,"coords":{"x":-39.4085693359375,"y":-1675.054443359375,"z":29.62456703186035}},{"heading":320,"model":32360658,"coords":{"x":-41.34016036987305,"y":-1673.43359375,"z":29.62456703186035}}]}'),
+	(DEFAULT, 'Mosley Dealership E-2', '{"coords":{"x":-43.11420059204101,"y":-1661.8682861328126,"z":29.72961807250976},"maxDistance":2,"state":1,"doors":[{"heading":50,"model":-1490873538,"coords":{"x":-44.04762268066406,"y":-1662.980712890625,"z":29.72961807250976}},{"heading":50,"model":-647891013,"coords":{"x":-42.18077850341797,"y":-1660.755859375,"z":29.72961807250976}}]}'),
+	(DEFAULT, 'Mosley Dealership G-1', '{"coords":{"x":-30.90956115722656,"y":-1647.5404052734376,"z":30.53314590454101},"heading":230,"model":-937747387,"maxDistance":2,"state":1,"doors":false}'),
+	(DEFAULT, 'Mosley Dealership 1-1', '{"coords":{"x":-33.95782852172851,"y":-1663.5966796875,"z":29.67400169372558},"heading":50,"model":-2051651622,"maxDistance":2,"state":1,"doors":false}');
 ```
 
 ***

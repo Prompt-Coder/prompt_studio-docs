@@ -32,12 +32,12 @@ The Vimap includes a customizable doorlock system to restrict access to specific
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-    (1026, 'Vinewood Fire Station G-1', '{"maxDistance":2,"coords":{"x":391.6808,"y":284.3284,"z":101.989},"doors":false,"heading":70,"state":1,"model":-365339889}'),
-    (1027, 'Vinewood Fire Station G-2', '{"maxDistance":2,"coords":{"x":389.0305,"y":277.0467,"z":101.989},"doors":false,"heading":70,"state":1,"model":-365339889}'),
-    (1028, 'Vinewood Fire Station G-3', '{"maxDistance":2,"coords":{"x":386.38,"y":269.7645,"z":101.989},"doors":false,"heading":70,"state":1,"model":-365339889}'),
-    (1029, 'Vinewood Fire Station E-1', '{"maxDistance":2,"coords":{"x":390.3964,"y":280.0641,"z":103.0652},"doors":false,"heading":70,"state":1,"model":945380231}'),
-    (1030, 'Vinewood Fire Station E-2', '{"maxDistance":2,"coords":{"x":387.7531,"y":272.7846,"z":103.0733},"doors":false,"heading":70,"state":1,"model":1244856122}'),
-    (1031, 'Vinewood Fire Station 1-1', '{"maxDistance":2,"coords":{"x":369.9583,"y":274.757,"z":103.0741},"doors":[{"coords":{"x":370.2972,"y":275.6884,"z":103.0741},"model":1345458177,"heading":250},{"coords":{"x":369.6193,"y":273.8257,"z":103.0741},"model":1345458177,"heading":70}],"state":1}');
+    (DEFAULT, 'Vinewood Fire Station G-1', '{"maxDistance":2,"coords":{"x":391.6808,"y":284.3284,"z":101.989},"doors":false,"heading":70,"state":1,"model":-365339889}'),
+    (DEFAULT, 'Vinewood Fire Station G-2', '{"maxDistance":2,"coords":{"x":389.0305,"y":277.0467,"z":101.989},"doors":false,"heading":70,"state":1,"model":-365339889}'),
+    (DEFAULT, 'Vinewood Fire Station G-3', '{"maxDistance":2,"coords":{"x":386.38,"y":269.7645,"z":101.989},"doors":false,"heading":70,"state":1,"model":-365339889}'),
+    (DEFAULT, 'Vinewood Fire Station E-1', '{"maxDistance":2,"coords":{"x":390.3964,"y":280.0641,"z":103.0652},"doors":false,"heading":70,"state":1,"model":945380231}'),
+    (DEFAULT, 'Vinewood Fire Station E-2', '{"maxDistance":2,"coords":{"x":387.7531,"y":272.7846,"z":103.0733},"doors":false,"heading":70,"state":1,"model":1244856122}'),
+    (DEFAULT, 'Vinewood Fire Station 1-1', '{"maxDistance":2,"coords":{"x":369.9583,"y":274.757,"z":103.0741},"doors":[{"coords":{"x":370.2972,"y":275.6884,"z":103.0741},"model":1345458177,"heading":250},{"coords":{"x":369.6193,"y":273.8257,"z":103.0741},"model":1345458177,"heading":70}],"state":1}');
 
 ```
 

@@ -35,14 +35,14 @@ The **Rockford Dealership** map includes a customizable doorlock system to restr
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES 
-	(502, 'Rockford Dealership G-1', '{"coords":{"x":-354.4662170410156,"y":-232.13206481933595,"z":36.23910903930664},"heading":54,"model":1281492173,"maxDistance":2,"state":1,"doors":false}'),
-	(503, 'Rockford Dealership G-2', '{"coords":{"x":-351.11285400390627,"y":-227.54046630859376,"z":36.24414825439453},"heading":54,"model":1281492173,"maxDistance":2,"state":1,"doors":false}'),
-	(504, 'Rockford Dealership E-2', '{"coords":{"x":-317.12506103515627,"y":-226.3603057861328,"z":36.97378921508789},"maxDistance":2,"state":1,"doors":[{"heading":325,"model":424177038,"coords":{"x":-317.9437561035156,"y":-225.78704833984376,"z":36.97378921508789}},{"heading":145,"model":424177038,"coords":{"x":-316.3063659667969,"y":-226.93356323242188,"z":36.97378921508789}}]}'),
-	(505, 'Rockford Dealership E-1', '{"coords":{"x":-327.3249816894531,"y":-254.08030700683595,"z":34.55200576782226},"maxDistance":2,"state":1,"doors":[{"heading":55,"model":1861302034,"coords":{"x":-326.7520446777344,"y":-253.26206970214845,"z":34.55200576782226}},{"heading":55,"model":424177038,"coords":{"x":-327.8979187011719,"y":-254.89854431152345,"z":34.55200576782226}}]}'),
-	(506, 'Rockford Dealership 1-1', '{"coords":{"x":-324.9126892089844,"y":-226.91445922851563,"z":36.98732376098633},"heading":325,"model":946508663,"maxDistance":2,"state":1,"doors":false}'),
-	(507, 'Rockford Dealership 1-2', '{"coords":{"x":-328.8351135253906,"y":-224.1824951171875,"z":36.98762130737305},"heading":325,"model":946508663,"maxDistance":2,"state":1,"doors":false}'),
-	(508, 'Rockford Dealership 1-3', '{"coords":{"x":-332.7995300292969,"y":-221.50550842285157,"z":36.98852157592773},"heading":325,"model":946508663,"maxDistance":2,"state":1,"doors":false}'),
-	(509, 'Rockford Dealership 1-4', '{"coords":{"x":-343.9602355957031,"y":-222.73057556152345,"z":37.4089469909668},"heading":325,"model":-1726818330,"maxDistance":2,"state":1,"doors":false}');
+	(DEFAULT, 'Rockford Dealership G-1', '{"coords":{"x":-354.4662170410156,"y":-232.13206481933595,"z":36.23910903930664},"heading":54,"model":1281492173,"maxDistance":2,"state":1,"doors":false}'),
+	(DEFAULT, 'Rockford Dealership G-2', '{"coords":{"x":-351.11285400390627,"y":-227.54046630859376,"z":36.24414825439453},"heading":54,"model":1281492173,"maxDistance":2,"state":1,"doors":false}'),
+	(DEFAULT, 'Rockford Dealership E-2', '{"coords":{"x":-317.12506103515627,"y":-226.3603057861328,"z":36.97378921508789},"maxDistance":2,"state":1,"doors":[{"heading":325,"model":424177038,"coords":{"x":-317.9437561035156,"y":-225.78704833984376,"z":36.97378921508789}},{"heading":145,"model":424177038,"coords":{"x":-316.3063659667969,"y":-226.93356323242188,"z":36.97378921508789}}]}'),
+	(DEFAULT, 'Rockford Dealership E-1', '{"coords":{"x":-327.3249816894531,"y":-254.08030700683595,"z":34.55200576782226},"maxDistance":2,"state":1,"doors":[{"heading":55,"model":1861302034,"coords":{"x":-326.7520446777344,"y":-253.26206970214845,"z":34.55200576782226}},{"heading":55,"model":424177038,"coords":{"x":-327.8979187011719,"y":-254.89854431152345,"z":34.55200576782226}}]}'),
+	(DEFAULT, 'Rockford Dealership 1-1', '{"coords":{"x":-324.9126892089844,"y":-226.91445922851563,"z":36.98732376098633},"heading":325,"model":946508663,"maxDistance":2,"state":1,"doors":false}'),
+	(DEFAULT, 'Rockford Dealership 1-2', '{"coords":{"x":-328.8351135253906,"y":-224.1824951171875,"z":36.98762130737305},"heading":325,"model":946508663,"maxDistance":2,"state":1,"doors":false}'),
+	(DEFAULT, 'Rockford Dealership 1-3', '{"coords":{"x":-332.7995300292969,"y":-221.50550842285157,"z":36.98852157592773},"heading":325,"model":946508663,"maxDistance":2,"state":1,"doors":false}'),
+	(DEFAULT, 'Rockford Dealership 1-4', '{"coords":{"x":-343.9602355957031,"y":-222.73057556152345,"z":37.4089469909668},"heading":325,"model":-1726818330,"maxDistance":2,"state":1,"doors":false}');
 ```
 
 ***

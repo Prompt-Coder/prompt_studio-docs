@@ -29,8 +29,8 @@ The **Gas Station** map includes a customizable doorlock system to restrict acce
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES 
-	(219, 'Sandy Gas Station 1-1', '{"doors":false,"model":-495720969,"coords":{"x":1997.496826171875,"y":3783.47802734375,"z":32.34941482543945},"heading":120,"state":1,"maxDistance":2}'),
-	(220, 'Sandy Gas Station E-1', '{"doors":[{"coords":{"x":2001.9114990234376,"y":3780.602294921875,"z":32.3482780456543},"model":-98391585,"heading":210},{"coords":{"x":2000.4759521484376,"y":3779.773193359375,"z":32.3482780456543},"model":-606311141,"heading":30}],"coords":{"x":2001.1937255859376,"y":3780.187744140625,"z":32.3482780456543},"state":1,"maxDistance":2}');
+	(DEFAULT, 'Sandy Gas Station 1-1', '{"doors":false,"model":-495720969,"coords":{"x":1997.496826171875,"y":3783.47802734375,"z":32.34941482543945},"heading":120,"state":1,"maxDistance":2}'),
+	(DEFAULT, 'Sandy Gas Station E-1', '{"doors":[{"coords":{"x":2001.9114990234376,"y":3780.602294921875,"z":32.3482780456543},"model":-98391585,"heading":210},{"coords":{"x":2000.4759521484376,"y":3779.773193359375,"z":32.3482780456543},"model":-606311141,"heading":30}],"coords":{"x":2001.1937255859376,"y":3780.187744140625,"z":32.3482780456543},"state":1,"maxDistance":2}');
 ```
 
 ***

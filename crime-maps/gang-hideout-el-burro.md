@@ -46,14 +46,14 @@ The **Gang Hideout El-Burro** map includes a customizable doorlock system to res
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-(626, 'Gang Hideout / El Burro E-1', '{"maxDistance":2,"coords":{"x":1437.5860595703126,"y":-1491.52001953125,"z":63.77627563476562},"state":1,"doors":[{"model":262671971,"coords":{"x":1438.635986328125,"y":-1491.846435546875,"z":63.77627563476562},"heading":163},{"model":1504256620,"coords":{"x":1436.5361328125,"y":-1491.193603515625,"z":63.77627563476562},"heading":343}]}'),
-(627, 'Gang Hideout / El Burro E-2', '{"maxDistance":2,"model":262671971,"coords":{"x":1439.330322265625,"y":-1480.5023193359376,"z":63.78522872924805},"heading":343,"state":1,"doors":false}'),
-(628, 'Gang Hideout / El Burro 1-1', '{"maxDistance":2,"model":-1186396713,"coords":{"x":1441.078369140625,"y":-1490.13427734375,"z":63.77946853637695},"heading":73,"state":1,"doors":false}'),
-(629, 'Gang Hideout / El Burro 1-2', '{"maxDistance":2,"model":103339342,"coords":{"x":1441.8800048828126,"y":-1487.609619140625,"z":63.77902221679687},"heading":252,"state":1,"doors":false}'),
-(630, 'Gang Hideout / El Burro 1-3', '{"maxDistance":2,"model":103339342,"coords":{"x":1442.7642822265626,"y":-1482.8558349609376,"z":66.78407287597656},"heading":73,"state":1,"doors":false}'),
-(631, 'Gang Hideout / El Burro 1-4', '{"maxDistance":2,"model":-1186396713,"coords":{"x":1441.0762939453126,"y":-1490.1749267578126,"z":66.78370666503906},"heading":254,"state":1,"doors":false}'),
-(632, 'Gang Hideout / El Burro 1-5', '{"maxDistance":2,"model":-1186396713,"coords":{"x":1440.7945556640626,"y":-1490.9676513671876,"z":66.7834701538086},"heading":73,"state":1,"doors":false}'),
-(633, 'Gang Hideout / El Burro E-3', '{"maxDistance":2,"coords":{"x":1435.815185546875,"y":-1491.0771484375,"z":66.79662322998047},"state":1,"doors":[{"model":1504256620,"coords":{"x":1434.761474609375,"y":-1490.758056640625,"z":66.79662322998047},"heading":343},{"model":262671971,"coords":{"x":1436.8687744140626,"y":-1491.396240234375,"z":66.79662322998047},"heading":163}]}');
+(DEFAULT, 'Gang Hideout / El Burro E-1', '{"maxDistance":2,"coords":{"x":1437.5860595703126,"y":-1491.52001953125,"z":63.77627563476562},"state":1,"doors":[{"model":262671971,"coords":{"x":1438.635986328125,"y":-1491.846435546875,"z":63.77627563476562},"heading":163},{"model":1504256620,"coords":{"x":1436.5361328125,"y":-1491.193603515625,"z":63.77627563476562},"heading":343}]}'),
+(DEFAULT, 'Gang Hideout / El Burro E-2', '{"maxDistance":2,"model":262671971,"coords":{"x":1439.330322265625,"y":-1480.5023193359376,"z":63.78522872924805},"heading":343,"state":1,"doors":false}'),
+(DEFAULT, 'Gang Hideout / El Burro 1-1', '{"maxDistance":2,"model":-1186396713,"coords":{"x":1441.078369140625,"y":-1490.13427734375,"z":63.77946853637695},"heading":73,"state":1,"doors":false}'),
+(DEFAULT, 'Gang Hideout / El Burro 1-2', '{"maxDistance":2,"model":103339342,"coords":{"x":1441.8800048828126,"y":-1487.609619140625,"z":63.77902221679687},"heading":252,"state":1,"doors":false}'),
+(DEFAULT, 'Gang Hideout / El Burro 1-3', '{"maxDistance":2,"model":103339342,"coords":{"x":1442.7642822265626,"y":-1482.8558349609376,"z":66.78407287597656},"heading":73,"state":1,"doors":false}'),
+(DEFAULT, 'Gang Hideout / El Burro 1-4', '{"maxDistance":2,"model":-1186396713,"coords":{"x":1441.0762939453126,"y":-1490.1749267578126,"z":66.78370666503906},"heading":254,"state":1,"doors":false}'),
+(DEFAULT, 'Gang Hideout / El Burro 1-5', '{"maxDistance":2,"model":-1186396713,"coords":{"x":1440.7945556640626,"y":-1490.9676513671876,"z":66.7834701538086},"heading":73,"state":1,"doors":false}'),
+(DEFAULT, 'Gang Hideout / El Burro E-3', '{"maxDistance":2,"coords":{"x":1435.815185546875,"y":-1491.0771484375,"z":66.79662322998047},"state":1,"doors":[{"model":1504256620,"coords":{"x":1434.761474609375,"y":-1490.758056640625,"z":66.79662322998047},"heading":343},{"model":262671971,"coords":{"x":1436.8687744140626,"y":-1491.396240234375,"z":66.79662322998047},"heading":163}]}');
 ```
 
 ***

@@ -34,11 +34,11 @@ The **Dynasty 8 Real Estate** map includes a customizable doorlock system to res
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-    (549, 'Dynasty 8 E-1', '{"doors":[{"heading":117,"model":-98018355,"coords":{"x":-842.8986206054688,"y":-333.65985107421877,"z":38.87641143798828}},{"heading":297,"model":-98018355,"coords":{"x":-841.734619140625,"y":-335.9458312988281,"z":38.87641143798828}}],"maxDistance":2,"coords":{"x":-842.316650390625,"y":-334.8028564453125,"z":38.87641143798828},"state":1}'),
-    (550, 'Dynasty 8 1-1', '{"doors":false,"maxDistance":2,"heading":207,"coords":{"x":-855.5955200195313,"y":-348.5436096191406,"z":38.81884384155273},"model":-551608542,"state":1}'),
-    (551, 'Dynasty 8 2-1', '{"doors":false,"maxDistance":2,"heading":342,"coords":{"x":-840.8136596679688,"y":-334.41082763671877,"z":44.85441589355469},"model":1111157749,"state":1}'),
-    (552, 'Dynasty 8 2-2', '{"doors":false,"maxDistance":2,"heading":117,"coords":{"x":-846.0596313476563,"y":-340.2448425292969,"z":44.86441421508789},"model":-551608542,"state":1}'),
-    (553, 'Dynasty 8 2-3', '{"doors":false,"maxDistance":2,"heading":27,"coords":{"x":-849.8776245117188,"y":-339.9818420410156,"z":44.86141204833984},"model":-551608542,"state":1}');
+    (DEFAULT, 'Dynasty 8 E-1', '{"doors":[{"heading":117,"model":-98018355,"coords":{"x":-842.8986206054688,"y":-333.65985107421877,"z":38.87641143798828}},{"heading":297,"model":-98018355,"coords":{"x":-841.734619140625,"y":-335.9458312988281,"z":38.87641143798828}}],"maxDistance":2,"coords":{"x":-842.316650390625,"y":-334.8028564453125,"z":38.87641143798828},"state":1}'),
+    (DEFAULT, 'Dynasty 8 1-1', '{"doors":false,"maxDistance":2,"heading":207,"coords":{"x":-855.5955200195313,"y":-348.5436096191406,"z":38.81884384155273},"model":-551608542,"state":1}'),
+    (DEFAULT, 'Dynasty 8 2-1', '{"doors":false,"maxDistance":2,"heading":342,"coords":{"x":-840.8136596679688,"y":-334.41082763671877,"z":44.85441589355469},"model":1111157749,"state":1}'),
+    (DEFAULT, 'Dynasty 8 2-2', '{"doors":false,"maxDistance":2,"heading":117,"coords":{"x":-846.0596313476563,"y":-340.2448425292969,"z":44.86441421508789},"model":-551608542,"state":1}'),
+    (DEFAULT, 'Dynasty 8 2-3', '{"doors":false,"maxDistance":2,"heading":27,"coords":{"x":-849.8776245117188,"y":-339.9818420410156,"z":44.86141204833984},"model":-551608542,"state":1}');
 ```
 
 ***

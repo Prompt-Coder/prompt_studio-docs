@@ -206,16 +206,16 @@ This map supports **ox\_doorlock**. Add the following SQL:
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-    (1056, 'Sandy Illegal Garage & Carwash & Gas Station E-1', '{"heading":32,"coords":{"x":2012.722900390625,"y":3791.4658203125,"z":32.87763214111328},"doors":false,"maxDistance":2,"model":-1793984540,"state":1}'),
-    (1057, 'Sandy Illegal Garage & Carwash & Gas Station E-2', '{"heading":0,"coords":{"x":2002.6920166015626,"y":3791.26904296875,"z":33.40999984741211},"doors":false,"maxDistance":2,"model":957340662,"state":1}'),
-    (1058, 'Sandy Illegal Garage & Carwash & Gas Station 2-1', '{"heading":300,"coords":{"x":1996.93115234375,"y":3783.171875,"z":35.30082321166992},"doors":false,"maxDistance":2,"model":747286790,"state":1}'),
-    (1059, 'Sandy Illegal Garage & Carwash & Gas Station 2-2', '{"heading":298,"coords":{"x":2000.0584716796876,"y":3782.98046875,"z":35.31220245361328},"doors":false,"maxDistance":2,"model":108110432,"state":1}'),
-    (1060, 'Sandy Illegal Garage & Carwash & Gas Station 0-1', '{"coords":{"x":1984.8240966796876,"y":3787.3486328125,"z":27.36436462402343},"doors":[{"coords":{"x":1984.34375,"y":3788.1806640625,"z":27.36436462402343},"heading":120,"model":1972289202},{"coords":{"x":1985.304443359375,"y":3786.516845703125,"z":27.36436462402343},"heading":300,"model":1972289202}],"maxDistance":2,"state":1}'),
-    (1061, 'Sandy Illegal Garage & Carwash & Gas Station 1-1', '{"heading":181,"coords":{"x":1988.239990234375,"y":3789.796630859375,"z":31.21485519409179},"doors":false,"maxDistance":2,"model":871083343,"state":1}'),
-    (1062, 'Sandy Illegal Garage & Carwash & Gas Station E-3', '{"heading":31,"coords":{"x":1982.0697021484376,"y":3767.3984375,"z":32.60374450683594},"doors":false,"maxDistance":2,"model":-1677161358,"state":1}'),
-    (1063, 'Sandy Illegal Garage & Carwash & Gas Station E-4', '{"heading":121,"coords":{"x":1983.0889892578126,"y":3774.855224609375,"z":32.62191772460937},"doors":false,"maxDistance":2,"model":-1677161358,"state":1}'),
-    (1064, 'Sandy Illegal Garage & Carwash & Gas Station E-5', '{"heading":31,"coords":{"x":1972.7923583984376,"y":3761.8232421875,"z":32.58348846435547},"doors":false,"maxDistance":2,"model":-1603870487,"state":1}'),
-    (1065, 'Sandy Illegal Garage & Carwash & Gas Station E-6', '{"heading":211,"coords":{"x":1967.503173828125,"y":3766.66064453125,"z":32.58348846435547},"doors":false,"maxDistance":2,"model":-1603870487,"state":1}');
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station E-1', '{"heading":32,"coords":{"x":2012.722900390625,"y":3791.4658203125,"z":32.87763214111328},"doors":false,"maxDistance":2,"model":-1793984540,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station E-2', '{"heading":0,"coords":{"x":2002.6920166015626,"y":3791.26904296875,"z":33.40999984741211},"doors":false,"maxDistance":2,"model":957340662,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station 2-1', '{"heading":300,"coords":{"x":1996.93115234375,"y":3783.171875,"z":35.30082321166992},"doors":false,"maxDistance":2,"model":747286790,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station 2-2', '{"heading":298,"coords":{"x":2000.0584716796876,"y":3782.98046875,"z":35.31220245361328},"doors":false,"maxDistance":2,"model":108110432,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station 0-1', '{"coords":{"x":1984.8240966796876,"y":3787.3486328125,"z":27.36436462402343},"doors":[{"coords":{"x":1984.34375,"y":3788.1806640625,"z":27.36436462402343},"heading":120,"model":1972289202},{"coords":{"x":1985.304443359375,"y":3786.516845703125,"z":27.36436462402343},"heading":300,"model":1972289202}],"maxDistance":2,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station 1-1', '{"heading":181,"coords":{"x":1988.239990234375,"y":3789.796630859375,"z":31.21485519409179},"doors":false,"maxDistance":2,"model":871083343,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station E-3', '{"heading":31,"coords":{"x":1982.0697021484376,"y":3767.3984375,"z":32.60374450683594},"doors":false,"maxDistance":2,"model":-1677161358,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station E-4', '{"heading":121,"coords":{"x":1983.0889892578126,"y":3774.855224609375,"z":32.62191772460937},"doors":false,"maxDistance":2,"model":-1677161358,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station E-5', '{"heading":31,"coords":{"x":1972.7923583984376,"y":3761.8232421875,"z":32.58348846435547},"doors":false,"maxDistance":2,"model":-1603870487,"state":1}'),
+    (DEFAULT, 'Sandy Illegal Garage & Carwash & Gas Station E-6', '{"heading":211,"coords":{"x":1967.503173828125,"y":3766.66064453125,"z":32.58348846435547},"doors":false,"maxDistance":2,"model":-1603870487,"state":1}');
 ```
 
 </details>

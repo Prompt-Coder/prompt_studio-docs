@@ -34,12 +34,12 @@ The Pillbox Fire Department map includes a customizable doorlock system to restr
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-(365, 'Pillbox Fire Department G-1', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":320.0604553222656,"y":-677.0083618164063,"z":30.38467788696289},"model":-616841257}'),
-(366, 'Pillbox Fire Department G-2', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":318.3260498046875,"y":-681.796630859375,"z":30.3775405883789},"model":-616841257}'),
-(367, 'Pillbox Fire Department E-1', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":314.7314758300781,"y":-685.0941772460938,"z":30.14613342285156},"model":-35610440}'),
-(368, 'Pillbox Fire Department 2-1', '{"doors":false,"state":1,"maxDistance":2,"heading":340,"coords":{"x":304.6263427734375,"y":-677.6810302734375,"z":34.46896362304687},"model":964838196}'),
-(369, 'Pillbox Fire Department 2-3', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":302.55902099609377,"y":-669.5408935546875,"z":34.47222518920898},"model":-1726818330}'),
-(370, 'Pillbox Fire Department 2-2', '{"doors":[{"model":933053701,"heading":250,"coords":{"x":294.9454345703125,"y":-666.2735595703125,"z":34.46779251098633}},{"model":933053701,"heading":70,"coords":{"x":295.834716796875,"y":-663.8301391601563,"z":34.46779251098633}}],"state":1,"maxDistance":2,"coords":{"x":295.39007568359377,"y":-665.0518798828125,"z":34.46779251098633}}');
+(DEFAULT, 'Pillbox Fire Department G-1', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":320.0604553222656,"y":-677.0083618164063,"z":30.38467788696289},"model":-616841257}'),
+(DEFAULT, 'Pillbox Fire Department G-2', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":318.3260498046875,"y":-681.796630859375,"z":30.3775405883789},"model":-616841257}'),
+(DEFAULT, 'Pillbox Fire Department E-1', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":314.7314758300781,"y":-685.0941772460938,"z":30.14613342285156},"model":-35610440}'),
+(DEFAULT, 'Pillbox Fire Department 2-1', '{"doors":false,"state":1,"maxDistance":2,"heading":340,"coords":{"x":304.6263427734375,"y":-677.6810302734375,"z":34.46896362304687},"model":964838196}'),
+(DEFAULT, 'Pillbox Fire Department 2-3', '{"doors":false,"state":1,"maxDistance":2,"heading":70,"coords":{"x":302.55902099609377,"y":-669.5408935546875,"z":34.47222518920898},"model":-1726818330}'),
+(DEFAULT, 'Pillbox Fire Department 2-2', '{"doors":[{"model":933053701,"heading":250,"coords":{"x":294.9454345703125,"y":-666.2735595703125,"z":34.46779251098633}},{"model":933053701,"heading":70,"coords":{"x":295.834716796875,"y":-663.8301391601563,"z":34.46779251098633}}],"state":1,"maxDistance":2,"coords":{"x":295.39007568359377,"y":-665.0518798828125,"z":34.46779251098633}}');
 ```
 
 ***

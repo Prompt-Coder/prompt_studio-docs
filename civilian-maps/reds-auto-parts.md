@@ -49,7 +49,7 @@ The **Red's Auto Parts** map includes a customizable doorlock system to restrict
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-(532, 'Red\'s AutoParts G-1', '{"doors":false,"maxDistance":2,"heading":145,"coords":{"x":-512.9033203125,"y":-1739.1495361328126,"z":20.12289237976074},"model":-190780785,"state":1}');
+(DEFAULT, 'Red\'s AutoParts G-1', '{"doors":false,"maxDistance":2,"heading":145,"coords":{"x":-512.9033203125,"y":-1739.1495361328126,"z":20.12289237976074},"model":-190780785,"state":1}');
 ```
 
 ***

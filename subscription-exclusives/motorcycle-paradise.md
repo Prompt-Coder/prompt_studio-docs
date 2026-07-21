@@ -31,16 +31,16 @@ The **Motorcycle Paradise** map includes a customizable doorlock system to restr
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-    (2997, 'Bike Shop Door 1026', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_r","coords":{"x":287.8423,"y":-1149.089,"z":29.51102},"state":1}'),
-    (2998, 'Bike Shop Door 1027', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_l","coords":{"x":285.8636,"y":-1149.089,"z":29.51102},"state":1}'),
-    (2999, 'Bike Shop Door 1028', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_r","coords":{"x":269.334,"y":-1154.351,"z":29.51004},"state":1}'),
-    (3000, 'Bike Shop Door 1029', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_l","coords":{"x":269.334,"y":-1156.329,"z":29.51004},"state":1}'),
-    (3001, 'Bike Shop Door 1030', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_15_garg_delta_doordown","coords":{"x":269.2986,"y":-1159.701,"z":29.94192},"state":1}'),
-    (3002, 'Bike Shop Door 1031', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_15_garg_delta_doordown2","coords":{"x":304.3455,"y":-1162.837,"z":29.13172},"state":1}'),
-    (3003, 'Bike Shop Door 1032', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor02","coords":{"x":288.3299,"y":-1167.492,"z":29.54739},"state":1}'),
-    (3004, 'Bike Shop Door 1033', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor01","coords":{"x":288.3299,"y":-1165.246,"z":29.54739},"state":1}'),
-    (3005, 'Bike Shop Door 1034', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor02","coords":{"x":282.758,"y":-1156.719,"z":29.54646},"state":1}'),
-    (3006, 'Bike Shop Door 1035', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor01","coords":{"x":280.5119,"y":-1156.719,"z":29.54646},"state":1}');
+    (DEFAULT, 'Bike Shop Door 1026', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_r","coords":{"x":287.8423,"y":-1149.089,"z":29.51102},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1027', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_l","coords":{"x":285.8636,"y":-1149.089,"z":29.51102},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1028', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_r","coords":{"x":269.334,"y":-1154.351,"z":29.51004},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1029', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_csr_door_l","coords":{"x":269.334,"y":-1156.329,"z":29.51004},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1030', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_15_garg_delta_doordown","coords":{"x":269.2986,"y":-1159.701,"z":29.94192},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1031', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_15_garg_delta_doordown2","coords":{"x":304.3455,"y":-1162.837,"z":29.13172},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1032', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor02","coords":{"x":288.3299,"y":-1167.492,"z":29.54739},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1033', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor01","coords":{"x":288.3299,"y":-1165.246,"z":29.54739},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1034', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor02","coords":{"x":282.758,"y":-1156.719,"z":29.54646},"state":1}'),
+    (DEFAULT, 'Bike Shop Door 1035', '{"maxDistance":2.0,"heading":0.0,"doors":false,"model":"honey_5m_bikeshop_v_ilev_cbankcountdoor01","coords":{"x":280.5119,"y":-1156.719,"z":29.54646},"state":1}');
 ```
 
 ***

@@ -32,12 +32,12 @@ The Vimap includes a customizable doorlock system to restrict access to specific
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-    (1032, 'Legion Fire Station G-1', '{"maxDistance":2,"coords":{"x":320.9464,"y":-1027.1968,"z":30.2798},"doors":false,"heading":0,"state":1,"model":1221159160}'),
-    (1033, 'Legion Fire Station G-2', '{"maxDistance":2,"coords":{"x":313.5936,"y":-1027.1912,"z":30.2681},"doors":false,"heading":0,"state":1,"model":1221159160}'),
-    (1034, 'Legion Fire Station E-1', '{"maxDistance":2,"coords":{"x":317.8242,"y":-1027.4629,"z":29.2881},"doors":false,"heading":0,"state":1,"model":775638898}'),
-    (1035, 'Legion Fire Station 1-1', '{"maxDistance":2,"coords":{"x":313.0444,"y":-1012.8805,"z":29.2773},"doors":false,"heading":180,"state":1,"model":2020131050}'),
-    (1036, 'Legion Fire Station 1-2', '{"maxDistance":2,"coords":{"x":319.6942,"y":-1010.8317,"z":29.2773},"doors":false,"heading":180,"state":1,"model":2020131050}'),
-    (1037, 'Legion Fire Station 1-3', '{"maxDistance":2,"coords":{"x":315.1183,"y":-1012.4478,"z":29.2773},"doors":false,"heading":90,"state":1,"model":2020131050}');
+    (DEFAULT, 'Legion Fire Station G-1', '{"maxDistance":2,"coords":{"x":320.9464,"y":-1027.1968,"z":30.2798},"doors":false,"heading":0,"state":1,"model":1221159160}'),
+    (DEFAULT, 'Legion Fire Station G-2', '{"maxDistance":2,"coords":{"x":313.5936,"y":-1027.1912,"z":30.2681},"doors":false,"heading":0,"state":1,"model":1221159160}'),
+    (DEFAULT, 'Legion Fire Station E-1', '{"maxDistance":2,"coords":{"x":317.8242,"y":-1027.4629,"z":29.2881},"doors":false,"heading":0,"state":1,"model":775638898}'),
+    (DEFAULT, 'Legion Fire Station 1-1', '{"maxDistance":2,"coords":{"x":313.0444,"y":-1012.8805,"z":29.2773},"doors":false,"heading":180,"state":1,"model":2020131050}'),
+    (DEFAULT, 'Legion Fire Station 1-2', '{"maxDistance":2,"coords":{"x":319.6942,"y":-1010.8317,"z":29.2773},"doors":false,"heading":180,"state":1,"model":2020131050}'),
+    (DEFAULT, 'Legion Fire Station 1-3', '{"maxDistance":2,"coords":{"x":315.1183,"y":-1012.4478,"z":29.2773},"doors":false,"heading":90,"state":1,"model":2020131050}');
 
 ```
 

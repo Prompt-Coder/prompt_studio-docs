@@ -22,9 +22,9 @@ The **Paleto Hunting Store** map includes a customizable doorlock system to rest
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
-    (570, 'Paleto Hunting Store E-1', '{"doors":false,"maxDistance":2,"heading":315,"coords":{"x":-678.3617553710938,"y":5834.16015625,"z":17.42280578613281},"model":-1563799200,"state":1}'),
-    (571, 'Paleto Hunting Store 1-1', '{"doors":false,"maxDistance":2,"heading":45,"coords":{"x":-674.2617797851563,"y":5833.1474609375,"z":17.47189712524414},"model":-2023754432,"state":1}'),
-    (572, 'Paleto Hunting Store 1-2', '{"doors":false,"maxDistance":2,"heading":135,"coords":{"x":-670.0435180664063,"y":5831.2919921875,"z":17.48620986938476},"model":-1033001619,"state":1}');
+    (DEFAULT, 'Paleto Hunting Store E-1', '{"doors":false,"maxDistance":2,"heading":315,"coords":{"x":-678.3617553710938,"y":5834.16015625,"z":17.42280578613281},"model":-1563799200,"state":1}'),
+    (DEFAULT, 'Paleto Hunting Store 1-1', '{"doors":false,"maxDistance":2,"heading":45,"coords":{"x":-674.2617797851563,"y":5833.1474609375,"z":17.47189712524414},"model":-2023754432,"state":1}'),
+    (DEFAULT, 'Paleto Hunting Store 1-2', '{"doors":false,"maxDistance":2,"heading":135,"coords":{"x":-670.0435180664063,"y":5831.2919921875,"z":17.48620986938476},"model":-1033001619,"state":1}');
 ```
 
 ***
