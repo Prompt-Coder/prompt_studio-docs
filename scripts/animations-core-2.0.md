@@ -9,6 +9,8 @@ icon: transporter-1
 
 ***
 
+<figure><img src="../.gitbook/assets/gym-builder.png" alt="The Gym Builder panel (/gymcreator): groups, config and script locations in the sidebar, per-location settings, and the placed equipment list"><figcaption><p>The <strong>Gym Builder</strong> (<code>/gymcreator</code>) — build and manage gyms in-game: groups auto-save as you place, and map blips / members-only toggle live</p></figcaption></figure>
+
 <details>
 
 <summary><strong>Overview</strong></summary>
