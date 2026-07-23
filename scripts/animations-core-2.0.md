@@ -38,11 +38,34 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 
 <details>
 
+<summary><strong>What's new in 1.4.0</strong></summary>
+
+<br>
+
+**Gym Builder.** `/gymcreator` now opens a single custom NUI panel instead of the old ox_lib debug menu — the old creator menu and the old ox_lib group menu are both removed.
+
+* **Groups auto-persist.** Creating a group and every prop add/move/delete writes to `groups/saved_groups.json` immediately — there's no Save button, and props spawn live/incrementally as you place them.
+* **Config and script locations, read-only.** Locations from `config_c.lua` and locations registered by other resources via `CreateGymLocation` are listed read-only, grouped by source (config vs. per-resource).
+* **Per-location override flags.** Every read-only location can have `requireMembership` and `blip` overridden from the panel without touching config files or the owning script — overrides persist to `groups/location_overrides.json` and win over whatever the export/config passed (UI override > export/config value > engine default). Legacy `CreateGymLocation` calls that never set these flags keep working unchanged.
+* Placement shows a heading arrow + a green ped-position dot; there is no wall/collision detection.
+
+**Live, synced map blips + membership.** Blips and per-location membership now come from a single server-owned registry replicated to every client, so they add, remove and toggle **live for everyone** with no restart.
+
+* **One blip per gym location** (config locations, groups, script-created), labelled by the location's own `name` or the config `blip.label` (`Gym`) default. The old fixed `blip.coords` marker list and the `blip.mode` (`static`/`locations`) switch are removed.
+* **Live toggles** — flipping a location's map blip or "Members only" from the Gym Builder takes effect instantly for every connected player.
+* New export **`SetLocationBlip(locationName, enabled)`** — live map-blip toggle for a dynamic location, twin of `SetLocationMembership`.
+
+</details>
+
+***
+
+<details>
+
 <summary><strong>What's new in 1.3.1</strong></summary>
 
 <br>
 
-**Third-party stat providers.** anim_core can now feed **rtx\_gym** or **vms\_gym** instead of its own stat system — set `stats.provider` in `config_s.lua` and every completed rep is pushed into that resource's stat database through its public exports. The provider keeps owning decay, item boosters, and gameplay effects (anim_core's own modifiers and decay switch off automatically, so nothing double-applies), and `/gymstats` shows the provider's values — with vms\_gym it opens vms's own statistics menu. Ships with a ready mapping for vms\_gym; for rtx\_gym fill the stat names from their documentation into `stats.providerMap`.
+**Third-party stat providers.** anim_core can now feed **rtx\_gym**, **vms\_gym**, **OT\_skills**, or **devhub\_skillTree** instead of its own stat system — set `stats.provider` in `config_s.lua` and every completed rep is pushed into that resource's stat/XP database through its public exports. The provider keeps owning decay, item boosters, and gameplay effects (anim_core's own modifiers and decay switch off automatically, so nothing double-applies), and `/gymstats` shows the provider's values — with vms\_gym, OT\_skills, and devhub\_skillTree it opens the provider's own menu. Ships with ready mappings for vms\_gym, OT\_skills, and devhub\_skillTree; for rtx\_gym fill the stat names from their documentation into `stats.providerMap`. OT\_skills and devhub\_skillTree are XP-based, so per-rep gains push as XP (banked to whole numbers, nothing lost to rounding) — tune each with the per-provider `stats.xpScale` (devhub feeds a whole category, e.g. `personal`, and wants a bigger scale since its levels need ~100 XP).
 
 * New **`onRep`** hook event — fires server-side for every completed rep; wire any other XP/stat/drug system there
 * New **`statMultiplier`** editable function (`config/server.lua`) — scale pushed gains, e.g. to honor a provider's booster items
