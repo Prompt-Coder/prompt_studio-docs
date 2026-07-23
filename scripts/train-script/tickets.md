@@ -187,3 +187,82 @@ The deduction is handled by `config/server.lua` via `Bridge.removePayment(source
 | None      | Always returns `true` (free tickets — useful for testing)     |
 
 If the player cannot afford the ticket, the purchase is rejected and no item is given.
+
+***
+
+### Exports (External Integration)
+
+Run your own ticket UX — an NPC seller, a booth, a phone app, a custom economy — and still use the built-in board gate, ticket item, and door check. These grant/consume the **same** `train_ticket` the machines do, so the ticket viewer and the `requireTicketForDoors` gate keep working unchanged. All are **server-side** exports.
+
+{% hint style="info" %}
+These work with or without an inventory resource. On standalone servers (`inventory = 'none'`) they read/write the script's own ticket store — see [Standalone Servers (no inventory)](#standalone-servers-no-inventory).
+{% endhint %}
+
+#### `giveTicket(source, opts?)`
+
+Grants a ticket. **Does not charge money** — your system handles payment; this only adds the ticket.
+
+```lua
+local ok, ticket = exports.prompt_train_script:giveTicket(src, {
+    from      = 'Sandy Shores',  -- optional, default 'Station'
+    to        = 'Los Santos',    -- optional, default 'Destination'
+    departure = '14:30',         -- optional, default current time (HH:MM)
+    arrival   = '15:05',         -- optional, default ''
+    -- number        = '123456',      -- optional, default random 6-digit
+    -- passengerName = 'John Smith',  -- optional, default the player's character name
+})
+
+if ok then
+    -- `ticket` is the granted ticket table (see Ticket Metadata)
+else
+    -- `ticket` is an error string, e.g. 'Invalid source'
+end
+```
+
+| Return | Type | |
+| ------ | ---- | - |
+| `ok` | `boolean` | `true` on success |
+| `ticket` \| `err` | `table` \| `string` | the ticket table on success, or an error string on failure |
+
+Fails with `'Invalid source'` if the player isn't online, or `'Could not add ticket to inventory'` if the item/store write fails.
+
+#### `hasTicket(source)`
+
+```lua
+if exports.prompt_train_script:hasTicket(src) then
+    -- player holds a valid train ticket
+end
+```
+
+Returns `boolean`.
+
+#### `takeTicket(source, count?)`
+
+Consumes ticket(s) — use for single-use boarding driven by your own system.
+
+```lua
+local removed = exports.prompt_train_script:takeTicket(src)      -- removes 1
+local removed = exports.prompt_train_script:takeTicket(src, 2)   -- removes 2
+```
+
+| Param | Type | |
+| ----- | ---- | - |
+| `source` | `number` | player server id |
+| `count` | `number?` | how many to remove, default `1` |
+
+Returns `boolean` — `true` if a ticket was removed.
+
+#### Example — sell a ticket from an NPC with your own economy
+
+```lua
+RegisterNetEvent('myscript:buyFromNpc', function()
+    local src = source
+    -- charge with your framework however you like
+    if not MyEconomy.charge(src, 50) then return end
+
+    local ok, ticket = exports.prompt_train_script:giveTicket(src, {
+        from = 'Sandy Shores', to = 'Los Santos', departure = '14:30',
+    })
+    if not ok then MyEconomy.refund(src, 50) end
+end)
+```
