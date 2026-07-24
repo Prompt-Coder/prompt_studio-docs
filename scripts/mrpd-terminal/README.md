@@ -40,9 +40,13 @@ The terminal pairs with the [**Mission Row Police Department** map](../../govern
 * `oxmysql` — recommended; without it the terminal runs in a data-less standalone mode
 * **A supported backend** — one of:
   * [Wasabi Advanced MDT](https://wasabiscripts.com)
+  * [pscripts](https://pscripts.tebex.io/) **p\_mdt** (+ optional p\_policejob for the enforcement pages)
   * [LB Tablet](https://lbscripts.com) (MDT app)
-  * pscripts **p\_mdt** (+ optional p\_policejob for the enforcement pages)
   * stock **qb-policejob**
+
+{% hint style="success" %}
+**Big thanks to [Wasabi](https://wasabiscripts.com) and [pscripts](https://pscripts.tebex.io/)** for working with us and providing the exports that make these integrations possible ❤️
+{% endhint %}
 
 Framework — `qb-core`, `qbx_core`, or `es_extended`, **auto-detected**.
 
@@ -65,7 +69,7 @@ Place the folder inside your `resources` directory and ensure it **after** its d
 ensure ox_lib
 ensure ox_target
 ensure oxmysql
-ensure wasabi_mdt              # or lb-tablet / p_mdt / qb-policejob
+ensure wasabi_mdt              # or p_mdt / lb-tablet / qb-policejob
 ensure prompt_mrpd_terminal
 ```
 {% endcode %}

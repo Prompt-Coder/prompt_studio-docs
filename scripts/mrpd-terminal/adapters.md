@@ -7,11 +7,15 @@ icon: plug
 
 The terminal reads and writes police data exclusively through an **adapter** — one per backend, one active at a time. The UI then builds itself from what that adapter *declares it can do*: pages, cards, and buttons for unsupported features simply don't render. Different backends genuinely produce different terminals — with **no dead buttons**.
 
+{% hint style="success" %}
+**Big thanks to [Wasabi](https://wasabiscripts.com) and [pscripts](https://pscripts.tebex.io/)** for working with us and providing the exports that make these integrations possible ❤️
+{% endhint %}
+
 | Adapter | Backend | Ships as |
-| -------------- | ------------------------------------ | ---------------------------------- |
-| `wasabi_mdt` | Wasabi Advanced MDT | escrowed |
+| -------------- | ---------------------------------------------------------------- | ---------------------------------- |
+| `wasabi_mdt` | [Wasabi Advanced MDT](https://wasabiscripts.com) | escrowed |
+| `p_mdt` | [pscripts](https://pscripts.tebex.io/) p\_mdt (+ p\_policejob) | escrowed |
 | `lb_tablet` | LB Tablet (MDT app) | escrowed |
-| `p_mdt` | pscripts p\_mdt (+ p\_policejob) | escrowed |
 | `qb_policejob` | stock qb-policejob + framework DB | **open — the reference adapter** |
 | `showcase` | none — scripted demo data | open |
 | `null` | none — honest empty state | open |
@@ -26,29 +30,29 @@ The terminal reads and writes police data exclusively through an **adapter** —
 
 What each backend lights up. ✓ = renders · — = hidden · `pj` = requires p\_policejob next to p\_mdt.
 
-| Feature / page | wasabi\_mdt | lb\_tablet | p\_mdt | qb\_policejob |
-| -------------------------------- | ----------- | ------------------ | ------------- | ------------------- |
+| Feature / page | wasabi\_mdt | p\_mdt | lb\_tablet | qb\_policejob |
+| -------------------------------- | ----------- | -------------- | ------------------ | ------------------- |
 | Citizens + criminal records | ✓ | ✓ | ✓ | ✓ |
 | Mugshots / avatars | — | ✓ | ✓ | — |
-| Fingerprints | ✓ | ✓ | pj | ✓ |
-| Vehicles + flagged plates | ✓ (BOLO-backed) | ✓ (warrant-backed) | ✓ | ✓ |
-| Warrants | ✓ | ✓ | ✓ (read) | — |
-| BOLOs | ✓ | — | ✓ | — |
+| Fingerprints | ✓ | pj | ✓ | ✓ |
+| Vehicles + flagged plates | ✓ (BOLO-backed) | ✓ | ✓ (warrant-backed) | ✓ |
+| Warrants | ✓ | ✓ (read) | ✓ | — |
+| BOLOs | ✓ | ✓ | — | — |
 | Incidents | ✓ | — | — | — |
-| Evidence | ✓ | — | pj | — |
+| Evidence | ✓ | pj | — | — |
 | Charges catalog | ✓ | ✓ | ✓ | — |
-| Weapons registry | ✓ | ✓ | ✓ (read) | — |
+| Weapons registry | ✓ | ✓ (read) | ✓ | — |
 | Properties | ✓ | — | — | — |
 | Announcements | ✓ | — | — | — |
 | Global search | ✓ | — | — | — |
 | Dispatch (911 + live feed) | ✓ | ✓ | ✓ | ✓ |
-| Fines | — | — | ✓ (real money) | ✓ |
+| Fines | — | ✓ (real money) | — | ✓ |
 | Licenses (grant/revoke) | — | ✓ | ✓ | ✓ |
-| Jail roster | — | ✓ | pj | — |
-| Impound | — | — | pj | — |
-| Anklet / tracking bands | — | — | pj | — |
-| Cameras | ✓ (live view) | — | pj | ✓ (via bridge) |
-| ANPR / radar hits | — | — | pj | — |
+| Jail roster | — | pj | ✓ | — |
+| Impound | — | pj | — | — |
+| Anklet / tracking bands | — | pj | — | — |
+| Cameras | ✓ (live view) | pj | — | ✓ (via bridge) |
+| ANPR / radar hits | — | pj | — | — |
 
 {% hint style="warning" %}
 The matrix reflects what each **backend exposes** — not what we chose to build. When a backend ships more exports, its adapter (and this matrix) grows.
@@ -61,7 +65,7 @@ The matrix reflects what each **backend exposes** — not what we chose to build
 The garage screen (`kind='fleet'`) lists grade-authorized vehicles and spawns them. A vehicle fleet is a *police-job* concern, not MDT data, so resolution is automatic:
 
 1. If the **active** adapter owns a fleet (p\_mdt, qb\_policejob) — it serves it.
-2. Otherwise the terminal **falls back** to any other *installed* adapter that provides one — e.g. LB Tablet as the MDT + qb-policejob installed still gets a working kiosk.
+2. Otherwise the terminal **falls back** to any other *installed* adapter that provides one — e.g. Wasabi or LB Tablet as the MDT + qb-policejob installed still gets a working kiosk.
 3. Nothing provides a fleet → a calm *"Vehicle fleet isn't supported by the … adapter."* message. No error, no configuration needed.
 
 ***
@@ -76,6 +80,20 @@ Works out of the box once `wasabi_mdt` is started before the terminal.
 * Citizen identity stays in wasabi's citizen ID space.
 * Plate flags are BOLO-backed.
 * Serve/cancel-warrant style *write* exports are **auto-probed** — if wasabi ships them in a later version, the buttons appear by themselves.
+{% endtab %}
+
+{% tab title="pscripts p_mdt" %}
+Backend by [pscripts](https://pscripts.tebex.io/). Set your department if it isn't `police`:
+
+{% code title="config.lua" %}
+```lua
+Config.pMdt = { job = 'police', alertMaxAgeSec = 3600 }
+```
+{% endcode %}
+
+* With **p\_policejob** also installed, the enforcement pages (jail, impound, anklet, cameras, ANPR, evidence) light up automatically; without it they stay hidden.
+* Fines move **real money** (bank/invoice).
+* The fleet kiosk lists vehicles the department has **purchased in p\_mdt's own garage** — a fresh install with none purchased shows an empty (but working) kiosk.
 {% endtab %}
 
 {% tab title="LB Tablet" %}
@@ -93,20 +111,6 @@ Config.lbTablet = {
 * Plate flag = warrant-with-vehicle-target; soft-closing the warrant clears the flag and keeps the record.
 * Jail roster shows **live framework sentences**.
 * Fine *deduction* has no LB export yet — fines stay hidden rather than half-working.
-{% endtab %}
-
-{% tab title="p_mdt" %}
-Set your department if it isn't `police`:
-
-{% code title="config.lua" %}
-```lua
-Config.pMdt = { job = 'police', alertMaxAgeSec = 3600 }
-```
-{% endcode %}
-
-* With **p\_policejob** also installed, the enforcement pages (jail, impound, anklet, cameras, ANPR, evidence) light up automatically; without it they stay hidden.
-* Fines move **real money** (bank/invoice).
-* The fleet kiosk lists vehicles the department has **purchased in p\_mdt's own garage** — a fresh install with none purchased shows an empty (but working) kiosk.
 {% endtab %}
 
 {% tab title="qb-policejob" %}
