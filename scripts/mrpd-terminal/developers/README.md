@@ -27,6 +27,11 @@ The terminal is built to be extended. Our position: **be transparent about our l
             <td><a href="writing-adapters.md">writing-adapters.md</a></td>
         </tr>
         <tr>
+            <td><strong>Integrating Your MDT</strong></td>
+            <td>MDT developer? What to provide for an official shipped adapter</td>
+            <td><a href="mdt-integration.md">mdt-integration.md</a></td>
+        </tr>
+        <tr>
             <td><strong>Architecture</strong></td>
             <td>The three axes, request flow, and where the project is going</td>
             <td><a href="architecture.md">architecture.md</a></td>

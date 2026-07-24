@@ -20,6 +20,7 @@
   * [Adapters](scripts/mrpd-terminal/adapters.md)
   * [For Developers](scripts/mrpd-terminal/developers/README.md)
     * [Writing Adapters](scripts/mrpd-terminal/developers/writing-adapters.md)
+    * [Integrating Your MDT](scripts/mrpd-terminal/developers/mdt-integration.md)
     * [Architecture](scripts/mrpd-terminal/developers/architecture.md)
 * [Train Script](scripts/train-script/README.md)
   * [Configuration](scripts/train-script/configuration.md)

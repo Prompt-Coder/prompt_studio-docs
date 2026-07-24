@@ -138,3 +138,9 @@ Without the bridge: BOLOs stay terminal-scoped, and cameras/radars fall back to 
 * **`null`** — what you get with no backend at all: the terminal opens, states honestly that no data source is connected, and nothing errors.
 {% endtab %}
 {% endtabs %}
+
+***
+
+{% hint style="info" %}
+**MDT developer?** Want your script in this list with an official, maintained adapter? See [Integrating Your MDT](developers/mdt-integration.md) — it's a short export checklist, and we do the rest.
+{% endhint %}
