@@ -8,6 +8,10 @@
 
 The **Sandy Houses** pack adds a cozy, realistic residential area to Sandy Shores, optimized for performance and perfect for FiveM roleplay servers.
 
+{% hint style="warning" %}
+**Interiors require Sandy Shared Files.** The house interiors ship in a separate resource — download [**Sandy Shared Files**](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shared+Files) from the CFX Portal and start it alongside the houses. Without it the houses load as exteriors only.
+{% endhint %}
+
 {% hint style="info" icon="gear" %}
 Supports **EXTERIOR ONLY** Mode: [exterior-only-add-on.md](exterior-only-add-on.md "mention")
 {% endhint %}
@@ -656,12 +660,23 @@ Place `cfx_prompt_sandy_houses_part1` in your server’s `/resources` folder.
 start cfx_prompt_sandy_houses_part1
 ```
 
-#### Step 3 — Install MapData (if required)
+#### Step 3 — Install Sandy Shared Files (required for interiors)
+
+The house interiors are shipped in a separate resource. Download [**Sandy Shared Files**](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shared+Files) from the CFX Portal, place it in `/resources`, and start it **before** the houses:
+
+```plaintext
+start prompt_sandy_shared
+start cfx_prompt_sandy_houses_part1
+```
+
+Skip this step only if you're running **EXTERIOR ONLY** mode — without Sandy Shared Files the houses load as exteriors with no interiors.
+
+#### Step 4 — Install MapData (if required)
 
 Make sure you have the correct **Sandy MapData** installed.\
 See [MapData Documentation](https://prompt-studio.gitbook.io/prompt-studio/sandy-maps/sandy-mapdata).
 
-#### Step 4 — Restart Server
+#### Step 5 — Restart Server
 
 Visit the location in-game and ensure interiors load correctly.
 
