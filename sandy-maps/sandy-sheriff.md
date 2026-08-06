@@ -106,7 +106,7 @@ To install the Sandy Sheriff Station map on your FiveM server, follow these step
    *   Add the following line to your `server.cfg` to ensure the map loads when your server starts:
 
        ```
-       start cfx_prompt_sandy_sheriff
+       start prompt_sandy_sheriff
        ```
 3. **Set Up Doorlocks**
    * Add the provided SQL lines to your database to configure the doorlock system.
@@ -117,4 +117,4 @@ To install the Sandy Sheriff Station map on your FiveM server, follow these step
 
 ***
 
-For further assistance, contact support. Enjoy using Sandy Hospital on your FiveM server! 🚀
+For further assistance, contact support. Enjoy using Sandy Sheriff Station on your FiveM server! 🚀

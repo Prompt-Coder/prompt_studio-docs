@@ -94,4 +94,4 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 
 ***
 
-For further assistance, contact support. Enjoy using Sandy City Hall on your FiveM server! 🚀
+For further assistance, contact support. Enjoy using Sandy Marina on your FiveM server! 🚀

@@ -119,4 +119,4 @@ Follow these steps to install the Vespucci Fire Department map on your FiveM ser
 
 ***
 
-For further assistance, contact support. Enjoy using Sandy Fire Department on your FiveM server! 🚀
+For further assistance, contact support. Enjoy using Vespucci Fire Department on your FiveM server! 🚀
