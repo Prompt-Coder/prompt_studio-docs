@@ -59,7 +59,7 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
        plaintextCopy
 
        ```
-       start cfx_prompt_sandy_train_station
+       start prompt_sandy_train_station
        ```
 3. **Set Up Doorlocks**
    * Add the provided SQL lines to your database to configure the doorlock system.

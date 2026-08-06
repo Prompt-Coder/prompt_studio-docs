@@ -118,7 +118,7 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
        plaintextCopy
 
        ```
-       start cfx_prompt_sandy_cityhall
+       start prompt_sandy_cityhall
        ```
 3. **Set Up Doorlocks**
    * Add the provided SQL lines to your database to configure the doorlock system.

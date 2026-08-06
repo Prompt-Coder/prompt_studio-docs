@@ -652,12 +652,12 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES (DEFAULT, 'Sandy Houses 
 {% tab title="⚙️ Installation Guide" %}
 #### Step 1 — Download the Resource
 
-Place `cfx_prompt_sandy_houses_part1` in your server’s `/resources` folder.
+Place `prompt_sandy_houses_part1` in your server’s `/resources` folder.
 
 #### Step 2 — Add to `server.cfg`
 
 ```plaintext
-start cfx_prompt_sandy_houses_part1
+start prompt_sandy_houses_part1
 ```
 
 #### Step 3 — Install Sandy Shared Files (required for interiors)
@@ -666,7 +666,7 @@ The house interiors are shipped in a separate resource. Download [**Sandy Shared
 
 ```plaintext
 start prompt_sandy_shared
-start cfx_prompt_sandy_houses_part1
+start prompt_sandy_houses_part1
 ```
 
 Skip this step only if you're running **EXTERIOR ONLY** mode — without Sandy Shared Files the houses load as exteriors with no interiors.

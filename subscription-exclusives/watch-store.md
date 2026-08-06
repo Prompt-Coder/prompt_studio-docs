@@ -39,12 +39,12 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 Follow these steps to install the **Watch Store** map on your FiveM server:
 
 1. **Download the Map Resource**\
-   Ensure the `cfx_prompt_watch_store` resource is downloaded and placed in your `resources` folder.
+   Ensure the `prompt_watch_store` resource is downloaded and placed in your `resources` folder.
 2.  **Add the Resource to `server.cfg`**\
     Add the following line to your `server.cfg` to ensure the map loads when your server starts:
 
     ```
-    start cfx_prompt_watch_store
+    start prompt_watch_store
     ```
 3. **Set Up Doorlocks**\
    Execute the provided SQL configuration in your database to enable the doorlock system.

@@ -105,7 +105,7 @@ To install the Sandy Airport map on your FiveM server, follow these steps:
    *   Add the following line to your `server.cfg` to ensure the map loads when your server starts:
 
        ```
-       start cfx_prompt_sandy_airfield
+       start prompt_sandy_airfield
        ```
 3. **Set Up Doorlocks**
    * Add the provided SQL lines to your database to configure the doorlock system.
