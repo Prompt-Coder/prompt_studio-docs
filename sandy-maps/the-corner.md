@@ -128,4 +128,14 @@ Global defaults at the top of the file control interaction distance (`targetDist
 
 ***
 
+### 🔒 Wanted: ox\_doorlock door data
+
+{% hint style="success" %}
+We're looking for someone to create the **`ox_doorlock` SQL** (door definitions) for The Corner's interior doors. Do it well and we'll reward you with a **20% discount coupon** for the store.
+
+Interested? Reach out in the [Prompt Studio Discord](https://discord.gg/rKbHHdfZFU).
+{% endhint %}
+
+***
+
 Need help? Join the [Prompt Studio Discord](https://discord.gg/rKbHHdfZFU) for support, bug reports, and feedback. Enjoy The Corner on your FiveM server! 🚀
