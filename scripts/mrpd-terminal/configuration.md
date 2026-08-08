@@ -31,6 +31,7 @@ Config.adapterPriority = {
     'kartik_mdt',    -- kartik-mdt v2.1.1+ (the export API)
     'nightshifts',   -- night_shifts_mdt v1.4.7+
     'lonexcad',      -- BETA — only activates when Config.lonex enabled + baseUrl + apiKey are set
+    'cdecad',        -- BETA — auto-detects from Config.cdecad or the CDE_CAD_* convars
     'sonoran',       -- BETA — opt-in via Config.sonoran.enabled
     'qb_policejob',
     'null',          -- honest empty-state fallback
@@ -68,6 +69,10 @@ Each backend has its own optional config block. The verified adapters auto-detec
 | `lonex.departments` | `{ 'LSPD', 'BCSO', 'SAHP' }` | LEO department short\_names; empty = any non-offline officer |
 | `lonex.dutyDepartment` | `'LSPD'` | Department used when clocking in from the terminal |
 | `lonex.timeoutMs` | `5000` | Per-request timeout; a dead CAD degrades to empty pages |
+| `cdecad.enabled` | `true` | 🧪 beta — `false` force-disables even when the convars are set |
+| `cdecad.baseUrl` / `.apiKey` / `.communityId` | `''` | Blank falls back to the `CDE_CAD_API_URL` / `_API_KEY` / `_COMMUNITY_ID` convars |
+| `cdecad.requireOnDuty` | `false` | Require being on duty **in the CAD**; layered on top of CDE's own Discord-role permissions |
+| `cdecad.requireAtStation` | `false` | Additionally require the officer to be at a station |
 | `sonoran.enabled` | `false` | 🧪 beta — opt-in; tests an unverified integration against your **live** CAD |
 | `sonoran.requireCadUnit` | `true` | Require being signed in to a unit in the CAD |
 

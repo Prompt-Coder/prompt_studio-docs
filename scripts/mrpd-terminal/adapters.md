@@ -8,19 +8,20 @@ icon: plug
 The terminal reads and writes police data exclusively through an **adapter** — one per backend, one active at a time. The UI then builds itself from what that adapter *declares it can do*: pages, cards, and buttons for unsupported features simply don't render. Different backends genuinely produce different terminals — with **no dead buttons**.
 
 {% hint style="success" %}
-**Big thanks to [Wasabi](https://wasabiscripts.com), [pscripts](https://pscripts.tebex.io/), Kartik and Night** for working with us and providing the exports that make these integrations possible ❤️
+**Big thanks to [Wasabi](https://wasabiscripts.com), [pscripts](https://pscripts.tebex.io/), [Kartik](https://kartik-scripts.tebex.io/package/6652876) and [Night](https://store.nights-software.com/package/5667103)** for working with us and providing the exports that make these integrations possible ❤️
 {% endhint %}
 
 | Adapter | Backend | Status | Ships as |
 | -------------- | ---------------------------------------------------------------- | ------------- | ---------------------------------- |
 | `wasabi_mdt` | [Wasabi Advanced MDT](https://wasabiscripts.com) | verified | escrowed |
 | `p_mdt` | [pscripts](https://pscripts.tebex.io/) p\_mdt (+ p\_policejob) | verified | escrowed |
-| `lb_tablet` | LB Tablet (MDT app) | verified | escrowed |
-| `redutzu_mdt` | Redutzu MDT | verified | escrowed |
-| `kartik_mdt` | Kartik MDT (`kartik-mdt` v2.1.1+) | verified | escrowed |
-| `nightshifts` | Night Shifts MDT (`night_shifts_mdt` v1.4.7+) | verified | escrowed |
-| `lonexcad` | LonexCAD (web CAD over HTTP) | 🧪 **beta** | escrowed |
-| `sonoran` | Sonoran CAD (via `sonorancad`) | 🧪 **beta** | escrowed |
+| `lb_tablet` | [LB Tablet](https://lbscripts.com) (MDT app) | verified | escrowed |
+| `redutzu_mdt` | [Redutzu MDT](https://redutzu.com/product/mdt) | verified | escrowed |
+| `kartik_mdt` | [Kartik MDT](https://kartik-scripts.tebex.io/package/6652876) (`kartik-mdt` v2.1.1+) | verified | escrowed |
+| `nightshifts` | [Night Shifts MDT](https://store.nights-software.com/package/5667103) (`night_shifts_mdt` v1.4.7+) | verified | escrowed |
+| `lonexcad` | [LonexCAD](https://lonexlabs.com/products/lonexcad) (web CAD over HTTP) | 🧪 **beta** | escrowed |
+| `cdecad` | [CDE CAD](https://cdecad.com/) (web CAD over HTTP) | 🧪 **beta** | escrowed |
+| `sonoran` | [Sonoran CAD](https://sonorancad.com/) (via `sonorancad`) | 🧪 **beta** | escrowed |
 | `qb_policejob` | stock qb-policejob + framework DB | verified | **open — the reference adapter** |
 | `showcase` | none — scripted demo data | — | open |
 | `null` | none — honest empty state | — | open |
@@ -65,31 +66,31 @@ What each backend lights up. ✓ = renders · — = hidden · `pj` = requires p\
 | Cameras | ✓ (live view) | pj | — | ✓ (via bridge) |
 | ANPR / radar hits | — | pj | — | — |
 
-And the newer backends — 🧪 marks the two beta adapters:
+And the newer backends — 🧪 marks the beta adapters:
 
-| Feature / page | redutzu\_mdt | kartik\_mdt | nightshifts | 🧪 lonexcad | 🧪 sonoran |
-| -------------------------------- | ------------ | ----------- | ----------- | ----------- | ---------- |
-| Citizens + criminal records | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Mugshots / avatars | ✓ | — | — | ✓ | — |
-| Fingerprints | ✓ | ✓ | — | — | — |
-| Vehicles + flagged plates | ✓ | — | ✓ | ✓ | ✓ |
-| Warrants | ✓ | ✓ | ✓ | ✓ | ✓ |
-| BOLOs | ✓ | — | ✓ | ✓ | ✓ |
-| Incidents | ✓ | — | — | — | — |
-| Evidence | ✓ | — | — | — | — |
-| Charges catalog | ✓ | ✓ | ✓ | — | ✓ |
-| Weapons registry | ✓ | — | — | — | — |
-| Properties | ✓ | — | — | — | — |
-| Announcements | ✓ | — | — | — | — |
-| Global search | — | — | — | ✓ | — |
-| Dispatch (911 + live feed) | — | ✓ | ✓ | ✓ | ✓ |
-| Fines | — | — | ✓ | — | — |
-| Licenses (grant/revoke) | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Jail roster | — | — | — | ✓ | — |
-| Impound | — | — | — | — | — |
-| Anklet / tracking bands | — | — | — | — | — |
-| Cameras | ✓ | — | — | — | — |
-| ANPR / radar hits | — | — | ✓ | — | ✓ |
+| Feature / page | redutzu\_mdt | kartik\_mdt | nightshifts | 🧪 lonexcad | 🧪 cdecad | 🧪 sonoran |
+| -------------------------------- | ------------ | ----------- | ----------- | ----------- | --------- | ---------- |
+| Citizens + criminal records | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Mugshots / avatars | ✓ | — | — | ✓ | ✓ | — |
+| Fingerprints | ✓ | ✓ | — | — | — | — |
+| Vehicles + flagged plates | ✓ | — | ✓ | ✓ | ✓ | ✓ |
+| Warrants | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| BOLOs | ✓ | — | ✓ | ✓ | ✓ | ✓ |
+| Incidents | ✓ | — | — | — | ✓ | — |
+| Evidence | ✓ | — | — | — | — | — |
+| Charges catalog | ✓ | ✓ | ✓ | — | ✓ | ✓ |
+| Weapons registry | ✓ | — | — | — | — | — |
+| Properties | ✓ | — | — | — | — | — |
+| Announcements | ✓ | — | — | — | — | — |
+| Global search | — | — | — | ✓ | ✓ | — |
+| Dispatch (911 + live feed) | — | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Fines | — | — | ✓ | — | ✓ | — |
+| Licenses (grant/revoke) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Jail roster | — | — | — | ✓ | — | — |
+| Impound | — | — | — | — | — | — |
+| Anklet / tracking bands | — | — | — | — | — | — |
+| Cameras | ✓ | — | — | — | — | — |
+| ANPR / radar hits | — | — | ✓ | — | — | ✓ |
 
 {% hint style="warning" %}
 The matrix reflects what each **backend exposes** — not what we chose to build. When a backend ships more exports, its adapter (and this matrix) grows.
@@ -223,6 +224,40 @@ Config.lonex = {
 }
 ```
 {% endcode %}
+{% endtab %}
+
+{% tab title="CDE CAD (beta)" %}
+{% hint style="warning" %}
+**Beta — unverified.** The adapter is built against [CDE CAD's](https://cdecad.com/) API but hasn't had a live conformance pass. Run it and tell us what breaks.
+{% endhint %}
+
+A web CAD reached over HTTP. Credentials come from **convars** or the config block — convars win if the config fields are left blank:
+
+{% code title="server.cfg" %}
+```
+set CDE_CAD_API_URL      "https://your-cad-url"
+set CDE_CAD_API_KEY      "your-api-key"
+set CDE_CAD_COMMUNITY_ID "your-community-id"
+```
+{% endcode %}
+
+{% code title="config.lua" %}
+```lua
+Config.cdecad = {
+    enabled          = true,   -- false force-disables even when the convars are set
+    baseUrl          = '',     -- blank = use CDE_CAD_API_URL
+    apiKey           = '',     -- blank = use CDE_CAD_API_KEY
+    communityId      = '',     -- blank = use CDE_CAD_COMMUNITY_ID
+    requireOnDuty    = false,  -- must be on duty IN THE CAD to open the terminal
+    requireAtStation = false,
+    timeoutMs        = 5000,   -- a dead CAD degrades to empty pages
+}
+```
+{% endcode %}
+
+* **CDE owns permissions** (Discord-role based). `requireOnDuty` / `requireAtStation` are *extra* restrictions layered on top — they don't replace CDE's own rules.
+* Reads are cached to keep the CAD from being hammered: units 15s, lists 30s, roster 60s (`unitTtlMs`, `listTtlMs`, `rosterTtlMs`).
+* Helping us verify it? Run `termcde_probe` in the server console and send us the output.
 {% endtab %}
 
 {% tab title="Sonoran CAD (beta)" %}

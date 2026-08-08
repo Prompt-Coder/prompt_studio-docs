@@ -42,11 +42,12 @@ The terminal pairs with the [**Mission Row Police Department** map](../../govern
   * [Wasabi Advanced MDT](https://wasabiscripts.com)
   * [pscripts](https://pscripts.tebex.io/) **p\_mdt** (+ optional p\_policejob for the enforcement pages) — writes need p\_mdt 2.1.8+
   * [LB Tablet](https://lbscripts.com) (MDT app)
-  * **Redutzu MDT**
-  * **Kartik MDT** — `kartik-mdt` v2.1.1+
-  * **Night Shifts MDT** — `night_shifts_mdt` v1.4.7+
-  * **LonexCAD** — 🧪 beta, opt-in via `Config.lonex`
-  * **Sonoran CAD** — 🧪 beta, opt-in via `Config.sonoran.enabled`
+  * [**Redutzu MDT**](https://redutzu.com/product/mdt)
+  * [**Kartik MDT**](https://kartik-scripts.tebex.io/package/6652876) — `kartik-mdt` v2.1.1+
+  * [**Night Shifts MDT**](https://store.nights-software.com/package/5667103) — `night_shifts_mdt` v1.4.7+
+  * [**LonexCAD**](https://lonexlabs.com/products/lonexcad) — 🧪 beta, opt-in via `Config.lonex`
+  * [**CDE CAD**](https://cdecad.com/) — 🧪 beta, via `Config.cdecad` or the `CDE_CAD_*` convars
+  * [**Sonoran CAD**](https://sonorancad.com/) — 🧪 beta, opt-in via `Config.sonoran.enabled`
   * stock **qb-policejob**
 
 See [Adapters](adapters.md) for the full capability matrix and per-backend setup.

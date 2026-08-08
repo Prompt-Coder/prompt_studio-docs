@@ -61,7 +61,7 @@ Our position: **transparent about our layer, protective of other people's layers
 | `adapters/qb_policejob.lua` | open | the complete reference adapter |
 | `adapters/showcase.lua`, `adapters/null.lua` | open | teaching examples — mock data / empty state |
 | `server/`, `client/`, `html/` | escrowed | our core product |
-| `adapters/wasabi_mdt.lua`, `lb_tablet.lua`, `p_mdt.lua`, `redutzu_mdt.lua`, `kartik_mdt.lua`, `nightshifts.lua`, `lonexcad.lua`, `sonoran.lua` | escrowed | they embed export surfaces of other developers' paid scripts, shared with us for these integrations |
+| `adapters/wasabi_mdt.lua`, `lb_tablet.lua`, `p_mdt.lua`, `redutzu_mdt.lua`, `kartik_mdt.lua`, `nightshifts.lua`, `lonexcad.lua`, `cdecad.lua`, `sonoran.lua` | escrowed | they embed export surfaces of other developers' paid scripts, shared with us for these integrations |
 
 Custom adapters work against the escrowed build — your adapter file, `fxmanifest.lua`, and `config.lua` stay plaintext.
 
