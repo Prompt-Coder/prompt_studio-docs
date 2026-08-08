@@ -5,6 +5,8 @@ icon: desktop
 
 # MRPD Terminal (In-World MDT)
 
+<figure><img src="../../.gitbook/assets/mrpd-terminal-banner.png" alt="MRPD Terminal"><figcaption></figcaption></figure>
+
 ## Prompt MRPD Terminal
 
 ***
