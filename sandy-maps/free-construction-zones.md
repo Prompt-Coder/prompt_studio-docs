@@ -1,5 +1,7 @@
 # 🏗️ \[FREE] Construction Zones
 
+<figure><img src="../.gitbook/assets/banner-free-construction-zones.png" alt="CONSTRUCTION ZONES"><figcaption></figcaption></figure>
+
 Two free standalone map packs that add construction-in-progress lots to Sandy Shores: one at the corner (bowling-alley + pub site) and one in the downtown area. Each pack is independent — install one, the other, or both. Includes fenced perimeters with gates, ground decals, props, bushes, and distant/LOD lights for night driving.
 
 {% embed url="https://youtu.be/hNyPQzAY80o" %}

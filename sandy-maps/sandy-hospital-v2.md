@@ -1,5 +1,7 @@
 ﻿# 🏥 Sandy Hospital V2
 
+<figure><img src="../.gitbook/assets/banner-sandy-hospital-v2.png" alt="SANDY HOSPITAL V2"><figcaption></figcaption></figure>
+
 {% embed url="https://store.prompt-mods.com/store/packages/7277536" %}
 Official asset for FiveM - available on Prompt's Mods Store (Bundle)
 {% endembed %}

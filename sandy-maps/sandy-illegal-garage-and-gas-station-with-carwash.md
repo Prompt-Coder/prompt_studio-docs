@@ -1,5 +1,7 @@
 # ⛽ Sandy Illegal Garage & Gas Station with Carwash
 
+<figure><img src="../.gitbook/assets/banner-sandy-illegal-garage-and-gas-station-with-carwash.png" alt="ILLEGAL GARAGE & GAS STATION"><figcaption></figcaption></figure>
+
 ## Sandy Illegal Garage & Gas Station with Carwash
 
 {% embed url="https://fivem.prompt-mods.com/package/6254445" %}

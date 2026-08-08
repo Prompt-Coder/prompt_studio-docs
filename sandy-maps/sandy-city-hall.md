@@ -1,5 +1,7 @@
 # 🏢 Sandy City Hall
 
+<figure><img src="../.gitbook/assets/banner-sandy-city-hall.png" alt="SANDY CITY HALL"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6578222" %}
 
 {% embed url="https://youtu.be/3F71qYcdP5M?si=YvsTxBwYWFAuI9Zu" %}

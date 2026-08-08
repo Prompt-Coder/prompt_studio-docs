@@ -1,5 +1,7 @@
 # 🏎️ Sandy Car Dealership
 
+<figure><img src="../.gitbook/assets/banner-sandy-car-dealership.png" alt="SANDY CAR DEALERSHIP"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6254445" %}
 
 {% embed url="https://www.youtube.com/watch?v=qSmwE2k9VJQ" %}

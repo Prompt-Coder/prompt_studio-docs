@@ -1,5 +1,7 @@
 # 🌴 Custom Roads & Traffic
 
+<figure><img src="../.gitbook/assets/banner-custom-roads-and-traffic.png" alt="CUSTOM ROADS & TRAFFIC"><figcaption></figcaption></figure>
+
 A full road network rework for Sandy Shores. Includes new road geometry with editable textures, new AI traffic with optional bridge routing, a reworked entrance sign, palms with lights, a roundabout food-truck area, a rural walkway to the bus stop, and additional vegetation. Every optional feature is a separate folder under `stream/`, so server owners can keep only what they want.
 
 {% embed url="https://youtu.be/hNyPQzAY80o" %}

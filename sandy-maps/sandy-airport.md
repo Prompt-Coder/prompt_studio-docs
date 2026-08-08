@@ -1,5 +1,7 @@
 # 🛫 Sandy Airport
 
+<figure><img src="../.gitbook/assets/banner-sandy-airport.png" alt="SANDY AIRPORT"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6254445" %}
 
 {% embed url="https://youtu.be/d2cpWGlogmI?si=NlM-MKwd8pSSU7C-" %}

@@ -1,5 +1,7 @@
 # 🏫 Exterior-Only Add-On
 
+<figure><img src="../.gitbook/assets/banner-exterior-only-add-on.png" alt="EXTERIOR-ONLY ADD-ON"><figcaption></figcaption></figure>
+
 ## Sandy Shores - Exterior-Only Add-On
 
 A free drag-and-drop patch that strips interiors from the Prompt Studios Sandy Shores map collection. Exteriors stay 100% intact — only interior rooms, doors, and windows are removed.

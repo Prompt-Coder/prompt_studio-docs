@@ -1,5 +1,7 @@
 # 👮 Sandy Sheriff
 
+<figure><img src="../.gitbook/assets/banner-sandy-sheriff.png" alt="SANDY SHERIFF"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6308272" %}
 
 {% embed url="https://youtu.be/SxPlsYA9JEg?si=lsvzW45rIot2kHv8" %}

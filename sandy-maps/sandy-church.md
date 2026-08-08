@@ -1,5 +1,7 @@
 # ⛪ Sandy Church
 
+<figure><img src="../.gitbook/assets/banner-sandy-church.png" alt="SANDY CHURCH"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6254445" %}
 
 The **Sandy Church** is a peaceful, ambient map for FiveM servers. Designed for versatility, it supports ceremonies, religious services, casual gatherings, and even hidden crime setups thanks to a secret root cellar and graveyard.

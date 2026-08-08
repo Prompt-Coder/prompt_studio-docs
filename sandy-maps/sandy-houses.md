@@ -1,5 +1,7 @@
 # 🏠 Sandy Houses
 
+<figure><img src="../.gitbook/assets/banner-sandy-houses.png" alt="SANDY HOUSES"><figcaption></figcaption></figure>
+
 ## 🏠 Sandy Houses
 
 {% embed url="https://fivem.prompt-mods.com/package/6499824" %}

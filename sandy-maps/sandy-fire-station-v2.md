@@ -1,5 +1,7 @@
 ﻿# 🚒 Sandy Fire Station V2
 
+<figure><img src="../.gitbook/assets/banner-sandy-fire-station-v2.png" alt="SANDY FIRE STATION V2"><figcaption></figcaption></figure>
+
 {% embed url="https://store.prompt-mods.com/store/packages/7277533" %}
 Official asset for FiveM - available on Prompt's Mods Store (Bundle)
 {% endembed %}

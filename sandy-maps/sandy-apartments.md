@@ -1,5 +1,7 @@
 ﻿# 🏫 Sandy Apartments
 
+<figure><img src="../.gitbook/assets/banner-sandy-apartments.png" alt="SANDY APARTMENTS"><figcaption></figcaption></figure>
+
 ## Sandy Apartments
 
 {% embed url="https://portal.cfx.re/assets/granted-assets?page=1&sort=asset.updated_at&direction=asc&search=sandy+apartments&row=0" %}

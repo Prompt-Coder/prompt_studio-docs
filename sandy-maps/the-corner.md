@@ -1,5 +1,7 @@
 # 🎳 Sandy Shores Bowling, Diner & Steak House
 
+<figure><img src="../.gitbook/assets/banner-the-corner.png" alt="THE CORNER"><figcaption></figcaption></figure>
+
 ## Sandy Shores Bowling, Diner & Steak House
 
 Known in-world as **The Corner**, this pack adds a full nightlife block to Sandy Shores. Go bowling, play the arcade cabinets, eat a steak, or hang out in the diner — three connected interiors built to give players somewhere to wind down with friends inside the Sandy Shores rework.

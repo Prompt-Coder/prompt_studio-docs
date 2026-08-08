@@ -1,5 +1,7 @@
 # 🏥 Sandy Hospital
 
+<figure><img src="../.gitbook/assets/banner-sandy-hospital.png" alt="SANDY HOSPITAL"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6381549" %}
 
 {% embed url="https://youtu.be/MHvVSIeMXRU?si=aFjVtijxXEGbTchf" %}

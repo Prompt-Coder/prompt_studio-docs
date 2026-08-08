@@ -1,5 +1,7 @@
 # 🔧 Sandy Mechanic
 
+<figure><img src="../.gitbook/assets/banner-sandy-mechanic.png" alt="SANDY MECHANIC"><figcaption></figcaption></figure>
+
 ## Sandy Mechanic
 
 {% embed url="https://fivem.prompt-mods.com/package/6254445" %}

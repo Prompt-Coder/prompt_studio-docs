@@ -1,5 +1,7 @@
 # 🛎️ Sandy Motel
 
+<figure><img src="../.gitbook/assets/banner-sandy-motel.png" alt="SANDY MOTEL"><figcaption></figcaption></figure>
+
 {% embed url="https://store.prompt-mods.com/store/" %}
 
 ## Sandy Shores **Motel** :bellhop:

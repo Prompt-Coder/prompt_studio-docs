@@ -1,5 +1,7 @@
 # 🚉 Sandy Train Station
 
+<figure><img src="../.gitbook/assets/banner-sandy-train-station.png" alt="SANDY TRAIN STATION"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6521797" %}
 
 {% embed url="https://youtu.be/SigRjrf69Iw?si=RknjJfW6SR-IpPY_" %}

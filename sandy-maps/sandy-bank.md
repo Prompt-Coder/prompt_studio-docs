@@ -1,5 +1,7 @@
 ﻿# 🏦 Sandy Bank
 
+<figure><img src="../.gitbook/assets/banner-sandy-bank.png" alt="SANDY BANK"><figcaption></figcaption></figure>
+
 ## Sandy Bank
 
 {% embed url="https://fivem.prompt-mods.com/package/XXXXXXXX" %}

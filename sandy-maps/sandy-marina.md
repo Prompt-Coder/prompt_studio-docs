@@ -1,5 +1,7 @@
 # 🏖️ Sandy Marina
 
+<figure><img src="../.gitbook/assets/banner-sandy-marina.png" alt="SANDY MARINA"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6443485" %}
 
 {% embed url="https://youtu.be/KeOoVpzwvc0?si=xic_Jlvyxse1LosF" %}

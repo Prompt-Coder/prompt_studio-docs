@@ -1,5 +1,7 @@
 # ⛵ Boat House
 
+<figure><img src="../.gitbook/assets/banner-boat-house.png" alt="BOAT HOUSE"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/6276364" %}
 
 {% embed url="https://youtu.be/sClnFtxMFFY" %}

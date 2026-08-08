@@ -1,5 +1,7 @@
 # 🚒 Sandy Fire Department
 
+<figure><img src="../.gitbook/assets/banner-sandy-fire-department.png" alt="SANDY FIRE DEPARTMENT"><figcaption></figcaption></figure>
+
 {% embed url="https://fivem.prompt-mods.com/package/5203353" %}
 
 {% embed url="https://youtu.be/QpJ3QYu3I_U?si=kXNymGRI14oW3lNe" %}

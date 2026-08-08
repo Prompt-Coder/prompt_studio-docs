@@ -1,5 +1,7 @@
 ﻿# 🎒 University
 
+<figure><img src="../.gitbook/assets/banner-university.png" alt="UNIVERSITY"><figcaption></figcaption></figure>
+
 {% embed url="https://store.prompt-mods.com/store/package/7304177" %}
 
 The **Sandy Shores University** masterfully brings the true atmosphere of the American School. Check it out on our showcase server!
