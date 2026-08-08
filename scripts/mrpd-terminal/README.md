@@ -40,12 +40,23 @@ The terminal pairs with the [**Mission Row Police Department** map](../../govern
 * `oxmysql` — recommended; without it the terminal runs in a data-less standalone mode
 * **A supported backend** — one of:
   * [Wasabi Advanced MDT](https://wasabiscripts.com)
-  * [pscripts](https://pscripts.tebex.io/) **p\_mdt** (+ optional p\_policejob for the enforcement pages)
+  * [pscripts](https://pscripts.tebex.io/) **p\_mdt** (+ optional p\_policejob for the enforcement pages) — writes need p\_mdt 2.1.8+
   * [LB Tablet](https://lbscripts.com) (MDT app)
+  * **Redutzu MDT**
+  * **Kartik MDT** — `kartik-mdt` v2.1.1+
+  * **Night Shifts MDT** — `night_shifts_mdt` v1.4.7+
+  * **LonexCAD** — 🧪 beta, opt-in via `Config.lonex`
+  * **Sonoran CAD** — 🧪 beta, opt-in via `Config.sonoran.enabled`
   * stock **qb-policejob**
 
+See [Adapters](adapters.md) for the full capability matrix and per-backend setup.
+
 {% hint style="success" %}
-**Big thanks to [Wasabi](https://wasabiscripts.com) and [pscripts](https://pscripts.tebex.io/)** for working with us and providing the exports that make these integrations possible ❤️
+**Big thanks to [Wasabi](https://wasabiscripts.com), [pscripts](https://pscripts.tebex.io/), Kartik and Night** for working with us and providing the exports that make these integrations possible ❤️
+{% endhint %}
+
+{% hint style="warning" %}
+**Beta adapters** were written from vendor documentation and have never been run against a real install. They show an amber **BETA · UNVERIFIED** badge in the toolbar and print a console notice on boot — if a page looks empty, that may be our integration rather than your data, so please report it.
 {% endhint %}
 
 Framework — `qb-core`, `qbx_core`, or `es_extended`, **auto-detected**.
@@ -69,7 +80,7 @@ Place the folder inside your `resources` directory and ensure it **after** its d
 ensure ox_lib
 ensure ox_target
 ensure oxmysql
-ensure wasabi_mdt              # or p_mdt / lb-tablet / qb-policejob
+ensure wasabi_mdt              # or p_mdt / lb-tablet / redutzu-mdt / kartik-mdt / night_shifts_mdt / qb-policejob
 ensure prompt_mrpd_terminal
 ```
 {% endcode %}

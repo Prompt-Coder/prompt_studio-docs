@@ -27,6 +27,11 @@ Config.adapterPriority = {
     'wasabi_mdt',
     'lb_tablet',
     'p_mdt',
+    'redutzu_mdt',
+    'kartik_mdt',    -- kartik-mdt v2.1.1+ (the export API)
+    'nightshifts',   -- night_shifts_mdt v1.4.7+
+    'lonexcad',      -- BETA — only activates when Config.lonex enabled + baseUrl + apiKey are set
+    'sonoran',       -- BETA — opt-in via Config.sonoran.enabled
     'qb_policejob',
     'null',          -- honest empty-state fallback
 }
@@ -39,7 +44,9 @@ On boot the terminal walks this list and activates the **first adapter whose bac
 
 `'auto'` (default) picks Qbox → QBCore → ESX by detection. Force `'qbx'`, `'qb'`, or `'esx'` to override. This is the *identity* layer (who is this player, job/grade/duty) — independent of the MDT backend above.
 
-### Backend tuning — `Config.pMdt` / `Config.lbTablet`
+### Backend tuning
+
+Each backend has its own optional config block. The verified adapters auto-detect with **zero config** — these only exist for when a default doesn't fit your server.
 
 | Key | Default | Meaning |
 | ----------------------- | ----------- | ---------------------------------------------------------------------------- |
@@ -47,6 +54,22 @@ On boot the terminal walks this list and activates the **first adapter whose bac
 | `pMdt.alertMaxAgeSec` | `3600` | Dispatch feed window |
 | `lbTablet.mdt` | `'Police'` | Top-level key in lb-tablet's `config/mdts.json` — **case-sensitive** |
 | `lbTablet.requireDuty` | `false` | Additionally require framework on-duty to open the terminal |
+| `redutzu.requireDuty` | `false` | Additionally require Redutzu duty (`IsDuty`); their MDT doesn't require it |
+| `redutzu.boloExpiryDays` | `30` | Expiry written onto BOLOs the terminal creates |
+| `kartik.requireDuty` | `false` | Additionally require Kartik's `onDuty` |
+| `kartik.penalCodeDepartment` | `nil` | Filter the charges list to one department; `nil` = all |
+| `kartik.dispatchTtlSec` | `3600` | How long a 911 call stays on the Dispatch page |
+| `nightshifts.requireOnShift` | `true` | Night Shifts owns duty ("on shift") and their MDT requires it |
+| `nightshifts.departments` | `nil` | Department ids allowed to use the terminal; `nil` = any |
+| `nightshifts.permissions` | `nil` | Override our feature → Night Shifts permission mapping |
+| `lonex.enabled` | `false` | 🧪 beta — needs `enabled` + `baseUrl` + `apiKey` before it activates |
+| `lonex.baseUrl` | `''` | e.g. `https://cad.yourserver.com` (no trailing slash) |
+| `lonex.apiKey` | `''` | A `cad_...` key from CAD admin → API Keys |
+| `lonex.departments` | `{ 'LSPD', 'BCSO', 'SAHP' }` | LEO department short\_names; empty = any non-offline officer |
+| `lonex.dutyDepartment` | `'LSPD'` | Department used when clocking in from the terminal |
+| `lonex.timeoutMs` | `5000` | Per-request timeout; a dead CAD degrades to empty pages |
+| `sonoran.enabled` | `false` | 🧪 beta — opt-in; tests an unverified integration against your **live** CAD |
+| `sonoran.requireCadUnit` | `true` | Require being signed in to a unit in the CAD |
 
 ***
 
