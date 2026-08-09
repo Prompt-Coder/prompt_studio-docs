@@ -52,6 +52,39 @@ verbose logs.
 
 ***
 
+### Custom notifications (match your HUD)
+
+_Since v0.4.1._ By default the script uses the native GTA feed ticker. Every player-facing message
+routes through **one hook** in `config.lua` — set `notification.custom` to a function that shows
+the message with **your** HUD/notify system:
+
+{% code title="config.lua" %}
+```lua
+notification = {
+  -- pick ONE (or write your own) — colour codes are stripped before your function is called:
+
+  -- ox_lib:
+  custom = function(msg) exports.ox_lib:notify({ description = msg, type = 'inform' }) end,
+
+  -- QBCore:
+  -- custom = function(msg) exports['qb-core']:GetCoreObject().Functions.Notify(msg, 'primary') end,
+
+  -- ESX:
+  -- custom = function(msg) exports.esx:ShowNotification(msg) end,
+
+  -- your custom HUD (use your resource's notify export):
+  -- custom = function(msg) exports['my_hud']:AddNotification(msg) end,
+},
+```
+{% endcode %}
+
+{% hint style="info" %}
+Leave `custom = nil` to keep the native ticker. If your function errors, the script logs it and
+falls back to the native ticker — notifications never silently vanish.
+{% endhint %}
+
+***
+
 ### Per-cabinet entries — `Arc.Cabinets`
 
 Each game is one entry. The fields you'll actually touch:
