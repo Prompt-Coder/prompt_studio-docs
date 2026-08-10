@@ -68,6 +68,10 @@ If the map and interiors load correctly, installation was successful ✅
 | **Diner & Bar** | Classic roadside Sandy diner with bar and booth seating |
 | **Surroundings** | Reworked ground and exterior detailing that blends into the Sandy Shores rework |
 
+{% embed url="https://youtu.be/P4JpNttrmM4" %}
+Full walkthrough — a tour of every interior and the surroundings
+{% endembed %}
+
 ***
 
 ### Bowling Scripts
