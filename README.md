@@ -35,6 +35,10 @@ Welcome to the official documentation for **Prompt's Studio**, your go-to resour
 
 Prompt's Mods is a collection of high-quality, custom maps and scripts designed for FiveM servers. Our maps are optimized for performance and come with detailed instructions for installation and configuration. Whether you're looking to enhance your server's environment or add unique features, Prompt's Studio has you covered.
 
+{% embed url="https://youtu.be/6ONcZWRJe7s" %}
+Latest release — The Corner: Sandy Shores Bowling, Diner & Steak House
+{% endembed %}
+
 ***
 
 ### Getting Started
