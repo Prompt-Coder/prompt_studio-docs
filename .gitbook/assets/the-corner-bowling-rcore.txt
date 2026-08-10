@@ -1,0 +1,136 @@
+-- ============================================================================
+-- rcore_bowling — The Corner (prompt_sandy_corner) additions
+-- Merge these 4 blocks into your existing rcore_bowling config.lua.
+-- The lanes reference the stock POINTS_M4A table (ships with rcore_bowling).
+-- ============================================================================
+
+-- 1) Config.Blips — add the alley blip:
+vector3(1928.48, 3881.6, 31.6), -- Prompt Sandy bowling (The Corner)
+
+-- 2) Config.EnabledMaps — add:
+PROMPT_SANDY_BOWLING = true,
+
+-- 3) Next to the other POINTS_* tables — add:
+POINTS_PROMPT_SANDY_BOWLING = {
+    LEFT = {
+		{vector3(0.000000, 0.000000, 0.000000),	1.0, 180.0},
+		{vector3(0.000000, 0.000000, 0.000000),	1.0, 180.0},
+    },
+    RIGHT = {
+		{vector3(0.000000, 0.000000, 0.000000),	1.0, 180.0},
+		{vector3(0.000000, 0.000000, 0.000000),	1.0, 180.0},
+    }
+}
+
+-- 4) At the bottom, with the other per-map lane blocks — add:
+if Config.EnabledMaps.PROMPT_SANDY_BOWLING then
+
+	Lanes.PROMPT_SANDY_BOWLING_1 = {
+		SourcePoints = POINTS_M4A,
+		PinDistance = 12.1,
+		Width = 0.64,
+		GutterDepth = 0.17,
+		AngleOffset = 0.0,
+		BallPickupOffsetMultiplier = 0.9,
+		PinSideSpace = 0.375,
+		End = vec3(1923.57, 3907.88, 32.61),
+		IsClosestToDoor = true,
+		GutterWidth = 0.8,
+		SourceSide = 'LEFT',
+		SourceRoot = vector3(1931.7293701172, 3895.8603515625, 32.449890136719),
+		Start = vector3(1929.9914550781, 3896.6337890625, 31.928340911865),
+		BallPickupZOffset = -0.55,
+		Place = 'prompt_sandy_bowling',
+	}
+
+	Lanes.PROMPT_SANDY_BOWLING_2 = {
+		SourcePoints = POINTS_M4A,
+		PinDistance = 12.1,
+		Width = 0.64,
+		GutterDepth = 0.17,
+		AngleOffset = 0.0,
+		BallPickupOffsetMultiplier = 0.9,
+		PinSideSpace = 0.375,
+		End = vec3(1925.52, 3909.0, 32.61),
+		IsClosestToDoor = true,
+		GutterWidth = 0.8,
+		SourceSide = 'RIGHT',
+		SourceRoot = vector3(1931.3416748047, 3896.4970703125, 32.449890136719),
+		Start = vector3(1931.8642578125, 3897.7214355469, 31.928340911865),
+		BallPickupZOffset = -0.55,
+		Place = 'prompt_sandy_bowling',
+	}
+
+	Lanes.PROMPT_SANDY_BOWLING_3 = {
+		SourcePoints = POINTS_M4A,
+		PinDistance = 12.1,
+		Width = 0.64,
+		GutterDepth = 0.17,
+		AngleOffset = 0.0,
+		BallPickupOffsetMultiplier = 0.9,
+		PinSideSpace = 0.375,
+		End = vec3(1927.1, 3910.01, 32.61),
+		IsClosestToDoor = true,
+		GutterWidth = 0.8,
+		SourceSide = 'LEFT',
+		SourceRoot = vector3(1935.3602294922, 3897.9250488281, 32.449890136719),
+		Start = vector3(1933.669921875, 3898.7639160156, 31.928340911865),
+		BallPickupZOffset = -0.55,
+		Place = 'prompt_sandy_bowling',
+	}
+
+	Lanes.PROMPT_SANDY_BOWLING_4 = {
+		SourcePoints = POINTS_M4A,
+		PinDistance = 12.1,
+		Width = 0.64,
+		GutterDepth = 0.17,
+		AngleOffset = 0.0,
+		BallPickupOffsetMultiplier = 0.9,
+		PinSideSpace = 0.375,
+		End = vec3(1928.96, 3910.98, 32.61),
+		IsClosestToDoor = true,
+		GutterWidth = 0.8,
+		SourceSide = 'RIGHT',
+		SourceRoot = vector3(1934.9997558594, 3898.5734863281, 32.449890136719),
+		Start = vector3(1935.447265625, 3899.7966308594, 31.928340911865),
+		BallPickupZOffset = -0.55,
+		Place = 'prompt_sandy_bowling',
+	}
+
+	Lanes.PROMPT_SANDY_BOWLING_5 = {
+		SourcePoints = POINTS_M4A,
+		PinDistance = 12.1,
+		Width = 0.64,
+		GutterDepth = 0.17,
+		AngleOffset = 0.0,
+		BallPickupOffsetMultiplier = 0.9,
+		PinSideSpace = 0.375,
+		End = vec3(1930.87, 3912.1, 32.61),
+		IsClosestToDoor = true,
+		GutterWidth = 0.8,
+		SourceSide = 'LEFT',
+		SourceRoot = vector3(1938.9683837891, 3900.0366210938, 32.449890136719),
+		Start = vector3(1937.2760009766, 3900.8708496094, 31.928340911865),
+		BallPickupZOffset = -0.55,
+		Place = 'prompt_sandy_bowling',
+	}
+
+	Lanes.PROMPT_SANDY_BOWLING_6 = {
+		SourcePoints = POINTS_M4A,
+		PinDistance = 12.1,
+		Width = 0.64,
+		GutterDepth = 0.17,
+		AngleOffset = 0.0,
+		BallPickupOffsetMultiplier = 0.9,
+		PinSideSpace = 0.375,
+		End = vec3(1932.63, 3913.09, 32.61),
+		IsClosestToDoor = true,
+		GutterWidth = 0.8,
+		SourceSide = 'RIGHT',
+		SourceRoot = vector3(1938.5594482422, 3900.7648925781, 32.449890136719),
+		Start = vector3(1939.1234130859, 3901.9182128906, 31.928340911865),
+		BallPickupZOffset = -0.55,
+		Place = 'prompt_sandy_bowling',
+	}
+
+end
