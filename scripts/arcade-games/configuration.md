@@ -178,8 +178,30 @@ only binds to a streamed map prop — a script-spawned one shows a black screen.
 {% endhint %}
 
 {% hint style="info" %}
-Two files are left editable under escrow: **`config.lua`**, and **`fortune.lua`** — so you can
-edit or translate Nazar's fortune messages (each fortune's `mood` must stay one of the verified
-reaction clips: `amused`, `pondering`, `surprised`, `confused`, `insulted`, `angry`, `disgusted`).
-All other game logic, HTML and props stay encrypted.
+`config.lua` is the only file left editable under escrow; all game logic, HTML and props stay
+encrypted.
 {% endhint %}
+
+***
+
+### Nazar's fortunes (edit / translate)
+
+_Since v0.4.3_ the Fortune Teller's messages live in **`config.lua`**, inside the `fortune`
+cabinet entry — edit, translate, or add as many as you like:
+
+{% code title="config.lua — Arc.Cabinets.fortune" %}
+```lua
+fortunes = {
+  { text = "Fortune leans your way — keep an empty pocket ready to fill.", mood = 'amused', rarity = 86, rare = false },
+  { text = "A golden hand reaches from the glass. Seize this day!",        mood = 'surprised', rarity = 96, rare = true },
+  -- add your own...
+},
+```
+{% endcode %}
+
+| Field | Meaning |
+| --- | --- |
+| `text` | What Nazar says (shown to the player) |
+| `mood` | His reaction animation — one of `amused`, `pondering`, `surprised`, `confused`, `disgusted`, `insulted`, `angry` (a typo safely falls back to `pondering`) |
+| `rarity` | 0–100 flavour value |
+| `rare` | `true` = golden omen — drawn very rarely, with a longer build-up flourish |
