@@ -60,6 +60,35 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 
 ***
 
+### 🪑 Seating Support
+
+Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add these entries to its `list.lua` — the theatre seat rows and the electric chair become sittable:
+
+<details>
+
+<summary><strong>nxt-sit seating data (2 props)</strong></summary>
+
+```lua
+-- Abandoned Theater (Prompt Studio)
+[`chuz_is_seat_1st_floor_theatre`] = { -- theatre seat row
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.5, -0.05, -0.2, 200.0),
+        [2] = vector4(-0.5, -0.25, -0.2, 200.0),
+        [3] = vector4(-1.4, -0.45, -0.2, 200.0),
+        [4] = vector4(1.4, 0.25, -0.2, 200.0),
+    } },
+},
+[`chuz_is_elec_chair_greem_mile_prison`] = { -- electric chair
+    sit = { type = 'chair2', teleportIn = true, seats = {
+        [1] = vector4(0.0, 0.1, -0.2, 180.0)
+    } },
+},
+```
+
+</details>
+
+***
+
 ### 🚀 Installation Guide
 
 Follow these steps to install the **Abandoned Theater** map on your FiveM server:

@@ -97,6 +97,28 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 
 ***
 
+### 🪑 Seating Support
+
+Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add these entries to its `list.lua` to make the terminal seating sittable:
+
+<details>
+
+<summary><strong>nxt-sit seating data (2 props)</strong></summary>
+
+```lua
+-- Sandy Airport (Prompt Studio)
+[`prompt_sdair_seating_hall`] = {
+    sit = { type = 'chair2', seats = {[1] = vector4(-0.75, 0.0, 0.05, 180.0), [2] = vector4(0.0, 0.0, 0.05, 180.0), [3] = vector4(0.75, 0.0, 0.05, 180.0)} }
+},
+[`chuz_is_sofa`] = {
+    sit = { type = 'chair2', seats = {[1] = vector4(-0.75, 0.0, 0.05, 180.0), [2] = vector4(0.0, 0.0, 0.05, 180.0), [3] = vector4(0.75, 0.0, 0.05, 180.0)} }
+},
+```
+
+</details>
+
+***
+
 ### 🚀 **Installation Guide**
 
 To install the Sandy Airport map on your FiveM server, follow these steps:

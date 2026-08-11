@@ -186,4 +186,67 @@ To install the Sandy Mechanic map on your FiveM server, follow these steps:
 
 ***
 
+### 🪑 Seating Support
+
+Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add these entries to its `list.lua` to make the motel's custom props sittable:
+
+<details>
+
+<summary><strong>nxt-sit seating data (8 props)</strong></summary>
+
+```lua
+-- Sandy Motel (Prompt Studio)
+[`prompt_sandy_motel_rec_rest_chair`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.0, -0.1, -0.075, 180.0)
+    } },
+},
+[`prompt_sandy_motel_rec_rest_barstool`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(-0.08, 0.0, 0.545, 270.0)
+    } },
+},
+[`prompt_sandy_motel_rec_armchair`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.0, 0.0, 0.0, 180.0)
+    } },
+},
+[`prompt_sandy_motel_rec_sofa`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(-0.4, 0.0, -0.15, 180.0),
+        [2] = vector4(0.4, 0.0, -0.15, 180.0)
+    } },
+},
+[`prompt_sandy_motel_rec_cornerprompt_sandy_motel_rec_sofa_left`] = { -- corner sofa (left)
+    sit = { type = 'chair', seats = {
+        [1] = vector4(-0.75, 0.15, 0.0, 180.0),
+        [2] = vector4(0.15, -0.75, 0.0, 90.0),
+    } },
+},
+[`prompt_sandy_motel_rec_cornerprompt_sandy_motel_rec_sofa_right`] = { -- corner sofa (right)
+    sit = { type = 'chair', seats = {
+        [1] = vector4(-0.5, -0.35, -0.20, 180.0),
+        [2] = vector4(0.5, -1.25, -0.20, 90.0),
+    } },
+},
+[`prompt_sandy_motel_rec_rest_bench`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.0, 0.15, 0.1, 0.0)
+    } },
+},
+[`prompt_sandy_motel_rec_rest_chair_chester`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.0, 0.1, -0.13, 0.0)
+    } },
+},
+```
+
+{% hint style="info" %}
+The two long `rec_corner...sofa` model names are correct — that's how the props are actually named in the resource.
+{% endhint %}
+
+</details>
+
+***
+
 For further assistance, contact support. Enjoy using Sandy Motel on your FiveM server! 🚀

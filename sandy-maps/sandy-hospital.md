@@ -98,6 +98,33 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 
 ***
 
+### 🪑 Seating Support
+
+Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add these entries to its `list.lua` — patients can sit on and lay in the hospital's custom beds:
+
+<details>
+
+<summary><strong>nxt-sit seating data (3 props)</strong></summary>
+
+```lua
+-- Sandy Hospital (Prompt Studio)
+[`promt_hospital_sandy_bed1`] = {
+    sit = { type = 'sunlounger', teleportIn = true, seats = {[1] = vector4(0.0, 0.0, 0.95, 180.0)} },
+},
+[`promt_hospital_sandy_bed2`] = {
+    sit = { type = 'chair', teleportIn = true, seats = {[1] = vector4(-0.15, -0.85, 0.7, 90.0), [2] = vector4(0.15, -0.85, 0.7, 270.0)} },
+    lay = { type = 'medical', seats = {[1] = vector4(0.0, -0.25, 0.7, 180.0)} }
+},
+[`promt_hospital_sandy_operbed`] = {
+    sit = { type = 'chair2', seats = {[1] = vector4(0.0, -0.10, 1.25, 90.0)} },
+    lay = { type = 'medical', seats = {[1] = vector4(0.0, 0.0, 0.895, 180.0)} }
+},
+```
+
+</details>
+
+***
+
 ### 🚀 **Installation Guide**
 
 1. **Download the Map Resource**

@@ -207,6 +207,63 @@ Global defaults at the top of the file control interaction distance (`targetDist
 
 ***
 
+### Seating Support
+
+Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add these entries to its `list.lua` — the bowling alley, steak bar and diner seating becomes sittable:
+
+<details>
+
+<summary><strong>nxt-sit seating data (7 props)</strong></summary>
+
+```lua
+-- The Corner (Prompt Studio) — bowling alley / steak bar / diner
+[`i454pt_bowlingalley_bar_chair_01a`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(-0.2, 0.0, 0.75, 270.0)
+    } },
+},
+[`i454pt_bowlingalley_sofa_01a`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.30, 0.50, 0.0, 110.0),
+        [2] = vector4(0.30, -0.50, 0.0, 90.0),
+        [3] = vector4(-0.1, 1.50, 0.0, 130.0),
+        [4] = vector4(-0.1, -1.45, 0.0, 70.0)
+    } },
+},
+[`i45pt_steakbar_sofa_01a`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(-0.35, 0.0, 0.0, 180.0),
+        [2] = vector4(0.35, 0.0, 0.0, 180.0),
+    } },
+},
+[`i45pt_steakbar_sofa_02a`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(-0.45, -0.2, -0.08, 180.0),
+        [2] = vector4(0.45, -0.2, -0.08, 180.0),
+    } },
+},
+[`i45pt_steakbar_chairbar_01a`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.2, 0.0, 0.45, 90.0)
+    } },
+},
+[`chuz_is_bar_chair_sandy_strip_1`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.06, -0.2, 0.45, 20.0)
+    } },
+},
+[`chuz_is_sandy_strip_diner_sofa`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.15, 0.45, -0.1, 290.0),
+        [2] = vector4(0.45, -0.45, -0.1, 290.0)
+    } },
+},
+```
+
+</details>
+
+***
+
 ### Notes
 
 * The Corner is part of the **Sandy Shores rework** and is designed to sit alongside the other Sandy maps.

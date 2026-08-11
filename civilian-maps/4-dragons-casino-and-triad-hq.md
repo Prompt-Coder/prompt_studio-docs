@@ -534,6 +534,27 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 
 ***
 
+#### 🪑 Seating Support
+
+Community-made seat definition for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add this entry to its `list.lua` to make the casino chairs sittable:
+
+<details>
+
+<summary><strong>nxt-sit seating data (1 prop)</strong></summary>
+
+```lua
+-- Chinese Casino / 4 Dragons (Prompt Studio)
+[`i45pt_ch_casino_chair_01a`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.0, 0.0, 0.5, 0.0)
+    } },
+},
+```
+
+</details>
+
+***
+
 **Need help?** Open a ticket on our support Discord with the resource name, console errors, and a screenshot.
 
 [![Join Discord](https://img.shields.io/badge/Join-Discord-5865F2?style=for-the-badge)](https://discord.gg/rKbHHdfZFU)

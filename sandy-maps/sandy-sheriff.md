@@ -98,6 +98,29 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 
 ***
 
+### 🪑 Seating Support
+
+Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add these entries to its `list.lua` to make the station's custom props sittable:
+
+<details>
+
+<summary><strong>nxt-sit seating data (4 props)</strong></summary>
+
+```lua
+-- Sandy Sheriff (Prompt Studio)
+[`prompt_sandy_sheriff_chair_01`] = { sit = { type = 'chair2', seats = {[1] = vector4(0.0, 0.10, 0.5, 180.0)} } },
+[`prompt_sheriff_seat_beige`] = { sit = { type = 'chair', seats = {[1] = vector4(-0.35, 0.0, 0.08, 180.0), [2] = vector4(0.35, 0.0, 0.08, 180.0)} } },
+[`prompt_sandy_sheriff_jail_seat`] = { sit = { type = 'chair', teleportIn = true, seats = {[1] = vector4(0.0, 0.4, 0.0, 180.0)} } },
+[`prompt_sandy_sheriff_jail_bed`] = {
+    sit = { type = 'chair2', teleportIn = true, seats = {[1] = vector4(-0.6, -0.2, 0.3, 180.0), [2] = vector4(0.60, -0.2, 0.3, 180.0)} },
+    lay = { type = 'bed', teleportIn = true, seats = {[1] = vector4(0.0, 0.0, 0.5, 90.0)} }
+},
+```
+
+</details>
+
+***
+
 ### 🚀 **Installation Guide**
 
 To install the Sandy Sheriff Station map on your FiveM server, follow these steps:

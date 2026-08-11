@@ -236,6 +236,31 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 
 ***
 
+#### 🪑 Seating Support
+
+Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mads.tebex.io/package/5091394) script by Mads. If you run it, add these entries to its `list.lua` — patients can sit on and lay in the operation bed:
+
+<details>
+
+<summary><strong>nxt-sit seating data (2 props)</strong></summary>
+
+```lua
+-- Sandy Hospital V2 (Prompt Studio)
+[`i45pt_s_hsp_prop_operationbed_01`] = {
+    sit = { type = 'chair2', teleportIn = true, seats = {[1] = vector4(0.0, 0.12, 0.990, 180.0) } },
+    lay = { type = 'medical', seats = {[1] = vector4(-0.2, 0.0, 0.95, -92.0)} }
+},
+[`i45pt_s_hsp_chair_01a`] = {
+    sit = { type = 'chair', seats = {
+        [1] = vector4(0.0, 0.1, 0.1, 180.0)
+    } },
+},
+```
+
+</details>
+
+***
+
 #### Notes
 
 * Fully compatible with other **Sandy Shores** maps and the MapData system.
