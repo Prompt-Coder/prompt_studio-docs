@@ -178,6 +178,8 @@ only binds to a streamed map prop — a script-spawned one shows a black screen.
 {% endhint %}
 
 {% hint style="info" %}
-`config.lua` is the only file left editable under escrow; all game logic, HTML and props stay
-encrypted.
+Two files are left editable under escrow: **`config.lua`**, and **`fortune.lua`** — so you can
+edit or translate Nazar's fortune messages (each fortune's `mood` must stay one of the verified
+reaction clips: `amused`, `pondering`, `surprised`, `confused`, `insulted`, `angry`, `disgusted`).
+All other game logic, HTML and props stay encrypted.
 {% endhint %}
