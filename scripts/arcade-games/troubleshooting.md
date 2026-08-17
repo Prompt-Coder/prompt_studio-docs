@@ -7,7 +7,8 @@ icon: wrench
 
 | Symptom | Cause & fix |
 | --- | --- |
-| **No "Play" prompt on a cabinet** | No targeting resource running. Start `ox_target` **or** `qb-target` (and `ox_lib`) **before** `prompt_arcade_games` in `server.cfg`. Console shows `target=nil` when neither is found. |
+| **No "Play" prompt on a cabinet** | _Since v0.5.0_ a built-in `[E]` Text UI appears when no targeting resource is installed, so a missing prompt means neither is working. Check `Arc.Config.textUI.enabled` isn't `false`, and that you're within `range` (2 m). If you DO run `ox_target`/`qb-target`, start it **before** `prompt_arcade_games` in `server.cfg`. |
+| **Text is in the wrong language** | Set `language` in `config.lua` (`en`/`de`/`es`/`fr`/`pt`/`ru`). Cabinet titles + interact labels only follow the locale when `language` is not `'en'` — see [Configuration](configuration.md#languages). Custom locale file? Save it as **UTF-8**. |
 | **Interact works, but the screen is black** | The cabinet isn't a **map-placed** prop. Place the stock cabinet model in your MLO. The **Love Tester** especially requires a map-placed cabinet (render-target screen). |
 | **Custom prop doesn't appear / stock cabinet stays** | The resource's `stream/` props didn't register. `refresh` then `ensure prompt_arcade_games`, and make sure the resource started without errors. |
 | **Rewards don't pay out** | (1) You haven't added a reward handler — see [For Developers](developers.md). (2) No framework detected — console should print `[arc:framework] detected: qb`/`esx`. (3) The result was rejected by anti-cheat (e.g. finished under `minPlayMs`). |

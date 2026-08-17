@@ -52,6 +52,94 @@ verbose logs.
 
 ***
 
+### Languages
+
+_Since v0.5.0._ Ships with **English, German, Spanish, French, Portuguese and Russian**. Pick one
+in `config.lua`:
+
+{% code title="config.lua" %}
+```lua
+language = 'en',   -- 'en' | 'de' | 'es' | 'fr' | 'pt' | 'ru'
+```
+{% endcode %}
+
+**Add your own language:** copy `locales/en.lua` to `locales/<code>.lua`, translate the **values**
+only (never the keys), and set `language = '<code>'`. Save the file as **UTF-8** so accented
+characters render correctly.
+
+{% hint style="info" %}
+Anything a translation is missing falls back to English automatically, so a partial translation
+never shows a blank line or a raw key name.
+{% endhint %}
+
+To change just one or two strings without editing a locale file, override them inline — this wins
+over the selected language:
+
+{% code title="config.lua" %}
+```lua
+Locale = {
+  menu_play   = '[E] START',
+  target_claw = 'Try the claw machine',
+},
+```
+{% endcode %}
+
+{% hint style="warning" %}
+Cabinet **titles** and **interaction labels** come from the locale only when `language` is *not*
+`'en'`. On English the values written in `Arc.Cabinets` are used as-is, so a server that renamed a
+cabinet by hand keeps its wording after updating.
+{% endhint %}
+
+<details>
+
+<summary>What is translated (and what isn't)</summary>
+
+**Translated:** cabinet names, interaction labels, the Text UI prompt, the pre-game menu
+(play / volume / leave / co-op hint), Love Tester messages and its 10 ratings, Nazar's
+notifications, Strength Tester result and its 4 tiers.
+
+**Not translated:** the artwork *inside* the arcade games themselves (`SCORE`, `WAVE`,
+`INSERT COIN`, `GAME OVER` …) — that's drawn on the cabinet screens and is intentionally left in
+arcade English. Nazar's fortune texts are edited directly in `config.lua` (see above).
+
+</details>
+
+***
+
+### Text UI (no ox\_lib, no target script)
+
+_Since v0.5.0._ The script no longer requires **ox\_lib** at all, and works with **no targeting
+resource**: if neither `ox_target` nor `qb-target` is running, a built-in `[E]` prompt appears when
+you walk up to a cabinet.
+
+{% code title="config.lua" %}
+```lua
+textUI = {
+  enabled = 'auto',   -- 'auto' (only without a target script) | true (always) | false (never)
+  key     = 38,       -- interaction control (38 = [E])
+  style   = 'help',   -- 'help' = native GTA help box | 'text' = centred bottom text
+  range   = 2.0,      -- metres
+  custom  = nil,      -- route it to YOUR TextUI instead (see below)
+},
+```
+{% endcode %}
+
+Already have a TextUI you like? Point it there — called with `(true, label)` to show and
+`(false)` to hide:
+
+```lua
+custom = function(show, label)
+    if show then exports.ox_lib:showTextUI(label) else exports.ox_lib:hideTextUI() end
+end,
+```
+
+{% hint style="info" %}
+With `ox_target` or `qb-target` installed nothing changes — the cabinets keep using it, and the
+Text UI costs nothing.
+{% endhint %}
+
+***
+
 ### Custom notifications (match your HUD)
 
 _Since v0.4.1._ By default the script uses the native GTA feed ticker. Every player-facing message

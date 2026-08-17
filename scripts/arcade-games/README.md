@@ -21,11 +21,14 @@ Tester pairs two players on one machine.
 ### Requirements
 
 * FiveM server (recent artifact recommended)
-* [`ox_lib`](https://github.com/overextended/ox_lib) — started **before** this resource (hard dependency)
-* A targeting resource — [`ox_target`](https://github.com/overextended/ox_target) **or** `qb-target` (auto-detected). One is required so players can interact with the cabinets.
 * An **arcade map/MLO** where the cabinets are placed (see [Props & Placement](configuration.md#props-and-placement))
 
-Optional:
+That's it — **no dependencies**. _Since v0.5.0_ the script needs neither `ox_lib` nor a targeting
+resource.
+
+Optional, auto-detected if present:
+
+* [`ox_target`](https://github.com/overextended/ox_target) **or** `qb-target` — used for the interact prompt. Without either, the built-in [Text UI](configuration.md#text-ui-no-ox_lib-no-target-script) `[E]` prompt takes over.
 
 * **Framework** (QBCore / ESX) — only used to grant rewards and show character names on leaderboards. Without one the games still play; rewards simply don't fire and names fall back to the Steam/license name.
 
@@ -40,13 +43,16 @@ Drop `prompt_arcade_games` into your `resources` folder.
 {% endstep %}
 
 {% step %}
-#### Add to server.cfg — in this order
+#### Add to server.cfg
 ```
-ensure ox_lib
+ensure prompt_arcade_games
+```
+If you use a targeting resource, start it **before** the arcade:
+```
 ensure ox_target        # or: ensure qb-target
 ensure prompt_arcade_games
 ```
-`prompt_audio` / other resources are **not** required.
+`ox_lib`, `prompt_audio` / other resources are **not** required.
 {% endstep %}
 
 {% step %}
