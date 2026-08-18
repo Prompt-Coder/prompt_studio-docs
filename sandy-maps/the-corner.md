@@ -273,13 +273,40 @@ Community-made seat definitions for the [**Sit Anywhere (nxt-sit)**](https://mad
 
 ***
 
-### 🔒 Wanted: ox\_doorlock door data
+### 🚪 Doorlock System
 
-{% hint style="success" %}
-We're looking for someone to create the **`ox_doorlock` SQL** (door definitions) for The Corner's interior doors. Do it well and we'll reward you with a **20% discount coupon** for the store.
+All three buildings are compatible with [`ox_doorlock`](https://github.com/overextended/ox_doorlock). Import the SQL below into your database and restart `ox_doorlock`.
 
-Interested? Reach out in the [Prompt Studio Discord](https://discord.gg/rKbHHdfZFU).
+{% hint style="info" %}
+The SQL uses `DEFAULT` for the `id` column, so your database assigns free IDs automatically on import — it won't conflict with doorlocks you already have.
 {% endhint %}
+
+<details>
+
+<summary><strong>The Corner Doorlock SQL (17 doors)</strong></summary>
+
+```sql
+INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
+	(DEFAULT, 'The Corner - Bowling E-1', '{"state":1,"coords":{"x":1929.6214599609376,"y":3879.92041015625,"z":32.70100402832031},"maxDistance":2,"doors":[{"model":541202161,"heading":30,"coords":{"x":1930.6444091796876,"y":3880.509521484375,"z":32.70100784301758}},{"model":-1510399391,"heading":30,"coords":{"x":1928.5985107421876,"y":3879.33154296875,"z":32.70100402832031}}]}'),
+	(DEFAULT, 'The Corner - Bowling 1-1', '{"state":1,"model":-626684119,"heading":120,"coords":{"x":1939.095947265625,"y":3886.637451171875,"z":32.74943161010742},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Bowling 1-2', '{"state":1,"model":-626684119,"heading":30,"coords":{"x":1917.5517578125,"y":3898.408447265625,"z":33.05826568603515},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Bowling 1-3', '{"state":1,"model":-626684119,"heading":210,"coords":{"x":1922.379638671875,"y":3901.18798828125,"z":33.05826568603515},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Bowling E-2', '{"state":1,"model":426403179,"heading":30,"coords":{"x":1919.45556640625,"y":3906.4951171875,"z":33.05826950073242},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Diner E-1', '{"state":1,"model":-977996365,"heading":106,"coords":{"x":1895.7603759765626,"y":3882.43408203125,"z":34.05572128295898},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Diner E-2', '{"state":1,"model":-977996365,"heading":106,"coords":{"x":1898.9759521484376,"y":3883.31201171875,"z":34.05572128295898},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Diner E-3', '{"state":1,"model":426403179,"heading":16,"coords":{"x":1898.5506591796876,"y":3898.656982421875,"z":33.5047492980957},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Steak House E-1', '{"state":1,"model":686887255,"heading":285,"coords":{"x":1897.1588134765626,"y":3925.635498046875,"z":33.52972412109375},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Steak House E-2', '{"state":1,"model":686887255,"heading":285,"coords":{"x":1898.966796875,"y":3918.887451171875,"z":33.52972412109375},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Steak House E-3', '{"state":1,"model":870759767,"heading":195,"coords":{"x":1896.940673828125,"y":3912.29931640625,"z":33.51356506347656},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Steak House E-4', '{"state":1,"coords":{"x":1874.853759765625,"y":3927.93798828125,"z":33.38138198852539},"maxDistance":2,"doors":[{"model":-1368312821,"heading":240,"coords":{"x":1874.2420654296876,"y":3926.87841796875,"z":33.38138198852539}},{"model":349438167,"heading":240,"coords":{"x":1875.465576171875,"y":3928.99755859375,"z":33.38138198852539}}]}'),
+	(DEFAULT, 'The Corner - Steak House 1-1', '{"state":1,"model":522714565,"heading":195,"coords":{"x":1877.352294921875,"y":3913.45166015625,"z":33.38138198852539},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Steak House 1-2', '{"state":1,"coords":{"x":1884.761474609375,"y":3918.75341796875,"z":33.38138198852539},"maxDistance":2,"doors":[{"model":522714565,"heading":285,"coords":{"x":1885.09765625,"y":3917.49853515625,"z":33.38138198852539}},{"model":522714565,"heading":105,"coords":{"x":1884.42529296875,"y":3920.008056640625,"z":33.38138198852539}}]}'),
+	(DEFAULT, 'The Corner - Steak House 1-3', '{"state":1,"model":522714565,"heading":105,"coords":{"x":1886.993896484375,"y":3913.0185546875,"z":33.41138076782226},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Steak House 1-4', '{"state":1,"model":522714565,"heading":105,"coords":{"x":1894.2020263671876,"y":3914.949951171875,"z":33.41138076782226},"maxDistance":2,"doors":false}'),
+	(DEFAULT, 'The Corner - Steak House 1-5', '{"state":1,"model":522714565,"heading":15,"coords":{"x":1898.0369873046876,"y":3916.5361328125,"z":33.53390502929687},"maxDistance":2,"doors":false}');
+```
+
+</details>
 
 ***
 

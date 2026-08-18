@@ -1,4 +1,4 @@
-﻿# 🚓 Mission Row Police Department
+# 🚓 Mission Row Police Department
 
 <!-- TODO: replace with the real store package embed, e.g. {% embed url="https://fivem.prompt-mods.com/package/PACKAGE_ID" %} -->
 
@@ -84,7 +84,7 @@ The SQL uses `DEFAULT` for the `id` column, so your database assigns free IDs au
 
 <details>
 
-<summary><strong>MRPD Doorlock SQL (85 doors)</strong></summary>
+<summary><strong>MRPD Doorlock SQL (87 doors)</strong></summary>
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
@@ -133,6 +133,8 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 	(DEFAULT, 'MRPD 1-33', '{"model":917741506,"heading":270,"doors":false,"coords":{"x":458.59375,"y":-990.0009765625,"z":28.13590621948242},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-34', '{"model":917741506,"heading":90,"doors":false,"coords":{"x":460.6370544433594,"y":-993.196044921875,"z":28.13590621948242},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-35', '{"model":917741506,"heading":90,"doors":false,"coords":{"x":460.6370544433594,"y":-988.7010498046875,"z":28.13590621948242},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-36', '{"model":-1913454337,"heading":271,"doors":false,"coords":{"x":464.21575927734377,"y":-1010.5977172851563,"z":29.31243324279785},"state":1,"maxDistance":1}'),
+	(DEFAULT, 'MRPD 1-37', '{"model":-1913454337,"heading":90,"doors":false,"coords":{"x":464.21575927734377,"y":-1010.6890258789063,"z":29.31243324279785},"state":1,"maxDistance":1}'),
 	(DEFAULT, 'MRPD B-1', '{"model":917741506,"heading":0,"doors":false,"coords":{"x":444.18658447265627,"y":-1017.4139404296875,"z":22.84865379333496},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD B-2', '{"model":917741506,"heading":0,"doors":false,"coords":{"x":444.18658447265627,"y":-1020.0380859375,"z":22.84865379333496},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD B-3', '{"doors":[{"model":1913294703,"heading":0,"coords":{"x":439.5635986328125,"y":-970.9515380859375,"z":23.55029296875}},{"model":1913294703,"heading":180,"coords":{"x":437.2239685058594,"y":-970.9515380859375,"z":23.55029296875}}],"coords":{"x":438.393798828125,"y":-970.9515380859375,"z":23.55029296875},"state":1,"maxDistance":2}'),
