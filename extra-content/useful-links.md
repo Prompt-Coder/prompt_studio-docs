@@ -15,11 +15,22 @@ More about it read on [**Vertex Hub Github**](https://github.com/Vertex-Hub/Desk
 
 ***
 
-## [Melons Maps Utility (Blips & Elevators)](https://github.com/IlMelons/melons_mapsutility)
+## [Monarch Scripts](https://github.com/Monarch-Devs) (Blips, IPLs, Elevators & Sitting)
 
-"An optimized resource for Blips and Elevators management using ox\_lib and ox\_inventory, special thanks to ENT510 who created the original resource I took inspiration from for elevators feature (For installation see Docs, for Support Discord)" by llMelons
+Formerly **Melons Maps Utility** — the resource has been rebuilt and split into separate scripts, one per responsibility, so you only run what you actually need. All use `ox_lib`.
 
-More about it read on [Maps Utility Github](https://github.com/IlMelons/melons_mapsutility)
+| Resource | What it does |
+| -------- | ------------ |
+| [`mnr_blips`](https://github.com/Monarch-Devs/mnr_blips) | Blips management resource |
+| [`mnr_ipl`](https://github.com/Monarch-Devs/mnr_ipl) | MLO IPL manager with zones |
+| [`mnr_elevators`](https://github.com/Monarch-Devs/mnr_elevators) | Elevators management resource |
+| [`mnr_sitanywhere`](https://github.com/Monarch-Devs/mnr_sitanywhere) | Sit interactions for chair and bench props |
+
+{% hint style="success" %}
+**Ready-made presets for our maps:** Monarch ships configuration presets for Prompt Studio interiors — grab them from [**monarch\_presets / Prompt**](https://github.com/Monarch-Devs/monarch_presets/tree/main/Prompt) instead of setting up blips, IPLs, elevators, and seating by hand.
+{% endhint %}
+
+Elevator support is based on the original resource by **ENT510**, whose work the feature was inspired by.
 
 ***
 
