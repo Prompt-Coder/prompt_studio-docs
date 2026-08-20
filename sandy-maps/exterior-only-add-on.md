@@ -74,7 +74,7 @@ Either restart each replaced resource individually, or do a full server restart.
 
 <details>
 
-<summary>Full list — 20 maps supported (click to expand)</summary>
+<summary>Full list — 22 maps supported (click to expand)</summary>
 
 * `cfx_prompt_sandy_shores_fire_department`
 * `prompt_gym`
@@ -85,6 +85,8 @@ Either restart each replaced resource individually, or do a full server restart.
 * `prompt_sandy_church`
 * `prompt_sandy_cityhall`
 * `prompt_sandy_classic_car_dealership`
+* `prompt_sandy_corner`
+* `prompt_sandy_downtown`
 * `prompt_sandy_fire2`
 * `prompt_sandy_hospital`
 * `prompt_sandy_hospital2`
@@ -98,6 +100,10 @@ Either restart each replaced resource individually, or do a full server restart.
 * `prompt_sandy_university`
 
 </details>
+
+{% hint style="info" %}
+**Latest — v1.1.0:** added **Sandy Shores Downtown**, which strips 10 interiors (Aztec, Bakery, Bar, Club, Coffee Shop, Dream Cream, Fire Station, Lawyers Office, Pawn Shop, Post Op). `prompt_sandy_corner` is also now listed — it shipped in v1.0.0 but was missing from this list.
+{% endhint %}
 
 ### How it works
 
