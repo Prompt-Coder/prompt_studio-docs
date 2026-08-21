@@ -2,7 +2,9 @@
 
 ## Sandy Shores Downtown
 
-The downtown block of Sandy Shores, fully reworked — a row of shopfronts with **16 enterable interiors** behind them, from the bakery and coffee shop to the club, the pawn shop and the fire station. Built to slot into the wider Sandy Shores rework as the town's commercial centre.
+The downtown block of Sandy Shores, fully reworked — a row of shopfronts with **16 enterable interiors** behind them, from the bakery and coffee shop to the club, the pawn shop and the fire station museum. Built to slot into the wider Sandy Shores rework as the town's commercial centre.
+
+{% embed url="https://www.youtube.com/watch?v=SkQnps2NYU4" %}
 
 ***
 
