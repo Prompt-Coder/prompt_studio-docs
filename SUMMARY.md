@@ -44,10 +44,10 @@
 
 * [🏫 Exterior-Only Add-On](sandy-maps/exterior-only-add-on.md)
 * [🗺️ Sandy Mapdata](sandy-maps/sandy-mapdata.md)
+* [🏙️ Sandy Shores Downtown](sandy-maps/sandy-downtown.md)
 * [🌴 Custom Roads & Traffic](sandy-maps/custom-roads-and-traffic.md)
 * [🏗️ \[FREE\] Construction Zones](sandy-maps/free-construction-zones.md)
 * [🎳 The Corner — Bowling, Diner & Steak House](sandy-maps/the-corner.md)
-* [🏙️ Sandy Shores Downtown](sandy-maps/sandy-downtown.md)
 * [🎒 University](sandy-maps/university.md)
 * [🚒 Sandy Fire Station V2](sandy-maps/sandy-fire-station-v2.md)
 * [🏥 Sandy Hospital V2](sandy-maps/sandy-hospital-v2.md)
