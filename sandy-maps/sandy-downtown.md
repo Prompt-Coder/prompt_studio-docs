@@ -65,9 +65,13 @@ Purpose-built interiors with their own streamed models, props and textures:
 
 | Interior | | Interior | |
 | --- | --- | --- | --- |
-| Aztec | Bakery | Bar | Club |
-| Coffee Shop | Dream Cream | Fire Station | Lawyers Office |
+| Clothing Store | Bakery | Bar | Club |
+| Coffee Shop | Dream Cream | Fire Station Museum | Lawyers Office |
 | Pawn Shop | Post Op | Apartment Tunnel | Pipedown |
+
+{% hint style="info" %}
+Folder names under `stream/Interiors/` don't always match the shop — the clothing store lives in `Aztec/`, and the museum in `Fire Station/`.
+{% endhint %}
 {% endtab %}
 
 {% tab title="Placement-only" %}
