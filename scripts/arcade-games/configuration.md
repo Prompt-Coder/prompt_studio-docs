@@ -266,8 +266,9 @@ only binds to a streamed map prop — a script-spawned one shows a black screen.
 {% endhint %}
 
 {% hint style="info" %}
-`config.lua` is the only file left editable under escrow; all game logic, HTML and props stay
-encrypted.
+Two things are left editable under escrow: **`config.lua`** and the **`locales/`** translation
+files (_since v0.5.2_ — they were mistakenly encrypted in 0.5.0/0.5.1). All game logic, HTML and
+props stay encrypted.
 {% endhint %}
 
 ***
