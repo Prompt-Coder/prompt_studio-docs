@@ -70,15 +70,28 @@ start prompt_sandy_shared      # needed for Sandy Houses interiors
 
 Resource names are exact — copy them straight into `server.cfg`.
 
+{% hint style="danger" %}
+**Some of these are alternatives, not additions.** Each pair below occupies the same lot — installing both puts two builds in one place. Pick one:
+
+| Install this | …or this | Not both |
+| --- | --- | --- |
+| Sandy Hospital **V2** | Sandy Hospital (original) | same building |
+| Sandy Fire Station **V2** | Sandy Fire Department (original) | same building |
+| The Corner | Corner Construction *(the pre-build lot)* | same lot |
+| Sandy Shores Downtown | Downtown Construction *(the pre-build lot)* | same lot |
+
+The construction packs are the "work in progress" version of those lots — use them **instead of** the finished map, e.g. to stage a build-up on your server.
+{% endhint %}
+
 | Map | Resource | Also needs | Exterior-Only |
 | --- | --- | --- | :---: |
 | [Sandy MapData](sandy-mapdata.md) | `cfx_prompt_sandy_mapdata` | — | — |
-| [Sandy Shores Downtown](sandy-downtown.md) | `prompt_sandy_downtown` | — | ✓ |
+| [Sandy Shores Downtown](sandy-downtown.md) | `prompt_sandy_downtown` | ⚠️ not with Downtown Construction | ✓ |
 | [Custom Roads & Traffic](custom-roads-and-traffic.md) | `prompt_sandy_roads` | — | — |
-| [The Corner](the-corner.md) | `prompt_sandy_corner` | `ox_lib` | ✓ |
+| [The Corner](the-corner.md) | `prompt_sandy_corner` | `ox_lib` · ⚠️ not with Corner Construction | ✓ |
 | [University](university.md) | `prompt_sandy_university` | — | ✓ |
-| [Sandy Fire Station V2](sandy-fire-station-v2.md) | `prompt_sandy_fire2` | — | ✓ |
-| [Sandy Hospital V2](sandy-hospital-v2.md) | `prompt_sandy_hospital2` | `ox_lib` | ✓ |
+| [Sandy Fire Station V2](sandy-fire-station-v2.md) | `prompt_sandy_fire2` | ⚠️ replaces Fire Department | ✓ |
+| [Sandy Hospital V2](sandy-hospital-v2.md) | `prompt_sandy_hospital2` | `ox_lib` · ⚠️ replaces Hospital | ✓ |
 | [Sandy Apartments](sandy-apartments.md) | `prompt_sandy_apts` | — | ✓ |
 | [Sandy Bank](sandy-bank.md) | `prompt_sandy_bank` | — | ✓ |
 | [Sandy Market](sandy-market.md) | `prompt_sandy_market` | — | ✓ |
@@ -92,11 +105,11 @@ Resource names are exact — copy them straight into `server.cfg`.
 | [Sandy Train Station](sandy-train-station.md) | `prompt_sandy_train_station` | — | ✓ |
 | [Sandy Sheriff](sandy-sheriff.md) | `prompt_sandy_sheriff` | — | ✓ |
 | [Sandy Airport](sandy-airport.md) | `prompt_sandy_airfield` | — | — |
-| [Sandy Hospital](sandy-hospital.md) | `prompt_sandy_hospital` | — | ✓ |
-| [Sandy Fire Department](sandy-fire-department.md) | `cfx_prompt_sandy_shores_fire_department` | — | ✓ |
+| [Sandy Hospital](sandy-hospital.md) *(original)* | `prompt_sandy_hospital` | ⚠️ superseded by V2 | ✓ |
+| [Sandy Fire Department](sandy-fire-department.md) *(original)* | `cfx_prompt_sandy_shores_fire_department` | ⚠️ superseded by Fire Station V2 | ✓ |
 | [Sandy Marina](sandy-marina.md) | `cfx_prompt_sandy_marina` | — | — |
 | [Boat House](boat-house.md) | `cfx_chuz_sandy_shores_boat_house` | — | — |
-| [\[FREE\] Construction Zones](free-construction-zones.md) | `prompt_sandy_corner_construction`<br>`prompt_sandy_downtown_construction` | — | — |
+| [\[FREE\] Construction Zones](free-construction-zones.md) | `prompt_sandy_corner_construction`<br>`prompt_sandy_downtown_construction` | ⚠️ pre-build lots — use *instead of* The Corner / Downtown | — |
 
 ***
 
