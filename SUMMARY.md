@@ -47,6 +47,7 @@
 
 ## Sandy Maps
 
+* [🚀 Installation Guide](sandy-maps/sandy-installation.md)
 * [🏫 Exterior-Only Add-On](sandy-maps/exterior-only-add-on.md)
 * [🗺️ Sandy Mapdata](sandy-maps/sandy-mapdata.md)
 * [🏙️ Sandy Shores Downtown](sandy-maps/sandy-downtown.md)
