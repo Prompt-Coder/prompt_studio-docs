@@ -94,7 +94,10 @@ flavour, like the artwork on the cabinet.
 ```lua
 Config.Machines = {
     list = {
-        -- { coords = vec3(-1042.32, -1411.85, 4.90), heading = 90.0, price = 25 },
+        -- ships with 33 default placements at busy spots — remove or edit freely:
+        { coords = vec3(574.06, 2743.08, 41.17), heading = 2.7 },
+        { coords = vec3(-1421.26, -276.99, 45.22), heading = 312.1, price = 25 },
+        -- … (see the file for the full list)
     },
 
     -- Permanent map blips for every machine, visible to ALL players. Off by default.
@@ -109,8 +112,10 @@ Config.Machines = {
 }
 ```
 
-Most owners never touch `list` — the [creator](placement.md) is easier and writes to
-`data/machines.json` instead. If you do use it, remember `cfg_N` ids follow array position
+The shipped `list` covers Legion, Vespucci Beach, Del Perro Pier, Vinewood, the casino,
+Sandy Shores, Paleto and more — trim it to taste. For **adding** machines the
+[creator](placement.md) is easier (it writes to `data/machines.json` instead). If you do
+edit `list`, remember `cfg_N` ids follow array position
 ([details](placement.md#the-three-kinds-of-machines)).
 
 {% hint style="warning" %}
@@ -134,12 +139,16 @@ minigame = {
     graceMs = 250,           -- inputs ignored right after opening (E carry-over)
     maxRevolutions = 3,      -- AFK: auto-miss after this many full sweeps
 
+    -- Every circle counts: the score blends the closeness of ALL your hits,
+    -- weighted per level (later circles matter more)
+    levelWeights = { 1.0, 1.5, 2.5 },
+
     -- Secret bonus round: >= threshold closeness on ALL three arcs opens a 4th circle
     bonus = { speed = 560.0, arc = 8.0, threshold = 0.98 },
 },
 ```
 
-How far you get picks the **punch tier**, how close you hit picks the **score** inside the band:
+How far you get picks the **punch tier** and the score band:
 
 | Outcome | Tier | Score band |
 | --- | --- | --- |
@@ -148,6 +157,11 @@ How far you get picks the **punch tier**, how close you hit picks the **score** 
 | Reached 3, missed the arc (`l3miss`) | medium | 4 000 – 7 000 |
 | Hit the level-3 arc (`l3hit`) | high | 7 000 – 10 000 |
 | Hit the secret bonus circle (`l4hit`) | high | 10 000 – 12 000 |
+
+**Where you land inside the band** is the weighted blend of every circle's accuracy
+(`levelWeights`): with the defaults, 30% / 30% / 90% scores 60% of the band (~8 800), not
+90% — a full 10 000 needs all three circles near-perfect. The bonus circle is scored on its
+own hit alone (its gate already demands ≥ 98% on all three arcs).
 
 All bands are editable in `Config.Gameplay.scoring`. The **server** maps outcome → score —
 clients only report how far they got and how close they hit.

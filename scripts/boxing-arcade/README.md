@@ -66,11 +66,15 @@ add_ace group.admin prompt_boxing.creator allow
 {% endstep %}
 
 {% step %}
-#### Place your first cabinet
+#### Start it — cabinets are already out there
 
-The resource ships with **no machines** — nothing appears in the world until you place one.
-Stand where the cabinet should go and run `/boxarcade`. Place, rotate, confirm — done.
-Placements persist across restarts in `data/machines.json`.
+The resource ships **ready to play**: 33 default placements at busy spots (Legion,
+Vespucci Beach, Del Perro Pier, Vinewood, the casino, Sandy Shores, Paleto, Chumash…),
+plus [map-pack presets](placement.md#map-packs-ship-machines-with-your-maps) for Prompt
+maps that activate only when the map is running.
+
+Don't like a spot? Remove it from `config/machines.lua`. Want more? Stand where the
+cabinet should go and run `/boxarcade` — in-game placements persist in `data/machines.json`.
 {% endstep %}
 {% endstepper %}
 
@@ -87,7 +91,7 @@ On boot the server console prints a health report:
   payment:   disabled
   stats:     off
   language:  en
-  machines:  0 config + 2 placed + 0 map
+  machines:  33 config + 2 placed + 0 map
   modules:   creator=true leaderboard=true
   devMode:   false   debug: false
 ```
@@ -96,7 +100,7 @@ On boot the server console prints a health report:
 | --- | --- |
 | Framework detected | `framework:` shows `qbox` / `qbcore` / `esx` / `standalone` |
 | Targeting detected | `target:` shows `ox_target` / `qb-target` / `none` (none = built-in `[E]` prompt) |
-| Machines exist | `machines:` counts more than `0 + 0 + 0` — if all zeros, place one with `/boxarcade` |
+| Machines exist | `machines:` shows `33 config + …` out of the box — all zeros means the default list was emptied and nothing was placed yet |
 | Production flags | `devMode: false   debug: false` on a live server |
 
 ***
@@ -112,7 +116,9 @@ walk up → [E] → ped steps in, presses the button → timing minigame → PUN
 
 * **The minigame:** a selector sweeps a ring — hit `E` (or `Space`) as close to the gold arc
   as you can. Three levels, each faster with a smaller arc. Miss early = light punch, low
-  score; hit the tiny level-3 arc = high tier, up to 10 000.
+  score; hit the tiny level-3 arc = high tier, up to 10 000. **Every circle counts:** the
+  score blends the accuracy of all your hits (later circles weigh more), so one lucky final
+  hit can't carry two sloppy ones.
 * **The secret bonus round:** near-perfect play on all three arcs opens a hidden 4th circle —
   scores up to **12 000**.
 * **9 punch animations** across 3 strength tiers, plus enter, idles and celebration moves —

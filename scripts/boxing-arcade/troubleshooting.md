@@ -7,7 +7,8 @@ icon: wrench
 
 | Symptom | Cause & fix |
 | --- | --- |
-| **No cabinets anywhere** | A fresh install ships with **zero machines** — place one with `/boxarcade` ([Placing Machines](placement.md)). If the boot report says `machines: 0 config + 0 placed + 0 map`, that's the whole story. |
+| **No cabinets anywhere** | The resource ships with **33 default placements** — if none appear, the resource didn't start cleanly (check the console for the boot report) or `config/machines.lua`'s list was emptied. `machines: 0 config + 0 placed + 0 map` in the boot report = nothing is defined; place one with `/boxarcade` ([Placing Machines](placement.md)). |
+| **Too many default cabinets / wrong spots** | The defaults are just config — remove lines from `config/machines.lua` (`list`), or clear it entirely and place your own with `/boxarcade`. |
 | **A cabinet disappeared** | It's [bound](placement.md#bind-a-machine-to-a-map-resource) to a map resource that isn't running — check the panel for a dimmed `dormant` row. Maps started after boot are picked up on the next `restart prompt_boxing_machine`. |
 | **No interact prompt** | If you run `ox_target`/`qb-target`, start it **before** `prompt_boxing_machine` in `server.cfg`. Without either, the built-in `[E]` prompt appears within 2 m of the cabinet (`Config.Machines.interactDistance`). |
 | **`/boxarcade` says access denied** | You don't have the ACE — `add_ace group.admin prompt_boxing.creator allow` (then relog), or `Config.devMode = true` on a dev server. |
