@@ -38,7 +38,7 @@ Insert the following line to ensure the map loads automatically:
 {% step %}
 ### Step 3 - Set up MapData
 
-Make sure you have the correct **Sandy MapData** installed and started before this resource.
+Make sure you have the correct **Sandy MapData** installed, and that it starts **after** this resource in your `server.cfg`.
 {% endstep %}
 
 {% step %}

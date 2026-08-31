@@ -62,8 +62,8 @@ Add the following to your `server.cfg`:
 {% step %}
 #### Sandy MapData
 
-This map **requires** [**Sandy Shores MapData**.](https://prompt-studio.gitbook.io/prompt-studio/~/revisions/BgF1SOhQTG7fLPorvSLl/sandy-maps/sandy-mapdata)\
-Ensure it is installed and started before this resource.
+This map **requires** [**Sandy Shores MapData**](sandy-mapdata.md).\
+Ensure it is installed, and that it starts **after** this resource in your `server.cfg`.
 {% endstep %}
 
 {% step %}

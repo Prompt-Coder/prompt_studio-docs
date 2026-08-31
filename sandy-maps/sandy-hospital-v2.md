@@ -48,7 +48,7 @@ Make sure `ox_lib` is installed and started **before** this resource in your `se
 {% step %}
 ### Step 4 - Set up MapData
 
-Make sure you have the correct **Sandy MapData** installed and started before this resource.
+Make sure you have the correct **Sandy MapData** installed, and that it starts **after** this resource in your `server.cfg`.
 {% endstep %}
 
 {% step %}

@@ -38,6 +38,8 @@ Using a folder like `[promptsandy]`? A single `ensure [promptsandy]` starts ever
 #### Step 3 — Install the Sandy MapData
 
 **This is the step people miss.** Almost every Sandy map needs the matching [**Sandy MapData**](sandy-mapdata.md) or it will load wrong — floating props, missing ground, or no interior at all.
+
+Start it **after** your maps in `server.cfg`.
 {% endstep %}
 
 {% step %}
@@ -54,14 +56,16 @@ Restart the server, travel to the map, and confirm the exterior and interior loa
 Order matters in three places only:
 
 ```cfg
-ensure ox_lib                  # before any map that uses it
-start cfx_prompt_sandy_mapdata # MapData before the maps
-start [promptsandy]            # all your Sandy maps
-start prompt_sandy_shared      # needed for Sandy Houses interiors
+ensure ox_lib                   # before any map that uses it
+start prompt_sandy_shared       # before Sandy Houses
+start [promptsandy]             # all your Sandy maps
+start cfx_prompt_sandy_mapdata  # MapData LAST, after every map that uses it
 ```
 
 {% hint style="warning" %}
-`ox_lib` must start **before** the maps that depend on it. Everything else is a pure map resource and is order-independent.
+**MapData goes last.** It must start **after** every map that uses it — starting it first is the most common cause of a map loading wrong.
+
+`ox_lib` starts **before** the maps that depend on it, and `prompt_sandy_shared` **before** Sandy Houses. Everything else is a pure map resource and is order-independent.
 {% endhint %}
 
 ***
@@ -160,7 +164,7 @@ All our doorlock SQL uses `DEFAULT` for the `id` column, so your database assign
 
 <summary>Exterior loads but the interior is missing or floating</summary>
 
-Almost always the **MapData**. Make sure you have the correct [Sandy MapData](sandy-mapdata.md) installed and started **before** the maps.
+Almost always the **MapData**. Make sure you have the correct [Sandy MapData](sandy-mapdata.md) installed, and that it starts **after** the maps in your `server.cfg` — not before.
 
 For Sandy Houses specifically, missing interiors usually means `prompt_sandy_shared` isn't installed.
 
