@@ -21,9 +21,8 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 
 * **Location-based gym management** (spawn equipment by location)
 * Multiple **equipment types** with synchronized animations
-* **In-game group editor** — create, edit, and manage gym setups without touching config files
+* **Gym Builder NUI panel** — create, edit, and manage gyms without touching config files; groups auto-persist as you build
 * **Membership system** — optionally restrict gym usage to members, with admin commands and exports
-* **Persistent prop despawn** — mark world props for removal (they stay deleted even after leaving/re-entering)
 * **Clear Location** feature (hide vanilla objects inside a radius)
 * Optional **boxing ring** support
 * Admin placement tool: **`/gymcreator`**
@@ -38,22 +37,65 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 
 <details>
 
-<summary><strong>What's new in 1.4.0</strong></summary>
+<summary><strong>What's new in 1.7.0</strong></summary>
 
 <br>
 
-**Gym Builder.** `/gymcreator` now opens a single custom NUI panel instead of the old ox_lib debug menu — the old creator menu and the old ox_lib group menu are both removed.
+**Lung capacity** — a fifth stat, trained by the bike, the rowing machine and the treadmill. It sets how long a player can stay underwater: 10 s untrained, up to 50 s at 100.
+
+* **Stat exports.** `GetStats` / `UpdateStats` / `AddStats` / `RemoveStats` on the server and `GetStats` on the client, with rtx_gym's names and shapes — other scripts can read and train gym stats directly. Contract in `exports.md`.
+* **One stat list.** `stats.definitions` in `config_s.lua` now defines every stat (name, decay, menu look). Adding a stat is one entry, its `rates`, and two locale keys — no engine files. Old configs without the list keep working on the original four.
+* **Upgrade note.** This version adds a server file: do a **full server restart**, not a plain `restart`. If you added your own stat exports to `config/server.lua`, delete them — they are built in now.
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>What's new in 1.6.0</strong></summary>
+
+<br>
+
+**Treadmill** — the first continuous machine. Step on, `E` cycles walk → run → sprint (wrapping back to walk), `X` steps off. Stats accrue per stride cycle — time-based, not rep-based — with per-speed multipliers tunable in `config_c.lua`.
+
+* **Training summary.** Leaving a machine shows the muscles worked, reps performed, and each stat's gain + new total. Muscle labels are per-machine config (`muscles = { 'chest', 'triceps' }`), localized in all 12 languages; render replaceable via `client.trainingSummary` in `config/client.lua`.
+* **Custom tooltip seam.** `customTooltip(machine, show)` in `config_c.lua` fires when a player gets on/off a machine, in both `progressBar` modes — for servers replacing the built-in UI with their own hints.
+* **Fixes.** Failing the minigame no longer grants the rep/stat (built-in and custom `client.minigame`); push-up/sit-up mat names fixed on the 11 non-English languages; `rtx_gym` stat mapping corrected; a hidden dev preview menu no longer registers at startup (errored on lation_ui servers); unused `repetitions` config key removed.
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>What's new in 1.5.0</strong></summary>
+
+<br>
+
+**Four new machines** — **Bench Press**, **Pull-Up Bar**, **Push-Up Mat** and **Sit-Up Mat**, animated with Mansion DLC clips streamed by the resource (no game-build requirement).
+
+* **One mat, several exercises.** A placed yoga mat now shows a target option for push-ups, sit-ups and yoga instead of needing a mat each. The exercise a player picks is what every other player sees, including anyone who joins mid-session.
+* **Mark props for removal is back** in the Gym Builder (group detail -> *Removed props*). Marked world clutter now disappears the moment you confirm it, and marks save immediately instead of only when the group reloads.
+* **Fixes.** Props whose model origin isn't at their base no longer float when placed; animation dictionaries consolidated (9 per-machine prop dicts merged into 1).
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>What's new in 1.3.2</strong></summary>
+
+<br>
+
+**Gym Builder rework.** `/gymcreator` now opens a single custom NUI panel instead of the old ox_lib debug menu — the old creator menu and the old ox_lib group menu are both removed.
 
 * **Groups auto-persist.** Creating a group and every prop add/move/delete writes to `groups/saved_groups.json` immediately — there's no Save button, and props spawn live/incrementally as you place them.
 * **Config and script locations, read-only.** Locations from `config_c.lua` and locations registered by other resources via `CreateGymLocation` are listed read-only, grouped by source (config vs. per-resource).
 * **Per-location override flags.** Every read-only location can have `requireMembership` and `blip` overridden from the panel without touching config files or the owning script — overrides persist to `groups/location_overrides.json` and win over whatever the export/config passed (UI override > export/config value > engine default). Legacy `CreateGymLocation` calls that never set these flags keep working unchanged.
-* Placement shows a heading arrow + a green ped-position dot; there is no wall/collision detection.
-
-**Live, synced map blips + membership.** Blips and per-location membership now come from a single server-owned registry replicated to every client, so they add, remove and toggle **live for everyone** with no restart.
-
-* **One blip per gym location** (config locations, groups, script-created), labelled by the location's own `name` or the config `blip.label` (`Gym`) default. The old fixed `blip.coords` marker list and the `blip.mode` (`static`/`locations`) switch are removed.
-* **Live toggles** — flipping a location's map blip or "Members only" from the Gym Builder takes effect instantly for every connected player.
 * New export **`SetLocationBlip(locationName, enabled)`** — live map-blip toggle for a dynamic location, twin of `SetLocationMembership`.
+* Placement still shows the heading arrow + a green ped-position dot; there is no wall/collision detection.
 
 </details>
 
@@ -191,7 +233,7 @@ If you can place equipment and interact with it (target or TextUI), installation
     },
 
     groups = {
-        enable = true,               -- Groups system (Manage Groups in /gymcreator)
+        enable = true,               -- Groups system (Gym Builder panel via /gymcreator)
         creatorCanEdit = true,       -- Original creator can edit without admin
         creatorCanDelete = false,    -- Original creator can delete without admin
         despawnCheckInterval = 10000, -- Re-check for respawned world props (ms)
@@ -206,14 +248,14 @@ If you can place equipment and interact with it (target or TextUI), installation
     },
 
     stats = {
-        enable = true,               -- Stat progression (4 stats: speed, stamina, combat, strength)
-        provider = 'internal',       -- 'internal' | 'rtx_gym' | 'vms_gym' — push gains into a third-party stat system instead
-        providerMap = { ... },       -- anim_core stat -> provider stat/skill name (vms mapping ships ready)
+        enable = true,               -- Stat progression
+        definitions = { ... },       -- THE stat list: name, decay/min, /gymstats icon + colours (5 ship; add your own here)
+        provider = 'internal',       -- 'internal' | 'rtx_gym' | 'vms_gym' | 'OT_skills' | 'devhub_skillTree' — push gains into a third-party stat system instead
+        providerMap = { ... },       -- anim_core stat -> provider stat/skill/category name (rtx + vms + OT_skills + devhub_skillTree mappings ship ready)
         rates = { ... },             -- Stat gains per exercise, per equipment type
         decrease = {                 -- Stats decay over time when not training (internal provider only)
             enable = true,
-            multiplier = 1.0,        -- Global decay speed (0.5 = half, 2.0 = double)
-            -- per-stat decay per minute: speed / stamina / combat / strength
+            multiplier = 1.0,        -- Global decay speed (0.5 = half, 2.0 = double); per-stat rates are definitions[].decay
         },
     },
 }
@@ -283,6 +325,20 @@ customProgressBar = function(machine, duration)
 end
 ```
 
+**Custom tooltip** — `customProgressBar` only fires after the player presses the key to start a rep, so it cannot tell them which key to press. `customTooltip` runs when they get **on** a machine and again when they get **off** it:
+
+```lua
+customTooltip = function(machine, show)
+    if show then
+        lib.showTextUI('[E] Train  \n[X] Stop')
+    else
+        lib.hideTextUI()
+    end
+end
+```
+
+It is empty by default and fires in **both** `progressBar` modes, so you can layer hints on top of the built-in UI. Remember that `progressBar = 'custom'` hides the built-in hint panel along with the built-in bar — this is the replacement for it. `show = false` also fires on exits the player did not choose (death, zone exit, resource stop), so the tooltip always closes.
+
 ***
 
 #### Editable Server Functions (`config/server.lua`)
@@ -301,6 +357,8 @@ This file contains functions you can customize:
 * `client.minigame(machine)` — the skill check used when `enableMinigame = true` (default: ox_lib skillCheck)
 * `client.onExerciseStart / onExerciseEnd` — busy-state hooks (default: sets `invBusy`, disables targeting)
 * `client.boxingRing.onFightStart / onFightEnd(result)` — client-side match hooks
+* `client.trainingSummary(data)` — the post-session card (muscles, reps, each stat's gain and new total); replace the body to draw your own, empty it to switch it off
+* `applyGymStats(stats)` — what each stat *does* (sprint, melee, health regen, underwater breath). Add a line here for a stat you added to `stats.definitions`
 
 </details>
 
@@ -308,28 +366,27 @@ This file contains functions you can customize:
 
 <details>
 
-<summary><strong>Groups System</strong></summary>
+<summary><strong>Gym Builder</strong></summary>
 
 <br>
 
-The groups system lets you create, edit, and manage gym equipment setups entirely in-game, without editing config files. Groups are saved to `groups/saved_groups.json` and persist across server restarts.
+`/gymcreator` opens the **Gym Builder** — a custom NUI panel. It lists every gym location in three groups: your own **Groups** (fully editable), **config locations** (from `config_c.lua`, read-only), and **script locations** (registered by other resources via `CreateGymLocation`, read-only, grouped by resource).
 
-#### How to Use
+#### Groups — How to Use
 
-1. Run `/gymcreator` and select **Manage Groups**
-2. **Create New Group** — give it a name
-3. **Add Props** — select equipment type, position it in the world with scroll to rotate, ENTER to place
-4. **Mark Props for Despawn** — aim at world props you want removed, press E to mark, ENTER to apply
-5. **Save Group** — saves to JSON and immediately loads the gym
+1. Run `/gymcreator`
+2. **Create Group** — give it a name (and optionally set the create-time `requireMembership`/`blip` flags)
+3. **Add Props** — select an equipment type, position it in the world with scroll to rotate, ENTER to place
+4. **Move / Delete** props from the panel's prop list at any time
 
-#### Group Management Menu
+There is **no Save button** — creating the group and every prop add/move/delete writes to `groups/saved_groups.json` immediately, and the prop spawns/updates/despawns live in the world as you edit.
 
-From **Manage Groups** you can:
+#### From the Panel You Can
 
 * **Load / Unload** groups (spawn/despawn all props)
-* **Edit** a loaded group (add/move/delete props, mark/unmark despawns)
+* **Edit** a loaded group (add/move/delete props)
 * **Toggle Auto-Load** — groups with auto-load enabled spawn automatically on server start
-* **Toggle Membership Requirement** — require membership to use equipment in this group
+* **Toggle Membership Requirement** and **Toggle Map Blip** per group
 * **Delete** a group permanently
 
 #### Permissions
@@ -339,21 +396,26 @@ From **Manage Groups** you can:
 * **Creators** can delete their own groups if `groups.creatorCanDelete = true` in config
 * Creator identity is tracked by player license (framework-agnostic)
 
-#### Persistent Prop Despawn
+#### Read-Only Locations & Overrides
 
-When you mark world props for despawn in a group:
+Config and script locations can't be edited (no props, no move/delete) — but each one exposes two switches in the panel:
 
-* They are deleted when the group loads
-* If a player leaves and re-enters the streaming area, the system re-deletes them automatically
-* Late-joining players receive despawn data and see the correct state
-* Despawn data persists in the group's JSON — survives server restarts
+* **`requireMembership`** — require membership to use equipment at that location
+* **`blip`** — show a map blip for that location
+
+Flipping either switch does **not** rewrite `config_c.lua` or the owning script. It writes a per-location override to `groups/location_overrides.json` and, if the location is currently loaded, pushes the change live. Precedence is **UI override > the value the export/config passed > engine default** — so a legacy `CreateGymLocation` call that never sets `requireMembership`/`blip` keeps working exactly as before until you explicitly override it from the panel.
+
+#### Placement Guides
+
+While placing or moving a prop, the world view shows a heading arrow (in front of the prop, along its facing) and a green dot marking where the player will stand/sit for that equipment type. There is no wall/collision detection.
 
 #### Files
 
 * `groups/saved_groups.json` — persistent group storage
-* `groups/server_manager.lua` — server-side group logic
-* `groups/client_menu.lua` — in-game menu UI
-* `groups/client_despawn.lua` — despawn monitoring and entity targeting mode
+* `groups/location_overrides.json` — per-location `requireMembership`/`blip` overrides for config and script locations
+* `groups/server_manager.lua` — server-side group logic (CRUD, auto-persist, the `gym_builder:getLocations` panel callback)
+* `groups/server_overrides.lua` — the location override store
+* `web_creator/` — the Gym Builder NUI (HTML/CSS/JS)
 
 </details>
 
@@ -380,8 +442,8 @@ When enabled:
 * **All config gym locations** require membership by default
 * **Individual locations** can opt out: set `requireMembership = false` in the location config
 * **Exempt locations** listed in `membership.exemptLocations` never require membership (e.g., `'prison'`)
-* **Groups** do NOT require membership by default — toggle per-group in the management menu
-* **Custom equipment** (placed via `/gymcreator` save, not in a group) never requires membership
+* **Groups** do NOT require membership by default — toggle per-group in the Gym Builder panel
+* **Config/script locations** keep whatever `requireMembership` their export/config set — override per-location from the Gym Builder panel (see the Gym Builder section)
 
 #### Admin Commands
 
@@ -537,6 +599,13 @@ Available equipment types:
 | `gympullmachine2` | `vision_gympullmachine2` | Cable pull machine (variant) |
 | `gymrowpull` | `vision_gymrowpull` | Seated rowing machine |
 | `gymspeedbag` | `vision_gymspeedbag` | Free-standing speed bag |
+| `benchpress` | `prompt_m25_gymbench` | Bench press with rack (Mansion DLC animation) |
+| `pullupbar` | `prompt_m25_gympullup` | Pull-up bar (Mansion DLC animation) |
+| `pushups` | `prop_yoga_mat_02` | Push-up mat |
+| `situps` | `prop_yoga_mat_02` | Sit-up mat |
+| `yogamat` | `prop_yoga_mat_02` | Yoga mat (pose sequence) |
+
+`pushups`, `situps` and `yogamat` share one prop, so a single placed mat shows a target option for each exercise — you don't need a mat per exercise. Whatever the player picks is what everyone else sees.
 
 Safe to edit: labels, UI text, zone sizes.
 Don't edit unless you know what you're doing: model names, animation dicts/names.
@@ -561,7 +630,7 @@ Both keybinds are registered through ox_lib, so players can rebind them in **GTA
 
 #### Player Stats
 
-Training progresses **4 stats**, each with real gameplay effects while the resource is running:
+Training progresses **5 stats**, each with real gameplay effects while the resource is running:
 
 | Stat | Trained by | Effect |
 | --- | --- | --- |
@@ -569,13 +638,16 @@ Training progresses **4 stats**, each with real gameplay effects while the resou
 | Stamina | Cardio (bike, rowing) | Better endurance, faster stamina regen, faster swimming |
 | Combat | Punching (speed bags, vin chu) | More melee damage |
 | Strength | Pulls & bench | Less melee damage taken, faster health regen |
+| Lung capacity | Cardio (bike, rowing, treadmill) | Longer underwater breath (10 s → 50 s) |
 
 * Players check their progress with **`/gymstats`** (progress-bar menu, no permission needed)
-* Stats **decay over time** when not training (`stats.decrease` in `config_s.lua`; disable or tune per stat)
+* Stats **decay over time** when not training (`decay` per stat in `stats.definitions`, `decrease.multiplier` for all of them; set a stat's decay to `0` to freeze it)
 * Storage is framework-aware: QBCore / QBX / ESX metadata, or a JSON file on standalone servers
 * Gains per exercise are tuned in `stats.rates`, fatigue in the `exhaustion` block
+* **Add your own stat** — one entry in `stats.definitions` (`config_s.lua`), its `rates`, and two locale keys; decay, `/gymstats`, the training summary and the exports follow automatically
+* **Stat exports** for other scripts: `GetStats` / `UpdateStats` / `AddStats` / `RemoveStats` (server) and `GetStats` (client), rtx_gym-compatible names — contract in `exports.md`
 
-**Already running rtx\_gym or vms\_gym for stats?** Set `stats.provider` in `config_s.lua` and anim_core pushes every rep's gains into **their** stat database through their public exports (names mapped in `stats.providerMap`) — the provider keeps owning decay, booster items, and gameplay effects, and anim_core's own modifiers switch off so nothing double-applies. `/gymstats` then shows the provider's values (vms\_gym opens its own statistics menu). Notes: the vms\_gym mapping ships ready (their skill is literally spelled `strenght` — keep it); for rtx\_gym fill in the stat names from their documentation; provider booster items only multiply the provider's *own* training loop — use the `statMultiplier` function in `config/server.lua` to make them scale anim_core reps too.
+**Already running rtx\_gym, vms\_gym, OT\_skills, or devhub\_skillTree for stats?** Set `stats.provider` in `config_s.lua` and anim_core pushes every rep's gains into **their** stat/XP database through their public exports (names mapped in `stats.providerMap`) — the provider keeps owning decay, booster items, and gameplay effects, and anim_core's own modifiers switch off so nothing double-applies. `/gymstats` then shows the provider's values (vms\_gym, OT\_skills, and devhub\_skillTree open their own menu). Notes: the vms\_gym, OT\_skills, and devhub\_skillTree mappings ship ready (vms's skill is literally spelled `strenght` — keep it); for rtx\_gym fill in the stat names from their documentation; the XP-based providers (OT\_skills, devhub\_skillTree) push gains as XP (banked to whole numbers) with a per-provider `stats.xpScale` — devhub feeds a whole category (default `personal`) and wants a bigger scale since its levels need ~100 XP; provider booster items only multiply the provider's *own* training loop — use the `statMultiplier` function in `config/server.lua` to make them scale anim_core reps too.
 
 </details>
 
@@ -671,24 +743,15 @@ bench = {
 
 <br>
 
-Place gym equipment anywhere in the world using an in-game editor.
+`/gymcreator` opens the **Gym Builder** NUI panel — see the Gym Builder section above for full usage (creating/editing groups, the read-only config/script location list, and the `requireMembership`/`blip` overrides).
 
 **Requirements**
 
 Set via `gymCreator.restricted` in `config/config_s.lua` (default: `group.admin`). Set to `false` to allow everyone.
 
-**How it works**
+**Placement controls**
 
-1. Run `/gymcreator` — opens a menu
-2. Select equipment type to place
-3. Move/rotate a transparent preview
-4. Press **ENTER** to place, **BACKSPACE** to cancel
-5. Use **Manage Groups** to create persistent gym setups
-
-**Menu options:**
-
-* **Add new machine point** — place equipment (saved to clipboard for config paste)
-* **Manage Groups** — open the groups system (create/edit/load/unload gyms)
+Scroll to rotate the preview, **ENTER** to place, **BACKSPACE** to cancel. A heading arrow and a green ped-position dot guide placement; there is no wall/collision detection.
 
 </details>
 
@@ -720,7 +783,10 @@ exports['prompt_anim_core_2_new']:RemoveGymLocation(locationName)
 -- Inspect / live-update a dynamic location
 exports['prompt_anim_core_2_new']:GetDynamicLocation(locationName)
 exports['prompt_anim_core_2_new']:SetLocationMembership(locationName, true)
+exports['prompt_anim_core_2_new']:SetLocationBlip(locationName, false)
 ```
+
+Both `requireMembership` and `blip` are optional — legacy calls that omit them are unaffected and use the standard defaults. A per-location override set from the Gym Builder panel (`groups/location_overrides.json`) always wins over the values passed here; see the Gym Builder section.
 
 #### Equipment Management
 
@@ -744,6 +810,26 @@ exports['prompt_anim_core_2_new']:GetAvailableEquipmentTypes()
 **Deprecated (still work, print a warning):** `SpawnGymEquipment`, `DespawnGymEquipment`, `GetEquipmentTypes`, `IsEquipmentBusy`, `GetSpawnedEquipment`. Kept for backward compatibility — use the location-based API above for new integrations. Full reference in the resource's `exports.md`.
 {% endhint %}
 
+#### Stat Exports
+
+Read and write the player stats other scripts care about. Names and shapes match **rtx_gym**'s stat API, so a script written against it ports by swapping the resource name. Writes take the same path a rep takes: the 0–100 clamp, the client effect refresh, and the third-party provider redirect when `stats.provider` is set.
+
+```lua
+-- server
+local all  = exports['prompt_anim_core_2_new']:GetStats(source)                        -- { speed = 12.4, ..., lung_capacity = 3.0 }
+local lung = exports['prompt_anim_core_2_new']:GetStats(source, 'lung_capacity')       -- number, nil if not a registered stat
+
+exports['prompt_anim_core_2_new']:AddStats(source, 'lung_capacity', 5)                 -- amount must be > 0
+exports['prompt_anim_core_2_new']:RemoveStats(source, 'strength', 10)
+exports['prompt_anim_core_2_new']:UpdateStats(source, { strength = 2.5, stamina = -1 }) -- several at once
+
+-- client
+local mine = exports['prompt_anim_core_2_new']:GetStats()
+local myLung = exports['prompt_anim_core_2_new']:GetStats('lung_capacity')
+```
+
+Every write returns **what actually landed** after the clamp (a stat already at 100 reports `0` gained), `{}` when the player could not be found, or `nil` when a third-party provider owns progression — on that path the gains were pushed to the provider instead. Stat names are whatever you listed in `stats.definitions`, so a stat you added yourself works here too.
+
 #### Membership Exports
 
 ```lua
@@ -761,6 +847,10 @@ local animating, spotId = exports['prompt_anim_core_2_new']:IsPlayerAnimated()
 
 -- Release the local player from a machine (true = instant, e.g. on death)
 exports['prompt_anim_core_2_new']:StopPlayerAnim(true)
+
+-- The local player's gym stats, as last synced from the server
+local stats = exports['prompt_anim_core_2_new']:GetStats()
+local lung  = exports['prompt_anim_core_2_new']:GetStats('lung_capacity')
 ```
 
 #### Exercise Tracking Events (Server-Side)
