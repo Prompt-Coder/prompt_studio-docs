@@ -113,15 +113,15 @@ Ready-merged files for specific combinations live in our **San Andreas Compatibi
 
 | Set | Use when you run Burger Shot with… |
 | --- | --- |
-| `BurgerXRepair.zip` | Repair Shops (5 locations) |
-| `BurgerXGym.zip` | Gym (5 locations) |
+| `BShotXRepair.zip` | Repair Shops (5 locations) |
+| `BShotXGym.zip` | Gym (5 locations) |
 
 More combinations are added to the same release page as they're generated.
 
 Each zip mirrors `stream/`. Copy a location folder's contents over the same-named folder in `stream/`, replacing files, then restart:
 
 ```
-BurgerXGym/chumash/   ->   prompt_burger_shot/stream/chumash/
+BShotXGym/chumash/   ->   prompt_burger_shot/stream/chumash/
 ```
 
 {% hint style="warning" %}
