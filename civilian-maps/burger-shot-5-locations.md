@@ -91,42 +91,19 @@ Never delete `base(do not delete)` — it holds the models and textures every lo
 {% endtab %}
 
 {% tab title="Compatibility" %}
-Burger Shot edits vanilla-area files that a few other Prompt Studio maps also edit — **Repair Shops**, **Gym** and **Japanese Restaurant**. Running Burger Shot alongside one of them can cause conflicts at a location: missing ground, floating props, broken collision or z-fighting.
+Burger Shot edits vanilla-area files that several other Prompt Studio maps also edit — among them **Japanese Restaurant**, **Horny's Burgers**, **YouTool**, **SAHP**, **Rockford Dealership** and **Motorcycle Paradise**. Running Burger Shot alongside any of them can cause conflicts at a location: missing ground, floating props, broken collision or z-fighting.
 
 #### The fix — Vertex Hub
 
-Run [**Vertex Hub**](https://vertex-hub.com) on your server. It finds every file shared between your resources and merges them for the exact combination you run — two maps, three, all of them.
+Run [**Vertex Hub**](https://vertex-hub.com) on your server. It finds every file shared between your resources and merges them for the exact combination you run — two maps, three, all of them — and re-runs in seconds whenever you add or update one.
 
 {% hint style="success" %}
 **Merging our maps between each other with Vertex Hub is completely FREE of charge.** Any Prompt Studio map with any other Prompt Studio map — no cost, no limit.
-
-This is the method we support and the only one that covers every combination — do it first.
 {% endhint %}
+
+We don't ship pre-merged files: with this many possible combinations they'd go stale the moment any map updated. Vertex Hub always merges what you actually have installed.
 
 Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
-
-#### Shortcut — pre-merged sets
-
-Ready-merged files for specific combinations live in our **San Andreas Compatibility** repo on GitHub — one repo for every Prompt Studio map combination, kept outside the resources so sets can be updated without a map re-release. Burger Shot sets are under the **`burgershot-*`** releases:
-
-<a href="https://github.com/Prompt-Coder/san_andreas_compatibility/releases" class="button primary" data-icon="download">Download compatibility sets</a>
-
-| Set | Use when you run Burger Shot with… |
-| --- | --- |
-| `BShotXRepair.zip` | Repair Shops (5 locations) |
-| `BShotXGym.zip` | Gym (5 locations) |
-
-More combinations are added to the same release page as they're generated.
-
-Each zip mirrors `stream/`. Copy a location folder's contents over the same-named folder in `stream/`, replacing files, then restart:
-
-```
-BShotXGym/chumash/   ->   prompt_burger_shot/stream/chumash/
-```
-
-{% hint style="warning" %}
-Use **one** set — the one matching your exact combination. Don't stack two, and don't copy a set into `stream/` as a *new* folder; either loads files twice. Combination not listed? Run Vertex Hub, it's free.
-{% endhint %}
 {% endtab %}
 
 {% tab title="Doorlock SQL" %}
