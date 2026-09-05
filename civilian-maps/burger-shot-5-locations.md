@@ -107,9 +107,9 @@ Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
 
 #### Shortcut — pre-merged sets
 
-Ready-merged files for specific combinations are published on GitHub, outside the resource, so they can be updated without a map re-release:
+Ready-merged files for specific combinations live in our **San Andreas Compatibility** repo on GitHub — one repo for every Prompt Studio map combination, kept outside the resources so sets can be updated without a map re-release. Burger Shot sets are under the **`burgershot-*`** releases:
 
-<a href="https://github.com/Prompt-Coder/burger_shot_compatibility/releases/latest" class="button primary" data-icon="download">Download compatibility sets</a>
+<a href="https://github.com/Prompt-Coder/san_andreas_compatibility/releases" class="button primary" data-icon="download">Download compatibility sets</a>
 
 | Set | Use when you run Burger Shot with… |
 | --- | --- |
