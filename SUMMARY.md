@@ -92,6 +92,7 @@
 
 * [👺 4 Dragons Casino & Triad HQ](civilian-maps/4-dragons-casino-and-triad-hq.md)
 * [🏭 Bilgeco HQ & Warehouse](civilian-maps/bilgeco-hq-and-warehouse.md)
+* [🍔 Burger Shot (5 locations)](civilian-maps/burger-shot-5-locations.md)
 * [🍔 Horny's Burgers (4 locations)](civilian-maps/hornys-burgers-4-locations.md)
 * [🏋️ Gym (5 locations)](civilian-maps/gym-5-locations.md)
 * [🖤 Tattoo Rework (3 locations)](civilian-maps/tattoo-rework-3-locations.md)
