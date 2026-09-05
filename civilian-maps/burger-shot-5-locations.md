@@ -107,21 +107,25 @@ Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
 
 #### Shortcut — pre-merged sets
 
-Running Burger Shot with **exactly one** of these maps? The resource ships ready-merged files so you can skip the tool:
+Ready-merged files for specific combinations are published on GitHub, outside the resource, so they can be updated without a map re-release:
 
-| Set | Covers |
+<a href="https://github.com/Prompt-Coder/burger_shot_compatibility/releases/latest" class="button primary" data-icon="download">Download compatibility sets</a>
+
+| Set | Use when you run Burger Shot with… |
 | --- | --- |
-| `compatibility/BurgerXRepair/` | Burger Shot + Repair Shops (5 locations) |
-| `compatibility/BurgerXGym/` | Burger Shot + Gym (5 locations) |
+| `BurgerXRepair.zip` | Repair Shops (5 locations) |
+| `BurgerXGym.zip` | Gym (5 locations) |
 
-Inside a set the folders mirror `stream/`. Copy a location folder's contents over the same-named folder in `stream/`, replacing files, then restart:
+More combinations are added to the same release page as they're generated.
+
+Each zip mirrors `stream/`. Copy a location folder's contents over the same-named folder in `stream/`, replacing files, then restart:
 
 ```
-compatibility/BurgerXGym/chumash/   ->   stream/chumash/
+BurgerXGym/chumash/   ->   prompt_burger_shot/stream/chumash/
 ```
 
 {% hint style="warning" %}
-Don't stack two sets on top of each other, and don't copy anything into `stream/` as a *new* folder — either loads files twice. If you run more than one of these maps, use Vertex Hub.
+Use **one** set — the one matching your exact combination. Don't stack two, and don't copy a set into `stream/` as a *new* folder; either loads files twice. Combination not listed? Run Vertex Hub, it's free.
 {% endhint %}
 {% endtab %}
 
