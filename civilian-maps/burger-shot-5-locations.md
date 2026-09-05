@@ -90,6 +90,39 @@ Never delete `base(do not delete)` — it holds the models and textures every lo
 {% endhint %}
 {% endtab %}
 
+{% tab title="Compatibility" %}
+Burger Shot edits vanilla-area files that a few other Prompt Studio maps also edit — **Repair Shops**, **Gym** and **Japanese Restaurant**. Running Burger Shot alongside one of them can cause conflicts at a location: missing ground, floating props, broken collision or z-fighting.
+
+#### The fix — Vertex Hub
+
+Run [**Vertex Hub**](https://vertex-hub.com) on your server. It finds every file shared between your resources and merges them for the exact combination you run — two maps, three, all of them.
+
+{% hint style="success" %}
+Merging Prompt Studio maps in Vertex Hub is **free**. This is the method we support and the only one that covers every combination — do it first.
+{% endhint %}
+
+Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
+
+#### Shortcut — pre-merged sets
+
+Running Burger Shot with **exactly one** of these maps? The resource ships ready-merged files so you can skip the tool:
+
+| Set | Covers |
+| --- | --- |
+| `compatibility/BurgerXRepair/` | Burger Shot + Repair Shops (5 locations) |
+| `compatibility/BurgerXGym/` | Burger Shot + Gym (5 locations) |
+
+Inside a set the folders mirror `stream/`. Copy a location folder's contents over the same-named folder in `stream/`, replacing files, then restart:
+
+```
+compatibility/BurgerXGym/chumash/   ->   stream/chumash/
+```
+
+{% hint style="warning" %}
+Don't stack two sets on top of each other, and don't copy anything into `stream/` as a *new* folder — either loads files twice. If you run more than one of these maps, use Vertex Hub.
+{% endhint %}
+{% endtab %}
+
 {% tab title="Doorlock SQL" %}
 {% hint style="success" %}
 **🔒 Wanted: ox\_doorlock door data**
