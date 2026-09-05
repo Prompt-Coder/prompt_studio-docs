@@ -8,7 +8,7 @@
 
 {% embed url="https://youtu.be/sIeyUPhE6tE" %}
 
-Five reworked **Burger Shot** restaurants across San Andreas — every one of the vanilla locations rebuilt with a walk-in interior, a drive-thru, animated billboards and custom lighting. Install all five or keep only the ones you want.
+Five fully custom **Burger Shot** restaurants placed across San Andreas — each a new building with a walk-in interior, a drive-thru, animated billboards and custom lighting. Install all five or keep only the ones you want.
 
 {% hint style="info" %}
 Pure map resource — no framework, no scripts, no MapData required. Drop and play.
@@ -65,7 +65,7 @@ Restart and visit any of the five locations below. If the building and interior 
 | Chumash | -2971.62, 517.28, 17.55 |
 | Highway | 2579.89, 421.07, 110.89 |
 
-Each location replaces the vanilla Burger Shot at that spot, so nothing overlaps with the base game.
+These are new custom buildings, not edits of the vanilla Burger Shots — the surrounding terrain in each folder is adjusted to fit them.
 
 > Fully compatible with all other Prompt Studio maps — the locations sit on their own lots and don't touch any Sandy Shores, Paleto or Los Santos rework.
 {% endtab %}
