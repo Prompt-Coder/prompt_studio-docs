@@ -98,7 +98,9 @@ Burger Shot edits vanilla-area files that a few other Prompt Studio maps also ed
 Run [**Vertex Hub**](https://vertex-hub.com) on your server. It finds every file shared between your resources and merges them for the exact combination you run — two maps, three, all of them.
 
 {% hint style="success" %}
-Merging Prompt Studio maps in Vertex Hub is **free**. This is the method we support and the only one that covers every combination — do it first.
+**Merging our maps between each other with Vertex Hub is completely FREE of charge.** Any Prompt Studio map with any other Prompt Studio map — no cost, no limit.
+
+This is the method we support and the only one that covers every combination — do it first.
 {% endhint %}
 
 Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
