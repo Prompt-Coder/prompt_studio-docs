@@ -57,13 +57,13 @@ Restart and visit any of the five locations below. If the building and interior 
 
 {% tabs %}
 {% tab title="Locations" %}
-| Area | Coordinates |
+| Location (folder name) | Coordinates |
 | --- | --- |
 | Vinewood | -245.9, 277.07, 94.37 |
-| Vespucci Beach | -1721.55, -722.81, 11.48 |
-| Strawberry (Ghetto) | 130.88, -1537.95, 31.57 |
+| Beach | -1721.55, -722.81, 11.48 |
+| Ghetto | 130.88, -1537.95, 31.57 |
 | Chumash | -2971.62, 517.28, 17.55 |
-| Route 68 (Highway) | 2579.89, 421.07, 110.89 |
+| Highway | 2579.89, 421.07, 110.89 |
 
 Each location replaces the vanilla Burger Shot at that spot, so nothing overlaps with the base game.
 
