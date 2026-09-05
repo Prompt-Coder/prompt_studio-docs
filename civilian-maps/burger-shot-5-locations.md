@@ -95,7 +95,7 @@ Burger Shot edits vanilla-area files that several other Prompt Studio maps also 
 
 #### The fix — Vertex Hub
 
-Run [**Vertex Hub**](https://vertex-hub.com) on your server. It finds every file shared between your resources and merges them for the exact combination you run — two maps, three, all of them — and re-runs in seconds whenever you add or update one.
+Run the [**Vertex Hub Merger**](https://app.vertex-hub.com/merger) on your server. It finds every file shared between your resources and merges them for the exact combination you run — two maps, three, all of them — and re-runs in seconds whenever you add or update one.
 
 {% hint style="success" %}
 **Merging our maps between each other with Vertex Hub is completely FREE of charge.** Any Prompt Studio map with any other Prompt Studio map — no cost, no limit.
@@ -128,6 +128,7 @@ Interested? Reach out in the [Prompt Studio Discord](https://discord.gg/rKbHHdfZ
 2\. Script Props
 
 * `prompt_fastfood_register` — cashier register, targetable
+* `marlon_bs_counter` — service counter, targetable
 {% endtab %}
 
 {% tab title="Editing" %}

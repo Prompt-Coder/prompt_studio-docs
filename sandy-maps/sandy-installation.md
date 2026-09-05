@@ -137,6 +137,14 @@ Free drag-and-drop patch that strips interiors from the maps marked ✓ above, k
 → [**Exterior-Only Add-On**](exterior-only-add-on.md)
 {% endtab %}
 
+{% tab title="Compatibility" %}
+Some Prompt Studio maps edit the same vanilla-area files as each other. If two of ours conflict — missing ground, floating props, broken collision — run the [**Vertex Hub Merger**](https://app.vertex-hub.com/merger): it merges the shared files for exactly the combination you have installed.
+
+{% hint style="success" %}
+**Merging our maps between each other with Vertex Hub is completely FREE of charge** — any Prompt Studio map with any other, no cost, no limit.
+{% endhint %}
+{% endtab %}
+
 {% tab title="Doorlocks" %}
 Most Sandy maps ship community-submitted [`ox_doorlock`](https://github.com/overextended/ox_doorlock) SQL on their own page — import it and restart `ox_doorlock`.
 

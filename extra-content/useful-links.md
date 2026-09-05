@@ -11,6 +11,10 @@ icon: link
 
 **Vertex Hub** is designed for GTA5 RP server owners who need a hassle‑free solution to manage map compatibility. Our tool automatically analyzes and processes your server files, identifies duplicate assets across resources, and merges them so that your server runs smoothly without manual hassle.
 
+{% hint style="success" %}
+**Merging our maps between each other with Vertex Hub is completely FREE of charge.** Any Prompt Studio map with any other Prompt Studio map — no cost, no limit. If two of our maps edit the same area, run the [**Merger**](https://app.vertex-hub.com/merger) and it produces the merged files for exactly what you have installed.
+{% endhint %}
+
 More about it read on [**Vertex Hub Github**](https://github.com/Vertex-Hub/Desktop)
 
 ***
