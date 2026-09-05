@@ -100,6 +100,20 @@ Interested? Reach out in the [Prompt Studio Discord](https://discord.gg/rKbHHdfZ
 {% endhint %}
 {% endtab %}
 
+{% tab title="Custom Props" %}
+## Props that you may want to use in your script
+
+1\. Seating & Furniture
+
+* `marlon_bs_furn21` (seat)
+* `marlon_bs_furn22` (seat)
+* `marlon_bs_masalar` (table)
+
+2\. Script Props
+
+* `prompt_fastfood_register` — cashier register, targetable
+{% endtab %}
+
 {% tab title="Editing" %}
 The resource is left open for customisation:
 
