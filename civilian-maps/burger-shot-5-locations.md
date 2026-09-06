@@ -107,13 +107,51 @@ Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
 {% endtab %}
 
 {% tab title="Doorlock SQL" %}
-{% hint style="success" %}
-**🔒 Wanted: ox\_doorlock door data**
+All five locations are compatible with [`ox_doorlock`](https://github.com/overextended/ox_doorlock). Import the SQL below into your database and restart `ox_doorlock` — 6 doors per location, 30 in total.
 
-We don't have door definitions for Burger Shot yet. Submit the **`ox_doorlock` SQL** for the five locations and we'll reward you with a **10% discount coupon** for the store.
-
-Interested? Reach out in the [Prompt Studio Discord](https://discord.gg/rKbHHdfZFU).
+{% hint style="info" %}
+The SQL uses `DEFAULT` for the `id` column, so your database assigns free IDs automatically on import — it won't conflict with doorlocks you already have.
 {% endhint %}
+
+<details>
+
+<summary><strong>Burger Shot Doorlock SQL (30 doors)</strong></summary>
+
+```sql
+INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
+	(DEFAULT, 'Burger Shot - Vinewood E-1', '{"state":1,"heading":270,"model":-166679493,"maxDistance":2,"coords":{"x":-252.45054626464845,"y":292.35821533203127,"z":92.14047241210938},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Vinewood 1-1', '{"state":1,"heading":0,"model":406914727,"maxDistance":2,"coords":{"x":-251.83363342285157,"y":293.62030029296877,"z":92.16523742675781},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Vinewood 1-2', '{"state":1,"heading":270,"model":-302342834,"maxDistance":2,"coords":{"x":-250.21510314941407,"y":292.34539794921877,"z":92.15997314453125},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Vinewood 1-3', '{"state":1,"heading":270,"model":-302342834,"maxDistance":1,"coords":{"x":-243.38845825195313,"y":293.5516662597656,"z":92.16226959228516},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Vinewood 1-4', '{"state":1,"auto":true,"heading":90,"model":-1325780274,"maxDistance":1,"coords":{"x":-241.06695556640626,"y":293.1061096191406,"z":91.9663314819336},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Vinewood 1-5', '{"state":1,"heading":0,"model":315614968,"maxDistance":1,"coords":{"x":-242.4630126953125,"y":294.052001953125,"z":92.15399932861328},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Beach E-1', '{"state":1,"heading":50,"model":-166679493,"maxDistance":2,"coords":{"x":-1722.6900634765626,"y":-732.3626098632813,"z":10.37658405303955},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Beach 1-1', '{"state":1,"heading":140,"model":406914727,"maxDistance":2,"coords":{"x":-1723.973876953125,"y":-732.932861328125,"z":10.40134906768798},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Beach 1-2', '{"state":1,"heading":50,"model":-302342834,"maxDistance":2,"coords":{"x":-1724.394287109375,"y":-730.9158935546875,"z":10.39608573913574},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Beach 1-3', '{"state":1,"heading":50,"model":-302342834,"maxDistance":1,"coords":{"x":-1730.399169921875,"y":-727.4518432617188,"z":10.39838123321533},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Beach 1-4', '{"state":1,"auto":true,"heading":230,"model":-1325780274,"maxDistance":1,"coords":{"x":-1731.8912353515626,"y":-725.6183471679688,"z":10.20244312286377},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Beach 1-5', '{"state":1,"heading":140,"model":315614968,"maxDistance":1,"coords":{"x":-1731.4296875,"y":-727.240234375,"z":10.39011192321777},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Ghetto E-1', '{"state":1,"heading":230,"model":-166679493,"maxDistance":2,"coords":{"x":135.6190948486328,"y":-1523.7344970703126,"z":29.37143325805664},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Ghetto 1-1', '{"state":1,"heading":320,"model":406914727,"maxDistance":2,"coords":{"x":136.90292358398438,"y":-1523.1640625,"z":29.39619827270507},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Ghetto 1-2', '{"state":1,"heading":230,"model":-302342834,"maxDistance":2,"coords":{"x":137.32330322265626,"y":-1525.18115234375,"z":29.39093399047851},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Ghetto 1-3', '{"state":1,"heading":230,"model":-302342834,"maxDistance":1,"coords":{"x":143.32818603515626,"y":-1528.6451416015626,"z":29.39323043823242},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Ghetto 1-4', '{"state":1,"auto":true,"heading":50,"model":-1325780274,"maxDistance":1,"coords":{"x":144.82015991210938,"y":-1530.478759765625,"z":29.19729232788086},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Ghetto 1-5', '{"state":1,"heading":320,"model":315614968,"maxDistance":1,"coords":{"x":144.3587188720703,"y":-1528.856689453125,"z":29.38496208190918},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Chumash E-1', '{"state":1,"heading":180,"model":-166679493,"maxDistance":2,"coords":{"x":-2958.4482421875,"y":523.0703125,"z":16.28047180175781},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Chumash 1-1', '{"state":1,"heading":270,"model":406914727,"maxDistance":2,"coords":{"x":-2957.184814453125,"y":522.456298828125,"z":16.30523681640625},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Chumash 1-2', '{"state":1,"heading":180,"model":-302342834,"maxDistance":2,"coords":{"x":-2958.4560546875,"y":520.8348388671875,"z":16.29997253417968},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Chumash 1-3', '{"state":1,"heading":180,"model":-302342834,"maxDistance":1,"coords":{"x":-2957.234130859375,"y":514.0109252929688,"z":16.30226898193359},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Chumash 1-4', '{"state":1,"auto":true,"heading":0,"model":-1325780274,"maxDistance":1,"coords":{"x":-2957.674560546875,"y":511.6884460449219,"z":16.10633087158203},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Chumash 1-5', '{"state":1,"heading":270,"model":315614968,"maxDistance":1,"coords":{"x":-2956.73193359375,"y":513.086669921875,"z":16.29400062561035},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Highway E-1', '{"state":1,"heading":270,"model":-166679493,"maxDistance":2,"coords":{"x":2574.303466796875,"y":434.5932312011719,"z":108.71746826171875},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Highway 1-1', '{"state":1,"heading":0,"model":406914727,"maxDistance":2,"coords":{"x":2574.92041015625,"y":435.8553161621094,"z":108.74223327636719},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Highway 1-2', '{"state":1,"heading":270,"model":-302342834,"maxDistance":2,"coords":{"x":2576.538818359375,"y":434.5804138183594,"z":108.73696899414063},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Highway 1-3', '{"state":1,"heading":270,"model":-302342834,"maxDistance":1,"coords":{"x":2583.365478515625,"y":435.78668212890627,"z":108.73926544189453},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Highway 1-4', '{"state":1,"auto":true,"heading":90,"model":-1325780274,"maxDistance":1,"coords":{"x":2585.68701171875,"y":435.34112548828127,"z":108.54332733154297},"doors":false}'),
+	(DEFAULT, 'Burger Shot - Highway 1-5', '{"state":1,"heading":0,"model":315614968,"maxDistance":1,"coords":{"x":2584.291015625,"y":436.2870178222656,"z":108.73099517822266},"doors":false}');
+```
+
+</details>
 {% endtab %}
 
 {% tab title="Custom Props" %}
