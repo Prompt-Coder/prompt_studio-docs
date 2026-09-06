@@ -106,6 +106,141 @@ We don't ship pre-merged files: with this many possible combinations they'd go s
 Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
 {% endtab %}
 
+{% tab title="Utility Kitchen" %}
+Burger Shot is **ready to go** with [**MXC Utility Kitchen**](https://forum.cfx.re/t/utility-kitchen/5292505) — a full kitchen layout for all five locations ships below, so you paste one config entry and every restaurant has working fryers, griddles and prep tables.
+
+{% hint style="warning" %}
+Requires **Burger Shot v1.0.3 or newer**. Earlier versions are missing the hideable kitchen prop the config relies on — update the map first.
+{% endhint %}
+
+{% stepper %}
+{% step %}
+#### Step 1 — Open the kitchen config
+
+In your `utility_kitchen` resource, open `configs/kitchens.lua` and find the `Config.Kitchens` table.
+{% endstep %}
+
+{% step %}
+#### Step 2 — Paste the entry below
+
+Add the `["prompt-burgershot"]` entry inside `Config.Kitchens`, alongside any kitchens you already have.
+{% endstep %}
+
+{% step %}
+#### Step 3 — Set the job
+
+At the top of the entry, uncomment the `jobs` line and put the job name your server uses for the restaurant. Leave it empty to let anyone use the kitchen.
+{% endstep %}
+
+{% step %}
+#### Step 4 — Restart
+
+Restart `utility_kitchen`. Every location gets its kitchen — fryers, griddle, drop tables, patty warmers and bins — in place.
+{% endstep %}
+{% endstepper %}
+
+<details>
+
+<summary><strong>Burger Shot kitchen config (all 5 locations)</strong></summary>
+
+```lua
+-- Prompt Studio Burger Shot x MXC utility_kitchen
+-- Paste into Config.Kitchens (configs/kitchens.lua). Requires prompt_burger_shot v1.0.3+.
+-- Covers all 5 locations: vinewood, beach, ghetto, chumash, highway
+
+    ["prompt-burgershot"] = {
+        jobs = {
+            -- ["burgershot"] = 0, -- [job_name] = job_grade
+            --
+            -- OR
+            --
+            -- "burgershot", -- job_name
+        },
+        required = {
+            resource = "prompt_burger_shot"
+        },
+        exec = function()
+            -- VINEWOOD  (MLO -245.167, 289.809, 94.985  yaw 0.00)
+            CreateEntityHider(vec3(-245.167, 289.809, 94.985), vec3(0, 0, 0), { model = "marlon_bs_mutfakdet_add_tar" })  -- entity pivot = MLO origin
+            CreateDropTable(vec3(-247.022, 294.979, 91.430), vec3(0.000, 0.000, -92.162), {tableHidden = false})
+            CreateBin(vec3(-246.081, 294.797, 91.064), vec3(0.000, 0.000, -87.548), {tableHidden = false})
+            CreateBurgerTable(vec3(-245.328, 294.885, 91.429), vec3(0.000, 0.000, -91.636), {tableHidden = false})
+            CreateFryer(vec3(-244.147, 296.979, 91.864), vec3(0.000, 0.000, -90.085), {tableHidden = false})
+            CreateFryer(vec3(-243.279, 296.979, 91.867), vec3(0.000, 0.000, -90.070), {tableHidden = false})
+            CreateGriddle(vec3(-242.019, 296.784, 91.666), vec3(0.000, 0.000, 90.096), {tableHidden = false})
+            CreateSpatula(vec3(-242.785, 296.857, 92.065), vec3(0.000, 0.000, 177.144), {tableHidden = false})
+            CreateSpatula(vec3(-246.416, 297.053, 92.151), vec3(36.521, -1.432, 99.850), {tableHidden = false})
+            CreateMeatContainer(vec3(-242.860, 294.569, 92.042), vec3(0.000, 0.000, -89.260), {tableHidden = false})
+            CreateMeatContainer(vec3(-243.183, 294.575, 92.046), vec3(0.000, 0.000, -89.876), {tableHidden = false})
+            CreatePattyWarmer(vec3(-243.930, 294.579, 92.082), vec3(0.000, 0.000, -88.963), {tableHidden = false})
+
+            -- BEACH  (MLO -1726.631, -725.728, 13.221  yaw 140.00)
+            CreateEntityHider(vec3(-1726.631, -725.728, 13.221), vec3(0, 0, 0), { model = "marlon_bs_mutfakdet_add_tar" })  -- entity pivot = MLO origin
+            CreateDropTable(vec3(-1728.533, -730.881, 9.666), vec3(0.000, 0.000, 47.838), {tableHidden = false})
+            CreateBin(vec3(-1729.137, -730.136, 9.300), vec3(0.000, 0.000, 52.452), {tableHidden = false})
+            CreateBurgerTable(vec3(-1729.770, -729.720, 9.665), vec3(0.000, 0.000, 48.364), {tableHidden = false})
+            CreateFryer(vec3(-1732.021, -730.565, 10.100), vec3(0.000, 0.000, 49.915), {tableHidden = false})
+            CreateFryer(vec3(-1732.686, -730.007, 10.103), vec3(0.000, 0.000, 49.930), {tableHidden = false})
+            CreateGriddle(vec3(-1733.526, -729.047, 9.902), vec3(0.000, 0.000, -129.904), {tableHidden = false})
+            CreateSpatula(vec3(-1732.986, -729.596, 10.301), vec3(0.000, 0.000, -42.856), {tableHidden = false})
+            CreateSpatula(vec3(-1730.331, -732.080, 10.387), vec3(36.521, -1.432, -120.150), {tableHidden = false})
+            CreateMeatContainer(vec3(-1731.458, -727.891, 10.278), vec3(0.000, 0.000, 50.740), {tableHidden = false})
+            CreateMeatContainer(vec3(-1731.214, -728.104, 10.282), vec3(0.000, 0.000, 50.124), {tableHidden = false})
+            CreatePattyWarmer(vec3(-1730.645, -728.587, 10.318), vec3(0.000, 0.000, 51.037), {tableHidden = false})
+
+            -- GHETTO  (MLO 139.560, -1530.369, 32.216  yaw -40.00)
+            CreateEntityHider(vec3(139.560, -1530.369, 32.216), vec3(0, 0, 0), { model = "marlon_bs_mutfakdet_add_tar" })  -- entity pivot = MLO origin
+            CreateDropTable(vec3(141.462, -1525.216, 28.661), vec3(0.000, 0.000, -132.162), {tableHidden = false})
+            CreateBin(vec3(142.066, -1525.961, 28.295), vec3(0.000, 0.000, -127.548), {tableHidden = false})
+            CreateBurgerTable(vec3(142.699, -1526.377, 28.660), vec3(0.000, 0.000, -131.636), {tableHidden = false})
+            CreateFryer(vec3(144.950, -1525.532, 29.095), vec3(0.000, 0.000, -130.085), {tableHidden = false})
+            CreateFryer(vec3(145.615, -1526.090, 29.098), vec3(0.000, 0.000, -130.070), {tableHidden = false})
+            CreateGriddle(vec3(146.455, -1527.050, 28.897), vec3(0.000, 0.000, 50.096), {tableHidden = false})
+            CreateSpatula(vec3(145.915, -1526.501, 29.296), vec3(0.000, 0.000, 137.144), {tableHidden = false})
+            CreateSpatula(vec3(143.260, -1524.017, 29.382), vec3(36.521, -1.432, 59.850), {tableHidden = false})
+            CreateMeatContainer(vec3(144.387, -1528.206, 29.273), vec3(0.000, 0.000, -129.260), {tableHidden = false})
+            CreateMeatContainer(vec3(144.143, -1527.993, 29.277), vec3(0.000, 0.000, -129.876), {tableHidden = false})
+            CreatePattyWarmer(vec3(143.574, -1527.510, 29.313), vec3(0.000, 0.000, -128.963), {tableHidden = false})
+
+            -- CHUMASH  (MLO -2960.981, 515.781, 19.125  yaw -89.87)
+            CreateEntityHider(vec3(-2960.981, 515.781, 19.125), vec3(0, 0, 0), { model = "marlon_bs_mutfakdet_add_tar" })  -- entity pivot = MLO origin
+            CreateDropTable(vec3(-2955.815, 517.648, 15.570), vec3(0.000, 0.000, 177.968), {tableHidden = false})
+            CreateBin(vec3(-2955.996, 516.706, 15.204), vec3(0.000, 0.000, -177.418), {tableHidden = false})
+            CreateBurgerTable(vec3(-2955.906, 515.954, 15.569), vec3(0.000, 0.000, 178.494), {tableHidden = false})
+            CreateFryer(vec3(-2953.809, 514.777, 16.004), vec3(0.000, 0.000, -179.955), {tableHidden = false})
+            CreateFryer(vec3(-2953.807, 513.909, 16.007), vec3(0.000, 0.000, -179.940), {tableHidden = false})
+            CreateGriddle(vec3(-2953.999, 512.648, 15.806), vec3(0.000, 0.000, 0.226), {tableHidden = false})
+            CreateSpatula(vec3(-2953.928, 513.415, 16.205), vec3(0.000, 0.000, 87.274), {tableHidden = false})
+            CreateSpatula(vec3(-2953.740, 517.046, 16.291), vec3(36.521, -1.432, 9.980), {tableHidden = false})
+            CreateMeatContainer(vec3(-2956.216, 513.484, 16.182), vec3(0.000, 0.000, -179.130), {tableHidden = false})
+            CreateMeatContainer(vec3(-2956.210, 513.808, 16.186), vec3(0.000, 0.000, -179.746), {tableHidden = false})
+            CreatePattyWarmer(vec3(-2956.208, 514.555, 16.222), vec3(0.000, 0.000, -178.833), {tableHidden = false})
+
+            -- HIGHWAY  (MLO 2581.587, 432.044, 111.562  yaw 0.00)
+            CreateEntityHider(vec3(2581.587, 432.044, 111.562), vec3(0, 0, 0), { model = "marlon_bs_mutfakdet_add_tar" })  -- entity pivot = MLO origin
+            CreateDropTable(vec3(2579.732, 437.214, 108.007), vec3(0.000, 0.000, -92.162), {tableHidden = false})
+            CreateBin(vec3(2580.673, 437.032, 107.641), vec3(0.000, 0.000, -87.548), {tableHidden = false})
+            CreateBurgerTable(vec3(2581.426, 437.120, 108.006), vec3(0.000, 0.000, -91.636), {tableHidden = false})
+            CreateFryer(vec3(2582.607, 439.214, 108.441), vec3(0.000, 0.000, -90.085), {tableHidden = false})
+            CreateFryer(vec3(2583.475, 439.214, 108.444), vec3(0.000, 0.000, -90.070), {tableHidden = false})
+            CreateGriddle(vec3(2584.735, 439.019, 108.243), vec3(0.000, 0.000, 90.096), {tableHidden = false})
+            CreateSpatula(vec3(2583.969, 439.092, 108.642), vec3(0.000, 0.000, 177.144), {tableHidden = false})
+            CreateSpatula(vec3(2580.338, 439.288, 108.728), vec3(36.521, -1.432, 99.850), {tableHidden = false})
+            CreateMeatContainer(vec3(2583.894, 436.804, 108.619), vec3(0.000, 0.000, -89.260), {tableHidden = false})
+            CreateMeatContainer(vec3(2583.571, 436.810, 108.623), vec3(0.000, 0.000, -89.876), {tableHidden = false})
+            CreatePattyWarmer(vec3(2582.824, 436.814, 108.659), vec3(0.000, 0.000, -88.963), {tableHidden = false})
+
+        end
+    },
+```
+
+</details>
+
+{% hint style="info" %}
+Tested on **QBCore + ox\_inventory** with `utility_kitchen` **1.0.13**. Other frameworks the script supports should work the same — the entry only places props and uses the script's own functions.
+{% endhint %}
+{% endtab %}
+
 {% tab title="Doorlock SQL" %}
 All five locations are compatible with [`ox_doorlock`](https://github.com/overextended/ox_doorlock). Import the SQL below into your database and restart `ox_doorlock` — 6 doors per location, 30 in total.
 
