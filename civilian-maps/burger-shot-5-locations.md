@@ -110,7 +110,7 @@ Need help with the tool? [Vertex Hub Discord](https://discord.gg/8pmQM5q7yP).
 Burger Shot is **ready to go** with [**MXC Utility Kitchen**](https://forum.cfx.re/t/utility-kitchen/5292505) — a full kitchen layout for all five locations ships below, so you paste one config entry and every restaurant has working fryers, griddles and prep tables.
 
 {% hint style="warning" %}
-Requires **Burger Shot v1.0.3 or newer**. Earlier versions are missing the hideable kitchen prop the config relies on — update the map first.
+Requires **Burger Shot v1.0.2 or newer**. Earlier versions are missing the hideable kitchen prop the config relies on — update the map first.
 {% endhint %}
 
 {% stepper %}
@@ -145,7 +145,7 @@ Restart `utility_kitchen`. Every location gets its kitchen — fryers, griddle, 
 
 ```lua
 -- Prompt Studio Burger Shot x MXC utility_kitchen
--- Paste into Config.Kitchens (configs/kitchens.lua). Requires prompt_burger_shot v1.0.3+.
+-- Paste into Config.Kitchens (configs/kitchens.lua). Requires prompt_burger_shot v1.0.2+.
 -- Covers all 5 locations: vinewood, beach, ghetto, chumash, highway
 
     ["prompt-burgershot"] = {
