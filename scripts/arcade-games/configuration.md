@@ -173,6 +173,58 @@ falls back to the native ticker — notifications never silently vanish.
 
 ***
 
+### Pay-per-play
+
+_Since v0.6.0._ Charge players to start a game. Off by default — flip `payment.enabled` and every
+cabinet costs `payment.price` per play:
+
+{% code title="config.lua" %}
+```lua
+payment = {
+  enabled = true,
+  price   = 20,
+  account = 'cash',     -- QBCore: 'cash' | 'bank'    ESX: 'cash' (= money) | 'bank'
+  custom  = nil,        -- see below
+},
+```
+{% endcode %}
+
+* **One cabinet, different price** — add `price = 50` to that cabinet's entry in `Arc.Cabinets`.
+  It overrides `payment.price` for that game only.
+* **2-player games** — each player pays their own fee when the pair starts. If one side can't pay,
+  the other keeps waiting (or plays solo if they were already charged).
+* **Love Tester** — both players are charged when the test pairs; a side that can't pay is stepped off.
+* **Standalone** (no QBCore / ESX and no `custom` hook) — play stays free.
+
+The price shows on the cabinet's `[E] PLAY` line and on the Text UI prompt. A player who can't
+afford it gets a `pay_denied` notification (translatable in `locales/`) and stays at the menu.
+
+**Take the money your way** — set `payment.custom` to a server-side function that charges with any
+framework, currency or item. Return `true` if paid:
+
+{% code title="config.lua" %}
+```lua
+payment = {
+  enabled = true,
+  price   = 20,
+  -- called on the SERVER: custom(src, amount, gameId, account)
+  custom = function(src, amount, gameId, account)
+    return exports.ox_inventory:RemoveItem(src, 'money', amount)     -- ox_inventory cash
+    -- return exports.qbx_core:RemoveMoney(src, 'cash', amount, 'arcade')  -- Qbox
+    -- return exports['my_tokens']:Spend(src, amount)                     -- arcade tokens item
+  end,
+},
+```
+{% endcode %}
+
+{% hint style="info" %}
+Money is only ever taken **on the server**, and a start that wasn't paid gets no anti-cheat session
+— so an unpaid game can never post a score or trigger a reward hook. Every successful charge fires
+the `prompt_arcade_games:onPaid` server event (see [For Developers](developers.md#payment)).
+{% endhint %}
+
+***
+
 ### Per-cabinet entries — `Arc.Cabinets`
 
 Each game is one entry. The fields you'll actually touch:
@@ -185,6 +237,7 @@ Each game is one entry. The fields you'll actually touch:
 | `controls` | Logical key → FiveM control IDs (rebind here) |
 | `target` | `{ label = 'Play …', icon = 'fa-solid fa-…' }` — the interact prompt |
 | `score` | `{ track = true, kind = 'high' \| 'wins', max = … }` — leaderboard behaviour |
+| `price` | _(optional)_ per-cabinet play fee — overrides `payment.price` when pay-per-play is on |
 
 You normally **don't** edit `models`, `glass`, `dui`, `ped`, `cam`, `sync` or `occupancy` — those
 bind the game to its cabinet, screen and animations.

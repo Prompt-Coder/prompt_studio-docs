@@ -33,6 +33,11 @@ end)
 AddEventHandler('prompt_arcade_games:onLoveResult', function(src, rating)
     -- rating is a label, e.g. "SIZZLIN'"
 end)
+
+-- pay-per-play — a play fee was taken (see Payment below)
+AddEventHandler('prompt_arcade_games:onPaid', function(src, amount, gameId, account)
+    -- e.g. route arcade income to the business that owns the machines
+end)
 ```
 {% endtab %}
 {% tab title="Exports" %}
@@ -83,6 +88,48 @@ if top then print(('Space high score: %s — %d'):format(top.name, top.score)) e
 
 Tracked games: `space`, `wizard`, `badlands`, `rockets`, `truckin`, `street` (high score) and
 `claw` (most figurines won). `love` and `fortune` are outcome-based and aren't ranked.
+
+**Custom names on the board** — _since v0.6.0_ the board stores the QBCore / ESX character name by
+default. To use your own (a statebag, a nickname system, a different format), set
+`leaderboard.resolveName` in `config.lua`. Return a non-empty string to use it; return `nil` (or
+error) and the default name is used:
+
+{% code title="config.lua" %}
+```lua
+leaderboard = {
+  enabled = true,
+  keep    = 25,
+  resolveName = function(src)
+    return Player(src).state.charName        -- your statebag key + your format
+  end,
+},
+```
+{% endcode %}
+
+***
+
+### Payment
+
+_Since v0.6.0._ With `payment.enabled = true` (see [Configuration](configuration.md#pay-per-play))
+the server charges the play fee **before** a game starts. Two integration points:
+
+* **`payment.custom(src, amount, gameId, account)`** — server-side; replace the built-in QBCore /
+  ESX charge with your own (any framework, currency or item). Return `true` if paid, anything else
+  to deny. If it errors, the play is denied and the error is logged — money is never taken twice.
+* **`prompt_arcade_games:onPaid`** — server event `(src, amount, gameId, account)` fired after every
+  successful charge. Use it to route income to a business account, log it, or grant tokens.
+
+```lua
+-- server-side, in your own resource
+AddEventHandler('prompt_arcade_games:onPaid', function(src, amount, gameId, account)
+    exports['qb-management']:AddMoney('arcade', amount)
+end)
+```
+
+{% hint style="info" %}
+A start that wasn't paid gets no session — so an unpaid game can't reach the leaderboard or any
+reward hook. On a standalone server with no `custom` hook, play is free.
+{% endhint %}
 
 ***
 
