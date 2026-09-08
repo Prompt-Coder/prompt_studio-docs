@@ -37,6 +37,26 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 
 <details>
 
+<summary><strong>What's new in 1.8.0</strong></summary>
+
+<br>
+
+**Supplements** — any item on your server can grant a timed gym buff, and a vending machine can sell them. anim_core ships **no items**: `supplements.items` in `config_s.lua` maps names your inventory already has (QBCore's candy and coffee, ox_inventory's water and sprunk, MXC's sodas and chocolates) to `gains`, `decay` and `exhaustion` effects.
+
+* **The shop.** Place a *Supplement Shop* from the Gym Builder, and every snack, soda, water and coffee machine already in the map opens the same shop — nothing to place. Its menu is a hologram beside the machine: arrows or the mouse wheel to browse, E or Enter to buy, Escape to cancel.
+* **Per-machine menus.** `supplements.shop.byModel` gives a prop model its own rows, so the coffee machine sells five coffees and the Sprunk machine sells cans. Several rows can share one item with their own label, price and hand prop.
+* **The purchase plays out.** The player steps up to the machine, presses the buttons, takes the drink out and drinks or eats it, with the machine's own sound. The coffee machine has its own authored animation, machine and all.
+* **Buff HUD.** Active buffs show as ringed icons in a screen corner, draining as they run out. `buffHud` in `config_c.lua` moves it or turns it off.
+* **Hooks.** New features `shop` (`canOpen`, `canBuy`, `onBuy`) and `supplements` (`canActivate`, `onActivate`, `onExpire`) — block a purchase or a buff, or react to one, without touching core files.
+* **Already running a vending script?** MXC's vending pack and anything like it keep their machines: anim_core stands down from the map props automatically (`shop.worldSkipIf`) and its buffs still fire when a player uses one of their items.
+* **Upgrade note.** This version adds new files, new stream assets and a new sound bank: do a **full server restart**, not a plain `restart`, and rejoin once so the client picks up the new UI page.
+
+</details>
+
+***
+
+<details>
+
 <summary><strong>What's new in 1.7.0</strong></summary>
 
 <br>
@@ -686,6 +706,70 @@ return {
     },
 }
 ```
+
+</details>
+
+***
+
+<details>
+
+<summary><strong>Supplements — Item Buffs & The Shop</strong></summary>
+
+<br>
+
+#### The mapping
+
+`supplements.items` in `config_s.lua` is a list of **item names your server already has**. anim_core ships no items and adds none.
+
+```lua
+supplements = {
+    enable    = 'auto',   -- 'auto' turns them OFF under a third-party stats provider
+    inventory = 'auto',   -- how item USE is watched: ox_inventory, qb, or none
+    items = {
+        twerks_candy = { duration = 5,  cooldown = 5,  gains = { stamina = 1.10 }, use = 'eat' },
+        coffee       = { duration = 10, cooldown = 10, gains = { speed = 1.10 },   use = 'coffee' },
+        water_bottle = { exhaustion = 'clear', use = 'drink' },
+    },
+}
+```
+
+* `gains` multiplies what a rep gives, `decay` slows a stat's decay (`0` freezes it), `exhaustion = 'clear'` wipes fatigue
+* `use` picks the eat / drink / coffee animation for a purchase consumed at the machine
+* Overlapping buffs take the **highest** multiplier per stat — they never stack
+* Buffs persist and expire on real time (QB/QBX/ESX metadata, or a JSON file on standalone), so they survive a restart
+* The boot log lists which mapped names your inventory actually knows
+
+#### The shop
+
+Place a **Supplement Shop** from the Gym Builder, or let the machines already in the map do it: every model in `shop.worldModels` (snack, soda, water, coffee and the Tuners drinks machine) opens the same shop with nothing to place.
+
+```lua
+shop = {
+    moneyType  = 'bank',    -- 'bank' | 'cash'
+    instantUse = false,     -- true: always consumed at the machine, never added to the bag
+    items = {               -- what every machine sells...
+        { item = 'twerks_candy', label = 'Meteorite', price = 50, prop = 'prop_choc_meto' },
+    },
+    byModel = {             -- ...unless its prop model has its own list
+        prop_vend_coffe_01 = {
+            { item = 'coffee', label = 'Espresso', price = 35 },
+            { item = 'coffee', label = 'Latte',    price = 45 },
+        },
+    },
+}
+```
+
+* A row's `label` is what the machine shows and `prop` is what the player holds, so several rows can be different "tastes" of one item
+* Bought items go to the bag and buff when used; where the inventory cannot take them (no inventory, bag full, unknown name, or `instantUse`) they are consumed on the spot and the buff starts immediately
+* Menu placement, the camera and the purchase animation live in `config_c.lua` under `props.supplement_shop.shop`, with per-model overrides in `byModel`
+
+#### Tuning it in game
+
+Stand next to a machine and run **`/gymshoptune`** (same permission as the Gym Builder). A keyboard menu lets you nudge, live: where the hologram sits, where the player stands for the purchase, when the drink lands in their hand and in which hand, and both cameras. **Print** writes the finished config line to the console and chat, ready to paste.
+
+#### Running another vending script?
+
+MXC's vending pack (and anything like it) owns the map's machines by prop model. anim_core steps aside automatically — `shop.worldSkipIf` lists the resource names to defer to — so there is never a second option on the same prop. Placed Supplement Shops keep working, and because their sodas, chocolates and coffee are already in the mapping, **their** machines still start anim_core buffs.
 
 </details>
 
