@@ -739,6 +739,17 @@ supplements = {
 * Buffs persist and expire on real time (QB/QBX/ESX metadata, or a JSON file on standalone), so they survive a restart
 * The boot log lists which mapped names your inventory actually knows
 
+#### Which inventories
+
+`supplements.inventory` decides how a player *using* an item is noticed. `auto` picks the right one.
+
+| Inventory | What happens |
+| --- | --- |
+| **ox_inventory** | Every mapped name is watched through its `usedItem` event. Nothing to add to your items, and the shop can put purchases in the bag. |
+| **qb-inventory / qb-core** | qb-core allows **one handler per item**, so anim_core claims only names no other script owns and logs the ones it skips — most default consumables belong to `qb-smallresources`. Those still work: sell them in the shop (consumed on the spot), or call the `ActivateSupplement` export from your own item handler. |
+| **ESX or anything else** | Give and money go through the seams in `config/server.lua` (`itemExists`, `giveItem`, `chargeMoney`) — fill those in and the shop works with any inventory. |
+| **None / standalone** | Nothing to watch, so the shop is the only source: every purchase is consumed at the machine and the buff starts immediately. |
+
 #### The shop
 
 Place a **Supplement Shop** from the Gym Builder, or let the machines already in the map do it: every model in `shop.worldModels` (snack, soda, water, coffee and the Tuners drinks machine) opens the same shop with nothing to place.
