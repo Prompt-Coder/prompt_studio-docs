@@ -37,6 +37,20 @@ Prompt Anim Core 2.0 is a standalone gym equipment system for FiveM that provide
 
 <details>
 
+<summary><strong>What's new in 1.8.1</strong></summary>
+
+<br>
+
+* **Hologram menu no longer comes up empty.** After a while of play the game unloads the panel model, and the menu's texture link went with it, so the next open showed a blank panel. The link is now renewed on every open.
+* **Shop switch.** `supplements.shop.enable = false` in `config_s.lua` turns the whole shop off: placed shops stop offering a menu, map vending machines are left alone, and the server refuses any purchase. Item buffs keep working.
+* **Upgrade note.** Lua only: replace the files and `restart prompt_anim_core_2_new`. No full restart, no rejoin.
+
+</details>
+
+***
+
+<details>
+
 <summary><strong>What's new in 1.8.0</strong></summary>
 
 <br>
@@ -756,6 +770,7 @@ Place a **Supplement Shop** from the Gym Builder, or let the machines already in
 
 ```lua
 shop = {
+    enable     = true,      -- false: no shop at all, map machines left alone
     moneyType  = 'bank',    -- 'bank' | 'cash'
     instantUse = false,     -- true: always consumed at the machine, never added to the bag
     items = {               -- what every machine sells...
@@ -773,6 +788,7 @@ shop = {
 * A row's `label` is what the machine shows and `prop` is what the player holds, so several rows can be different "tastes" of one item
 * Bought items go to the bag and buff when used; where the inventory cannot take them (no inventory, bag full, unknown name, or `instantUse`) they are consumed on the spot and the buff starts immediately
 * Menu placement, the camera and the purchase animation live in `config_c.lua` under `props.supplement_shop.shop`, with per-model overrides in `byModel`
+* `shop.enable = false` removes the shop everywhere — placed shops stop offering a menu, map machines are left alone, the server refuses purchases — while item buffs keep working. To keep placed shops but leave the map's machines alone, empty `shop.worldModels` in `config_c.lua` instead
 
 #### Tuning it in game
 
