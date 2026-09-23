@@ -84,7 +84,7 @@ The SQL uses `DEFAULT` for the `id` column, so your database assigns free IDs au
 
 <details>
 
-<summary><strong>MRPD Doorlock SQL (87 doors)</strong></summary>
+<summary><strong>MRPD Doorlock SQL (92 doors)</strong></summary>
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
@@ -94,24 +94,24 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 	(DEFAULT, 'MRPD G-4', '{"model":1926169436,"auto":true,"heading":187,"doors":false,"coords":{"x":479.66741943359377,"y":-1026.9671630859376,"z":29.03641319274902},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD G-5', '{"model":-744294672,"auto":true,"heading":0,"doors":false,"coords":{"x":485.28143310546877,"y":-991.5838012695313,"z":28.44295692443847},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD G-6', '{"model":-744294672,"auto":true,"heading":0,"doors":false,"coords":{"x":478.5071716308594,"y":-991.6021118164063,"z":28.44295692443847},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD E-1', '{"doors":[{"model":1061735503,"heading":270,"coords":{"x":426.10382080078127,"y":-991.7098388671875,"z":30.02359199523925}},{"model":-218647638,"heading":270,"coords":{"x":426.10382080078127,"y":-988.8495483398438,"z":30.02359199523925}}],"coords":{"x":426.10382080078127,"y":-990.2796630859375,"z":30.02359199523925},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD E-1', '{"doors":[{"model":1061735503,"heading":270,"coords":{"x":426.1262512207031,"y":-991.5830078125,"z":29.856760025024414}},{"model":-218647638,"heading":270,"coords":{"x":426.1262512207031,"y":-988.9763793945312,"z":29.856760025024414}}],"coords":{"x":426.1262512207031,"y":-990.2796630859375,"z":29.856760025024414},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD E-2', '{"model":-630812075,"heading":270,"doors":false,"coords":{"x":426.0972595214844,"y":-1015.0638427734375,"z":29.54476928710937},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD E-3', '{"model":1307469158,"heading":90,"doors":false,"coords":{"x":473.6332092285156,"y":-1005.4370727539063,"z":29.26231002807617},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD E-3', '{"model":1307469158,"heading":90,"doors":false,"coords":{"x":473.6814270019531,"y":-1005.4424438476562,"z":29.262310028076172},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD E-4', '{"model":-1033001619,"heading":270,"doors":false,"coords":{"x":465.2098693847656,"y":-984.54052734375,"z":44.76824188232422},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-1', '{"model":726043835,"heading":180,"doors":false,"coords":{"x":432.30035400390627,"y":-985.7879638671875,"z":29.13741493225097},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-1', '{"doors":[{"model":841592293,"heading":0,"coords":{"x":431.5526123046875,"y":-981.17333984375,"z":29.66619110107422}},{"model":841592293,"heading":180,"coords":{"x":434.1317138671875,"y":-981.17333984375,"z":29.66619110107422}}],"coords":{"x":432.8421630859375,"y":-981.17333984375,"z":29.66619110107422},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-2', '{"model":1307469158,"heading":90,"doors":false,"coords":{"x":431.1378173828125,"y":-983.9158325195313,"z":29.66619110107422},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-3', '{"model":1307469158,"heading":90,"doors":false,"coords":{"x":434.54547119140627,"y":-983.9158325195313,"z":29.66619110107422},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-4', '{"doors":[{"model":1148670743,"heading":0,"coords":{"x":433.6834411621094,"y":-994.720458984375,"z":29.66790008544922}},{"model":1869424902,"heading":0,"coords":{"x":435.6834411621094,"y":-994.720458984375,"z":29.66790008544922}}],"coords":{"x":434.6834411621094,"y":-994.720458984375,"z":29.66790008544922},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-5', '{"doors":[{"model":1869424902,"heading":180,"coords":{"x":433.6834411621094,"y":-1003.893798828125,"z":29.66790008544922}},{"model":1148670743,"heading":180,"coords":{"x":435.6834411621094,"y":-1003.893798828125,"z":29.66790008544922}}],"coords":{"x":434.6834411621094,"y":-1003.893798828125,"z":29.66790008544922},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-6', '{"model":841592293,"heading":180,"doors":false,"coords":{"x":438.9002380371094,"y":-1008.2346801757813,"z":29.26231002807617},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-7', '{"model":726043835,"heading":90,"doors":false,"coords":{"x":440.6407165527344,"y":-1005.5096435546875,"z":28.73353576660156},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-8', '{"model":726043835,"heading":180,"doors":false,"coords":{"x":442.7796630859375,"y":-1003.7410278320313,"z":28.73353576660156},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-7', '{"doors":[{"model":-458248282,"heading":90,"coords":{"x":440.1038818359375,"y":-1006.511474609375,"z":28.311744689941406}},{"model":-458248282,"heading":270,"coords":{"x":440.1038818359375,"y":-1005.656005859375,"z":28.311744689941406}}],"coords":{"x":440.1038818359375,"y":-1006.083740234375,"z":28.311744689941406},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-8', '{"model":841592293,"heading":180,"doors":false,"coords":{"x":429.75262451171875,"y":-1003.7523193359375,"z":33.721343994140625},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-9', '{"model":1551275764,"heading":0,"doors":false,"coords":{"x":443.8717346191406,"y":-1008.2318115234375,"z":28.12579536437988},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-10', '{"model":1307469158,"heading":270,"doors":false,"coords":{"x":447.0243835449219,"y":-1002.3245239257813,"z":29.26231002807617},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-11', '{"model":726043835,"heading":0,"doors":false,"coords":{"x":443.4212341308594,"y":-992.71728515625,"z":28.73353576660156},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-12', '{"model":726043835,"heading":0,"doors":false,"coords":{"x":449.8029479980469,"y":-985.8875732421875,"z":28.73353576660156},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-13', '{"model":726043835,"heading":0,"doors":false,"coords":{"x":449.8029479980469,"y":-981.1334228515625,"z":28.73353576660156},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-14', '{"model":726043835,"heading":180,"doors":false,"coords":{"x":443.86773681640627,"y":-979.1590576171875,"z":28.73353576660156},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-11', '{"doors":[{"model":-458248282,"heading":0,"coords":{"x":442.7503662109375,"y":-995.4412231445312,"z":28.311744689941406}},{"model":-458248282,"heading":180,"coords":{"x":443.60577392578125,"y":-995.4412231445312,"z":28.311744689941406}}],"coords":{"x":443.1780700683594,"y":-995.4412231445312,"z":28.311744689941406},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-12', '{"model":841592293,"heading":270,"doors":false,"coords":{"x":439.58673095703125,"y":-999.0804443359375,"z":33.73588562011719},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-13', '{"doors":[{"model":-458248282,"heading":0,"coords":{"x":442.7856140136719,"y":-981.4967041015625,"z":28.311744689941406}},{"model":-458248282,"heading":180,"coords":{"x":443.64105224609375,"y":-981.4967041015625,"z":28.311744689941406}}],"coords":{"x":443.2133483886719,"y":-981.4967041015625,"z":28.311744689941406},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-14', '{"doors":[{"model":-458248282,"heading":90,"coords":{"x":442.7626647949219,"y":-975.5726318359375,"z":28.311744689941406}},{"model":-458248282,"heading":270,"coords":{"x":442.7626647949219,"y":-974.7172241210938,"z":28.311744689941406}}],"coords":{"x":442.7626647949219,"y":-975.1449584960938,"z":28.311744689941406},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-15', '{"doors":[{"model":1307469158,"heading":90,"coords":{"x":441.0804748535156,"y":-973.839111328125,"z":29.26231002807617}},{"model":841592293,"heading":90,"coords":{"x":441.0804748535156,"y":-976.428955078125,"z":29.26231002807617}}],"coords":{"x":441.0804748535156,"y":-975.134033203125,"z":29.26231002807617},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-16', '{"model":1307469158,"heading":0,"doors":false,"coords":{"x":449.4596862792969,"y":-972.9990234375,"z":29.26231002807617},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-17', '{"model":1307469158,"heading":0,"doors":false,"coords":{"x":454.6825866699219,"y":-977.328369140625,"z":29.26231002807617},"state":1,"maxDistance":2}'),
@@ -119,7 +119,7 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 	(DEFAULT, 'MRPD 1-19', '{"model":-1056355503,"heading":180,"doors":false,"coords":{"x":468.5730285644531,"y":-972.8836059570313,"z":29.35942840576172},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-20', '{"doors":[{"model":-1056355503,"heading":270,"coords":{"x":469.1961364746094,"y":-982.67431640625,"z":29.35973167419433}},{"model":-1056355503,"heading":90,"coords":{"x":469.19708251953127,"y":-980.3540649414063,"z":29.35973167419433}}],"coords":{"x":469.19659423828127,"y":-981.51416015625,"z":29.35973167419433},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-21', '{"model":1307469158,"heading":90,"doors":false,"coords":{"x":469.3443298339844,"y":-987.5093383789063,"z":29.26231002807617},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 1-22', '{"doors":[{"model":841592293,"heading":90,"coords":{"x":469.3443298339844,"y":-998.650146484375,"z":29.26231002807617}},{"model":1307469158,"heading":90,"coords":{"x":469.3443298339844,"y":-996.060302734375,"z":29.26231002807617}}],"coords":{"x":469.3443298339844,"y":-997.355224609375,"z":29.26231002807617},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 1-22', '{"doors":[{"model":841592293,"heading":90,"coords":{"x":469.3443298339844,"y":-998.650146484375,"z":29.26231002807617}},{"model":1307469158,"heading":90,"coords":{"x":469.3443298339844,"y":-996.0748291015625,"z":29.262310028076172}}],"coords":{"x":469.3443298339844,"y":-997.3624877929688,"z":29.262310028076172},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-23', '{"model":841592293,"heading":180,"doors":false,"coords":{"x":466.08526611328127,"y":-1008.2346801757813,"z":29.26231002807617},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-24', '{"model":841592293,"heading":180,"doors":false,"coords":{"x":459.5562438964844,"y":-1008.2346801757813,"z":29.26231002807617},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 1-25', '{"model":-1383516496,"heading":180,"doors":false,"coords":{"x":463.66973876953127,"y":-999.391845703125,"z":29.37309455871582},"state":1,"maxDistance":2}'),
@@ -174,7 +174,12 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 	(DEFAULT, 'MRPD 3-18', '{"model":-317254784,"heading":270,"doors":false,"coords":{"x":430.1753845214844,"y":-991.8195190429688,"z":40.12738037109375},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 3-19', '{"model":-317254784,"heading":270,"doors":false,"coords":{"x":430.1753845214844,"y":-997.28173828125,"z":40.12738037109375},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'MRPD 3-20', '{"model":-317254784,"heading":0,"doors":false,"coords":{"x":430.29388427734377,"y":-1007.0596313476563,"z":40.13219451904297},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'MRPD 3-21', '{"model":1510632809,"heading":90,"doors":false,"coords":{"x":434.393798828125,"y":-1009.3743896484375,"z":39.99874877929687},"state":1,"maxDistance":2}');
+	(DEFAULT, 'MRPD 3-21', '{"model":1510632809,"heading":90,"doors":false,"coords":{"x":434.393798828125,"y":-1009.3743896484375,"z":39.99874877929687},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 3-22', '{"model":1510632809,"heading":270,"doors":false,"coords":{"x":459.503173828125,"y":-976.2238159179688,"z":40.003578186035156},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 3-23', '{"model":1145061845,"heading":270,"doors":false,"coords":{"x":441.9790344238281,"y":-979.7582397460938,"z":39.752681732177734},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 3-24', '{"model":900637874,"heading":270,"doors":false,"coords":{"x":441.9790344238281,"y":-981.48583984375,"z":39.752681732177734},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 3-25', '{"model":900637874,"heading":270,"doors":false,"coords":{"x":441.9790344238281,"y":-983.2191162109375,"z":39.752681732177734},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'MRPD 3-26', '{"model":900637874,"heading":270,"doors":false,"coords":{"x":441.9790344238281,"y":-984.9521484375,"z":39.752681732177734},"state":1,"maxDistance":2}');
 ```
 
 </details>
