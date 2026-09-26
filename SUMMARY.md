@@ -85,6 +85,7 @@
 * [🚒 Rockford Fire Department](government-maps/rockford-fire-department.md)
 * [🚓 Rockford Police Department](government-maps/rockford-police-department.md)
 * [🚒 Pillbox Fire Department](government-maps/pillbox-fire-department.md)
+* [🏥 Pillbox Hill Medical Center](government-maps/pillbox-hill-medical-center.md)
 * [🏢 Blaine County Cityhall](government-maps/blaine-county-cityhall.md)
 * [🏢 NOOSE Department](government-maps/noose-department.md)
 
