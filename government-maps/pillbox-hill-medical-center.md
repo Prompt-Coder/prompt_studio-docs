@@ -1,6 +1,8 @@
 # 🏥 Pillbox Hill Medical Center
 
-<!-- TODO: store package embed, e.g. {% embed url="https://store.prompt-mods.com/store/package/PACKAGE_ID" %} -->
+{% embed url="https://store.prompt-mods.com/store/package/7698320" %}
+**Official asset for FiveM — available on CFX Portal and Prompt's Mods Store**
+{% endembed %}
 
 {% embed url="https://youtu.be/BczUGncSNA8" %}
 
