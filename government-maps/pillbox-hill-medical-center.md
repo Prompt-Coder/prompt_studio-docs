@@ -142,7 +142,7 @@ The resource ships ready-merged files in the `compatibility` folder:
 | Pillbox Fire Department | `compatibility/pillbox_fire_department` | `dt1_06_0.ybn`, `hi@dt1_06_0.ybn` |
 | Bus Station | `compatibility/bus_station` | `hei_dt1_occl_07.ymap` |
 
-1. Copy the files into **both** resources: `prompt_pillbox_hospital/stream/` and the other map's `stream/unlocked/` folder.
+1. Copy the files into **both** resources: `prompt_pillbox_hospital/stream/vanilla/` and the other map's `stream/unlocked/` folder.
 2. Replace the existing files with the same name, then restart.
 
 Own both maps? Use both folders; they contain different files. Both resources then carry the same merged file, so the start order doesn't matter.
