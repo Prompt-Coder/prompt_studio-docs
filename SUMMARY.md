@@ -77,6 +77,7 @@
 
 ## Government Maps
 
+* [🏥 Pillbox Hill Medical Center](government-maps/pillbox-hill-medical-center.md)
 * [🚓 Mission Row Police Department](government-maps/mission-row-police-department.md)
 * [⛓️ BolingBroke Prison](government-maps/bolingbroke-prison.md)
 * [🚓 San Andreas Highway Patrol (2 Locations)](government-maps/san-andreas-highway-patrol-2-locations.md)
@@ -85,7 +86,6 @@
 * [🚒 Rockford Fire Department](government-maps/rockford-fire-department.md)
 * [🚓 Rockford Police Department](government-maps/rockford-police-department.md)
 * [🚒 Pillbox Fire Department](government-maps/pillbox-fire-department.md)
-* [🏥 Pillbox Hill Medical Center](government-maps/pillbox-hill-medical-center.md)
 * [🏢 Blaine County Cityhall](government-maps/blaine-county-cityhall.md)
 * [🏢 NOOSE Department](government-maps/noose-department.md)
 
