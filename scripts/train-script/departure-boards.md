@@ -8,6 +8,69 @@ icon: chalkboard-user
 
 # Departure Boards
 
+{% hint style="info" %}
+**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+{% endhint %}
+
+A departure board is a DUI texture showing live train ETAs, either drawn onto a spawned prop or replacing a texture on a map's built-in screen. Boards are **presets** defined once in `config/boards.lua`, and each station picks one by name.
+
+### Assigning a board to a station
+
+```lua
+-- stations/freight/paletobay_prompt.lua -- id is taken from the filename
+Station {
+    label = 'Paleto Bay',
+    board = {
+        preset  = 'default',                    -- key into config/boards.lua
+        hanging = { vec4(168.7, 6380.3, 32.0, 160.0) },   -- one vec4 per prop to spawn
+    },
+}
+```
+
+`preset` selects a table from `config/boards.lua`. `hanging` / `standing` / `side` list where to spawn that preset's props — omit a prop type the preset doesn't use. A preset with `dui` instead of `props` (a "builtin" board, see below) draws onto an existing map texture and needs no coordinates at all.
+
+***
+
+### Presets in `config/boards.lua`
+
+Shipped presets:
+
+| Preset           | Layout                                                                   | Use                                                              |
+| ---------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `default`        | Time · destination · status, spawned onto a prop                         | Any station using the standard board props                       |
+| `tracks`         | Time · track · destination · status, spawned onto a prop                 | Stations with multiple platforms, where the track number matters |
+| `paleto_builtin` | Draws onto Paleto Bay's own built-in screen texture, no prop spawn       | Paleto Bay only                                                  |
+| `ls_builtin`     | Draws onto the Los Santos built-in screen texture, track column included | Los Santos only                                                  |
+
+A preset is a list of board "instances" (e.g. a main board plus a small case display), each an `elements` array — `text` and `table` blocks with pixel `x`/`y`, size, colour and column layout. `{station}` in any text value is replaced with the station's label.
+
+To add a new preset, copy `default` or `tracks` in `config/boards.lua` and adjust column positions/colours; reference it from a station's `board.preset`.
+
+***
+
+### Prop models
+
+The prop each spawn type (`hanging` / `standing` / `side`) uses is set globally in `config/config.lua § 8`, not per station:
+
+```lua
+boards = {
+    propDistance = 150.0,   -- despawn distance
+    props = {
+        hanging  = { model = `prompt_trainscreen`,          txd = '...', txn = '...' },
+        standing = { model = `prompt_trainscreen_standing`, txd = '...', txn = '...' },
+        side     = { model = `prompt_trainscreen_side`,     txd = '...', txn = '...' },
+    },
+}
+```
+
+A station's own `board` block only supplies *where* to spawn each type and *which preset* to draw onto it — not the model itself.
+
+***
+
+## Version 1
+
+Everything below applies to **1.0.x** (latest: 1.0.4.1).
+
 There are two board types:
 
 | Type             | Description                                                     |

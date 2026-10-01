@@ -1,11 +1,74 @@
 ---
 description: >-
-  The converter turns a raw GTA V .dat track file into the routes.json waypoint
-  format used by the script for ETA calculations and train pathfinding logic.
+  train_convert turns a captured .dat route file into a ready-to-use line in
+  prompt_train_script-assets.
 icon: conveyor-belt-boxes
 ---
 
 # Converter
+
+{% hint style="info" %}
+**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+{% endhint %}
+
+`train_convert` turns a captured `.dat` route file into a ready-to-use line — no manual `routes.json`/`points.json` bookkeeping.
+
+### 1. Capture a route
+
+Record the rail as a `.dat` file (first line = point count, then one `x y z flag` row per node — the same format GTA itself uses for `traintracks.xml` entries). Drop it in:
+
+```
+prompt_train_script/routes_convert/<file>.dat
+```
+
+### 2. Run the converter
+
+From the **server console**:
+
+```
+train_convert <file.dat> <line_id> [unused] [label]
+```
+
+```
+train_convert trains13.dat sandy - "Sandy Shores"
+```
+
+This:
+
+1. Parses every `x y z flag` row from the file.
+2. Writes `prompt_train_script-assets/lines/<line_id>/points.json` (the point list, used for predictive spawning and geometry lookups) and `.../track.dat` (the raw rail rows GTA reads at runtime).
+3. If `lines/<line_id>/line.lua` **doesn't exist yet**, prints a ready-to-paste `Line{}` snippet to the console, pre-filled with one `stops` entry per node whose flag bit marks it as a station stop (bit 1 or 2). You fill in each stop's `station = '<station id>'` with an id from `stations/`.
+4. If `line.lua` **already exists**, leaves it untouched — only the geometry files are refreshed. Restart to pick up new geometry against the existing line definition.
+
+### 3. Finish the line
+
+Paste the printed snippet into `lines/<line_id>/line.lua`, fill in station ids (create new [Station](lines-and-stations.md) entries first if needed), then:
+
+```
+train_build
+```
+
+restart both resources, and:
+
+```
+train_assets_validate
+```
+
+to confirm the line, its track id, and its stops are all consistent.
+
+***
+
+### Notes
+
+* The line id may only contain letters, digits, `_`, and `-`.
+* `train_convert` only ever writes into `lines/<line_id>/`; it never touches `config/config.lua` or any other line. Legacy `routes.json`/`config.routes` registration from older versions of the script no longer exists.
+* Re-running the converter against the same `line_id` after edits just refreshes `points.json`/`track.dat` — safe to do repeatedly while tuning a captured route.
+
+***
+
+## Version 1
+
+Everything below applies to **1.0.x** (latest: 1.0.4.1).
 
 ### Why a Converter?
 

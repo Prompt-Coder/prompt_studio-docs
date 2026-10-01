@@ -8,6 +8,85 @@ icon: circle-waveform-lines
 
 # Audio Announcements
 
+{% hint style="info" %}
+**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+{% endhint %}
+
+Stations and moving trains can play PA announcements ("The next train on platform 2 is arriving...") built from short audio clips stitched together at runtime.
+
+### Enabling
+
+```lua
+-- config/config.lua
+pa = {
+    enable       = true,
+    audioBank    = 'audiodirectory/prompt_train',
+    soundSet     = 'prompt_train',
+    entityModel  = `prop_pool_ball_01`,   -- invisible emitter prop
+    defaultRange = 120.0,
+}
+```
+
+***
+
+### Where clips come from
+
+PA clip names are **declared where the thing they describe already lives** — not centrally:
+
+| Source              | Field                                                                     | Feeds                                                                      |
+| ------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| A line's `line.lua` | `pa = 'pa_clipname'`                                                      | `paClips.routes[lineId]` — announced as the route name                     |
+| A station's file    | `pa = { destination = 'clip', clip = 'clip', coords = {...}, range = n }` | `paClips.destinations`, `paClips.stations`, and a speaker zone at `coords` |
+
+```lua
+-- lines/sandy/line.lua
+Line {
+    label = 'Sandy Shores',
+    pa = 'pa_sandy',
+    ...
+}
+```
+
+```lua
+-- stations/freight/paletobay_prompt.lua -- id is taken from the filename
+Station {
+    label = 'Paleto Bay',
+    pa = { destination = 'pa_paletobay', clip = 'pa_paletobay', coords = vec3(168.7, 6380.3, 30.5), range = 100.0 },
+}
+```
+
+A missing clip for a given route/destination/station just drops that word from the built sentence instead of erroring.
+
+***
+
+### `config/config.lua § 10` — overrides only
+
+```lua
+pa = {
+    clips   = { intro='pa_intro_chime', train='pa_train', to='pa_to', via='pa_via',
+                arriving='pa_is_arriving', arrived='pa_has_arrived', departed='pa_has_departed',
+                onTrack='pa_on_track', inMinutes='pa_in', minutes='pa_minutes' },
+    numbers = { 'pa_num_1', ..., 'pa_num_10' },   -- spoken digits, used to read out ETAs
+    tracks  = { 'pa_num_1', 'pa_num_2', 'pa_num_3', 'pa_num_4' },   -- spoken track numbers
+
+    routes = {}, destinations = {}, stations = {}, zones = {},
+}
+```
+
+`clips` are the fixed sentence pieces (grammar words, "arriving", "departed", …) — you won't normally touch these unless you're replacing the whole audio bank. `routes` / `destinations` / `stations` here only add to or override what lines and stations already declared above; leave them empty unless you need a one-off pin. `zones` works the same way for extra speaker positions beyond what stations declare via their own `pa.coords`.
+
+***
+
+### Timing
+
+Handled by `client/pa.lua` and not currently configurable: a train's presence at a station is confirmed over `STABLE_TICKS_REQUIRED = 3` consecutive checks before "arriving" plays, and "departed" fires roughly 12 seconds after a stop's dwell ends. These exist to avoid false triggers from a train barely clipping a station's detection zone.
+
+***
+
+## Version 1
+
+Everything below applies to **1.0.x** (latest: 1.0.4.1).
+
 ### How It Works
 
 1. The server pushes train ETA data to subscribed players.

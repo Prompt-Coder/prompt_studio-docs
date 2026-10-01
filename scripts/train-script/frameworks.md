@@ -1,12 +1,97 @@
 ---
 description: >-
-  The script supports QBO, QBCore, ESX, and frameworkless setups through a
-  bridge layer defined in config/server.lua and config/client.lua. You normally
-  do not need to edit these files — auto-detection
+  The script supports QBox, QBCore, ESX, and frameworkless setups through a
+  bridge layer in config/server.lua. Auto-detection handles it on most servers.
 icon: gear-complex
 ---
 
 # Frameworks
+
+{% hint style="info" %}
+**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+{% endhint %}
+
+The script supports QBox (`qbx`), QBCore (`qb`), ESX, and frameworkless setups through a bridge layer in `config/server.lua`. You normally never touch this file — configure via `config/config.lua § 1` instead:
+
+```lua
+integrations = {
+    interaction = 'auto',   -- 'auto' | 'ox_target' | 'qb-target' | 'textui' | 'none'
+    framework   = 'auto',   -- 'auto' | 'qbx' | 'qb' | 'esx' | 'none'
+    inventory   = 'auto',   -- 'auto' | 'ox_inventory' | 'qb-inventory' | 'esx' | 'none'
+    payment     = 'cash',   -- 'cash' | 'bank'
+}
+```
+
+### Supported combinations
+
+| Framework | Resource checked | Inventory options                                                                                                                  |
+| --------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| QBox      | `qbx_core`       | `ox_inventory`, `qb-inventory`, `ps-inventory`                                                                                     |
+| QBCore    | `qb-core`        | `ox_inventory`, `qb-inventory`, `ps-inventory`                                                                                     |
+| ESX       | `es_extended`    | `ox_inventory`, native ESX inventory                                                                                               |
+| None      | —                | none (script's own [standalone ticket store](tickets.md#standalone-mode-integrations-inventory-none)) |
+
+***
+
+### Auto-detection
+
+With `'auto'`, `config/server.lua` checks `GetResourceState()` for each candidate resource and takes the first one that's `'started'`. Inventory auto-detection additionally falls back to ESX's native inventory if no dedicated inventory resource is running under an ESX framework. If detection can't find what you asked for explicitly, it logs an error and falls back to `'none'` behaviour rather than crashing.
+
+If auto-detection picks the wrong thing on a server running several of these resources side by side, set the values explicitly.
+
+***
+
+### `interaction = 'textui'`
+
+Needs only `ox_lib`. It's the fallback when neither `ox_target` nor `qb-target` is running, so most servers never set this by hand — ticket machines and doors just work through `ox_lib`'s text-prompt UI instead of a targeting reticle.
+
+***
+
+### Player spawn event
+
+The bridge listens for the framework's own spawn event and re-fires `prompt_train:onPlayerSpawned` internally, which is what kicks off NPC train spawning for that player.
+
+| Framework     | Source event                                                                   |
+| ------------- | ------------------------------------------------------------------------------ |
+| QBox / QBCore | `QBCore:Server:OnPlayerLoaded`                                                 |
+| ESX           | `esx:playerLoaded`                                                             |
+| None          | `playerJoining` → `prompt_train:playerSpawned` (client fires this once loaded) |
+
+A custom spawn system that fires none of these can trigger it manually:
+
+```lua
+TriggerEvent('prompt_train:onPlayerSpawned', source)
+```
+
+***
+
+### Bridge functions
+
+Available globally server-side once `config/server.lua` loads:
+
+| Function                                                                   | Purpose                                                                                                                                              |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Bridge.getPlayerName(source)`                                             | Character name — charinfo first/last for QBox/QBCore, `xPlayer.getName()` for ESX, `GetPlayerName` otherwise                                         |
+| `Bridge.addItem` / `hasItem` / `removeItem(source, item, count, metadata)` | Routed to the detected inventory, or the built-in standalone store when `inventory = 'none'`                                                         |
+| `Bridge.removePayment(source, amount)`                                     | Deducts `integrations.payment` ('cash' or 'bank'); returns `false` if the player can't afford it. Always returns `true` with no framework configured |
+
+***
+
+### Useable item registration
+
+`train_ticket` is registered as a useable item automatically for QBox, QBCore, and ESX — using it shows the ticket UI via `showTicket` (`server/ticket.lua`). Under `inventory = 'none'`, use the `/trainticket` chat command instead to reopen your latest ticket.
+
+***
+
+### Adding a custom framework
+
+Edit `config/server.lua` — it's a series of `if framework == '...' then ... elseif ...` blocks, one per bridge function. Add your own branch following the existing QBox/QBCore/ESX pattern for `getPlayerName`, `removePayment`, and the spawn-event listener, then set `integrations.framework` to your new key (auto-detection only knows about the three built-in resource names).
+
+***
+
+## Version 1
+
+Everything below applies to **1.0.x** (latest: 1.0.4.1).
 
 ### Supported Combinations
 

@@ -8,6 +8,200 @@ icon: ticket
 
 # Tickets
 
+{% hint style="info" %}
+**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+{% endhint %}
+
+Players buy tickets from kiosk machines placed at stations. A ticket carries origin, destination, and departure metadata and can be displayed on-screen.
+
+### How it works
+
+1. A player interacts with a ticket machine (`ox_target` / `qb-target` / textUI, per `integrations.interaction`).
+2. A DUI ticket UI opens showing destinations and prices.
+3. The player picks a destination and confirms.
+4. The server charges them (`integrations.payment`, cash or bank) and issues a `train_ticket`.
+5. The player can use the ticket item to view it again.
+
+***
+
+### Where a machine is defined
+
+Machines are **per-station**, declared on the station itself under `prompt_train_script-assets/stations/`:
+
+```lua
+-- stations/freight/paletobay_prompt.lua -- id is taken from the filename
+Station {
+    label = 'Paleto Bay',
+    coords = vec3(232.543, 6384.729, 15.386),
+    price = 30,
+    machines = {
+        coords = { vec3(168.706, 6380.335, 30.486), vec3(169.260, 6379.342, 30.486) },
+        model  = `prompt_train_ticketmachine_prop`,
+        txd    = 'i45pt_pts_ticketmachine_prop',
+        txn    = 'script_rt_ticketmachine_screen_paleto',
+    },
+}
+```
+
+| Field                            | Description                                                                                        |
+| -------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `price`                          | Overrides `tickets.defaultPrice` for journeys from this station                                    |
+| `machines.coords`                | One `vec3` per physical kiosk object in the world                                                  |
+| `machines.model` / `txd` / `txn` | Prop + texture to swap for the DUI screen. Omit all three to fall back to `tickets.defaultMachine` |
+| `machines.spawn`                 | Set `false` to register interaction on an existing world prop instead of spawning one              |
+
+A station tied to a variant-only resource (its `resource` field) only spawns its machines while that resource is active — same as its platform.
+
+`config/config.lua`'s `tickets.prices` and `tickets.machines` only add to or override what stations declare — see [Configuration § 9](configuration.md#9-tickets). You rarely need to touch them; adding a station is normally enough.
+
+***
+
+### Adding a ticket machine to a new station
+
+1. Find the prop in-game and note its model hash and `txd`/`txn` (CodeWalker or similar).
+2. Add a `machines` block to the station file as shown above.
+3. Run `train_assets_validate` — no separate registration step needed.
+
+***
+
+### Inventory item
+
+Required unless `integrations.inventory = 'none'`. Register `train_ticket`:
+
+**ox\_inventory** (`items.lua`):
+
+```lua
+['train_ticket'] = { label = 'Train Ticket', weight = 10, stack = false, close = true, consume = 0 },
+```
+
+**QBCore** (`items.lua`):
+
+```lua
+['train_ticket'] = { name = 'train_ticket', label = 'Train Ticket', weight = 100, type = 'item',
+    image = 'train_ticket.png', unique = true, useable = true, shouldClose = true, description = 'A train ticket' },
+```
+
+The useable-item handler itself is registered automatically for QBx, QBCore, and ESX by `config/server.lua` — you only need the item definition in your inventory resource.
+
+***
+
+### Standalone mode (`integrations.inventory = 'none'`)
+
+No inventory resource is required. The script keeps tickets itself, keyed per player identifier, persisted to `standalone_tickets.json` in the resource folder with a 24-hour expiry. `requireForDoors` and all pricing behave identically. There is no item to use, so players reopen their latest ticket with `/trainticket`.
+
+***
+
+### Ticket metadata
+
+```lua
+{
+    from = 'paletobay', to = 'lossantos1',
+    fromLabel = 'Paleto Bay', toLabel = 'Los Santos',
+    departure = '14:32', arrival = '15:05',
+    playerName = 'John Smith', price = 30,
+}
+```
+
+***
+
+### Payment
+
+`config/server.lua` deducts the fare through whichever framework is detected:
+
+| Framework | Call                                                          |
+| --------- | ------------------------------------------------------------- |
+| QBx       | `exports.qbx_core:RemoveMoney(source, paymentMethod, amount)` |
+| QBCore    | `Player.Functions.RemoveMoney(paymentMethod, amount)`         |
+| ESX       | `xPlayer.removeMoney()` / `xPlayer.removeAccountMoney()`      |
+| None      | Always succeeds — free tickets, useful for testing            |
+
+If the player can't afford it, the purchase is rejected and nothing is issued.
+
+***
+
+### Exports (external integration)
+
+Run your own ticket flow (an NPC seller, a booth, a phone app, your own economy) and still use the built-in ticket item, ticket viewer and door check. These grant and consume the **same** `train_ticket` the machines do, so the `tickets.requireForDoors` gate keeps working unchanged. All are **server-side** exports.
+
+{% hint style="info" %}
+These work with or without an inventory resource. In standalone mode (`integrations.inventory = 'none'`) they read and write the script's own ticket store. See [Standalone mode](#standalone-mode-integrations-inventory-none).
+{% endhint %}
+
+#### `giveTicket(source, opts?)`
+
+Grants a ticket. **It does not charge money.** Your system handles payment; this only adds the ticket.
+
+```lua
+local ok, ticket = exports.prompt_train_script:giveTicket(src, {
+    from      = 'Sandy Shores',  -- optional, default 'Station'
+    to        = 'Los Santos',    -- optional, default 'Destination'
+    departure = '14:30',         -- optional, default current time (HH:MM)
+    arrival   = '15:05',         -- optional, default ''
+    -- number        = '123456',      -- optional, default random 6-digit
+    -- passengerName = 'John Smith',  -- optional, default the player's character name
+})
+
+if ok then
+    -- `ticket` is the granted ticket table
+else
+    -- `ticket` is an error string, e.g. 'Invalid source'
+end
+```
+
+| Return            | Type                | Description                                                |
+| ----------------- | ------------------- | ---------------------------------------------------------- |
+| `ok`              | `boolean`           | `true` on success                                          |
+| `ticket` \| `err` | `table` \| `string` | The ticket table on success, or an error string on failure |
+
+It fails with `'Invalid source'` if the player isn't online, or `'Could not add ticket to inventory'` if the item or store write fails.
+
+#### `hasTicket(source)`
+
+```lua
+if exports.prompt_train_script:hasTicket(src) then
+    -- player holds a train ticket
+end
+```
+
+Returns `boolean`.
+
+#### `takeTicket(source, count?)`
+
+Consumes tickets. Use it for single-use boarding driven by your own system.
+
+```lua
+local removed = exports.prompt_train_script:takeTicket(src)      -- removes 1
+local removed = exports.prompt_train_script:takeTicket(src, 2)   -- removes 2
+```
+
+| Param    | Type      | Description                     |
+| -------- | --------- | ------------------------------- |
+| `source` | `number`  | Player server id                |
+| `count`  | `number?` | How many to remove, default `1` |
+
+Returns `boolean`: `true` if a ticket was removed.
+
+#### Example: sell a ticket from an NPC with your own economy
+
+```lua
+RegisterNetEvent('myscript:buyFromNpc', function()
+    local src = source
+    -- charge with your framework however you like
+    if not MyEconomy.charge(src, 50) then return end
+
+    local ok, ticket = exports.prompt_train_script:giveTicket(src, {
+        from = 'Sandy Shores', to = 'Los Santos', departure = '14:30',
+    })
+    if not ok then MyEconomy.refund(src, 50) end
+end)
+```
+
+***
+
+## Version 1
+
+Everything below applies to **1.0.x** (latest: 1.0.4.1).
+
 ### How It Works
 
 1. A player walks up to a ticket machine and an interaction prompt appears (via `ox_target`, `qb-target`, or the built-in `[E]` prompt when neither is installed).
