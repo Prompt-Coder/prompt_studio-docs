@@ -77,7 +77,9 @@ With a delay, the property needs a DELIVERY zone (`/housing` › property › zo
 
 The picker lists the properties rcore\_housing returns for the player: the ones they **own or rent**. YouTool checks this again on the server before it charges anything, so a player can't send furniture into someone else's property.
 
-**Models rcore doesn't have.** The first time a YouTool model is delivered, rcore\_housing adds it to its own furniture list (`rcore_housing_furniture`, marked as an add-on) with the item's name and the price that buyer paid. rcore keeps that name and price for the model from then on. Models rcore already ships keep rcore's own name and price.
+**Models rcore doesn't have.** The first time a YouTool model is delivered, rcore\_housing adds it to its own furniture list (`rcore_housing_furniture`, marked as an add-on) with the item's name, its YouTool picture, the closest rcore category and the YouTool **corporate base price**. rcore keeps that row from then on. Models rcore already ships keep rcore's own name, picture and price.
+
+rcore\_housing lets owners sell furniture from stock back for its price in that list. That is why YouTool registers the corporate base and not the price the buyer paid: selling back never returns more than the store's cost.
 
 If rcore refuses a product, that product is refunded at the price paid and the rest of the order is kept. If rcore refuses everything, the whole order is refunded and the player sees *"Failed to add furniture to house"*.
 
@@ -149,6 +151,6 @@ With `deliveryDelay = 0`, look in the property's furniture **stock** in rcore's 
 
 <summary>A YouTool item shows the wrong name or price in rcore's menus</summary>
 
-rcore keeps the name and price from the first delivery of each model, and models rcore already ships keep rcore's own. Change them in rcore\_housing's furniture list (`/housing` › All Furniture) if you want different values there. The YouTool store's prices are not affected.
+rcore keeps the row from the first delivery of each model, and models rcore already ships keep rcore's own. Change them in rcore\_housing's furniture list (`/housing` › All Furniture) if you want different values there. The YouTool store's prices are not affected.
 
 </details>
