@@ -81,6 +81,18 @@ The picker lists the properties rcore\_housing returns for the player: the ones 
 
 rcore\_housing lets owners sell furniture from stock back for its price in that list. That is why YouTool registers the corporate base and not the price the buyer paid: selling back never returns more than the store's cost.
 
+**Items rcore pays more for.** For items rcore already ships, the buy-back price is rcore's own, and for some of them it is higher than YouTool's price (for example a bulb chandelier: $80 in the YouTool catalog, rcore buys it back for $600). So players can't buy at YouTool and sell to rcore for a profit, YouTool reads rcore's furniture list when it starts and raises the corporate base of every such item to rcore's buy-back price. Markup applies on top as usual, and the tablet, price tags and price boards show the raised price. Nothing in rcore\_housing is changed. The console shows how many items this affects:
+
+```
+[YouTool rcore_housing] 556 item(s) priced at rcore's buyback price
+```
+
+The list is read again whenever YouTool or rcore\_housing starts, so after you change furniture prices in rcore, restart one of them.
+
+{% hint style="warning" %}
+**Negative markup on an rcore server.** A store that sells below cost pays the difference from its vault, and rcore still buys the item back at the corporate base. Selling below cost therefore hands vault money to whoever buys and sells back. Only give `markup.negative` to people you trust with the vault.
+{% endhint %}
+
 If rcore refuses a product, that product is refunded at the price paid and the rest of the order is kept. If rcore refuses everything, the whole order is refunded and the player sees *"Failed to add furniture to house"*.
 
 ***
@@ -92,6 +104,7 @@ When everything is right:
 ```
   [ OK ] Housing: rcore_housing 1.1.4
   [ OK ] rcore_housing: furniture delivery export found
+  [INFO] rcore_housing: 556 item(s) cost at least what rcore pays to buy them back, so selling them back cannot make money
 ```
 
 While rcore's furniture shop NPC stands inside a YouTool store:

@@ -215,7 +215,7 @@ Placing a set's pieces needs `placements.edit` as well as `sets.edit`.
 | `Config.Sets.maxDefinitions` | `100` | Sets one store can have |
 
 {% hint style="warning" %}
-A set is never sold below the **corporate cost** of its items. If the discount would push the price lower, checkout charges the corporate cost instead, which is more than the set price shown in the tablet. This happens when the discount is bigger than the store's margin allows: at a 20 % markup, any discount above about 16.7 % hits the floor. Keep set discounts within what the store's markup covers.
+A set is never sold below the **corporate cost** of its items. If the discount would push the price lower, the set costs the corporate cost instead; the tablet, the Console, the phone and the price tag all show that price. This happens when the discount is bigger than the store's margin allows: at a 20 % markup, any discount above about 16.7 % hits the floor. Keep set discounts within what the store's markup covers. With negative markup, a set never costs more than its items bought one by one.
 {% endhint %}
 
 ***

@@ -138,7 +138,7 @@ Config.Freight = {
 
 The shipped rates are set so the **cheapest item of each class breaks even at 20% markup**. A lower rate makes restocking profitable; a higher one loses money. With the default unloading wage (below), break-even for the cheapest item moves to about 25% markup.
 
-**Unloading wages.** In every mode except `instant`, when `requireUnload = true` and `unloadWage.source = 'vault'`, the order also reserves the unloading wages from the vault: `unloadWage.perPallet × Config.EconomyScale` per pallet. The **Confirm & pay** amount shows the freight only; the wage reserve is added when the order is placed and appears on the shipment as *wages reserved $X*. Both are taken in one **Freight order** vault entry, so the vault must cover both.
+**Unloading wages.** In every mode except `instant`, when `requireUnload = true` and `unloadWage.source = 'vault'`, the order also reserves the unloading wages from the vault: `unloadWage.perPallet × Config.EconomyScale` per pallet. The order panel adds the wage reserve to the total (*wages reserved $X*), so **Confirm & pay**, *After this order* and *Need $X more* all include it. Freight and wages are taken in one **Freight order** vault entry.
 
 **Example** (defaults, `auto` mode): `seating` holds 850 of 1000 points and you order 2 pallets.
 

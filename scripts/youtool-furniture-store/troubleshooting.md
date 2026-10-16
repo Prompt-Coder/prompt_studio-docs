@@ -177,6 +177,7 @@ When the install file is not loaded, the `->` line reads: `In RxHousing/fxmanife
 | `rcore_housing <version> is too old: it lists no apartments for their owners` | FAIL | Update rcore\_housing to 1.1.4 or newer. |
 | `<script>: the furniture delivery export (RegisterFurnitureDelivery) is missing` | FAIL | Update rcore\_housing to 1.1.4 or newer. |
 | `<script>: furniture delivery export found` | OK | Delivery into rcore\_housing works. |
+| `<script>: <n> item(s) cost at least what rcore pays to buy them back, so selling them back cannot make money` | INFO | Normal. Those items' corporate base was raised to rcore's buy-back price. See [rcore\_housing](housing/rcore-housing.md). |
 | `<script>: its own furniture shop NPC stands inside the YouTool store <store>` | WARN | Move or remove that entry in `Config.Furniture.Shop.Locations` in `rcore_housing/config.lua`. |
 
 </details>

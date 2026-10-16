@@ -272,11 +272,11 @@ Run it in-game. The result prints to the **server console**, not to the player, 
 [YouTool] src=3  corporateAdmin=false  framework=qbcore
 [YouTool] ace[youtool.admin]=false
 [YouTool] license=license:1a2b3c4d5e6f...
-[YouTool] to grant corporate admin: add_ace license:1a2b3c4d5e6f... youtool.admin allow
+[YouTool] to grant corporate admin: add_ace identifier.license:1a2b3c4d5e6f... youtool.admin allow
 [YouTool] store roles are per-store — see /youtool_roles <storeId>
 ```
 
-To make one player a corporate admin by license, put `identifier.` in front of the license in `server.cfg`:
+Copy that line into `server.cfg` to make this player a corporate admin:
 
 ```cfg
 add_ace identifier.license:1a2b3c4d5e6f... youtool.admin allow

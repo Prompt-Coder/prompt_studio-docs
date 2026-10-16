@@ -122,7 +122,7 @@ Sets are bundles of furniture that a store's staff put together and sell at a di
 * Click a set to see its details: every item with its quantity under **Includes:**, and **Add Set to Cart**.
 * Sets that staff placed in the showroom can be bought on the spot with the **Add Set to Cart** and **View Set** targets on any of their pieces. Their price tag shows the set name and set price.
 
-The set price is the sum of the items at this store's prices, minus the set's discount. Owners: a set is never sold below its corporate cost, so a large discount can make checkout charge more than the set price shown. See [Sets in the showroom](console/README.md#sets-in-the-showroom).
+The set price is the sum of the items at this store's prices, minus the set's discount, and it is exactly what checkout charges. A set is never sold below its items' corporate cost, so a discount bigger than the store's markup stops at that cost. See [Sets in the showroom](console/README.md#sets-in-the-showroom).
 
 ***
 

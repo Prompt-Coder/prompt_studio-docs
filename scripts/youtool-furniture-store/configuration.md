@@ -27,7 +27,7 @@ Changes take effect when the resource restarts.
 | `Config.Stores` | 2 stores | One entry per store on the map. See [Stores](#stores). |
 | `Config.StoreEnterRadius` | `120.0` | When a player enters a store, the server checks they are within this many meters of its `interiorCoords`. Store actions and in-store checkout are refused for a player outside this radius (phone app orders are the exception). Generous on purpose: it stops a manager of one store acting on another; it is not a cheat detector. |
 | `Config.Roles.corporateAce` | `'youtool.admin'` | ACE for the corporate tools (base prices, product names). See [Commands & Permissions](commands.md#ace-permissions). |
-| `Config.Debug` | `false` | Extra `[YouTool ...]` console output. Real errors always print. |
+| `Config.Debug` | `false` | Extra `[YouTool ...]` console output, plus the developer commands (`ytanim`, `ytplacements`, `youtool_debug_props` and similar), which are not registered without it. Real errors always print. |
 | `Config.Manager.devBypass` | `false` | Development only. See the warning below. |
 | `Config.TestCommands.enabled` | `true` | Registers `/youtool_diag` and `/youtool_testall`. `false` = the commands don't exist. |
 | `Config.TestCommands.acePerm` | `'youtool.tester'` | ACE that may run those two commands in game. The server console and players with `youtool.admin` always can. |
@@ -200,7 +200,7 @@ To record a new point, stand on it in game and run `/youtool_capture_spot <label
 
 | Option | Default | Meaning |
 | --- | --- | --- |
-| `Config.PriceTags.enabled` | `true` | Price tags managers place next to display furniture. Displays and tags are one system: `false` also switches off placing display furniture and showroom sets, and in 1.2.0 it stops the tablet key from working. Keep it `true`. |
+| `Config.PriceTags.enabled` | `true` | Price tags managers place next to display furniture. Displays and tags are one system: `false` also switches off placing display furniture and showroom sets. |
 | `Config.PriceTags.currency` | `{ symbol = '$', position = 'before' }` | Currency on the tags. `position = 'before'` shows `$100`, `'after'` shows `100€`. |
 | `Config.PriceAtlas.enabled` | `true` | The price boards built into the store draw their prices live from the catalog, so price and markup changes show up in the store. Keep it `true`. |
 | `Config.PriceAtlas.currency` | `{ symbol = '$', position = 'before' }` | Currency on the boards, as above. |
@@ -266,9 +266,11 @@ Turning it on forces `Config.MoneySystem = 'free'`, `Config.Manager.devBypass = 
 
 ## Integration files
 
-Each housing integration has a `client/config.lua` in `integrations/<script>/`. These files are open. YouTool chooses the integration by detecting which housing script is running, not from these files (order and details: [How YouTool picks the housing script](housing/README.md#how-youtool-picks-the-housing-script)).
+Each housing integration has a `client/config.lua` in `integrations/<script>/`. These files are open. YouTool chooses the integration by detecting which housing script is running (order and details: [How YouTool picks the housing script](housing/README.md#how-youtool-picks-the-housing-script)).
 
-In 1.2.0 two of these files have settings that change something:
+**`enabled = false` in any of these files makes YouTool skip that housing script** when it detects one at start; the console prints `[YouTool Store] <script> integration is switched off ...`. Use it when you run two housing scripts and want YouTool to deliver into the second one. The setup check then shows `Housing: <script> is running, but its YouTool integration is switched off (enabled = false)`. rcore\_housing's file only has `enabled`; its delivery option is in `config/housing.lua`.
+
+Some files have more settings:
 
 {% tabs %}
 {% tab title="qs-housing" %}
@@ -287,7 +289,7 @@ return {
 
 | Option | Default | Meaning |
 | --- | --- | --- |
-| `enabled` | `true` | `false` stops YouTool from adding its catalog to qs-housing's furniture list and from refreshing qs-housing's decorations after a purchase. Purchases are still delivered while qs-housing runs. |
+| `enabled` | `true` | `false` makes YouTool skip qs-housing: no catalog sync, no deliveries. |
 | `debug` | `false` | `[YouTool QS-Housing]` debug lines in the console. |
 | `syncDelay` | `5000` | Milliseconds YouTool waits after starting before it adds the catalog to qs-housing. Raise it if qs-housing loads slowly. |
 | `defaultCategory` | `'decals'` | qs-housing category for items that match none of its categories. |
@@ -298,11 +300,11 @@ return {
 {% tab title="ps-housing" %}
 | Option | Default | Meaning |
 | --- | --- | --- |
-| `enabled` | `true` | `false` only hides the "Integration active" line in the client console. Purchases are still delivered while ps-housing runs. |
+| `enabled` | `true` | `false` makes YouTool skip ps-housing: no deliveries. |
 | `debug` | `false` | `[YouTool PS-Housing]` debug lines in the client console. |
 {% endtab %}
 
 {% tab title="Other scripts" %}
-The files for bcs\_housing, brutal\_housing, nolag\_properties, rtx\_housing, RxHousing (`integrations/rxscripts/`) and vms\_housing contain `enabled` and `debug` (nolag\_properties also has menu category fields), but nothing reads them in 1.2.0. Leave them as they are.
+The files for bcs\_housing, brutal\_housing, nolag\_properties, rtx\_housing, RxHousing (`integrations/rxscripts/`) and vms\_housing contain `enabled` (see above) and `debug`. Their other fields (`debug`, nolag\_properties' menu category fields) aren't read in 1.2.0; leave them as they are.
 {% endtab %}
 {% endtabs %}
