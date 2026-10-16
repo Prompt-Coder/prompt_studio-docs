@@ -91,8 +91,8 @@ YouTool delivers one free Disposable Coffee Cup (`prop_coffee_cup_trailer`) into
   [ OK ] bcs_housing: YouTool install file present (v1)
   [ OK ] bcs_housing: furniture shop mode is on
   [ OK ] Framework: qbcore, money: auto
-  [ OK ] Player 2 owns 1 propert(y/ies)
-  [ OK ] Delivery test: Disposable Coffee Cup arrived in 14908
+  [ OK ] Properties owned by player 2: 1
+  [ OK ] Delivery test: Disposable Coffee Cup arrived in <property name>
   Everything looks good.
   Support code: YT 1.2.0 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
 ```

@@ -33,6 +33,7 @@
     * [RxHousing](scripts/youtool-furniture-store/housing/rxhousing.md)
     * [vms\_housing](scripts/youtool-furniture-store/housing/vms-housing.md)
     * [brutal\_housing](scripts/youtool-furniture-store/housing/brutal-housing.md)
+    * [rcore\_housing](scripts/youtool-furniture-store/housing/rcore-housing.md)
   * [Shopping](scripts/youtool-furniture-store/shopping.md)
   * [Store Console](scripts/youtool-furniture-store/console/README.md)
     * [Staff & Permissions](scripts/youtool-furniture-store/console/staff-and-permissions.md)

@@ -25,7 +25,7 @@ Escrow only encrypts `.lua` files. HTML, JavaScript, CSS, images and `data/*.jso
 | `hooks/*.lua` | Your hook files ([Hooks](hooks.md)) |
 | `server/framework.lua` | Framework and money bridge |
 | `client/target_wrapper.lua` | Target script bridge |
-| `integrations/<script>/server/adapter.lua`, `integrations/<script>/client/sync.lua`, `integrations/qs-housing/server/catalog_sync.lua` | The eight housing integrations |
+| `integrations/<script>/server/adapter.lua`, `integrations/<script>/client/sync.lua`, `integrations/qs-housing/server/catalog_sync.lua` | The nine housing integrations |
 | The install files in `integrations/` | The files you copy into your housing script |
 | `server/test_commands.lua` | `/youtool_diag` and `/youtool_testall` |
 | `integrations/<script>/README.md` | Install guides |

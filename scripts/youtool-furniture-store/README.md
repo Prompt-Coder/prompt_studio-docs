@@ -1,5 +1,5 @@
 ---
-description: A walk-in furniture store with a tablet catalog, cart and checkout into 8 housing scripts, plus store owners, staff, markup, vault and stock.
+description: A walk-in furniture store with a tablet catalog, cart and checkout into 9 housing scripts, plus store owners, staff, markup, vault and stock.
 icon: couch
 ---
 
@@ -49,7 +49,7 @@ See [Store Console](console/README.md).
 
 #### For server owners
 
-* 8 housing scripts, detected automatically
+* 9 housing scripts, detected automatically
 * Framework money, or a free or custom money mode
 * One `Config.EconomyScale` to match your economy
 * Corporate tools for base prices and product names
@@ -90,9 +90,10 @@ YouTool finds your housing script by its resource name, so keep the folder name 
 | RxHousing (rxscripts) | `RxHousing` or `rxscripts_housing` | 2.5.0 | [RxHousing](housing/rxhousing.md) |
 | vms\_housing | `vms_housing` | 1.5.1 | [vms\_housing](housing/vms-housing.md) |
 | brutal\_housing | `brutal_housing` | 2.1.0 | [brutal\_housing](housing/brutal-housing.md) |
+| rcore\_housing | `rcore_housing` | 1.1.4 | [rcore\_housing](housing/rcore-housing.md) |
 
 {% hint style="warning" %}
-`rcore_housing`, `qb-houses`, `esx_property`, `loaf_housing`, `origen_housing` and `jg-housing` are **not supported**. The setup check tells you when it finds one of them.
+`qb-houses`, `esx_property`, `loaf_housing`, `origen_housing` and `jg-housing` are **not supported**. The setup check tells you when it finds one of them.
 {% endhint %}
 
 ***
@@ -112,7 +113,7 @@ The full steps are on the [Installation](installation.md) page.
 
 * [Installation](installation.md): server.cfg order, store owners, the setup check, updating
 * [Housing Integrations](housing/README.md): install steps for each housing script
-  * [qs-housing](housing/qs-housing.md), [ps-housing](housing/ps-housing.md), [nolag\_properties](housing/nolag-properties.md), [bcs\_housing](housing/bcs-housing.md), [rtx\_housing](housing/rtx-housing.md), [RxHousing](housing/rxhousing.md), [vms\_housing](housing/vms-housing.md), [brutal\_housing](housing/brutal-housing.md)
+  * [qs-housing](housing/qs-housing.md), [ps-housing](housing/ps-housing.md), [nolag\_properties](housing/nolag-properties.md), [bcs\_housing](housing/bcs-housing.md), [rtx\_housing](housing/rtx-housing.md), [RxHousing](housing/rxhousing.md), [vms\_housing](housing/vms-housing.md), [brutal\_housing](housing/brutal-housing.md), [rcore\_housing](housing/rcore-housing.md)
 * [Shopping](shopping.md): the tablet, cart, sets, checkout and phone app
 * [Store Console](console/README.md): the staff side of the tablet
   * [Staff & Permissions](console/staff-and-permissions.md)

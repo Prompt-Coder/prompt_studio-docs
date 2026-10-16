@@ -80,7 +80,7 @@ The last line sums up your setup in one line. Paste it into every ticket.
 | `Housing: <script> <version>` | OK | Nothing. This is the script YouTool delivers to. If the script has no version in its manifest, the line shows `?` and is `[INFO]`. |
 | `Housing: <script> <version> (newer than <tested>, the version we tested: report it if purchases fail)` | INFO | Usually fine. Run the delivery test (`youtool_setup <playerId>`). If purchases fail, send us the report. |
 | `Housing: <script> <version> is older than <tested>, the version we tested` | WARN | Update the housing script to the tested version or newer. |
-| `Housing: YouTool uses <script>, but <other> is running too` | WARN | Run only one housing script. When several run, YouTool uses the first in this order: qs-housing, ps-housing, nolag\_properties, bcs\_housing, rtx\_housing, RxHousing, vms\_housing, brutal\_housing. |
+| `Housing: YouTool uses <script>, but <other> is running too` | WARN | Run only one housing script. When several run, YouTool uses the first in this order: qs-housing, ps-housing, nolag\_properties, bcs\_housing, rtx\_housing, RxHousing, vms\_housing, brutal\_housing, rcore\_housing. |
 | `Housing: custom adapter registered` | OK | A developer connected another script through a custom adapter. See [For Developers](developers/README.md). |
 | `Housing: <script> found, but YouTool has no adapter for it` | FAIL | That script isn't supported, so purchases are blocked. Use one of the [supported scripts](housing/README.md), or have a developer register a custom adapter. |
 | `Housing: no supported housing script is running, purchases are blocked` | FAIL | Start your housing script before `prompt_youtool_store_system`, and keep its original folder name (for example `qs-housing`), because YouTool detects it by name. |
@@ -170,6 +170,15 @@ When the install file is not loaded, the `->` line reads: `In RxHousing/fxmanife
 | `vms_housing: <n> YouTool models were just registered; vms sees them after its next restart` | WARN | Normal the first time. Restart vms\_housing (or the whole server). |
 | `<script>: YouTool catalog registered` | OK | The YouTool items are in vms's furniture list. |
 
+**rcore\_housing** ([page](housing/rcore-housing.md))
+
+| Message | Status | What to do |
+| --- | --- | --- |
+| `rcore_housing <version> is too old: it lists no apartments for their owners` | FAIL | Update rcore\_housing to 1.1.4 or newer. |
+| `<script>: the furniture delivery export (RegisterFurnitureDelivery) is missing` | FAIL | Update rcore\_housing to 1.1.4 or newer. |
+| `<script>: furniture delivery export found` | OK | Delivery into rcore\_housing works. |
+| `<script>: its own furniture shop NPC stands inside the YouTool store <store>` | WARN | Move or remove that entry in `Config.Furniture.Shop.Locations` in `rcore_housing/config.lua`. |
+
 </details>
 
 <details>
@@ -200,7 +209,7 @@ Most of these lines appear when you run `youtool_setup <playerId>`. The automati
 
 | Message | Status | What to do |
 | --- | --- | --- |
-| `Player <id> owns <n> propert(y/ies)` | OK | The housing script sees the player's properties. |
+| `Properties owned by player <id>: <n>` | OK | The housing script sees the player's properties. |
 | `Player <id> owns no property, so delivery cannot be tested` | WARN | Run it with a player who owns a property. |
 | `Player <id> is not online` | WARN | Use the server ID of a player who is online right now (for example from the txAdmin player list). |
 | `Delivery test: <item> arrived in <property>` | OK | Delivery works. The result is saved, so the test won't run again for this housing version. |
@@ -251,7 +260,7 @@ Read the setup check: it shows which script it found, or that none is running. S
 
 <summary>"You need to own a house to purchase furniture"</summary>
 
-The housing script reports that this character owns no property. Check with `youtool_setup <playerId>` in the server console: it prints `Player <id> owns <n> propert(y/ies)` or `owns no property`. Which kinds of property each housing script counts is on its [housing page](housing/README.md).
+The housing script reports that this character owns no property. Check with `youtool_setup <playerId>` in the server console: it prints `Properties owned by player <id>: <n>` or `owns no property`. Which kinds of property each housing script counts is on its [housing page](housing/README.md).
 
 </details>
 

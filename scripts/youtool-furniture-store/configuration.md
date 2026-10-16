@@ -239,6 +239,7 @@ YouTool detects your housing script by itself. Install steps per script: [Housin
 | Option | Default | Meaning |
 | --- | --- | --- |
 | `Config.VmsHousing.priceMultiplier` | `1.5` | vms\_housing only. YouTool adds its catalog to vms's furniture list at start (only models vms doesn't have). The price written there is catalog price × `Config.EconomyScale` × this value. Above 1.0 so vms's own furniture menu never undercuts the store. |
+| `Config.RcoreHousing.deliveryDelay` | `0` | rcore\_housing only. Minutes. `0` puts purchases straight into the property's furniture stock. Above `0`, rcore's own delivery runs: a box and pallet appear in the property's DELIVERY zone after that many minutes, one per product. See [rcore\_housing](housing/rcore-housing.md). |
 
 ***
 

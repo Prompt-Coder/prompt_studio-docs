@@ -5,7 +5,7 @@ icon: house
 
 # Housing Integrations
 
-YouTool doesn't keep furniture itself. Every purchase is delivered into the buyer's property in your housing script, and the player places it with that script's own furniture or decorate tools. YouTool supports eight housing scripts and detects the one you run by itself, so there is no setting to choose it.
+YouTool doesn't keep furniture itself. Every purchase is delivered into the buyer's property in your housing script, and the player places it with that script's own furniture or decorate tools. YouTool supports nine housing scripts and detects the one you run by itself, so there is no setting to choose it.
 
 Most scripts need a short install step on their side (one file to copy, sometimes a setting or a manifest line). Each script has its own page with the exact steps.
 
@@ -23,10 +23,11 @@ Most scripts need a short install step on their side (one file to copy, sometime
 | [RxHousing](rxhousing.md) | `RxHousing` (or `rxscripts_housing`) | 2.5.0 | Copy one file, change one manifest line | The property's furniture inventory, "YouTool Store" category |
 | [vms\_housing](vms-housing.md) | `vms_housing` | 1.5.1 (1.4.5 minimum) | None, restart vms\_housing once | The property's stash, placed with the vms\_housing placement tool |
 | [brutal\_housing](brutal-housing.md) | `brutal_housing` | 2.1.0 | Copy one file, add one manifest line twice | The property's furniture in brutal\_housing, arranged with its placement tool |
+| [rcore\_housing](rcore-housing.md) | `rcore_housing` | 1.1.4 (minimum) | None | The property's furniture stock, placed with rcore's furniture editor (or an rcore delivery box) |
 
 "Tested with" is the version the full YouTool test run passed on. Newer versions usually work; the [setup check](#what-the-setup-check-verifies) tells you when your version differs.
 
-Deliveries only go to properties the buyer **owns** (on vms\_housing also properties they rent). Having a key to someone else's property is not enough.
+Deliveries only go to properties the buyer **owns** (on vms\_housing and rcore\_housing also properties they rent). Having a key to someone else's property is not enough.
 
 {% hint style="warning" %}
 **Updating ps-housing, RxHousing or brutal\_housing removes what you added for YouTool.**
@@ -52,6 +53,7 @@ One second after YouTool starts, it checks which housing resource is running, in
 6. `RxHousing` or `rxscripts_housing`
 7. `vms_housing`
 8. `brutal_housing`
+9. `rcore_housing`
 
 The server console shows the result:
 
@@ -59,7 +61,7 @@ The server console shows the result:
 [YouTool Store] Housing adapter: qs-housing
 ```
 
-The names it can print are `qs-housing`, `ps-housing`, `nolag_properties`, `bcs_housing`, `rtx_housing`, `rxscripts` (for RxHousing), `vms_housing`, `brutal_housing` and `custom`.
+The names it can print are `qs-housing`, `ps-housing`, `nolag_properties`, `bcs_housing`, `rtx_housing`, `rxscripts` (for RxHousing), `vms_housing`, `brutal_housing`, `rcore_housing` and `custom`.
 
 * **Only one housing script is used.** If two supported scripts run at the same time, YouTool uses the one higher in the list and the setup check warns about it.
 * **Resource names must match.** A housing script in a renamed folder isn't detected (RxHousing is the exception: both `RxHousing` and `rxscripts_housing` work).
@@ -150,8 +152,8 @@ youtool_setup <playerId>
 It delivers one free **Disposable Coffee Cup** (`prop_coffee_cup_trailer`) into that player's first property and confirms it was saved:
 
 ```
-  [ OK ] Player 2 owns 1 propert(y/ies)
-  [ OK ] Delivery test: Disposable Coffee Cup arrived in 14908
+  [ OK ] Properties owned by player 2: 1
+  [ OK ] Delivery test: Disposable Coffee Cup arrived in Starter Apartments #2
 ```
 
 A passed test is remembered per housing script and version, so later checks show `Delivery test passed on <date>` instead of adding more cups. To run it again anyway, add `force`: `youtool_setup <playerId> force`. Without a player id, `youtool_setup` repeats the static checks.
@@ -170,7 +172,6 @@ When you open a ticket, copy the whole setup-check block from the console, inclu
 
 YouTool has no adapter for these scripts. The setup check recognizes them and reports them, but nothing is delivered:
 
-* `rcore_housing`
 * `qb-houses`
 * `esx_property`
 * `loaf_housing`
@@ -180,8 +181,8 @@ YouTool has no adapter for these scripts. The setup check recognizes them and re
 On a server that runs only one of these, the console shows:
 
 ```
-  [FAIL] Housing: rcore_housing found, but YouTool has no adapter for it
-         -> Supported: qs-housing, ps-housing, nolag_properties, bcs_housing, rtx_housing, RxHousing, vms_housing, brutal_housing. For any other script, register a custom adapter (YouTool documentation, Custom housing).
+  [FAIL] Housing: qb-houses found, but YouTool has no adapter for it
+         -> Supported: qs-housing, ps-housing, nolag_properties, bcs_housing, rtx_housing, RxHousing, vms_housing, brutal_housing, rcore_housing. For any other script, register a custom adapter (YouTool documentation, Custom housing).
 ```
 
 Players who try to check out see *"No housing system configured on this server (custom mode - see server console)"* and are not charged. To use another housing or inventory script, connect it with a custom adapter, see [For Developers](../developers/README.md).
