@@ -7,6 +7,12 @@ icon: couch
 
 <figure><img src="../../.gitbook/assets/banner-youtool-furniture-store.png" alt="YouTool Furniture Store"><figcaption></figcaption></figure>
 
+{% embed url="https://portal.cfx.re/assets/granted-assets?page=1&sort=asset.updated_at&direction=asc&search=Prompt%27s+-+YouTool+Furniture+Store" %}
+**Official asset for FiveM — available on CFX Portal and** [**Prompt’s Mods Store**](https://store.prompt-mods.com/store/package/7744463)
+{% endembed %}
+
+{% embed url="https://youtu.be/zkvGT3JkK-U" %}
+
 YouTool Furniture Store turns the YouTool store map into a working furniture shop. Players walk into the store, open a tablet, browse a catalog of more than 2,000 furniture items, and check out. The furniture is delivered into a property they own in your housing script, where they place it with that script's own tools. Every store has an owner who sets the markup, hires staff and keeps the profit in the store's vault. Two stores ship ready to use: Sandy Shores (`youtool_sandy`) and Davis (`youtool_vespucci`).
 
 {% hint style="info" %}
