@@ -132,6 +132,7 @@
 * [💻 Wiwang PC Club](civilian-maps/wiwang-pc-club.md)
 * [🚏 Bus Station](civilian-maps/bus-station.md)
 * [🚗 Red's Auto Parts](civilian-maps/reds-auto-parts.md)
+* [🛋️ YouTool Furniture Store (2 locations)](civilian-maps/youtool-furniture-store-2-locations.md)
 
 ## Crime Maps
 
