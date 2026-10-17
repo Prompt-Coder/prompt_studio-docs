@@ -96,7 +96,7 @@ YouTool delivers one free Disposable Coffee Cup (`prop_coffee_cup_trailer`) into
   [ OK ] Properties owned by player 2: 1
   [ OK ] Delivery test: Disposable Coffee Cup arrived in <property name>
   Everything looks good.
-  Support code: YT 1.2.0 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
+  Support code: YT 1.0.0 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
 ```
 {% endcode %}
 

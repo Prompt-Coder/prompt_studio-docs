@@ -45,7 +45,7 @@ On top of the catalog, three things change what players see, without editing the
 | `price` | Base price in whole dollars, before `Config.EconomyScale` and markup. |
 | `image` | Product image, relative to the resource folder (see [Images](#images)). |
 | `stockClass` | Stock class for Active mode: `clutter`, `lighting`, `soft`, `electronics`, `surfaces`, `seating`, `storage`, `fixtures` or `bulky`. See [Stock & Freight](console/stock-and-freight.md#stock-classes). |
-| `tags` | Descriptive keywords. The tablet and phone search don't use them in 1.2.0; search matches the name, model, category and subcategory. |
+| `tags` | Descriptive keywords. The tablet and phone search don't use them in 1.0.0; search matches the name, model, category and subcategory. |
 
 112 items are YouTool's own models (their names start with `i45pt_youtool_`). They are streamed by the `prompt_youtool` map resource, so keep it running.
 

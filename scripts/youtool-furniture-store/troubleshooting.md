@@ -48,7 +48,7 @@ Here is a real `[FAIL]`: the YouTool line in brutal\_housing's manifest is in th
   [FAIL] brutal_housing fxmanifest: in client_scripts, 'configs/youtool_catalog.lua' loads before 'configs/furnitures.lua'
          -> In brutal_housing/fxmanifest.lua add 'configs/youtool_catalog.lua' right after 'configs/furnitures.lua' in BOTH client_scripts and server_scripts, run refresh, then restart it. Every brutal_housing update removes these lines.
   [ OK ] Framework: qbcore, money: auto
-  Support code: YT 1.2.0 | qbcore | brutal_housing 2.1.0 | install ok | 1 fail 0 warn | delivery untested
+  Support code: YT 1.0.0 | qbcore | brutal_housing 2.1.0 | install ok | 1 fail 0 warn | delivery untested
 ```
 {% endcode %}
 
@@ -58,7 +58,7 @@ The last line sums up your setup in one line. Paste it into every ticket.
 
 | Part | Meaning |
 | --- | --- |
-| `YT 1.2.0` | YouTool version |
+| `YT 1.0.0` | YouTool version |
 | `qbcore` | Framework found: `qbcore`, `qbox`, `esx` or `standalone` |
 | `brutal_housing 2.1.0` | Housing script and its version. `custom` for a custom adapter, `no housing` when none was found. |
 | `install ok` | The housing install step: `ok`, `missing`, `outdated`, `not_loaded`, `error`, or `-` when there is nothing to check |
@@ -69,7 +69,7 @@ The last line sums up your setup in one line. Paste it into every ticket.
 
 ### Every setup check message
 
-`<script>` is your housing script's resource name, `<version>` its version, `<tested>` the version we tested YouTool 1.2.0 against.
+`<script>` is your housing script's resource name, `<version>` its version, `<tested>` the version we tested YouTool 1.0.0 against.
 
 <details>
 

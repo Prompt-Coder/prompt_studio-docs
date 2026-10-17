@@ -305,6 +305,6 @@ return {
 {% endtab %}
 
 {% tab title="Other scripts" %}
-The files for bcs\_housing, brutal\_housing, nolag\_properties, rtx\_housing, RxHousing (`integrations/rxscripts/`) and vms\_housing contain `enabled` (see above) and `debug`. Their other fields (`debug`, nolag\_properties' menu category fields) aren't read in 1.2.0; leave them as they are.
+The files for bcs\_housing, brutal\_housing, nolag\_properties, rtx\_housing, RxHousing (`integrations/rxscripts/`) and vms\_housing contain `enabled` (see above) and `debug`. Their other fields (`debug`, nolag\_properties' menu category fields) aren't read in 1.0.0; leave them as they are.
 {% endtab %}
 {% endtabs %}

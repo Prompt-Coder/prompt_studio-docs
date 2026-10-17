@@ -161,7 +161,7 @@ A passed test is remembered per housing script and version, so later checks show
 The report ends with a **Support code** line, for example:
 
 ```
-  Support code: YT 1.2.0 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
+  Support code: YT 1.0.0 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
 ```
 
 When you open a ticket, copy the whole setup-check block from the console, including that line.
