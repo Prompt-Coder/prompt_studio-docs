@@ -9,12 +9,14 @@ icon: download
 {% step %}
 #### Put both resources in your server
 
-Copy these two folders into your `resources` directory:
+Download both from the [CFX Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+YouTool+Furniture+Store) and copy the two folders into your `resources` directory:
 
 | Folder | What it is |
 | --- | --- |
 | `prompt_youtool` | The store map: the store interior and the price tag models |
 | `prompt_youtool_store_system` | The script |
+
+The map has two optional steps of its own, door locks for `ox_doorlock` and the Truck You Repairs compatibility files: see the [map page](../../civilian-maps/youtool-furniture-store-2-locations.md).
 
 {% hint style="warning" %}
 Keep the folder names exactly as they are. The install files you copy into your housing script read the catalog from a folder named `prompt_youtool_store_system`, and so do the item images. The setup check reports a renamed folder as a `[FAIL]`.

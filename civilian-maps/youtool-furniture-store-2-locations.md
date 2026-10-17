@@ -4,7 +4,7 @@
 **Official asset for FiveM — available on CFX Portal and** [**Prompt’s Mods Store**](https://store.prompt-mods.com/store/package/7744463)
 {% endembed %}
 
-{% embed url="https://youtu.be/zkvGT3JkK-U" %}
+{% embed url="https://youtu.be/pd9kXiBlzm8" %}
 
 The YouTool furniture store map: the vanilla **YouTool in Sandy Shores**, now fully enterable, and a brand-new **YouTool building in Davis**. Both have the same full showroom interior with 54 display zones across the furniture, bedroom, home, garden and garage departments.
 
@@ -19,6 +19,8 @@ The map works on its own. To turn it into a working store with tablet shopping, 
 {% stepper %}
 {% step %}
 #### Step 1 — Install the map
+
+Download the resource from the [CFX Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+YouTool+Furniture+Store).
 
 After downloading, **you will get a zip with a folder named**:
 
