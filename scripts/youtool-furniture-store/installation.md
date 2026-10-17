@@ -60,7 +60,7 @@ Corporate admin does **not** make you a store owner. Markup, vault, staff and th
 
 Most housing scripts need a small change on their side: a file copied from `prompt_youtool_store_system/integrations/<script>/` into the housing script, a setting, or a manifest line. Open the page for your script and follow it:
 
-[Housing Integrations](housing/README.md): [qs-housing](housing/qs-housing.md) · [ps-housing](housing/ps-housing.md) · [nolag\_properties](housing/nolag-properties.md) · [bcs\_housing](housing/bcs-housing.md) · [rtx\_housing](housing/rtx-housing.md) · [RxHousing](housing/rxhousing.md) · [vms\_housing](housing/vms-housing.md) · [brutal\_housing](housing/brutal-housing.md)
+[Housing Integrations](housing/README.md): [qs-housing](housing/qs-housing.md) · [ps-housing](housing/ps-housing.md) · [nolag\_properties](housing/nolag-properties.md) · [bcs\_housing](housing/bcs-housing.md) · [rtx\_housing](housing/rtx-housing.md) · [RxHousing](housing/rxhousing.md) · [vms\_housing](housing/vms-housing.md) · [brutal\_housing](housing/brutal-housing.md) · [rcore\_housing](housing/rcore-housing.md)
 
 You don't need to tell YouTool which script you run. It detects it by itself.
 {% endstep %}
@@ -165,7 +165,7 @@ YouTool saves each store's state as JSON files in `prompt_youtool_store_system/d
 | `player_carts.json` | Carts players left without checking out |
 | `setup_state.json` | Delivery tests that passed |
 
-`store_placements.json` and `store_sets.json` also come with the download, holding the stores' default displays and sets. Your copies include every change your staff made, so keep yours. `catalog.json` is not in the table: it is the catalog itself, so always take the new one when you update.
+`store_placements.json` and `store_sets.json` also come with the download, empty: staff place the display furniture, price tags and sets themselves. Your copies hold everything your staff placed, so keep yours. `catalog.json` is not in the table: it is the catalog itself, so always take the new one when you update.
 
 YouTool writes these files a few seconds after a change and when the resource stops, so stop the resource or the server before you copy them.
 

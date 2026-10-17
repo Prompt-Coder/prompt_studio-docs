@@ -1,5 +1,5 @@
 ---
-description: How YouTool delivers furniture into your housing script, the 8 supported scripts, the property picker, and what the setup check verifies.
+description: How YouTool delivers furniture into your housing script, the 9 supported scripts, the property picker, and what the setup check verifies.
 icon: house
 ---
 

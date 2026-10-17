@@ -70,7 +70,7 @@ What to know about the owner:
 Open it with Console › **Staff** (needs `staff.view`; changing anything needs `staff.edit`).
 
 * **Roster** (left): the owner, marked with a crown, then every staff member with their name, identifier, a position dropdown and a remove button.
-* **Positions** (right): one card per position, most senior first, with the number of permissions ("abilities"). Click a card to open its permission `/youtool_viewas <roleId>`, `list`, `off`. Hover a permission to read what it does.
+* **Positions** (right): one card per position, most senior first, with the number of permissions ("abilities"). Click a card to open its permission list. Hover a permission to read what it does.
 
 Without `staff.edit` the tab is read-only. Positions at or above your own show a lock.
 
@@ -82,7 +82,7 @@ Without `staff.edit` the tab is read-only. Positions at or above your own show a
 {% step %}
 #### Press Hire
 
-**Hire nearby** `/youtool_viewas <roleId>`, `list`, `off`s players within 10 m of you, with their name and distance. The owner and people already on staff are left out. Walk up to the person and press **Rescan** if they're missing.
+**Hire nearby** lists players within 10 m of you, with their name and distance. The owner and people already on staff are left out. Walk up to the person and press **Rescan** if they're missing.
 {% endstep %}
 
 {% step %}
@@ -114,7 +114,7 @@ Every store starts with three positions:
 
 Manager and Worker are normal positions: rename them, change their permissions, move or delete them.
 
-* **New role** asks for a name (1–32 characters, no `<` or `>`). The new position goes to the bottom of the `/youtool_viewas <roleId>`, `list`, `off` with no permissions. Open its card and tick the permissions it should have.
+* **New role** asks for a name (1–32 characters, no `<` or `>`). The new position goes to the bottom of the list with no permissions. Open its card and tick the permissions it should have.
 * **Rename:** click the name on the card and type.
 * **Order:** the up and down arrows move a position. Higher means more senior, which decides who can manage whom (below).
 * **Delete:** the trash icon. A position can only be deleted when nobody holds it ("Reassign this role's staff before deleting it").
@@ -135,14 +135,14 @@ A corporate admin who is also on a store's staff with `staff.edit` counts as abo
 
 ### Permission reference
 
-All 19 permissions, in the order the Staff tab `/youtool_viewas <roleId>`, `list`, `off`s them:
+All 19 permissions, in the order the Staff tab lists them:
 
 | Permission | What it allows | Notes |
 | --- | --- | --- |
 | `markup.view` | See the store's markup in the Markup tab | Shows the Markup tab |
 | `markup.edit` | Change the markup: global, per category, and per item in the Catalog | |
 | `markup.negative` | Set a markup below 0 %, selling under cost. The vault pays corporate the difference on every sale | Needs `markup.edit` too. See [Markup, Vault & Sales](markup-vault-sales.md) |
-| `de`/youtool_viewas <roleId>`, `list`, `off`.edit` | Hide or show products at this store (Catalog visibility) | |
+| `delist.edit` | Hide or show products at this store (Catalog visibility) | |
 | `sets.view` | See the store's furniture sets | Shows the Sets tab |
 | `sets.edit` | Create, edit and delete sets; place, complete and remove them in the showroom | Placing pieces also needs `placements.edit` |
 | `stock.view` | See stock levels (Active stock mode) | Shows the Stock tab |
@@ -213,7 +213,7 @@ youtool_hire youtool_sandy ABC12345 manager
 youtool_fire youtool_sandy ABC12345
 ```
 
-`roleId` is the position's id: `manager`, `worker`, or the id of a position the store created (ids like `r0a1b2`; `/youtool_viewas <roleId>`, `list`, `off` them with `youtool_roles`). The identifier must be exact; it isn't checked. These commands skip the Staff tab's rank rules and staff limit.
+`roleId` is the position's id: `manager`, `worker`, or the id of a position the store created (ids like `r0a1b2`; list them with `youtool_roles`). The identifier must be exact; it isn't checked. These commands skip the Staff tab's rank rules and staff limit.
 
 ```
 [YouTool Roles] ABC12345 hired as manager at youtool_sandy
@@ -254,7 +254,7 @@ See the store exactly as a position sees it: which tabs show, which buttons are 
 /youtool_viewas manager
 ```
 
-* `/youtool_viewas `/youtool_viewas <roleId>`, `list`, `off`` (or no argument) shows what you are previewing, the store and the position ids there.
+* `/youtool_viewas list` (or no argument) shows what you are previewing, the store and the position ids there.
 * `/youtool_viewas off` (or `owner`) ends the preview.
 * Use a position's id, not its display name. Custom positions have ids like `r0a1b2`.
 

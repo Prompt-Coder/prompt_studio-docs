@@ -93,7 +93,7 @@ Corporate admins (`youtool.admin`, see [Commands & Permissions](commands.md#ace-
 | Product name | Console › **Catalog**, select the item, edit **Name** (up to 64 characters). |
 | Back to the catalog name | Type the catalog name back into **Name**. |
 
-**Reset** in the Catalog tab appears on items you changed from your own Console. It clears both the item's base price change and its name change.
+**Reset** in the Catalog tab appears on items you changed from your own Console. It clears both the item's base price change and its name change, and shows a hidden product again (with `delist.edit`).
 
 To see how a price is built for one store, run `youtool_price <model> <storeId>` in the server console.
 

@@ -26,7 +26,7 @@ FROM: prompt_youtool_store_system/integrations/brutal-housing/brutal_install/you
 TO:   brutal_housing/configs/youtool_catalog.lua
 ```
 
-The file only adds models brutal\_housing doesn't already ship, each one once. brutal stores one furniture entry for every category that lists a model, so a model listed twice would be delivered twice.
+The file only adds models brutal\_housing doesn't already ship, each one once. brutal stores one furniture entry for every listing of a model, so a model listed twice would be delivered twice. That includes brutal's own variants (the `options` of an item): version 2 of the file skips those too.
 
 **If you installed an older copy of this file, replace it.** The old copy listed all 2,112 models and doubled about 600 of them on delivery. Keep the `YOUTOOL_INSTALL` block at the top of the file (the setup check reads it), and always copy the file from the YouTool version you are running.
 {% endstep %}
@@ -96,7 +96,7 @@ restart prompt_youtool_store_system
 The console shows (numbers on brutal\_housing 2.1.0):
 
 ```
-[YouTool brutal_housing] registered 1484 items into Config.Furnitures["YouTool Store"] (628 already in brutal or duplicated, skipped)
+[YouTool brutal_housing] registered 1411 items into Config.Furnitures["YouTool Store"] (701 already in brutal or duplicated, skipped)
 [YouTool Store] Housing adapter: brutal_housing
 ```
 {% endstep %}
@@ -112,6 +112,14 @@ The console shows (numbers on brutal\_housing 2.1.0):
 
 **Storage limit.** brutal\_housing saves all of a property's furniture as one block of data and sends it in a single network message, which FiveM caps at 64 KB. Once a property gets close to that, further placements would disconnect the owner. YouTool keeps an eye on the size and stops before that point. The items that don't fit are refunded, and the player sees *"This property is full — some items could not be placed (you were refunded for them)"*. If nothing fits, the whole order is refunded.
 
+**Only what arrives is billed.** brutal\_housing doesn't report back whether it took an item, so YouTool checks the property's furniture after the delivery. An item that hasn't shown up within 10 seconds is refunded at its price, and the server console prints:
+
+```
+[YouTool brutal_housing] 1 of 3 item(s) never arrived in H245 (brutal dropped them, or the buyer left) and are refunded. If this repeats, run youtool_setup: configs/youtool_catalog.lua may not be loaded in brutal_housing.
+```
+
+If the buyer left the game during the delivery, the refund can't be paid to them: the console shows `REFUND FAILED for <id>: $N not returned`, and you pay it back by hand.
+
 ***
 
 ### Setup check
@@ -120,7 +128,7 @@ When everything is right:
 
 ```
   [ OK ] Housing: brutal_housing 2.1.0
-  [ OK ] brutal_housing: YouTool install file loaded (v1, 1484 items)
+  [ OK ] brutal_housing: YouTool install file loaded (v2, 1411 items)
 ```
 
 Typical problems:
@@ -149,15 +157,15 @@ To test one real delivery, run `youtool_setup <playerId>` with a player who owns
 
 <summary>Some items are delivered twice</summary>
 
-You are running an old copy of `brutal_housing/configs/youtool_catalog.lua`. Copy the current file from YouTool over it (step 1), then `refresh` and `restart brutal_housing`. The console line should show items as skipped, for example `(628 already in brutal or duplicated, skipped)`.
+You are running an old copy of `brutal_housing/configs/youtool_catalog.lua` (the setup check says *"the YouTool install file is an old copy"*). Version 1 of the file registered brutal's own variant models a second time, so those arrived twice. Copy the current file from YouTool over it (step 1), then `refresh` and `restart brutal_housing`. The console line should show items as skipped, for example `(701 already in brutal or duplicated, skipped)`.
 
 </details>
 
 <details>
 
-<summary>Purchases vanish: paid, but nothing in the property</summary>
+<summary>Items never arrive and are refunded</summary>
 
-brutal\_housing drops models that aren't in its furniture list. The YouTool file isn't loaded: check step 2, run `refresh` and `restart brutal_housing`, then read the setup check.
+brutal\_housing drops models that aren't in its furniture list. YouTool refunds them and prints `... item(s) never arrived in ...` in the console. Usually the YouTool file isn't loaded: check step 2, run `refresh` and `restart brutal_housing`, then read the setup check.
 
 </details>
 

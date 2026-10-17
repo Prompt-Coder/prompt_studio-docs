@@ -229,7 +229,7 @@ For any other key script, set `vehicleKeys.custom = function(src, plate, netId) 
 {% endtab %}
 
 {% tab title="logistics" %}
-Your own delivery resource handles the transport.
+Your own delivery resource handles the transport. The orderer sees *"Freight ordered — the logistics company delivers it to the dock"*.
 
 {% code title="config/delivery.lua" %}
 ```lua

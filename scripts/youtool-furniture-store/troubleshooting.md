@@ -44,7 +44,7 @@ Here is a real `[FAIL]`: the YouTool line in brutal\_housing's manifest is in th
 ```
 [YouTool] ── setup check ────────────────────────────────────────
   [ OK ] Housing: brutal_housing 2.1.0
-  [ OK ] brutal_housing: YouTool install file loaded (v1, 1484 items)
+  [ OK ] brutal_housing: YouTool install file loaded (v2, 1411 items)
   [FAIL] brutal_housing fxmanifest: in client_scripts, 'configs/youtool_catalog.lua' loads before 'configs/furnitures.lua'
          -> In brutal_housing/fxmanifest.lua add 'configs/youtool_catalog.lua' right after 'configs/furnitures.lua' in BOTH client_scripts and server_scripts, run refresh, then restart it. Every brutal_housing update removes these lines.
   [ OK ] Framework: qbcore, money: auto
@@ -298,7 +298,7 @@ The store runs in Active mode (`Config.EconomyMode = 'Active'`) and is out of st
 * **Look in the right place.** YouTool delivers into the housing script, and where the furniture shows up depends on that script (a furniture storage, a stash, a furniture menu). Your [housing page](housing/README.md) says where.
 * **Check the property.** Players with more than one property choose one at checkout. Make sure you're looking in that one.
 * **Run the delivery test**: `youtool_setup <playerId>` (add `force` if it passed before). A `[FAIL]` line says what's wrong.
-* **Read the server console** at the time of the purchase. `[YouTool Server] Delivery failed for <id> (refunded $...)` means nothing arrived and the player got the money back. `Partial delivery for <id>: n/m items, refunded $...` means some items didn't fit; the player was charged only for the items that arrived.
+* **Read the server console** at the time of the purchase. `[YouTool Server] Delivery failed for <id> (refunded $...)` means nothing arrived and the player got the money back. `Partial delivery for <id>: n/m items, refunded $...` means some items didn't fit; the player was charged only for the items that arrived. `REFUND FAILED for <id>: $N not returned` means the player left the game before the refund could be paid; pay it back by hand.
 * **Showcase mode** delivers nothing on purpose, and the checkout message says so.
 * **vms\_housing**: items registered for the first time appear after vms\_housing restarts.
 * **After a housing script update**, its YouTool install step may be gone. The setup check shows it.

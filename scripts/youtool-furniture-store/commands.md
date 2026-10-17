@@ -187,7 +187,7 @@ Classes for the stock commands: `clutter`, `lighting`, `soft`, `electronics`, `s
 
 <summary><code>youtool_freight</code> and <code>youtool_shipments</code></summary>
 
-`youtool_freight youtool_sandy seating 2` orders freight like the Stock tab does: it prints the quote and the vault balance, then pays the order from the store vault. The optional last word (`auto`, `self` or `logistics`) delivers this one order in that mode without changing `Config.Delivery.mode`, which is handy for testing a mode. `youtool_shipments` lists the active shipment of every store with its pallets, unload progress and who claimed each pallet.
+`youtool_freight youtool_sandy seating 2` orders freight like the Stock tab does: it prints the quote and the vault balance, then pays the order from the store vault. If the vault can't cover the quote, nothing is ordered and it prints `failed: Insufficient vault balance ($N)`. The optional last word (`auto`, `self` or `logistics`) delivers this one order in that mode without changing `Config.Delivery.mode`, which is handy for testing a mode. `youtool_shipments` lists the active shipment of every store with its pallets, unload progress and who claimed each pallet.
 
 </details>
 
