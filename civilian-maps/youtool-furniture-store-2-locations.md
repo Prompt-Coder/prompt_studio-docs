@@ -4,7 +4,7 @@
 **Official asset for FiveM — available on CFX Portal and** [**Prompt’s Mods Store**](https://store.prompt-mods.com/store/package/7744463)
 {% endembed %}
 
-{% embed url="https://youtu.be/pd9kXiBlzm8" %}
+{% embed url="https://youtu.be/zkvGT3JkK-U" %}
 
 The YouTool furniture store map: the vanilla **YouTool in Sandy Shores**, now fully enterable, and a brand-new **YouTool building in Davis**. Both have the same full showroom interior with 54 display zones across the furniture, bedroom, home, garden and garage departments.
 
