@@ -118,6 +118,7 @@
 
 ## Civilian Maps
 
+* [🛋️ YouTool Furniture Store (2 locations)](civilian-maps/youtool-furniture-store-2-locations.md)
 * [👺 4 Dragons Casino & Triad HQ](civilian-maps/4-dragons-casino-and-triad-hq.md)
 * [🏭 Bilgeco HQ & Warehouse](civilian-maps/bilgeco-hq-and-warehouse.md)
 * [🍔 Burger Shot (5 locations)](civilian-maps/burger-shot-5-locations.md)
@@ -132,7 +133,6 @@
 * [💻 Wiwang PC Club](civilian-maps/wiwang-pc-club.md)
 * [🚏 Bus Station](civilian-maps/bus-station.md)
 * [🚗 Red's Auto Parts](civilian-maps/reds-auto-parts.md)
-* [🛋️ YouTool Furniture Store (2 locations)](civilian-maps/youtool-furniture-store-2-locations.md)
 
 ## Crime Maps
 
