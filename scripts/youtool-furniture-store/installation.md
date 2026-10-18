@@ -35,7 +35,7 @@ ensure ox_lib
 ensure ox_target                     # or qb-target
 ensure qb-core                       # or qbx_core / es_extended; leave out on a standalone server
 ensure qs-housing                    # your housing script (only one)
-ensure lb-phone                      # optional: the YouTool phone app
+ensure lb-phone                      # optional: the YouTool phone app (or sky_phone)
 ensure prompt_youtool
 ensure prompt_youtool_store_system
 

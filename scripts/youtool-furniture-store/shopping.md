@@ -1,5 +1,5 @@
 ---
-description: How players shop at YouTool — the store tablet, in-store targets, filters, 3D preview, cart, furniture sets, checkout and the lb-phone app
+description: How players shop at YouTool — the store tablet, in-store targets, filters, 3D preview, cart, furniture sets, checkout and the phone app (lb-phone or sky_phone)
 icon: cart-shopping
 ---
 
@@ -190,7 +190,7 @@ YouTool never writes to the chat. Results on the tablet appear as a green (succe
 
 ***
 
-### Phone app (lb-phone)
+### Phone app (lb-phone or sky\_phone)
 
 {% columns %}
 {% column width="33.33%" %}
@@ -198,20 +198,23 @@ YouTool never writes to the chat. Results on the tablet appear as a green (succe
 {% endcolumn %}
 
 {% column width="66.67%" %}
-Players with **lb-phone** can order from anywhere through the **YouTool** app. lb-phone (resource name `lb-phone`) is the only phone YouTool supports.
+Players can order from anywhere through the **YouTool** app on **lb-phone** (resource `lb-phone`) or **sky\_phone** (resource `sky_phone`, tested with 1.1.7).
 
-**Install:** nothing to copy. When `lb-phone` is running, YouTool registers the app with lb-phone by itself as a default app. Start `lb-phone` before YouTool:
+**Install:** nothing to copy and nothing to set in YouTool. YouTool finds the phone and adds the app by itself as a default app (installed for everyone, can't be removed). Start the phone before YouTool:
 
 ```cfg
-ensure lb-phone
+ensure lb-phone      # or: ensure sky_phone
 ensure prompt_youtool_store_system
 ```
 
-If lb-phone starts later, the app is registered when it starts. The server console tells you which case you're in, for example:
+If the phone starts later, or restarts, the app is added again when it starts. The server console tells you which case you're in, for example:
 
 ```
 [YouTool Server] lb-phone detected (running) — phone app integration ENABLED
+[YouTool Phone] SUCCESS — App registered with sky_phone (2112 catalog items)
 ```
+
+**sky\_phone:** run it instead of lb-phone, not next to it: sky\_phone takes over the `lb-phone` name, so the two can't run together. Keep its custom apps switched on (the default, under `/phonepanel` when its configurator is on). Players can't open sky\_phone while they are downed or cuffed. The app follows the phone's light or dark mode.
 
 **Using it:**
 

@@ -33,7 +33,7 @@ YouTool Furniture Store turns the YouTool store map into a working furniture sho
 * Preview an item in 3D before buying
 * Add items or whole furniture sets to the cart; sets come with a discount
 * Check out and pick which property gets the delivery
-* Optional phone app (lb-phone) to order without visiting the store
+* Optional phone app (lb-phone or sky\_phone) to order without visiting the store
 
 See [Shopping](shopping.md).
 {% endcolumn %}
@@ -78,7 +78,7 @@ See [Configuration](configuration.md).
 | [`ox_target`](https://github.com/overextended/ox_target) or `qb-target` | Recommended | Detected automatically (`Config.interactionMode = 'auto'`). Used for the furniture and the checkout till. The tablet still opens with its key without one. |
 | `oxmysql` | Recommended | Most housing scripts need it. The setup check warns when it isn't running. |
 | QBCore, QBox or ESX | Optional | Detected automatically. Without a framework (and with the default `Config.MoneySystem = 'auto'`), YouTool runs standalone and nothing costs money. |
-| `lb-phone` | Optional | Adds the YouTool phone app. |
+| `lb-phone` or `sky_phone` | Optional | Adds the YouTool phone app. See [Phone app](shopping.md#phone-app-lb-phone-or-sky_phone). |
 
 ***
 
