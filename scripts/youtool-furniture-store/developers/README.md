@@ -25,7 +25,7 @@ Escrow only encrypts `.lua` files. HTML, JavaScript, CSS, images and `data/*.jso
 | `hooks/*.lua` | Your hook files ([Hooks](hooks.md)) |
 | `server/framework.lua` | Framework and money bridge |
 | `client/target_wrapper.lua` | Target script bridge |
-| `integrations/<script>/server/adapter.lua`, `integrations/<script>/client/sync.lua`, `integrations/qs-housing/server/catalog_sync.lua` | The nine housing integrations |
+| `integrations/<script>/server/adapter.lua`, `integrations/<script>/client/sync.lua`, `integrations/qs-housing/server/catalog_sync.lua` | The eleven housing integrations |
 | The install files in `integrations/` | The files you copy into your housing script |
 | `server/test_commands.lua` | `/youtool_diag` and `/youtool_testall` |
 | `integrations/<script>/README.md` | Install guides |
@@ -38,7 +38,7 @@ If your server runs a modified or newer version of a framework, target script or
 
 | File | What it does |
 | --- | --- |
-| `server/framework.lua` | Detects QBox (`qbx_core`), QBCore (`qb-core`), ESX (`es_extended`) or standalone, in that order. Provides the player identifier (citizenid, ESX identifier, or license on standalone), character names for the Staff tab and Vault list, and money. `Config.MoneySystem = 'custom'` calls your own functions at the bottom of this file ([Custom money](../configuration.md#custom-money)). |
+| `server/framework.lua` | Detects QBox (`qbx_core`, through its own `GetPlayer` exports), QBCore (`qb-core`), ESX (`es_extended`) or standalone, in that order. If detection fails, purchases are refused (never free). Provides the player identifier (citizenid, ESX identifier, or license on standalone), character names for the Staff tab and Vault list, and money. `Config.MoneySystem = 'custom'` calls your own functions at the bottom of this file ([Custom money](../configuration.md#custom-money)). |
 | `client/target_wrapper.lua` | Translates YouTool's ox\_target-style options to ox\_target or qb-target, chosen by `Config.interactionMode`. |
 | `integrations/<script>/server/adapter.lua` | One adapter per supported housing script: ownership, the property list for the checkout picker, and the delivery itself. They follow the contract in [Custom housing](#custom-housing). |
 | `integrations/<script>/client/sync.lua` | The client half of an integration, where a housing script needs one. |

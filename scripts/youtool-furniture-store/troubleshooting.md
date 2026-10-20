@@ -48,7 +48,7 @@ Here is a real `[FAIL]`: the YouTool line in brutal\_housing's manifest is in th
   [FAIL] brutal_housing fxmanifest: in client_scripts, 'configs/youtool_catalog.lua' loads before 'configs/furnitures.lua'
          -> In brutal_housing/fxmanifest.lua add 'configs/youtool_catalog.lua' right after 'configs/furnitures.lua' in BOTH client_scripts and server_scripts, run refresh, then restart it. Every brutal_housing update removes these lines.
   [ OK ] Framework: qbcore, money: auto
-  Support code: YT 1.0.0 | qbcore | brutal_housing 2.1.0 | install ok | 1 fail 0 warn | delivery untested
+  Support code: YT 1.0.1 | qbcore | brutal_housing 2.1.0 | install ok | 1 fail 0 warn | delivery untested
 ```
 {% endcode %}
 
@@ -58,7 +58,7 @@ The last line sums up your setup in one line. Paste it into every ticket.
 
 | Part | Meaning |
 | --- | --- |
-| `YT 1.0.0` | YouTool version |
+| `YT 1.0.1` | YouTool version |
 | `qbcore` | Framework found: `qbcore`, `qbox`, `esx` or `standalone` |
 | `brutal_housing 2.1.0` | Housing script and its version. `custom` for a custom adapter, `no housing` when none was found. |
 | `install ok` | The housing install step: `ok`, `missing`, `outdated`, `not_loaded`, `error`, or `-` when there is nothing to check |
@@ -69,7 +69,7 @@ The last line sums up your setup in one line. Paste it into every ticket.
 
 ### Every setup check message
 
-`<script>` is your housing script's resource name, `<version>` its version, `<tested>` the version we tested YouTool 1.0.0 against.
+`<script>` is your housing script's resource name, `<version>` its version, `<tested>` the version we tested YouTool 1.0.1 against.
 
 <details>
 
@@ -180,6 +180,22 @@ When the install file is not loaded, the `->` line reads: `In RxHousing/fxmanife
 | `<script>: <n> item(s) cost at least what rcore pays to buy them back, so selling them back cannot make money` | INFO | Normal. Those items' corporate base was raised to rcore's buy-back price. See [rcore\_housing](housing/rcore-housing.md). |
 | `<script>: its own furniture shop NPC stands inside the YouTool store <store>` | WARN | Move or remove that entry in `Config.Furniture.Shop.Locations` in `rcore_housing/config.lua`. |
 
+**prp-property** ([page](housing/prp-property.md))
+
+| Message | Status | What to do |
+| --- | --- | --- |
+| `prp-property <version> only takes furniture from its own list, so most YouTool products would be refused` | FAIL | Update prp-property to 1.1.0 or newer. |
+| `<script>: the furniture delivery export (AddFurnitureToProperty) is missing` | FAIL | Update prp-property to 1.1.0 or newer. |
+| `<script>: the item placeable_furniture_item is not in ox_inventory, so nothing can be delivered` | FAIL | Add the item to `ox_inventory/data/items.lua` as prp-property's installation guide shows (Items), then restart the server. |
+| `<script>: furniture delivery export found` | OK | Delivery into prp-property works. |
+
+**kartik-properties** ([page](housing/kartik-properties.md))
+
+| Message | Status | What to do |
+| --- | --- | --- |
+| `<script>: the furniture delivery export (AddPropertyFurniture) is missing, so nothing can be delivered` | FAIL | Update kartik-properties to its latest version. |
+| `<script>: furniture delivery export found` | OK | Delivery into kartik-properties works. |
+
 </details>
 
 <details>
@@ -190,6 +206,7 @@ When the install file is not loaded, the `->` line reads: `In RxHousing/fxmanife
 | --- | --- | --- |
 | `The YouTool folder is named <name>` | FAIL | Rename the folder back to `prompt_youtool_store_system`. The housing install files and item images use that name. |
 | `Framework: <framework>, money: <mode>` | OK | The framework found and the `Config.MoneySystem` in use. |
+| `Framework: not detected (server/framework.lua failed, see the SCRIPT ERROR above), so every purchase is refused` | FAIL | The framework bridge crashed at start, so YouTool refuses every purchase instead of handing out free furniture. Send the whole setup-check block and the `SCRIPT ERROR` line to Prompt Studio. |
 | `Money: MoneySystem is 'custom' but CustomGetMoney, CustomRemoveMoney and CustomAddMoney are not all defined, so purchases are refused` | FAIL | Define all three functions at the bottom of `server/framework.lua`, or set `Config.MoneySystem = 'auto'`. |
 | `Money: free mode (<framework>), nothing costs anything` | WARN | `Config.MoneySystem` is `'free'`, or it is `'auto'` and no framework was found. Start QBCore, QBox or ESX before YouTool with `'auto'`, or use `'custom'`. |
 | `oxmysql is not running` | WARN | Start `oxmysql` before YouTool. Most housing scripts need it. |
@@ -370,6 +387,14 @@ Leave the store and walk back in. If it keeps happening, check `interiorCoords` 
 * A text that shows as its key name (for example `checkout_done`) is missing from `en.lua` too.
 
 Product names, category names and console output are not translated. See [Languages](languages.md).
+
+</details>
+
+<details>
+
+<summary>QBox: "No such export GetCoreObject in resource qbx_core"</summary>
+
+YouTool 1.0.0 asked qbx\_core for a core object it doesn't have, so the framework never loaded and purchases weren't charged. Update to **1.0.1**, which uses qbx\_core's own exports and works with or without the qb-core bridge. After updating, the console shows `[YouTool Framework] Using QBox (qbx_core)` and the setup check shows `Framework: qbox`.
 
 </details>
 

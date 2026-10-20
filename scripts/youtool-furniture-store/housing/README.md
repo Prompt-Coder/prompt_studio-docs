@@ -1,11 +1,11 @@
 ---
-description: How YouTool delivers furniture into your housing script, the 9 supported scripts, the property picker, and what the setup check verifies.
+description: How YouTool delivers furniture into your housing script, the 11 supported scripts, the property picker, and what the setup check verifies.
 icon: house
 ---
 
 # Housing Integrations
 
-YouTool doesn't keep furniture itself. Every purchase is delivered into the buyer's property in your housing script, and the player places it with that script's own furniture or decorate tools. YouTool supports nine housing scripts and detects the one you run by itself, so there is no setting to choose it.
+YouTool doesn't keep furniture itself. Every purchase is delivered into the buyer's property in your housing script, and the player places it with that script's own furniture or decorate tools. YouTool supports eleven housing scripts and detects the one you run by itself, so there is no setting to choose it.
 
 Most scripts need a short install step on their side (one file to copy, sometimes a setting or a manifest line). Each script has its own page with the exact steps.
 
@@ -24,10 +24,12 @@ Most scripts need a short install step on their side (one file to copy, sometime
 | [vms\_housing](vms-housing.md) | `vms_housing` | 1.5.1 (1.4.5 minimum) | None, restart vms\_housing once | The property's stash, placed with the vms\_housing placement tool |
 | [brutal\_housing](brutal-housing.md) | `brutal_housing` | 2.1.0 | Copy one file, add one manifest line twice | The property's furniture in brutal\_housing, arranged with its placement tool |
 | [rcore\_housing](rcore-housing.md) | `rcore_housing` | 1.1.4 (minimum) | None | The property's furniture stock, placed with rcore's furniture editor (or an rcore delivery box) |
+| [prp-property](prp-property.md) | `prp-property` | 1.1.0 (minimum) | None (the `placeable_furniture_item` item from prp's own install) | A Placeable Furniture item in the property's Furniture Storage or mailbox, placed with prp's furnish mode |
+| [kartik-properties](kartik-properties.md) | `kartik-properties` | Not tested in-game yet | None | Unplaced, in the modeler's Delivered tab |
 
 "Tested with" is the version the full YouTool test run passed on. Newer versions usually work; the [setup check](#what-the-setup-check-verifies) tells you when your version differs.
 
-Deliveries only go to properties the buyer **owns** (on vms\_housing and rcore\_housing also properties they rent). Having a key to someone else's property is not enough.
+Deliveries only go to properties the buyer **owns**. On vms\_housing, rcore\_housing and kartik-properties also properties they rent; on prp-property also properties where they hold a key or rent with the FURNISH privilege. On the other scripts, having a key to someone else's property is not enough.
 
 {% hint style="warning" %}
 **Updating ps-housing, RxHousing or brutal\_housing removes what you added for YouTool.**
@@ -54,6 +56,8 @@ One second after YouTool starts, it checks which housing resource is running, in
 7. `vms_housing`
 8. `brutal_housing`
 9. `rcore_housing`
+10. `prp-property`
+11. `kartik-properties`
 
 The server console shows the result:
 
@@ -61,7 +65,7 @@ The server console shows the result:
 [YouTool Store] Housing adapter: qs-housing
 ```
 
-The names it can print are `qs-housing`, `ps-housing`, `nolag_properties`, `bcs_housing`, `rtx_housing`, `rxscripts` (for RxHousing), `vms_housing`, `brutal_housing`, `rcore_housing` and `custom`.
+The names it can print are `qs-housing`, `ps-housing`, `nolag_properties`, `bcs_housing`, `rtx_housing`, `rxscripts` (for RxHousing), `vms_housing`, `brutal_housing`, `rcore_housing`, `prp-property`, `kartik-properties` and `custom`.
 
 * **Only one housing script is used.** If two supported scripts run at the same time, YouTool uses the one higher in the list and the setup check warns about it.
 * **Resource names must match.** A housing script in a renamed folder isn't detected (RxHousing is the exception: both `RxHousing` and `rxscripts_housing` work).
@@ -161,7 +165,7 @@ A passed test is remembered per housing script and version, so later checks show
 The report ends with a **Support code** line, for example:
 
 ```
-  Support code: YT 1.0.0 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
+  Support code: YT 1.0.1 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
 ```
 
 When you open a ticket, copy the whole setup-check block from the console, including that line.
@@ -182,7 +186,7 @@ On a server that runs only one of these, the console shows:
 
 ```
   [FAIL] Housing: qb-houses found, but YouTool has no adapter for it
-         -> Supported: qs-housing, ps-housing, nolag_properties, bcs_housing, rtx_housing, RxHousing, vms_housing, brutal_housing, rcore_housing. For any other script, register a custom adapter (YouTool documentation, Custom housing).
+         -> Supported: qs-housing, ps-housing, nolag_properties, bcs_housing, rtx_housing, RxHousing, vms_housing, brutal_housing, rcore_housing, prp-property, kartik-properties. For any other script, register a custom adapter (YouTool documentation, Custom housing).
 ```
 
 Players who try to check out see *"No housing system configured on this server (custom mode - see server console)"* and are not charged. To use another housing or inventory script, connect it with a custom adapter, see [For Developers](../developers/README.md).
@@ -207,7 +211,7 @@ YouTool found no supported housing script when it started. Check the console for
 
 <summary>Players see "You need to own a house to purchase furniture" but they own one</summary>
 
-YouTool asks the housing script for properties the player **owns**. Keyholders and (except on vms\_housing) renters don't count. To see what the housing script answers for a player, run this in the server console:
+YouTool asks the housing script for properties the player **owns**. Keyholders and renters only count on the scripts listed under [Supported housing scripts](#supported-housing-scripts). To see what the housing script answers for a player, run this in the server console:
 
 ```
 youtool_housing <playerId>

@@ -268,7 +268,7 @@ Turning it on forces `Config.MoneySystem = 'free'`, `Config.Manager.devBypass = 
 
 Each housing integration has a `client/config.lua` in `integrations/<script>/`. These files are open. YouTool chooses the integration by detecting which housing script is running (order and details: [How YouTool picks the housing script](housing/README.md#how-youtool-picks-the-housing-script)).
 
-**`enabled = false` in any of these files makes YouTool skip that housing script** when it detects one at start; the console prints `[YouTool Store] <script> integration is switched off ...`. Use it when you run two housing scripts and want YouTool to deliver into the second one. The setup check then shows `Housing: <script> is running, but its YouTool integration is switched off (enabled = false)`. rcore\_housing's file only has `enabled`; its delivery option is in `config/housing.lua`.
+**`enabled = false` in any of these files makes YouTool skip that housing script** when it detects one at start; the console prints `[YouTool Store] <script> integration is switched off ...`. Use it when you run two housing scripts and want YouTool to deliver into the second one. The setup check then shows `Housing: <script> is running, but its YouTool integration is switched off (enabled = false)`. rcore\_housing's file only has `enabled`; its delivery option is in `config/housing.lua`. The prp-property and kartik-properties files only have `enabled`.
 
 Some files have more settings:
 
@@ -305,6 +305,6 @@ return {
 {% endtab %}
 
 {% tab title="Other scripts" %}
-The files for bcs\_housing, brutal\_housing, nolag\_properties, rtx\_housing, RxHousing (`integrations/rxscripts/`) and vms\_housing contain `enabled` (see above) and `debug`. Their other fields (`debug`, nolag\_properties' menu category fields) aren't read in 1.0.0; leave them as they are.
+The files for bcs\_housing, brutal\_housing, nolag\_properties, rtx\_housing, RxHousing (`integrations/rxscripts/`) and vms\_housing contain `enabled` (see above) and `debug`. Their other fields (`debug`, nolag\_properties' menu category fields) aren't read yet; leave them as they are.
 {% endtab %}
 {% endtabs %}

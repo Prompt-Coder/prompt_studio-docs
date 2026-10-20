@@ -62,7 +62,7 @@ Corporate admin does **not** make you a store owner. Markup, vault, staff and th
 
 Most housing scripts need a small change on their side: a file copied from `prompt_youtool_store_system/integrations/<script>/` into the housing script, a setting, or a manifest line. Open the page for your script and follow it:
 
-[Housing Integrations](housing/README.md): [qs-housing](housing/qs-housing.md) · [ps-housing](housing/ps-housing.md) · [nolag\_properties](housing/nolag-properties.md) · [bcs\_housing](housing/bcs-housing.md) · [rtx\_housing](housing/rtx-housing.md) · [RxHousing](housing/rxhousing.md) · [vms\_housing](housing/vms-housing.md) · [brutal\_housing](housing/brutal-housing.md) · [rcore\_housing](housing/rcore-housing.md)
+[Housing Integrations](housing/README.md): [qs-housing](housing/qs-housing.md) · [ps-housing](housing/ps-housing.md) · [nolag\_properties](housing/nolag-properties.md) · [bcs\_housing](housing/bcs-housing.md) · [rtx\_housing](housing/rtx-housing.md) · [RxHousing](housing/rxhousing.md) · [vms\_housing](housing/vms-housing.md) · [brutal\_housing](housing/brutal-housing.md) · [rcore\_housing](housing/rcore-housing.md) · [prp-property](housing/prp-property.md) · [kartik-properties](housing/kartik-properties.md)
 
 You don't need to tell YouTool which script you run. It detects it by itself.
 {% endstep %}
@@ -96,7 +96,7 @@ YouTool delivers one free Disposable Coffee Cup (`prop_coffee_cup_trailer`) into
   [ OK ] Properties owned by player 2: 1
   [ OK ] Delivery test: Disposable Coffee Cup arrived in <property name>
   Everything looks good.
-  Support code: YT 1.0.0 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
+  Support code: YT 1.0.1 | qbcore | bcs_housing 4.24.0 | install ok | 0 fail 0 warn | delivery ok
 ```
 {% endcode %}
 

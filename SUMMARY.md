@@ -34,6 +34,8 @@
     * [vms\_housing](scripts/youtool-furniture-store/housing/vms-housing.md)
     * [brutal\_housing](scripts/youtool-furniture-store/housing/brutal-housing.md)
     * [rcore\_housing](scripts/youtool-furniture-store/housing/rcore-housing.md)
+    * [prp-property](scripts/youtool-furniture-store/housing/prp-property.md)
+    * [kartik-properties](scripts/youtool-furniture-store/housing/kartik-properties.md)
   * [Shopping](scripts/youtool-furniture-store/shopping.md)
   * [Store Console](scripts/youtool-furniture-store/console/README.md)
     * [Staff & Permissions](scripts/youtool-furniture-store/console/staff-and-permissions.md)

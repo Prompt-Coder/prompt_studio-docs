@@ -150,8 +150,9 @@ purchase = {
     global = {
         canPurchase = function(ctx)
             local blocked = { police = true, ambulance = true }
-            local core = GetResourceState('qbx_core') == 'started' and 'qbx_core' or 'qb-core'
-            local player = exports[core]:GetCoreObject().Functions.GetPlayer(ctx.source)
+            local player = GetResourceState('qbx_core') == 'started'
+                and exports.qbx_core:GetPlayer(ctx.source)
+                or exports['qb-core']:GetCoreObject().Functions.GetPlayer(ctx.source)
             if not player then return false end
             return not blocked[player.PlayerData.job.name]
         end,
