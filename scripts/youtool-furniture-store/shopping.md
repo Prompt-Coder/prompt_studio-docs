@@ -24,7 +24,7 @@ Players can rebind the key in **Settings › Key Bindings › FiveM › YouTool 
 
 | Option (`config/tablet.lua`) | Default | Meaning |
 | --- | --- | --- |
-| `Config.Tablet.showKey` | `'E'` | Starting key for the tablet. Players can rebind it; this only sets the default. |
+| `Config.Tablet.showKey` | `'E'` | Starting key for the tablet. Players can rebind it; this only sets the default. `false` turns the key off (open from the till or the furniture instead). |
 | `Config.Tablet.prompt` | `'nui'` | The "Open Tablet" hint: `'nui'` (YouTool's own prompt), `'ox_lib'` (ox\_lib text UI) or `'none'` (no hint). |
 
 The rest of the tablet options (cart size, target distance, sounds) are on the [Configuration](configuration.md) page.

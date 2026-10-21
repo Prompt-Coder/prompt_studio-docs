@@ -247,7 +247,7 @@ Most of these lines appear when you run `youtool_setup <playerId>`. The automati
 <summary>The tablet doesn't open, or there is no "[E] Open Tablet" prompt</summary>
 
 * **Be inside the store.** The tablet works only inside a YouTool store interior. YouTool finds the store by the interior at `interiorCoords` in `Config.Stores`, so `prompt_youtool` (the map) must be running. If you changed `interiorCoords`, the point must be inside the store.
-* **Check the key.** `E` is only the starting key (`Config.Tablet.showKey`). Players can rebind it in GTA **Settings › Key Bindings › FiveM** under "YouTool Tablet", and the prompt shows the key they bound. Changing `showKey` later doesn't change a key a player already has.
+* **Check the key.** `E` is only the starting key (`Config.Tablet.showKey`). Players can rebind it in GTA **Settings › Key Bindings › FiveM** under "YouTool Tablet", and the prompt shows the key they bound. Changing `showKey` later doesn't change a key a player already has. To turn the key off for everyone, set `showKey = false` (an empty `''` does the same).
 * **The prompt can be hidden on purpose.** `Config.Tablet.prompt = 'none'` hides it; the key still works.
 * **A hook can block it.** A `tablet.canOpen` hook that returns `false` (in `hooks/hooks_client.lua` or `hooks/hooks_shared.lua`) hides both the tablet and the prompt. See [Hooks](developers/hooks.md).
 * **The key is ignored on purpose** while a player previews an item in 3D, carries a freight box, or places a display.

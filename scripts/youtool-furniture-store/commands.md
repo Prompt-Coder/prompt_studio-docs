@@ -231,7 +231,7 @@ Classes for the stock commands: `clutter`, `lighting`, `soft`, `electronics`, `s
 | --- | --- | --- | --- |
 | `youtool_toggle_tablet` | Key binding (default `E`) | Anyone, inside a store | Opens or closes the tablet |
 
-`youtool_toggle_tablet` is the key binding behind "\[E] Open Tablet". Players can change the key in GTA Settings › Key Bindings › FiveM; `Config.Tablet.showKey` only sets the starting key. It does nothing outside a store, during a 3D preview, while carrying a freight box, or while placing a display.
+`youtool_toggle_tablet` is the key binding behind "\[E] Open Tablet". Players can change the key in GTA Settings › Key Bindings › FiveM; `Config.Tablet.showKey` only sets the starting key; `showKey = false` turns the key off for everyone. It does nothing outside a store, during a 3D preview, while carrying a freight box, or while placing a display.
 
 ### Testing helpers
 

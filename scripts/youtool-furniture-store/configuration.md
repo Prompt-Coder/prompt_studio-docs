@@ -224,7 +224,7 @@ Furniture sets are bundles sold together at a discount. Managers build them in t
 
 | Option | Default | Meaning |
 | --- | --- | --- |
-| `Config.Tablet.showKey` | `'E'` | Default key that opens the tablet inside a store. Players can rebind it in GTA Settings › Key Bindings › FiveM; this only sets the starting key. |
+| `Config.Tablet.showKey` | `'E'` | Default key that opens the tablet inside a store. Players can rebind it in GTA Settings › Key Bindings › FiveM; this only sets the starting key. `false` (or `''`) turns the key and its "[E] Open Tablet" hint off for every player, also for players who already have it bound; the tablet then opens from the till and from "View in Tablet" on the furniture. |
 | `Config.Tablet.prompt` | `'nui'` | The "\[E] Open Tablet" hint while the tablet is closed: `'nui'` (YouTool's own prompt), `'ox_lib'` (ox\_lib text UI) or `'none'`. |
 | `Config.Cart.maxItems` | `50` | Most items one cart may hold (tablet and phone). The server refuses any cart over 200 units regardless. |
 | `Config.Target.distance` | `2.5` | How close (meters) a player must be to target a store prop. |
