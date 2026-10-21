@@ -68,9 +68,12 @@ nolag's furniture menu shows a picture for each item from `nolag_properties/web/
 
 ### How players get the furniture
 
-1. The player buys furniture at the YouTool store or in the phone app, and picks the property if they own several.
-2. The items are stored in that property's furniture storage (the inside of the property).
-3. Inside the property, the player opens the nolag decorator and places the items from storage.
+1. The player buys furniture at the YouTool store or in the phone app.
+2. Checkout asks **Inside** or **Outside**, then which property, if they own several. With one property, the inside/outside choice is the only question.
+3. The items are stored in that property's furniture storage: **Inside** for the house, **Outside** for the yard (nolag's outside furniture), for example a hot tub or garden furniture.
+4. The player opens the nolag decorator, inside the house or in the yard, and places the items from storage.
+
+To always deliver inside and skip the question, set `outsideDelivery = false` in `integrations/nolag-properties/client/config.lua` and restart YouTool.
 
 In nolag's furniture menu, YouTool items are listed in a **YouTool Store** category, and also in nolag's matching categories (sofas, chairs, tables, beds, storage, kitchen, bathroom, lighting and so on).
 

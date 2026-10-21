@@ -304,6 +304,13 @@ return {
 | `debug` | `false` | `[YouTool PS-Housing]` debug lines in the client console. |
 {% endtab %}
 
+{% tab title="nolag\_properties" %}
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `enabled` | `true` | `false` makes YouTool skip nolag\_properties: no deliveries. |
+| `outsideDelivery` | `true` | Checkout asks **Inside** or **Outside** (the yard) before the property. `false` always delivers inside, and a player with one property gets no question. |
+{% endtab %}
+
 {% tab title="Other scripts" %}
 The files for bcs\_housing, brutal\_housing, nolag\_properties, rtx\_housing, RxHousing (`integrations/rxscripts/`) and vms\_housing contain `enabled` (see above) and `debug`. Their other fields (`debug`, nolag\_properties' menu category fields) aren't read yet; leave them as they are.
 {% endtab %}

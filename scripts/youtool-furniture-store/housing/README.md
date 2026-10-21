@@ -105,6 +105,8 @@ The order waits 5 minutes for the pick. After that the player sees *"No pending 
 
 On bcs\_housing the picker still appears for players with several houses, but bcs stores furniture per player, so the items can be placed in any of their houses.
 
+On nolag\_properties the picker first asks **Inside** or **Outside** (the yard), even with one property. See [nolag\_properties](nolag-properties.md).
+
 **Partial deliveries.** If the housing script refuses some items (for example a furniture limit is reached or the property is full), YouTool keeps the items that arrived and refunds each refused item at the price the player paid. The message then ends with *"(N failed, refunded)"*. If nothing arrives, the whole order is refunded and the player sees the reason the housing script gave.
 
 ***
