@@ -27,6 +27,7 @@ MRPD exposes a **small, stable** surface on purpose. Call exports as `exports.pr
 | --- | --- | --- |
 | `IsOfficer(src)` | bool | does MRPD count this player as police — same jobs/grade/duty/ACE rule as every gated feature |
 | `StartConvoy(cop, zek, handoff)` / `StopConvoy(src)` | — | escort control |
+| `GetRangeStats(src)` | table / `nil` | a player's saved shooting-range stats — what the personal leaderboard shows (1.4.0+) |
 
 ***
 
@@ -43,7 +44,29 @@ exports.prompt_mrpd_scripts:StopCarry()
 if exports.prompt_mrpd_scripts:IsOfficer(src) then
     -- ...
 end
+
+-- skill trees / progression: saved range stats (server)
+local stats = exports.prompt_mrpd_scripts:GetRangeStats(src)
+if stats and stats.games >= 10 and (stats.accuracy or 0) >= 0.75 then
+    -- ...
+end
 ```
+
+`GetRangeStats(src)` returns `nil` when the player isn't online, otherwise:
+
+```lua
+{
+    name        = 'John Doe',
+    games       = 12,          -- completed range runs
+    accuracy    = 0.83,        -- 0–1 over all runs, nil before the first one
+    totalHits   = 240,
+    totalMisses = 49,
+    bestTimes   = { pistols = 18.4, rifles = 15.9 },  -- seconds, per preset
+    ranks       = { pistols = 3 },                     -- top-10 board position, per preset
+}
+```
+
+Stats are saved per **license**, so every character on one account shares them. For live results as they happen, use the `onDrillEnd` [hook](hooks.md#training-events).
 
 ***
 

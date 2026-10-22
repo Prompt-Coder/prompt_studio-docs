@@ -48,3 +48,50 @@ return {
 ```
 
 See `hooks/hooks_shared.example.lua` for the full reference with every feature, id, and ctx.
+
+***
+
+### Training events
+
+React to training results in `hooks/hooks_server.lua` — e.g. XP for a skill tree or rewards for a match win. Each handler gets one `ctx` table; return values are ignored.
+
+| id | event | ctx |
+| --- | --- | --- |
+| `'stall'` | `onStart` / `onEnd` | `{ source, stallIdx }` · `onEnd` adds `reason` = `'left'` \| `'dropped'` |
+| `'stall'` | `onDrillEnd` | `{ source, stallIdx, preset, weapon, hits, shots, accuracy, time, completed, reason }` |
+| `'killhouse'` | `onStart` / `onEnd` | `{ source }` · `onEnd` adds `reason` = `'left'` \| `'dropped'` |
+| `'killhouse'` | `onLap` | `{ source, time, weapon }` — `weapon` is the preset name |
+| `'match'` | `onStart` | `{ mode, red, blue }` — `red` / `blue` are team sizes |
+| `'match'` | `onEnd` | `{ winner, red, blue, reason, redPlayers, bluePlayers }` |
+
+* **`onDrillEnd`** (1.4.0+) fires once per range drill. `weapon` is the weapon **hash**, `preset` the leaderboard category (`pistols`, `rifles`, `shotguns`, `snipers`), `accuracy` is 0–1 and `time` is in seconds. `reason` is `'completed'`, `'timeout'` or `'left'` (walked out mid-run). Only completed runs reach the leaderboard; a run where no target was hit isn't reported.
+* **match `onEnd`** — `reason` is `'ended'` (played out) or `'stopped'` (instructor force-stop). `red` / `blue` are the final score (rounds won; kills in TDM) and `winner` is `nil` on a draw — none of the three are sent on `'stopped'`. `redPlayers` / `bluePlayers` (1.4.0+) list the server ids on each team at the end: bots excluded, players who left mid-match not listed.
+
+{% hint style="warning" %}
+Range and killhouse results are measured on the player's client. The server checks them — the player must be in a stall / the killhouse, hits must match the target count, the weapon must belong to the preset, and a run can't claim more time than the player really spent there — but still **cap valuable rewards** (e.g. per hour).
+{% endhint %}
+
+```lua
+-- hooks/hooks_server.lua
+return {
+    training = { entries = {
+        ['stall'] = {
+            onDrillEnd = function(ctx)
+                if ctx.completed and ctx.accuracy >= 0.8 then
+                    -- exports.my_skills:AddXP(ctx.source, 'marksmanship', 10)
+                end
+            end,
+        },
+        ['match'] = {
+            onEnd = function(ctx)
+                if ctx.reason ~= 'ended' or not ctx.winner then return end
+                for _, src in ipairs(ctx.winner == 'red' and ctx.redPlayers or ctx.bluePlayers) do
+                    -- exports.my_skills:AddXP(src, 'tactics', 25)
+                end
+            end,
+        },
+    } },
+}
+```
+
+To read a player's **saved** range stats (what the personal leaderboard shows), use the [`GetRangeStats`](exports-and-commands.md) export.

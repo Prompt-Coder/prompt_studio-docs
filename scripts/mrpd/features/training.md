@@ -44,12 +44,18 @@ A ready-to-use `ox_inventory` example ships in the file. See [Providers](../deve
 
 ### Downed players (CQB)
 
-Override what happens to a downed match player — e.g. tell your ambulance script it isn't a real death:
+Override what happens to a downed match player — e.g. tell your ambulance script it isn't a real death (runs client-side; call `default()` to keep the built-in down):
 
 ```lua
 -- config/training.lua
-Config.Training.Callbacks.onDowned = function(src) ... end
+Config.Training.Callbacks.onDowned = function(ped, ctx, default) ... end
 ```
+
+***
+
+### Progression & rewards
+
+Hook range drills, killhouse laps, and match results into a skill tree, XP, or rewards — see [Hooks → Training events](../developers/hooks.md#training-events). Saved range stats are readable with the [`GetRangeStats`](../developers/exports-and-commands.md) export.
 
 ***
 
