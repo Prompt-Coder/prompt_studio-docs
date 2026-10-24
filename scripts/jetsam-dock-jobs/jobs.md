@@ -14,6 +14,8 @@ There are two dispatchers:
 
 Talk to a dispatcher, pick a shift, and end it at the same dispatcher. Out of the box every job is open to everyone; job and ACE locks are optional (see [Access](configuration.md#access-job-locks)).
 
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-warehouse-dispatcher.png" alt="The warehouse dispatcher shift selection with the Forklift and Truck Delivery cards"><figcaption><p>The warehouse dispatcher: forklift work or truck deliveries.</p></figcaption></figure>
+
 ***
 
 ### How the jobs connect
@@ -59,6 +61,10 @@ Enter the **operator cabin** and move containers from the dock stack into the hi
 
 Gamepads work too. Keyboard and gamepad bindings can be changed in [Configuration](configuration.md#crane-controls).
 
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-crane-panel.png" alt="Crane shift panel showing the current container, drop slot and shift progress"><figcaption><p>The shift panel: current container, target drop slot and shift progress.</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-crane-keys.png" alt="Crane key hints along the bottom of the screen"><figcaption><p>The key hints follow the bindings set in the config.</p></figcaption></figure>
+
 * Three cranes stand on the quay and can be worked at the same time, one operator each. Everything the crane does is synced for every player nearby.
 * A container can only be released on the ground, on another container, or inside the highlighted slot.
 * If the drop zone is full, the operator waits until a handler driver clears slots.
@@ -70,6 +76,10 @@ Gamepads work too. Keyboard and gamepad bindings can be changed in [Configuratio
 ### Container handler
 
 Get into the marked **Handler**, line its lifting frame up with the marked container, pick it up and set it down in the warehouse intake. The dispatcher then marks the next container. To finish, park the Handler in its marked bay, stop and get out.
+
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-handler-panel.png" alt="Container handler panel with the pickup, delivery and return steps"><figcaption><p>The handler panel walks through pickup, delivery and return.</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-handler-keys.png" alt="Container handler key hints"><figcaption></figcaption></figure>
 
 **Default pay:** $750 per delivered container.
 
@@ -86,6 +96,8 @@ Collect your forklift from its bay, slide the forks under the marked pallet, car
 ### Truck delivery
 
 The contract board at the warehouse dispatcher shows the available contracts: destination, vehicle, number of pallets, pickup, distance and pay. Payment is made after the delivery **and** the vehicle return.
+
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-truck-contracts.png" alt="The truck contract board listing Hauler + Trailer and Mule contracts with destination, distance and pay"><figcaption><p>The contract board. Turn on <strong>Own truck</strong> to see only the trailer contracts you can tow yourself.</p></figcaption></figure>
 
 {% tabs %}
 {% tab title="Mule box truck" %}
@@ -108,6 +120,11 @@ The contract board at the warehouse dispatcher shows the available contracts: de
 
 * Any truck that can tow the trailer counts as your own truck. Whether players may use their own truck is set by [`ownCab`](configuration.md#truck-contracts).
 * If every return bay is taken, wait in the yard: a bay is assigned as soon as one frees up.
+* On the road, an arrow at the top of the screen points to the destination.
+
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-truck-route.png" alt="Navigation arrow pointing to the destination and the dispatch message Drive your loaded truck to Paleto Bay"><figcaption><p>The route arrow and the dispatch message.</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-truck-paid.png" alt="Dispatch message Order completed. Payment: $4,500."><figcaption><p>Paid after the truck is back at the depot.</p></figcaption></figure>
 * Loading bays have roll-up doors, and a bay that is already occupied is skipped.
 
 **Default pay:** set per destination, from $650 for a city store to $4,500 for Paleto Bay (20 destinations).

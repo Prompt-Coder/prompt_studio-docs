@@ -13,6 +13,8 @@ The jobs feed each other: containers the crane unloads go to the warehouse, ever
 The jobs take place on our **JetSam HQ & Warehouses** map (`prompt_jetsam` and `prompt_jetsam_warehouse`). Install and start the map first, or the forklift and truck area has no floor.
 {% endhint %}
 
+<figure><img src="../../.gitbook/assets/jetsam-dock-jobs-port-dispatcher.png" alt="The port dispatcher shift selection with the Gantry Crane and Container Handler cards"><figcaption><p>The port dispatcher: pick the gantry crane or the container handler.</p></figcaption></figure>
+
 ***
 
 ### Requirements
