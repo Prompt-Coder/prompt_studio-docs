@@ -126,8 +126,8 @@ If all three interiors load and you hear the room audio inside, installation was
 
 | Resource | Version | Contains |
 | --- | --- | --- |
-| `prompt_jetsam` | 1.0.1 | JetSam HQ office (interior `prompt_jetsam_int`) and its two elevators |
-| `prompt_jetsam_warehouse` | 1.0.1 | Warehouse 1, the office block (`prompt_jetsamwh1_int`), and Warehouse 2, the hall (`prompt_jetsamwh2_int`), with four lift platforms |
+| `prompt_jetsam` | 1.0.2 | JetSam HQ office (interior `prompt_jetsam_int`) and its two elevators |
+| `prompt_jetsam_warehouse` | 1.0.2 | Warehouse 1, the office block (`prompt_jetsamwh1_int`), and Warehouse 2, the hall (`prompt_jetsamwh2_int`), with four lift platforms |
 
 #### 🏢 JetSam HQ
 
@@ -529,6 +529,16 @@ The prefixes come from `StateBagPrefix` in each config.
 <summary>The resources don't start</summary>
 
 Make sure `ox_lib` starts **before** both JetSam resources, and that the folders are named exactly `prompt_jetsam` and `prompt_jetsam_warehouse`.
+
+</details>
+
+<details>
+
+<summary>SCRIPT ERROR: attempted to load invalid model '47857193'</summary>
+
+`47857193` is the warehouse lift platform (`prompt_jetsam_wh_platform_anim`). Versions before **1.0.2** could request it before the game had registered the warehouse models, right after loading in near the warehouse. Update both resources to **1.0.2** or newer: the platforms now wait for the model and the interior before spawning.
+
+If you still see `[JETSAM WH PLATFORM] ... did not load within 15 s` in the F8 console, `prompt_jetsam_warehouse` isn't streaming: check that it's started and that no other resource replaces its files.
 
 </details>
 
