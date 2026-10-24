@@ -399,9 +399,12 @@ These files are listed in each resource's `escrow_ignore`, so you can open and e
 | `stream/**/*.ymap`, `stream/**/*.ytyp`, `stream/**/*.ybn` | Placement, archetype and collision files |
 | `stream/*.ymf` | `prompt_jetsam_all_milo_manifest.ymf` |
 | `stream/occlusion/*.ymt` | Audio occlusion data |
-| `stream/ext/**/*.ydr` | The edited base-game models (see **Compatibility**) |
+| `stream/ext/**/*.*` | All edited base-game files: models, collision and ymaps (see **Compatibility**) |
+| `stream/wh1/ydr/unlocked/*.ydr` | Warehouse 1 shell, kitchen and room details |
+| `stream/wh2/ydr/unlocked/*.ydr` | Lift platform, hall shadow, door frames and a hall proxy |
+| `stream/props/ydr/unlocked/*.ydr` | Coffee table, kitchen table, plant and planter |
 
-Everything else is escrowed: the elevator and platform scripts, and the models not listed above (in `prompt_jetsam`, the ones directly in `stream/ydr/`).
+Everything else is escrowed: the elevator and platform scripts, and the models not listed above (the ones directly in each `ydr/` folder).
 {% endtab %}
 
 {% tab title="Compatibility" %}
