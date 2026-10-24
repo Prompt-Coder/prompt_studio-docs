@@ -125,10 +125,10 @@
 
 ## Civilian Maps
 
+* [🚢 JetSam HQ & Warehouses](civilian-maps/jetsam-hq-and-warehouses.md)
 * [🛋️ YouTool Furniture Store (2 locations)](civilian-maps/youtool-furniture-store-2-locations.md)
 * [👺 4 Dragons Casino & Triad HQ](civilian-maps/4-dragons-casino-and-triad-hq.md)
 * [🏭 Bilgeco HQ & Warehouse](civilian-maps/bilgeco-hq-and-warehouse.md)
-* [🚢 JetSam HQ & Warehouses](civilian-maps/jetsam-hq-and-warehouses.md)
 * [🍔 Burger Shot (5 locations)](civilian-maps/burger-shot-5-locations.md)
 * [🍔 Horny's Burgers (4 locations)](civilian-maps/hornys-burgers-4-locations.md)
 * [🏋️ Gym (5 locations)](civilian-maps/gym-5-locations.md)
