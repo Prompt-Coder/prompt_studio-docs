@@ -4,6 +4,11 @@
 
 ## Scripts
 
+* [JetSam Dock Jobs](scripts/jetsam-dock-jobs/README.md)
+  * [The Jobs](scripts/jetsam-dock-jobs/jobs.md)
+  * [Configuration](scripts/jetsam-dock-jobs/configuration.md)
+  * [For Developers](scripts/jetsam-dock-jobs/developers.md)
+  * [Troubleshooting](scripts/jetsam-dock-jobs/troubleshooting.md)
 * [MRPD Police Feature Pack](scripts/mrpd/README.md)
   * [Configuration](scripts/mrpd/configuration.md)
   * [Features](scripts/mrpd/features/README.md)
