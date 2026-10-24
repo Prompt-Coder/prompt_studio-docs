@@ -98,7 +98,7 @@ YouTool finds your housing script by its resource name, so keep the folder name 
 | brutal\_housing | `brutal_housing` | 2.1.0 | [brutal\_housing](housing/brutal-housing.md) |
 | rcore\_housing | `rcore_housing` | 1.1.4 | [rcore\_housing](housing/rcore-housing.md) |
 | prp-property | `prp-property` | 1.1.0 | [prp-property](housing/prp-property.md) |
-| kartik-properties | `kartik-properties` | Not tested in-game yet | [kartik-properties](housing/kartik-properties.md) |
+| kartik-properties | `kartik-properties` | 1.1.3 | [kartik-properties](housing/kartik-properties.md) |
 
 {% hint style="warning" %}
 `qb-houses`, `esx_property`, `loaf_housing`, `origen_housing` and `jg-housing` are **not supported**. The setup check tells you when it finds one of them.

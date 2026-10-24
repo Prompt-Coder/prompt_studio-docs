@@ -7,9 +7,7 @@ icon: house-laptop
 
 kartik-properties works without copying anything into it. YouTool hands each purchase to kartik-properties, which puts it **unplaced** in the property. The owner places it from the **Delivered** tab in the kartik-properties furniture modeler.
 
-{% hint style="warning" %}
-**New in YouTool 1.0.1, not tested in-game yet.** This integration was built with the kartik-properties developer, against the delivery export he added for YouTool, and tested against its documented behaviour, but not yet on a live kartik-properties server. If a purchase doesn't show up in the Delivered tab, run `youtool_setup <playerId>` and send the console block to Prompt Studio.
-{% endhint %}
+**Tested with:** kartik-properties 1.1.3.
 
 **Needs:** a kartik-properties version with the `AddPropertyFurniture` export (added for YouTool; update to the latest version). The setup check reports a build without it (see [Setup check](#setup-check)).
 
@@ -53,11 +51,11 @@ The console shows:
 2. The pieces land **unplaced** in that property.
 3. The owner opens the furniture modeler and places them from the **Delivered** tab.
 
-The picker lists the properties the player **owns or leases**. YouTool checks this again on the server before it charges anything.
+The picker lists the properties the player **owns or leases**. A key to someone else's property is not enough. YouTool checks this again on the server before it charges anything.
 
-**Products kartik-properties doesn't list.** The first time one is delivered, YouTool adds it to kartik-properties' furniture catalogue with its YouTool name and picture, marked **not for sale**, so kartik-properties' own shop doesn't sell it. kartik-properties forgets these entries when it restarts, so YouTool adds them again whenever kartik-properties or YouTool starts, and pieces already delivered stay placeable.
+**Products kartik-properties doesn't list.** The first time one is delivered, YouTool adds it to kartik-properties' furniture catalogue with its YouTool name, marked **not for sale**, so kartik-properties' own shop doesn't sell it. kartik-properties forgets these entries when it restarts, so YouTool adds them again whenever kartik-properties or YouTool starts, and pieces already delivered stay placeable.
 
-**Furniture limits.** kartik-properties caps the pieces per property (`Config.MaxFurniture`, 60 by default, and a per-model maximum). If a property fills up halfway through an order, the pieces that didn't fit are refunded at the price the player paid and the rest is kept. A product kartik-properties won't add to its catalogue is refunded the same way.
+**Furniture limits.** kartik-properties caps the pieces per property (`Config.MaxFurniture`, 60 by default, and a per-model maximum). If a property fills up halfway through an order, the pieces that didn't fit are refunded at the price the player paid and the rest is kept. A product kartik-properties won't add to its catalogue is refunded the same way. A property without a usable interior (its shell pack isn't running) takes nothing, so the whole order is refunded.
 
 Delivered pieces never pay anything back in kartik-properties: removing one puts it back in the house.
 
@@ -68,11 +66,11 @@ Delivered pieces never pay anything back in kartik-properties: removing one puts
 When everything is right:
 
 ```
-  [INFO] Housing: kartik-properties <version>
+  [ OK ] Housing: kartik-properties 1.1.3
   [ OK ] kartik-properties: furniture delivery export found
 ```
 
-The housing line is `[INFO]` because no kartik-properties version has been through the full YouTool test run yet.
+On a newer kartik-properties the housing line is `[INFO]` and names the version YouTool was tested with.
 
 On a build without the delivery export:
 
@@ -91,7 +89,7 @@ To test one real delivery, run `youtool_setup <playerId>` in the server console 
 
 <summary>Part of the order was refunded</summary>
 
-The property reached its furniture limit, or kartik-properties refused a product. The console shows `[YouTool kartik-properties] <model> refused for property <id>: <reason>` for each one.
+The property reached its furniture limit (`limit_reached`), the property has no usable interior (`no_interior`, its shell pack isn't running), or kartik-properties refused a product. The console shows `[YouTool kartik-properties] <model> refused for property <id>: <reason>` for each one.
 
 </details>
 

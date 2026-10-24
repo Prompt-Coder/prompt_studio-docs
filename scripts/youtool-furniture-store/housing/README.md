@@ -25,7 +25,7 @@ Most scripts need a short install step on their side (one file to copy, sometime
 | [brutal\_housing](brutal-housing.md) | `brutal_housing` | 2.1.0 | Copy one file, add one manifest line twice | The property's furniture in brutal\_housing, arranged with its placement tool |
 | [rcore\_housing](rcore-housing.md) | `rcore_housing` | 1.1.4 (minimum) | None | The property's furniture stock, placed with rcore's furniture editor (or an rcore delivery box) |
 | [prp-property](prp-property.md) | `prp-property` | 1.1.0 (minimum) | None (the `placeable_furniture_item` item from prp's own install) | A Placeable Furniture item in the property's Furniture Storage or mailbox, placed with prp's furnish mode |
-| [kartik-properties](kartik-properties.md) | `kartik-properties` | Not tested in-game yet | None | Unplaced, in the modeler's Delivered tab |
+| [kartik-properties](kartik-properties.md) | `kartik-properties` | 1.1.3 | None | Unplaced, in the modeler's Delivered tab |
 
 "Tested with" is the version the full YouTool test run passed on. Newer versions usually work; the [setup check](#what-the-setup-check-verifies) tells you when your version differs.
 
