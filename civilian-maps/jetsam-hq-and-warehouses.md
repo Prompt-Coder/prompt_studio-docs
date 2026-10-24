@@ -12,6 +12,10 @@
 **ox\_lib** is the only script requirement. No framework needed: both resources are standalone. **prompt\_audio 1.0.8 or newer** carries all the interior audio. **ox\_target** is optional: without it, interactions use an on-screen `[E]` prompt. **ox\_doorlock** is only needed for the door lock SQL.
 {% endhint %}
 
+{% hint style="success" %}
+**Jobs for this map:** [JetSam Dock Jobs](../scripts/jetsam-dock-jobs/README.md) adds four connected port jobs here: gantry crane, container handler, warehouse forklift and truck delivery. It is only included in the **JetSam Map & Script bundle**, not with the map on its own.
+{% endhint %}
+
 <details>
 
 <summary>📸 Screenshots</summary>
