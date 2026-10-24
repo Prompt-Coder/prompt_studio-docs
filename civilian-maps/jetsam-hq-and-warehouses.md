@@ -126,8 +126,8 @@ If all three interiors load and you hear the room audio inside, installation was
 
 | Resource | Version | Contains |
 | --- | --- | --- |
-| `prompt_jetsam` | 1.0.0 | JetSam HQ office (interior `prompt_jetsam_int`) and its two elevators |
-| `prompt_jetsam_warehouse` | 1.0.0 | Warehouse 1, the office block (`prompt_jetsamwh1_int`), and Warehouse 2, the hall (`prompt_jetsamwh2_int`), with four lift platforms |
+| `prompt_jetsam` | 1.0.1 | JetSam HQ office (interior `prompt_jetsam_int`) and its two elevators |
+| `prompt_jetsam_warehouse` | 1.0.1 | Warehouse 1, the office block (`prompt_jetsamwh1_int`), and Warehouse 2, the hall (`prompt_jetsamwh2_int`), with four lift platforms |
 
 #### 🏢 JetSam HQ
 
@@ -384,10 +384,11 @@ These files are listed in each resource's `escrow_ignore`, so you can open and e
 | File(s) | What it is |
 | --- | --- |
 | `config.lua` | Elevator settings and texts |
-| `stream/*.ytd` | Textures: `prompt_jetsam_txd.ytd`, `prompt_jetsam_elev_button.ytd` |
+| `stream/*.ytd`, `stream/**/*.ytd` | Textures: `prompt_jetsam_txd.ytd`, `prompt_jetsam_elev_button.ytd` |
+| `stream/**/*.ymap`, `stream/**/*.ytyp`, `stream/**/*.ybn` | Placement, archetype and collision files |
 | `stream/occlusion/*.ymt` | Audio occlusion data |
 | `stream/vanilla/*.*` | The edited base-game files (see **Compatibility**) |
-| `stream/ydr/prompt_jetsam_prop_door1.ydr` | Door model |
+| `stream/ydr/unlocked/*.ydr` | 38 models: furniture and props, doors, the elevator cabin, landing doors and call buttons, windows and glass, room details and proxies, and the second shell |
 
 **`prompt_jetsam_warehouse`**
 
@@ -400,7 +401,7 @@ These files are listed in each resource's `escrow_ignore`, so you can open and e
 | `stream/occlusion/*.ymt` | Audio occlusion data |
 | `stream/ext/**/*.ydr` | The edited base-game models (see **Compatibility**) |
 
-Everything else, including the elevator and platform scripts, is escrowed.
+Everything else is escrowed: the elevator and platform scripts, and the models not listed above (in `prompt_jetsam`, the ones directly in `stream/ydr/`).
 {% endtab %}
 
 {% tab title="Compatibility" %}
@@ -410,6 +411,8 @@ JetSam HQ & Warehouses edits these **base-game files** of the Port of Los Santos
 
 * `hei_po1_06_strm_3.ymap`
 * `hei_po1_occl_02.ymap` (occlusion)
+* `hei_po1_06_8.ybn`, `hei_po1_06_11.ybn`, `hi@hei_po1_06_8.ybn`, `hi@hei_po1_06_9.ybn` (collision)
+* `po1_06_decal.ydr`, `po1_06_emb.ydr`, `po1_06_glue_04.ydr`, `po1_06_new_terminal.ydr`, `po1_06_new_terminal_sig.ydr` (models)
 
 **`prompt_jetsam_warehouse`** (`stream/ext/`)
 
