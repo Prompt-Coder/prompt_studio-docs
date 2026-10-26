@@ -126,8 +126,8 @@ If all three interiors load and you hear the room audio inside, installation was
 
 | Resource | Version | Contains |
 | --- | --- | --- |
-| `prompt_jetsam` | 1.0.2 | JetSam HQ office (interior `prompt_jetsam_int`) and its two elevators |
-| `prompt_jetsam_warehouse` | 1.0.2 | Warehouse 1, the office block (`prompt_jetsamwh1_int`), and Warehouse 2, the hall (`prompt_jetsamwh2_int`), with four lift platforms |
+| `prompt_jetsam` | 1.0.3 | JetSam HQ office (interior `prompt_jetsam_int`) and its two elevators |
+| `prompt_jetsam_warehouse` | 1.0.3 | Warehouse 1, the office block (`prompt_jetsamwh1_int`), and Warehouse 2, the hall (`prompt_jetsamwh2_int`), with four lift platforms |
 
 #### 🏢 JetSam HQ
 
@@ -419,7 +419,7 @@ JetSam HQ & Warehouses edits these **base-game files** of the Port of Los Santos
 
 **`prompt_jetsam_warehouse`** (`stream/ext/`)
 
-* `hei_po1_06_long_1.ymap`, `hei_po1_06_strm_8.ymap`, `hei_po1_06_strm_10.ymap`
+* `hei_po1_06_long_1.ymap`, `hei_po1_06_strm_0.ymap` (car spawns only), `hei_po1_06_strm_8.ymap`, `hei_po1_06_strm_10.ymap`
 * `hei_po1_occl_02.ymap` (occlusion)
 * `hei_po1_06_0.ybn`, `hi@hei_po1_06_1.ybn`, `hi@hei_po1_06_7.ybn` (collision)
 * `po1_06_1_ema.ydr`, `po1_06_build143.ydr`, `po1_06_build149.ydr`, `po1_06_build161.ydr`, `po1_06_gg_post_decal.ydr`, `po1_06_glue_03.ydr`, `po1_06_tgrnd5.ydr`, `po1_06_tgrnd5_deca.ydr` (models)
