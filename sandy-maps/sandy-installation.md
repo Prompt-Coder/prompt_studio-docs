@@ -143,6 +143,8 @@ Some Prompt Studio maps edit the same vanilla-area files as each other. If two o
 {% hint style="success" %}
 **Merging our maps between each other with Vertex Hub is completely FREE of charge** — any Prompt Studio map with any other, no cost, no limit.
 {% endhint %}
+
+**MayoNav** — [MayoNav](https://mayodevs.com/mayonav/) by MayoDevs (mapping & navigation) has our Sandy Shores rework in its map layout, so it works with the Sandy maps out of the box. Thanks to MayoDevs for adding it.
 {% endtab %}
 
 {% tab title="Doorlocks" %}
