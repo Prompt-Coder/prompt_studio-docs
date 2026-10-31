@@ -58,7 +58,7 @@ The last line sums up your setup in one line. Paste it into every ticket.
 
 | Part | Meaning |
 | --- | --- |
-| `YT 1.0.1` | YouTool version |
+| `YT 1.0.3` | YouTool version |
 | `qbcore` | Framework found: `qbcore`, `qbox`, `esx` or `standalone` |
 | `brutal_housing 2.1.0` | Housing script and its version. `custom` for a custom adapter, `no housing` when none was found. |
 | `install ok` | The housing install step: `ok`, `missing`, `outdated`, `not_loaded`, `error`, or `-` when there is nothing to check |
@@ -69,7 +69,7 @@ The last line sums up your setup in one line. Paste it into every ticket.
 
 ### Every setup check message
 
-`<script>` is your housing script's resource name, `<version>` its version, `<tested>` the version we tested YouTool 1.0.1 against.
+`<script>` is your housing script's resource name, `<version>` its version, `<tested>` the version we tested YouTool 1.0.3 against.
 
 <details>
 
@@ -206,7 +206,7 @@ When the install file is not loaded, the `->` line reads: `In RxHousing/fxmanife
 | --- | --- | --- |
 | `The YouTool folder is named <name>` | FAIL | Rename the folder back to `prompt_youtool_store_system`. The housing install files and item images use that name. |
 | `Framework: <framework>, money: <mode>` | OK | The framework found and the `Config.MoneySystem` in use. |
-| `Framework: not detected (server/framework.lua failed, see the SCRIPT ERROR above), so every purchase is refused` | FAIL | The framework bridge crashed at start, so YouTool refuses every purchase instead of handing out free furniture. Send the whole setup-check block and the `SCRIPT ERROR` line to Prompt Studio. |
+| `Framework: not detected (server/framework.lua failed, see the SCRIPT ERROR above), so every purchase is refused` | FAIL | The framework bridge crashed at start, so YouTool refuses every purchase instead of handing out free furniture. Send the whole setup-check block and the `SCRIPT ERROR` line to Prompt Studio. On YouTool 1.0.1 and 1.0.2 this line could also show up wrongly at server start with no `SCRIPT ERROR`, when the housing script starts after YouTool, followed by a second check saying `[ OK ] Framework`. Purchases worked. Fixed in 1.0.3. |
 | `Money: MoneySystem is 'custom' but CustomGetMoney, CustomRemoveMoney and CustomAddMoney are not all defined, so purchases are refused` | FAIL | Define all three functions at the bottom of `server/framework.lua`, or set `Config.MoneySystem = 'auto'`. |
 | `Money: free mode (<framework>), nothing costs anything` | WARN | `Config.MoneySystem` is `'free'`, or it is `'auto'` and no framework was found. Start QBCore, QBox or ESX before YouTool with `'auto'`, or use `'custom'`. |
 | `oxmysql is not running` | WARN | Start `oxmysql` before YouTool. Most housing scripts need it. |
