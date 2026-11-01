@@ -1,5 +1,5 @@
 ---
-description: How players shop at YouTool — the store tablet, in-store targets, filters, 3D preview, cart, furniture sets, checkout and the phone app (lb-phone or sky_phone)
+description: How players shop at YouTool — the store tablet, in-store targets, filters, 3D preview, cart, furniture sets, checkout and the phone app (lb-phone, sky_phone or yseries)
 icon: cart-shopping
 ---
 
@@ -190,7 +190,7 @@ YouTool never writes to the chat. Results on the tablet appear as a green (succe
 
 ***
 
-### Phone app (lb-phone or sky\_phone)
+### Phone app (lb-phone, sky\_phone or yseries)
 
 {% columns %}
 {% column width="33.33%" %}
@@ -198,12 +198,12 @@ YouTool never writes to the chat. Results on the tablet appear as a green (succe
 {% endcolumn %}
 
 {% column width="66.67%" %}
-Players can order from anywhere through the **YouTool** app on **lb-phone** (resource `lb-phone`) or **sky\_phone** (resource `sky_phone`, tested with 1.1.7).
+Players can order from anywhere through the **YouTool** app on **lb-phone** (resource `lb-phone`), **sky\_phone** (resource `sky_phone`, tested with 1.1.7) or TeamsGG's **yseries** (resource `yseries`, tested with 3.0.0).
 
 **Install:** nothing to copy and nothing to set in YouTool. YouTool finds the phone and adds the app by itself as a default app (installed for everyone, can't be removed). Start the phone before YouTool:
 
 ```cfg
-ensure lb-phone      # or: ensure sky_phone
+ensure lb-phone      # or: ensure sky_phone, or: ensure yseries
 ensure prompt_youtool_store_system
 ```
 
@@ -215,6 +215,8 @@ If the phone starts later, or restarts, the app is added again when it starts. T
 ```
 
 **sky\_phone:** run it instead of lb-phone, not next to it: sky\_phone takes over the `lb-phone` name, so the two can't run together. Keep its custom apps switched on (the default, under `/phonepanel` when its configurator is on). Players can't open sky\_phone while they are downed or cuffed. The app follows the phone's light or dark mode.
+
+**yseries:** the app appears on the home screen once the player has set up their phone (the first time they open it). Typing in the app's search box doesn't move the character. The app always uses its dark theme: yseries doesn't pass its light or dark setting to custom apps.
 
 **Using it:**
 
