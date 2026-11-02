@@ -62,7 +62,7 @@ start prompt_doortuning
 {% step %}
 #### Step 4 — Import the door locks (ox\_doorlock)
 
-Using ox\_doorlock? Import the SQL from the **Doorlock SQL** tab below into your database. It adds all 21 doors. Skip this step if you don't use ox\_doorlock.
+Using ox\_doorlock? Import the SQL from the **Doorlock SQL** tab below into your database. It adds all 22 doors. Skip this step if you don't use ox\_doorlock.
 {% endstep %}
 
 {% step %}
@@ -151,7 +151,7 @@ Merging Prompt Studio maps with each other in Vertex Hub is **completely free**.
 {% endtab %}
 
 {% tab title="Doorlock SQL" %}
-Ready-to-import **ox\_doorlock** config: **21 doors (24 door leaves)**, generated from the map files and verified against every door in the map.
+Ready-to-import **ox\_doorlock** config: **22 doors (25 door leaves)**, generated from the map files and verified against every door in the map.
 
 **Door names:**
 
@@ -164,7 +164,7 @@ Ready-to-import **ox\_doorlock** config: **21 doors (24 door leaves)**, generate
 
 * `E-9` (main entrance) starts **unlocked**. Every other door starts **locked**.
 * The garage doors open automatically for vehicles (`"auto": true`).
-* **Not included on purpose:** the two toilet stall doors, and one upper-floor door that's modelled standing open (it would lock open).
+* **Not included on purpose:** the two toilet stall doors.
 
 {% hint style="info" %}
 The ids use `DEFAULT`, so the SQL never collides with doors you already have. Import it as is.
@@ -172,7 +172,7 @@ The ids use `DEFAULT`, so the SQL never collides with doors you already have. Im
 
 <details>
 
-<summary>Grapeseed Fire Station — ox_doorlock SQL (21 doors)</summary>
+<summary>Grapeseed Fire Station — ox_doorlock SQL (22 doors)</summary>
 
 ```sql
 INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
@@ -185,7 +185,8 @@ INSERT INTO `ox_doorlock` (`id`, `name`, `data`) VALUES
 	(DEFAULT, 'Grapeseed Fire Station 1-7', '{"model":-1044232057,"heading":111,"doors":false,"coords":{"x":1967.205810546875,"y":4630.529296875,"z":41.22649383544922},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'Grapeseed Fire Station 1-8', '{"model":-1044232057,"heading":111,"doors":false,"coords":{"x":1968.7423095703125,"y":4634.43603515625,"z":41.22533416748047},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'Grapeseed Fire Station 2-1', '{"model":-1044232057,"heading":291,"doors":false,"coords":{"x":1957.7923583984375,"y":4632.55615234375,"z":44.92629623413086},"state":1,"maxDistance":2}'),
-	(DEFAULT, 'Grapeseed Fire Station 2-2', '{"model":-1044232057,"heading":111,"doors":false,"coords":{"x":1966.49755859375,"y":4633.2470703125,"z":44.9293327331543},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'Grapeseed Fire Station 2-2', '{"model":1897310001,"heading":86,"doors":false,"coords":{"x":1963.9324951171875,"y":4632.72412109375,"z":44.93716812133789},"state":1,"maxDistance":2}'),
+	(DEFAULT, 'Grapeseed Fire Station 2-3', '{"model":-1044232057,"heading":111,"doors":false,"coords":{"x":1966.49755859375,"y":4633.2470703125,"z":44.9293327331543},"state":1,"maxDistance":2}'),
 	(DEFAULT, 'Grapeseed Fire Station E-1', '{"model":-708779562,"heading":201,"doors":false,"coords":{"x":1935.21728515625,"y":4628.63427734375,"z":41.593605041503906},"state":1,"maxDistance":6,"auto":true}'),
 	(DEFAULT, 'Grapeseed Fire Station E-2', '{"model":-708779562,"heading":21,"doors":false,"coords":{"x":1940.6287841796875,"y":4614.63427734375,"z":41.5905647277832},"state":1,"maxDistance":6,"auto":true}'),
 	(DEFAULT, 'Grapeseed Fire Station E-3', '{"model":-1181179476,"heading":201,"doors":false,"coords":{"x":1940.865966796875,"y":4630.8408203125,"z":41.595001220703125},"state":1,"maxDistance":6,"auto":true}'),
