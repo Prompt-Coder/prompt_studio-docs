@@ -6,7 +6,7 @@ description: Grapeseed Fire Station — a 4-bay drive-through station with a ful
 
 <figure><img src="../.gitbook/assets/banner-grapeseed-fire-station.jpg" alt="GRAPESEED FIRE STATION"><figcaption></figcaption></figure>
 
-{% embed url="https://store.prompt-mods.com/store/package/7277536" %}
+{% embed url="https://store.prompt-mods.com/store/package/7786428" %}
 **Official asset for FiveM — available on CFX Portal and Prompt's Mods Store**
 {% endembed %}
 
