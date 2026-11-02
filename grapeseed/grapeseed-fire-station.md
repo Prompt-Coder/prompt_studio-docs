@@ -15,7 +15,7 @@ description: Grapeseed Fire Station — a 4-bay drive-through fire station with 
 **Grapeseed Fire Station** is a new fire station for Grapeseed: four drive-through garage bays and a two-floor interior with reception, offices, a meeting room, kitchen, hangout area, locker room, bathrooms and a station gym. It ships with full **interior audio** (occlusion, room reverb and door sounds) through our shared `prompt_audio` resource.
 
 {% hint style="info" %}
-No framework needed: the map is standalone. **prompt\_audio** carries the interior audio. **ox\_doorlock** is only needed for the door lock SQL. **Animations Core 2.0** is optional: it makes the gym machines usable.
+No framework needed: the map is standalone. **prompt\_audio** and **prompt\_doortuning** carry the interior audio and the door behaviour. **ox\_doorlock** is only needed for the door lock SQL. **Animations Core 2.0** is optional: it makes the gym machines usable.
 {% endhint %}
 
 ***
@@ -40,12 +40,12 @@ Drag and drop it inside your `resources` directory. When done, the full path sho
 {% endstep %}
 
 {% step %}
-#### Step 2 — Install prompt\_audio
+#### Step 2 — Install prompt\_audio and prompt\_doortuning
 
-`prompt_audio` is our free shared audio resource. It comes with the map as a separate package and holds the interior audio for our maps, including this station's.
+Both are our free shared resources and come with the map as separate packages. They hold the audio and the door behaviour for our maps, including this station's. This station needs **prompt\_audio 1.0.9** and **prompt\_doortuning 1.0.2** or newer.
 
-* **Don't have it yet?** Download it from the [CFX Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Audio). Place it so the path is `resources/prompt_audio`.
-* **Already have it from another Prompt Studio map?** Replace the folder with the latest version from the Portal. Older versions don't include this station's audio.
+* **Don't have them yet?** Download them from your [CFX Portal](https://portal.cfx.re/assets/granted-assets) assets. Place them so the paths are `resources/prompt_audio` and `resources/prompt_doortuning`.
+* **Already have them from another Prompt Studio map?** Check the `version` line in each `fxmanifest.lua`. If it's older, replace the folder with the latest version.
 {% endstep %}
 
 {% step %}
@@ -224,7 +224,7 @@ See [Entity Sets](../extra-content/entity-sets.md) for how to toggle an entity s
 
 <summary>No interior audio (no muffled walls, no reverb, no door sounds)</summary>
 
-1. `prompt_audio` must be installed, started **before** the map, and up to date. Older versions don't include this station's audio: replace the folder with the latest version from the Portal.
+1. `prompt_audio` must be installed, started **before** the map, and be **version 1.0.9 or newer**. Check the `version` line in `prompt_audio/fxmanifest.lua`.
 2. After installing or updating `prompt_audio`, do a **full server restart**. Audio data is cached; `restart prompt_audio` is not enough.
 
 </details>
