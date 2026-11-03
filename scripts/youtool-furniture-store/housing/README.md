@@ -17,7 +17,7 @@ Most scripts need a short install step on their side (one file to copy, sometime
 | --- | --- | --- | --- | --- |
 | [qs-housing](qs-housing.md) | `qs-housing` | 5.2.16 (5.3.19+ recommended) | None (item pictures optional) | The house's decoration stash, placed with the qs-housing decorator |
 | [ps-housing](ps-housing.md) | `ps-housing` | 2.0.7 | Paste a code block into `server/sv_property.lua` | The property's furniture, placed from the ps-housing Furniture Menu |
-| [nolag\_properties](nolag-properties.md) | `nolag_properties` | 2.4.12 | Copy one file | The property's furniture storage, placed with the nolag decorator |
+| [nolag\_properties](nolag-properties.md) | `nolag_properties` | 3.0.0 and 2.4.12 (2.4.10 minimum) | 3.x: none, restart nolag once. 2.4.x: copy one file | The property's stored furniture, placed with nolag's furniture menu |
 | [bcs\_housing](bcs-housing.md) | `bcs_housing` | 4.24.0 | Copy one file, change two settings | The buyer's own furniture inventory (bcs keeps furniture per player), placed with `/furnish` in any house they own |
 | [rtx\_housing](rtx-housing.md) | `rtx_housing` | 30.6 | Copy one file | The property's interior furniture inventory, placed from the rtx\_housing furniture menu |
 | [RxHousing](rxhousing.md) | `RxHousing` (or `rxscripts_housing`) | 2.5.0 | Copy one file, change one manifest line | The property's furniture inventory, "YouTool Store" category |
@@ -138,7 +138,7 @@ Lines you can see for any housing script:
 
 #### Always copy the install file from your current YouTool version
 
-The files you copy into nolag\_properties, bcs\_housing, rtx\_housing, RxHousing and brutal\_housing carry a version number (a `YOUTOOL_INSTALL = { version = 1, ... }` block at the top; in the bcs\_housing file a first-line comment `-- youtoolInstall version = 1`). Leave that part in the file. When a YouTool update changes an install file, the setup check reports the copy in your housing script as outdated:
+The files you copy into nolag\_properties 2.4.x, bcs\_housing, rtx\_housing, RxHousing and brutal\_housing carry a version number (a `YOUTOOL_INSTALL = { version = 1, ... }` block at the top; in the bcs\_housing file a first-line comment `-- youtoolInstall version = 1`). Leave that part in the file. When a YouTool update changes an install file, the setup check reports the copy in your housing script as outdated:
 
 ```
   [FAIL] brutal_housing: the YouTool install file is an old copy

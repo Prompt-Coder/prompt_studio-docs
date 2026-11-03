@@ -96,7 +96,7 @@ Five housing scripts need a YouTool file copied into them. The setup check looks
 
 | Housing script | File in the housing script | Copied from (inside `prompt_youtool_store_system`) |
 | --- | --- | --- |
-| nolag\_properties | `custom/furniture/youtool_catalog.lua` | `integrations/nolag-properties/nolag_install/youtool_catalog.lua` |
+| nolag\_properties 2.4.x (3.x needs no file) | `custom/furniture/youtool_catalog.lua` | `integrations/nolag-properties/nolag_install/youtool_catalog.lua` |
 | bcs\_housing | `furniture/others/youtool_furniture.lua` | `integrations/bcs-housing/bcs_install/youtool_furniture.lua` |
 | rtx\_housing | `configs/zz_youtool_props.lua` | `integrations/rtx-housing/zz_youtool_props.lua` |
 | RxHousing | `config/furniture/youtool_catalog.lua` | `integrations/rxscripts/rxhousing_install/youtool_catalog.lua` |

@@ -90,7 +90,7 @@ YouTool finds your housing script by its resource name, so keep the folder name 
 | --- | --- | --- | --- |
 | qs-housing | `qs-housing` | 5.2.16 | [qs-housing](housing/qs-housing.md) |
 | ps-housing | `ps-housing` | 2.0.7 | [ps-housing](housing/ps-housing.md) |
-| nolag\_properties | `nolag_properties` | 2.4.12 | [nolag\_properties](housing/nolag-properties.md) |
+| nolag\_properties | `nolag_properties` | 3.0.0 and 2.4.12 | [nolag\_properties](housing/nolag-properties.md) |
 | bcs\_housing | `bcs_housing` | 4.24.0 | [bcs\_housing](housing/bcs-housing.md) |
 | rtx\_housing | `rtx_housing` | 30.6 | [rtx\_housing](housing/rtx-housing.md) |
 | RxHousing (rxscripts) | `RxHousing` or `rxscripts_housing` | 2.5.0 | [RxHousing](housing/rxhousing.md) |
