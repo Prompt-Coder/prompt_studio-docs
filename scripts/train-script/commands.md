@@ -5,24 +5,24 @@ icon: terminal
 # Commands
 
 {% hint style="info" %}
-**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+**Version 2** (2.1.0) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
 {% endhint %}
 
 ### `/trains` (player command)
 
-Opens an `ox_lib` context menu listing every currently spawned train, with speed, carriage count, node, network id, and position. Selecting a train offers **Teleport to Train**.
+Opens an `ox_lib` context menu listing every currently spawned train, with speed, carriage count, node, network id, and position. Selecting a train offers **Teleport to Train**. The menu text comes from the locale files (`admin.*` keys).
 
 ```lua
 -- config/config.lua
 commands = {
     trains = {
         enable      = true,
-        restriction = 'group.admin',   -- false = everyone | an ace permission string
+        restriction = 'group.admin',   -- false = everyone | a principal, e.g. a group
     },
 }
 ```
 
-`enable = false` unregisters the command entirely — nothing is wired up client or server. `restriction` is checked by `ox_lib`'s own command system (`lib.addCommand`), so any ace permission string works, not just group names.
+`enable = false` unregisters the command entirely — nothing is wired up client or server. `restriction` goes to `ox_lib`'s command system (`lib.addCommand`), which lets that principal use the command (`add_ace <restriction> command.trains allow`). Use a group such as `'group.admin'`. To let more players in, add `add_ace <principal> command.trains allow` to `server.cfg`.
 
 ***
 
@@ -32,48 +32,64 @@ Shows the player's latest ticket on screen again. It only exists in standalone m
 
 ***
 
+### Key bindings (player)
+
+These are FiveM key bindings, so each player can change them in **Settings > Key Bindings > FiveM**.
+
+| Default key | Key binding                  | What it does                                                                               |
+| ----------- | ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `G`         | Train: release / close doors | While driving: releases the doors at a platform, or closes them. Only when stopped         |
+| `R`         | Train: change direction      | While driving: switches between forward and reverse. Only when stopped, with the controller at N or braking |
+| `Q`         | Train: acknowledge vigilance | While driving: answers the vigilance device                                                |
+| `X`         | Train: stand up from a seat  | Stands up from a train seat                                                                |
+
+`driving.keys` in `config/config.lua` sets the defaults of the three driving keys. The other cab controls are the game's own vehicle keys, see [Driving](driving.md#controls). Who may drive is not a command permission: it is set by `driving.jobs` and the `prompt_train.drive` ace, see [Driving](driving.md#who-may-drive).
+
+***
+
 ### Setup commands
 
 Run these from the **server console** while setting up or changing lines.
 
 | Command                 | Resource                                            | What it does                                                                                                                                                                                                                                                |
 | ----------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `train_build`           | `prompt_train_script-assets`                        | Rebuilds `traintracks.xml` and per-line `.dat`/`points.json` from every line's own geometry and active variants. Run after adding or editing a line, then restart both resources.                                                                           |
-| `train_assets_validate` | `prompt_train_script-assets`                        | Checks every line's track id, stop flags, and point count against `traintracks.xml`; reports mismatches and ends with `validation passed` if clean. Run this first when anything looks wrong.                                                               |
+| `train_build`           | `prompt_train_script-assets`                        | Rebuilds `traintracks.xml` from the line folders. For a line whose active variant takes a stretch of rails from another resource, it also writes the spliced rails (`track.<variant>.dat` + `points.<variant>.json`). A line's own `track.dat`/`points.json` are left alone; those come from `train_convert`. Run after adding or editing a line, then restart the server: GTA only reads the track list at startup. |
+| `train_assets_validate` | `prompt_train_script-assets`                        | Checks every line's track id, stop flags, and point count against `traintracks.xml`; reports mismatches and ends with `validation passed` if clean. It also runs by itself when the assets resource starts. Run this first when anything looks wrong.      |
 | `train_convert`         | `prompt_train_script`                               | Converts a legacy/manually-captured route into a line's `track.dat` + `points.json` and prints a ready-to-paste `Line{}` snippet. See [Converter](converter.md).                                                                |
-| `train_routes`          | `prompt_train_script`                               | Lists every line with its resolved track id, fleet size, and stations — including whether a line is currently **dormant** (its variant/resource requirement isn't met).                                                                                     |
-| `train_findtrack`       | `prompt_train_script` (client, `debug = true` only) | Prints the track id and node the local player is currently nearest to — handy for filling in a station's `node` by hand.                                                                                                                                    |
+| `train_routes`          | `prompt_train_script`                               | Lists every line with its resolved track id, train, fleet size, and stations, then every registered train and any problems found. **Dormant** lines are listed with what they need: a map, a train, a station, or `traintracks.xml` (see [First Boot Checklist](README.md#dormant-lines)). |
+| `train_findtrack <line>` | `prompt_train_script` (client, `debug = true` only) | Spawns test trains at four points of a line and prints the track id each one lands on, plus the id to use. Handy when a line's track id is in doubt.                                                                                                       |
 | `toggletrainnodes`      | `prompt_train_script` (client)                      | Toggles debug spheres + labels over every rail node within 120m, showing each line and node index at that point. Use it to find a node number for a variant's remapped station. See [Lines & Stations](lines-and-stations.md). |
 
 ***
 
-### Diagnostics (server console, `debug = true`)
+### Diagnostics
 
-These are for troubleshooting spawn/despawn, orphaned carriages, and door desync — not needed for normal operation.
+These are for troubleshooting spawn/despawn, orphaned carriages, and door desync — not needed for normal operation. Server commands run in the **server console**, client commands in **F8**. Most of them only exist with `debug = true` in `config/config.lua`; the **Needs `debug`** column says which.
 
-| Command                             | File                                                   | Purpose                                                                                                         |
-| ----------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| `train_debug`                       | `debug.lua`                                            | Full state dump: spawned trains, subscribed players, station route points, spawner state                        |
-| `train_diag`                        | `debug.lua`                                            | Condensed health summary                                                                                        |
-| `train_sweep`                       | `debug.lua`                                            | Force a cleanup pass over all tracked trains                                                                    |
-| `train_orphan_test`                 | `debug.lua`                                            | Simulate an orphaned carriage to test cleanup                                                                   |
-| `train_kill <index>`                | `debug.lua`                                            | Force-despawn one tracked train                                                                                 |
-| `train_rebuild <route>`             | `debug.lua`                                            | Force despawn + respawn every train on a line                                                                   |
-| `train_orphanmode <on\|off>`        | `debug.lua`                                            | Toggle `keepTrainsOnOwnerChange` at runtime                                                                     |
-| `train_carriages`                   | `debug.lua`                                            | List every tracked carriage and its owning locomotive                                                           |
-| `train_clientprobe`                 | `debug.lua`                                            | Ask all clients to report their local train state                                                               |
-| `train_spawnon <route>`             | `debug.lua`                                            | Force-spawn a train on a specific line regardless of predictive distance                                        |
-| `train_census`                      | `diag.lua`                                             | Count of spawned trains per line                                                                                |
-| `train_watch <route>`               | `diag.lua`                                             | Log spawn/despawn events for one line                                                                           |
-| `train_toggle <flag>`               | `diag.lua`                                             | Flip a runtime diagnostic flag                                                                                  |
-| `train_doctor`                      | `doctor.lua`                                           | Runs a battery of sanity checks and reports anything broken                                                     |
-| `train_wagon_doors`                 | `doors_diag.lua` (server) / `doors.lua` (client, `F8`) | Aggregates per-client wagon door state; the client-side `F8` bind reports the local player's nearest door state |
-| `train_predict`                     | `predict.lua`                                          | Dumps the current predictive-spawn queue and its timers                                                         |
-| `train_stage` / `train_popwatch`    | `staging.lua`                                          | Inspect the staging/despawn queue                                                                               |
-| `train_spacing`                     | `collision.lua`                                        | Dumps current anti-collision pair distances                                                                     |
-| `train_closest` / `getclosesttrain` | `train_closest.lua` (client)                           | Prints the nearest train to the local player                                                                    |
-| `train_config_index`                | `train_config.lua` (client)                            | Prints the resolved consist index for the train the player is on                                                |
-| `train_doors`                       | `train_doors.lua` (client, `F8`)                       | Manually trigger the local engine/metro door animation, for testing smoothness                                  |
+| Command                                              | File                                                   | Needs `debug`                         | Purpose                                                                                                                                                                                                       |
+| ---------------------------------------------------- | ------------------------------------------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `train_debug`                                        | `debug.lua`                                            | yes                                   | Full state dump: spawned trains, subscribed players, station route points, spawner state                                                                                                                     |
+| `train_diag`                                         | `debug.lua`                                            | yes                                   | Tracked trains, plus every train vehicle that no tracked train owns (orphan candidates)                                                                                                                       |
+| `train_sweep`                                        | `debug.lua`                                            | yes                                   | Force an orphan cleanup pass over stray train entities                                                                                                                                                        |
+| `train_orphan_test`                                  | `debug.lua`                                            | yes                                   | Simulate an orphaned carriage to test cleanup                                                                                                                                                                 |
+| `train_kill <index>`                                 | `debug.lua`                                            | yes                                   | Force-despawn one tracked train (index from `train_debug`); it respawns                                                                                                                                       |
+| `train_rebuild <netId>`                              | `debug.lua`                                            | yes                                   | Despawn one train's whole set and respawn it (network id from `train_debug`)                                                                                                                                  |
+| `train_orphanmode <on\|off>`                         | `debug.lua`                                            | yes                                   | Toggle `keepTrainsOnOwnerChange` at runtime                                                                                                                                                                   |
+| `train_carriages`                                    | `debug.lua`                                            | yes                                   | List every tracked carriage and its owning locomotive                                                                                                                                                         |
+| `train_clientprobe`                                  | `debug.lua`                                            | yes                                   | Measure each client's FPS and frame time for about a second. A client running at very low FPS slows the trains it owns                                                                                       |
+| `train_spawnon <playerId> [line]`                    | `debug.lua`                                            | yes                                   | Force-spawn a train on a line, at the rail point nearest that player and owned by them                                                                                                                       |
+| `train_census`                                       | `diag.lua`                                             | yes                                   | One-line census: tracked and held trains, ghost carriages, runtime toggles                                                                                                                                    |
+| `train_watch on [seconds]` / `train_watch off`       | `diag.lua`                                             | yes                                   | Print the census every few seconds (default 2) until `train_watch off`                                                                                                                                        |
+| `train_toggle <collision\|orphan\|respawn> [on\|off]` | `diag.lua`                                             | yes                                   | Switch a runtime system on or off. Without `on`/`off` it flips                                                                                                                                               |
+| `train_doctor`                                       | `doctor.lua`                                           | no                                    | Runs a battery of sanity checks and reports anything broken                                                                                                                                                   |
+| `train_wagon_doors [playerId]`                       | `doors_diag.lua` (server) / `doors.lua` (client, `F8`) | no                                    | Wagon door report with a diagnosis, from every client or from one player. In `F8` it reports your own client                                                                                                 |
+| `train_predict`                                      | `predict.lua`                                          | yes                                   | List every virtual (predicted) train: state, node, speed, dwell, hold                                                                                                                                         |
+| `train_stage <0-5>` / `train_popwatch`               | `staging.lua`                                          | yes, or the `prompt_train_staging` convar | `train_stage` steps the train system up stage by stage. It needs `setr prompt_train_staging 1` in `server.cfg`, and trains then don't spawn by themselves. `train_popwatch` reports the vehicle pool and population per client |
+| `train_spacing`                                      | `collision.lua`                                        | yes                                   | Dumps current anti-collision pair distances                                                                                                                                                                   |
+| `train_closest` / `getclosesttrain`                  | `train_closest.lua` (client)                           | no                                    | Prints the nearest train to the local player                                                                                                                                                                  |
+| `train_config_index [train] [refresh]`               | `train_config.lua` (client)                            | no                                    | Prints the train-config index found for a train from `config/trains.lua` (default: the default train). `refresh` searches again                                                                              |
+| `train_doors [left\|right\|close\|flip]`             | `train_doors.lua` (client, `F8`)                       | no                                    | Door state of the nearest metro-type train (doors built into the model) within 200 m. `left` / `right` / `close` force its doors; `flip` swaps the door sides until the next restart                         |
+| `train_cab <x> <y> <z> [heading]`                    | `driving.lua` (client, `F8`)                           | yes                                   | While driving, moves your seat on the locomotive and prints the `cab = { ... }` line for that train. Without numbers it prints the current `cab` offset. See [Driving](driving.md#which-trains-can-be-driven)      |
 
 ***
 

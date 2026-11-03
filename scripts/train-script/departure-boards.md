@@ -9,10 +9,10 @@ icon: chalkboard-user
 # Departure Boards
 
 {% hint style="info" %}
-**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+**Version 2** (2.1.0) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
 {% endhint %}
 
-A departure board is a DUI texture showing live train ETAs, either drawn onto a spawned prop or replacing a texture on a map's built-in screen. Boards are **presets** defined once in `config/boards.lua`, and each station picks one by name.
+A departure board is a DUI texture showing live train ETAs, either drawn onto a spawned prop or replacing a texture on a map's built-in screen. Boards are **presets** defined once in `config/boards.lua`, and each station picks one by name. On a one-way line, a train only shows at the stations still ahead of it.
 
 ### Assigning a board to a station
 
@@ -64,6 +64,10 @@ boards = {
 ```
 
 A station's own `board` block only supplies *where* to spawn each type and *which preset* to draw onto it — not the model itself.
+
+{% hint style="info" %}
+If a board's screen hasn't loaded after 60 seconds, the script skips that board and F8 shows `[boards] DUI for board <id> did not load -- skipped`.
+{% endhint %}
 
 ***
 

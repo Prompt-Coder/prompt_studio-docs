@@ -8,10 +8,14 @@ icon: conveyor-belt-boxes
 # Converter
 
 {% hint style="info" %}
-**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+**Version 2** (2.1.0) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
 {% endhint %}
 
 `train_convert` turns a captured `.dat` route file into a ready-to-use line — no manual `routes.json`/`points.json` bookkeeping.
+
+{% hint style="info" %}
+This page converts rails. To turn trains from GTA5-Mods into train packs, see [Train Packs](train-packs.md).
+{% endhint %}
 
 ### 1. Capture a route
 
@@ -48,7 +52,7 @@ Paste the printed snippet into `lines/<line_id>/line.lua`, fill in station ids (
 train_build
 ```
 
-restart both resources, and:
+restart the server (GTA only reads the track list at startup), and:
 
 ```
 train_assets_validate
@@ -63,6 +67,7 @@ to confirm the line, its track id, and its stops are all consistent.
 * The line id may only contain letters, digits, `_`, and `-`.
 * `train_convert` only ever writes into `lines/<line_id>/`; it never touches `config/config.lua` or any other line. Legacy `routes.json`/`config.routes` registration from older versions of the script no longer exists.
 * Re-running the converter against the same `line_id` after edits just refreshes `points.json`/`track.dat` — safe to do repeatedly while tuning a captured route.
+* The printed snippet only has the basics. For every other line option (one-way mode, `requires`, per-line tuning), copy from `prompt_train_script-assets/templates/line.lua`.
 
 ***
 

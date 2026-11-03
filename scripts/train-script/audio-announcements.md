@@ -9,7 +9,7 @@ icon: circle-waveform-lines
 # Audio Announcements
 
 {% hint style="info" %}
-**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+**Version 2** (2.1.0) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
 {% endhint %}
 
 Stations and moving trains can play PA announcements ("The next train on platform 2 is arriving...") built from short audio clips stitched together at runtime.

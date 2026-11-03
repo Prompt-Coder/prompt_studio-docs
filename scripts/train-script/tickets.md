@@ -9,18 +9,36 @@ icon: ticket
 # Tickets
 
 {% hint style="info" %}
-**Version 2** (2.0.0-beta) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+**Version 2** (2.1.0) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
 {% endhint %}
 
-Players buy tickets from kiosk machines placed at stations. A ticket carries origin, destination, and departure metadata and can be displayed on-screen.
+Players buy tickets from kiosk machines placed at stations. A ticket carries origin, destination, and departure metadata and can be displayed on-screen. By default a ticket is needed to open the carriage doors.
 
 ### How it works
 
 1. A player interacts with a ticket machine (`ox_target` / `qb-target` / textUI, per `integrations.interaction`).
 2. A DUI ticket UI opens showing destinations and prices.
 3. The player picks a destination and confirms.
-4. The server charges them (`integrations.payment`, cash or bank) and issues a `train_ticket`.
+4. The server checks the station, the train and the destination, charges the player (`integrations.payment`, cash or bank) and issues a `train_ticket`. If the ticket can't be added to the inventory, the fare is refunded.
 5. The player can use the ticket item to view it again.
+
+All ticket text comes from the locale files: `ticket.use_machine` (the interaction), `ticket.required` (the door message) and `ticketdui.*` (the machine screen). In 2.1.0 the first two were renamed from `use_ticket_machine` and `no_ticket`.
+
+***
+
+### Doors and tickets
+
+With `tickets.requireForDoors = true` (the default), a player needs a `train_ticket` to open a carriage door by walking up to it. Without one the door stays shut, and the player sees *You need a train ticket to board. Purchase one at a ticket machine.*
+
+* **Doors between carriages** (gangway doors) always work, also while the train is moving, so passengers can walk through the train.
+* **Side doors** only open while the train is stopped at a station. There, the side doors on the platform side open by themselves, without a ticket check. On a train a player drives, they open when the driver releases the doors.
+* `wagons.doorsAlwaysOpen = true` opens the doors for everyone and skips the ticket check. Side doors still only open at stations.
+
+Which doors count as side doors, and what counts as stopped at a station, is set in `wagons.doors.exterior` (see [Configuration § 7](configuration.md#7-wagons)). The Polar Express's sliding doors sit on the carriage's centre line, so they count as doors between carriages: they open for a ticket holder who walks up to them, moving or not.
+
+{% hint style="info" %}
+The metro's doors are part of the train model. They open by themselves on the platform side at every station and don't check tickets.
+{% endhint %}
 
 ***
 
@@ -29,26 +47,26 @@ Players buy tickets from kiosk machines placed at stations. A ticket carries ori
 Machines are **per-station**, declared on the station itself under `prompt_train_script-assets/stations/`:
 
 ```lua
--- stations/freight/paletobay_prompt.lua -- id is taken from the filename
+-- a station file, e.g. stations/freight/paletobay_prompt.lua -- id is taken from the filename
 Station {
     label = 'Paleto Bay',
-    coords = vec3(232.543, 6384.729, 15.386),
+    coords = vec3(232.543, 6384.49, 30.641),
     price = 30,
     machines = {
         coords = { vec3(168.706, 6380.335, 30.486), vec3(169.260, 6379.342, 30.486) },
-        model  = `prompt_train_ticketmachine_prop`,
+        model  = `i45pt_pts_ticketmachine_prop`,
         txd    = 'i45pt_pts_ticketmachine_prop',
         txn    = 'script_rt_ticketmachine_screen_paleto',
     },
 }
 ```
 
-| Field                            | Description                                                                                        |
-| -------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `price`                          | Overrides `tickets.defaultPrice` for journeys from this station                                    |
-| `machines.coords`                | One `vec3` per physical kiosk object in the world                                                  |
-| `machines.model` / `txd` / `txn` | Prop + texture to swap for the DUI screen. Omit all three to fall back to `tickets.defaultMachine` |
-| `machines.spawn`                 | Set `false` to register interaction on an existing world prop instead of spawning one              |
+| Field                            | Description                                                                                                                                                                                |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `price`                          | Price of a ticket **to** this station, matched by its label. Overrides `tickets.defaultPrice`                                                                                             |
+| `machines.coords`                | One `vec3` per physical kiosk object in the world. For machines the script spawns, use a `vec4`: the fourth value is the heading                                                          |
+| `machines.model` / `txd` / `txn` | The map's own machine prop and the texture the DUI screen replaces. With a `model`, the map's props are re-textured and nothing is spawned. Omit all three to spawn the default machine (`tickets.defaultMachine`) instead |
+| `machines.spawn`                 | Set `false` to register interaction on an existing world prop instead of spawning one                                                                                                      |
 
 A station tied to a variant-only resource (its `resource` field) only spawns its machines while that resource is active — same as its platform.
 
@@ -58,8 +76,8 @@ A station tied to a variant-only resource (its `resource` field) only spawns its
 
 ### Adding a ticket machine to a new station
 
-1. Find the prop in-game and note its model hash and `txd`/`txn` (CodeWalker or similar).
-2. Add a `machines` block to the station file as shown above.
+1. Find the prop in-game and note its model hash, `txd`/`txn` and exact position (CodeWalker or similar). The script finds the prop by its position, so it must match to within 0.1 m. To have the script spawn its own machine instead, leave out `model`, `txd` and `txn` and give a `vec4` per machine.
+2. Add a `machines` block to the station file as shown above. `prompt_train_script-assets/templates/station.lua` has a commented example.
 3. Run `train_assets_validate` — no separate registration step needed.
 
 ***
@@ -83,6 +101,8 @@ Required unless `integrations.inventory = 'none'`. Register `train_ticket`:
 
 The useable-item handler itself is registered automatically for QBx, QBCore, and ESX by `config/server.lua` — you only need the item definition in your inventory resource.
 
+With `ox_inventory`, the server console warns at start if the item is missing: `ox_inventory has no 'train_ticket' item, so ticket machines cannot hand out tickets -- add it to ox_inventory/data/items.lua`.
+
 ***
 
 ### Standalone mode (`integrations.inventory = 'none'`)
@@ -93,12 +113,17 @@ No inventory resource is required. The script keeps tickets itself, keyed per pl
 
 ### Ticket metadata
 
+The item's metadata holds the ticket as `metadata.ticket`:
+
 ```lua
 {
-    from = 'paletobay', to = 'lossantos1',
-    fromLabel = 'Paleto Bay', toLabel = 'Los Santos',
-    departure = '14:32', arrival = '15:05',
-    playerName = 'John Smith', price = 30,
+    number        = '482913',       -- random 6-digit number
+    passengerName = 'John Smith',
+    from          = 'Paleto Bay',   -- station label
+    to            = 'Los Santos',   -- destination label
+    date          = 1767225600000,  -- time of purchase, ms since 1970
+    departure     = '14:32',
+    arrival       = '15:05',
 }
 ```
 
