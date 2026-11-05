@@ -14,6 +14,10 @@ Known in-world as **The Corner**, this pack adds a full nightlife block to Sandy
 The Corner ships with the **Prompt Arcade** script, which makes the arcade cabinets playable. The arcade script requires [`ox_lib`](https://github.com/overextended/ox_lib); the map itself is a pure map resource.
 {% endhint %}
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 ### Installation Instructions
 
 {% stepper %}

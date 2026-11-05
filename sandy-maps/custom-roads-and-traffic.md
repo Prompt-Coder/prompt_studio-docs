@@ -10,6 +10,10 @@ A full road network rework for Sandy Shores. Includes new road geometry with edi
 Pure map resource — no framework, no scripts, no dependencies. Both `stream/` and `mapdata/` folders are required (the resource ships its own base road file replacements).
 {% endhint %}
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 ## <i class="fa-toolbox">:toolbox:</i> Installation Instructions
 
 {% stepper %}

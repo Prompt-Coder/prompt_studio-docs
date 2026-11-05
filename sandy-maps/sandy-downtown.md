@@ -12,6 +12,10 @@ The downtown block of Sandy Shores, fully reworked — a row of shopfronts with 
 Pure map resource — no framework, no dependencies. It only needs the correct **Sandy MapData** installed.
 {% endhint %}
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 ### Installation Instructions
 
 {% stepper %}

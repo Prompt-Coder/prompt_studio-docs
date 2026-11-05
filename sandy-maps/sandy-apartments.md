@@ -36,6 +36,10 @@ Designed to support both **MLO-based housing** and **shell-based housing systems
 Supports **EXTERIOR ONLY** Mode: [exterior-only-add-on.md](exterior-only-add-on.md "mention")
 {% endhint %}
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 ### Installation Instructions
 
 {% stepper %}

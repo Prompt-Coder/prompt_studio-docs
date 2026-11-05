@@ -6,6 +6,10 @@
 
 The **Sandy Shores Roads** is a custom map modification designed for FiveM servers, offering a complete overhaul of the roads in Sandy Shores. This resource replaces the default roads with enhanced textures and designs, providing a more immersive and visually appealing experience for players. Below is a comprehensive guide to help you set up and use this map modification on your server.
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 ***
 
 ### 🗺️ Map Location

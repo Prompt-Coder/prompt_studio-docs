@@ -14,6 +14,10 @@ The **Sandy Shores Fire Station V2** is a complete ground-up rebuild of the fire
 Supports **EXTERIOR ONLY** Mode: [exterior-only-add-on.md](exterior-only-add-on.md "mention")
 {% endhint %}
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 #### Installation Instructions
 
 {% stepper %}

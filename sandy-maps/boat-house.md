@@ -8,6 +8,10 @@
 
 The **Boat House** is a detailed and immersive map designed for FiveM servers, located in Sandy Shores. This map provides a cozy and functional environment for roleplay scenarios, complete with seating areas, TVs, and a customizable doorlock system. Below is a comprehensive guide to help you set up and use this map on your server.
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 ***
 
 ### 🗺️ Map Location

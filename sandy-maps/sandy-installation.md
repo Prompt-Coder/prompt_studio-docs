@@ -47,6 +47,12 @@ Start it **after** your maps in `server.cfg`.
 
 Restart the server, travel to the map, and confirm the exterior and interior load ✅
 {% endstep %}
+
+{% step %}
+#### Step 5 — Update your minimap (optional)
+
+The game's minimap still shows the old Sandy Shores. The [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework) draws the maps you run into it: paste the link from your server console, pick your minimap (Classic GTA V, Postal or your own `.ytd` files) and download the result. Maps with ✓ under **Minimap** in the table below are included.
+{% endstep %}
 {% endstepper %}
 
 ***
@@ -87,33 +93,33 @@ Resource names are exact — copy them straight into `server.cfg`.
 The construction packs are the "work in progress" version of those lots — use them **instead of** the finished map, e.g. to stage a build-up on your server.
 {% endhint %}
 
-| Map | Resource | Download | Also needs | Exterior-Only |
-| --- | --- | :---: | --- | :---: |
-| [Sandy MapData](sandy-mapdata.md) | `cfx_prompt_sandy_mapdata` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Map+Data) | — | — |
-| [Sandy Shores Downtown](sandy-downtown.md) | `prompt_sandy_downtown` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Downtown) | ⚠️ not with Downtown Construction | ✓ |
-| [Custom Roads & Traffic](custom-roads-and-traffic.md) | `prompt_sandy_roads` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Roads+Rework+%2B+Traffic) | — | — |
-| [The Corner](the-corner.md) | `prompt_sandy_corner` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Corner+%5BBowling%2C+Diner%2C+S) | `ox_lib` · ⚠️ not with Corner Construction | ✓ |
-| [University](university.md) | `prompt_sandy_university` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+University+%7C+School) | — | ✓ |
-| [Sandy Fire Station V2](sandy-fire-station-v2.md) | `prompt_sandy_fire2` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+FireStation+V2) | ⚠️ replaces Fire Department | ✓ |
-| [Sandy Hospital V2](sandy-hospital-v2.md) | `prompt_sandy_hospital2` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Hospital+V2) | `ox_lib` · ⚠️ replaces Hospital | ✓ |
-| [Sandy Apartments](sandy-apartments.md) | `prompt_sandy_apts` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Apartments) | — | ✓ |
-| [Sandy Bank](sandy-bank.md) | `prompt_sandy_bank` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Bank) | — | ✓ |
-| [Sandy Market](sandy-market.md) | `prompt_sandy_market` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Market) | — | ✓ |
-| [Sandy Motel](sandy-motel.md) | `prompt_sandy_motel` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Motel) | — | ✓ |
-| [Sandy Mechanic](sandy-mechanic.md) | `prompt_sandy_mechanic` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Mechanic) | `ox_lib` | ✓ |
-| [Illegal Garage & Gas Station](sandy-illegal-garage-and-gas-station-with-carwash.md) | `prompt_sandy_illegal_garage` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Illegal) | `ox_lib` | ✓ |
-| [Sandy Church](sandy-church.md) | `prompt_sandy_church` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Church) | — | ✓ |
-| [Sandy Car Dealership](sandy-car-dealership.md) | `prompt_sandy_classic_car_dealership` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Car+Dealership) | — | ✓ |
-| [Sandy City Hall](sandy-city-hall.md) | `prompt_sandy_cityhall` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+City+hall) | `ox_lib` | ✓ |
-| [Sandy Houses](sandy-houses.md) | `prompt_sandy_houses_part1` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Houses) | `prompt_sandy_shared` | ✓ |
-| [Sandy Train Station](sandy-train-station.md) | `prompt_sandy_train_station` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Train) | — | ✓ |
-| [Sandy Sheriff](sandy-sheriff.md) | `prompt_sandy_sheriff` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Sheriff) | — | ✓ |
-| [Sandy Airport](sandy-airport.md) | `prompt_sandy_airfield` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Air) | — | — |
-| [Sandy Hospital *(original)*](sandy-hospital.md) | `prompt_sandy_hospital` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Hospital\&row=0) | ⚠️ superseded by V2 | ✓ |
-| [Sandy Fire Department *(original)*](sandy-fire-department.md) | `cfx_prompt_sandy_shores_fire_department` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Sandy+Shores+Fire+Department) | ⚠️ superseded by Fire Station V2 | ✓ |
-| [Sandy Marina](sandy-marina.md) | `cfx_prompt_sandy_marina` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Marina+%7C+Beaches) | — | — |
-| [Boat House](boat-house.md) | `cfx_chuz_sandy_shores_boat_house` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Chuz+Mapping+-+Sandy+Boat+House) | — | — |
-| [\[FREE\] Construction Zones](free-construction-zones.md) | `prompt_sandy_corner_construction`<br>`prompt_sandy_downtown_construction` | — | ⚠️ pre-build lots — use *instead of* The Corner / Downtown | — |
+| Map | Resource | Download | Also needs | Exterior-Only | Minimap |
+| --- | --- | :---: | --- | :---: | :---: |
+| [Sandy MapData](sandy-mapdata.md) | `cfx_prompt_sandy_mapdata` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Map+Data) | — | — | — |
+| [Sandy Shores Downtown](sandy-downtown.md) | `prompt_sandy_downtown` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Downtown) | ⚠️ not with Downtown Construction | ✓ | ✓ |
+| [Custom Roads & Traffic](custom-roads-and-traffic.md) | `prompt_sandy_roads` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Roads+Rework+%2B+Traffic) | — | — | ✓ |
+| [The Corner](the-corner.md) | `prompt_sandy_corner` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Corner+%5BBowling%2C+Diner%2C+S) | `ox_lib` · ⚠️ not with Corner Construction | ✓ | ✓ |
+| [University](university.md) | `prompt_sandy_university` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+University+%7C+School) | — | ✓ | ✓ |
+| [Sandy Fire Station V2](sandy-fire-station-v2.md) | `prompt_sandy_fire2` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+FireStation+V2) | ⚠️ replaces Fire Department | ✓ | ✓ |
+| [Sandy Hospital V2](sandy-hospital-v2.md) | `prompt_sandy_hospital2` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Hospital+V2) | `ox_lib` · ⚠️ replaces Hospital | ✓ | ✓ |
+| [Sandy Apartments](sandy-apartments.md) | `prompt_sandy_apts` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Apartments) | — | ✓ | ✓ |
+| [Sandy Bank](sandy-bank.md) | `prompt_sandy_bank` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Bank) | — | ✓ | ✓ |
+| [Sandy Market](sandy-market.md) | `prompt_sandy_market` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Market) | — | ✓ | ✓ |
+| [Sandy Motel](sandy-motel.md) | `prompt_sandy_motel` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Motel) | — | ✓ | ✓ |
+| [Sandy Mechanic](sandy-mechanic.md) | `prompt_sandy_mechanic` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Mechanic) | `ox_lib` | ✓ | ✓ |
+| [Illegal Garage & Gas Station](sandy-illegal-garage-and-gas-station-with-carwash.md) | `prompt_sandy_illegal_garage` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Illegal) | `ox_lib` | ✓ | ✓ |
+| [Sandy Church](sandy-church.md) | `prompt_sandy_church` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Church) | — | ✓ | ✓ |
+| [Sandy Car Dealership](sandy-car-dealership.md) | `prompt_sandy_classic_car_dealership` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Car+Dealership) | — | ✓ | ✓ |
+| [Sandy City Hall](sandy-city-hall.md) | `prompt_sandy_cityhall` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+City+hall) | `ox_lib` | ✓ | ✓ |
+| [Sandy Houses](sandy-houses.md) | `prompt_sandy_houses_part1` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Houses) | `prompt_sandy_shared` | ✓ | ✓ |
+| [Sandy Train Station](sandy-train-station.md) | `prompt_sandy_train_station` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Train) | — | ✓ | ✓ |
+| [Sandy Sheriff](sandy-sheriff.md) | `prompt_sandy_sheriff` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Sheriff) | — | ✓ | ✓ |
+| [Sandy Airport](sandy-airport.md) | `prompt_sandy_airfield` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Air) | — | — | ✓ |
+| [Sandy Hospital *(original)*](sandy-hospital.md) | `prompt_sandy_hospital` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Shores+Hospital\&row=0) | ⚠️ superseded by V2 | ✓ | — |
+| [Sandy Fire Department *(original)*](sandy-fire-department.md) | `cfx_prompt_sandy_shores_fire_department` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Sandy+Shores+Fire+Department) | ⚠️ superseded by Fire Station V2 | ✓ | — |
+| [Sandy Marina](sandy-marina.md) | `cfx_prompt_sandy_marina` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Prompt%27s+-+Sandy+Marina+%7C+Beaches) | — | — | ✓ |
+| [Boat House](boat-house.md) | `cfx_chuz_sandy_shores_boat_house` | [Portal](https://portal.cfx.re/assets/granted-assets?page=1\&sort=asset.updated_at\&direction=asc\&search=Chuz+Mapping+-+Sandy+Boat+House) | — | — | ✓ |
+| [\[FREE\] Construction Zones](free-construction-zones.md) | `prompt_sandy_corner_construction`<br>`prompt_sandy_downtown_construction` | — | ⚠️ pre-build lots — use *instead of* The Corner / Downtown | — | — |
 
 ***
 

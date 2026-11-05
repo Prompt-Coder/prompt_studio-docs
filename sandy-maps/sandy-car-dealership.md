@@ -10,6 +10,10 @@
 Supports **EXTERIOR ONLY** Mode: [exterior-only-add-on.md](exterior-only-add-on.md "mention")
 {% endhint %}
 
+{% hint style="info" icon="map" %}
+**Minimap:** this map is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 The **Sandy Car Dealership** is a premium MLO map for FiveM. Its detailed showroom, comfy lounge zones, and business-ready layout support car sales, customer meetups, and job scripts. Realistic props and visuals make it ideal for any RP server.
 
 ***

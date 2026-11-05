@@ -8,6 +8,10 @@
 
 {% embed url="https://www.youtube.com/watch?v=IWREV1zvP2E" %}
 
+{% hint style="info" icon="map" %}
+**Minimap:** the Sandy Shores gym is included in the [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework), so it can show on your server's minimap (Classic GTA V, Postal or your own map).
+{% endhint %}
+
 ***
 
 ### Installation Instructions
