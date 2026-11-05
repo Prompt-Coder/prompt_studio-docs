@@ -51,7 +51,7 @@ Restart the server, travel to the map, and confirm the exterior and interior loa
 {% step %}
 #### Step 5 — Update your minimap (optional)
 
-The game's minimap still shows the old Sandy Shores. The [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework) draws the maps you run into it: paste the link from your server console, pick your minimap (Classic GTA V, Postal or your own `.ytd` files) and download the result. Maps with ✓ under **Minimap** in the table below are included.
+The game's minimap still shows the old Sandy Shores. The [**Sandy Rework Minimap Generator**](https://vertex-hub.com/prompt/minimap/sandy-rework) draws the maps you run into it: paste the link from your server console, pick your minimap (Classic GTA V, Postal or your own `.ytd` files) and download the result. Maps with ✓ under **Minimap** in the table below are included — see [**Sandy Minimap Generator**](sandy-minimap-generator.md) for the details.
 {% endstep %}
 {% endstepper %}
 

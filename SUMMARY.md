@@ -87,6 +87,7 @@
 * [🚀 Installation Guide](sandy-maps/sandy-installation.md)
 * [🏫 Exterior-Only Add-On](sandy-maps/exterior-only-add-on.md)
 * [🗺️ Sandy Mapdata](sandy-maps/sandy-mapdata.md)
+* [🧭 Sandy Minimap Generator](sandy-maps/sandy-minimap-generator.md)
 * [🏙️ Sandy Shores Downtown](sandy-maps/sandy-downtown.md)
 * [🌴 Custom Roads & Traffic](sandy-maps/custom-roads-and-traffic.md)
 * [🏗️ \[FREE\] Construction Zones](sandy-maps/free-construction-zones.md)
