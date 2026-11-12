@@ -4,6 +4,11 @@
 
 ## Scripts
 
+* [Interactive Storage](scripts/interactive-storage/README.md)
+  * [Placing Cabinets](scripts/interactive-storage/placing-cabinets.md)
+  * [Configuration](scripts/interactive-storage/configuration.md)
+  * [For Developers](scripts/interactive-storage/developers.md)
+  * [Troubleshooting](scripts/interactive-storage/troubleshooting.md)
 * [JetSam Dock Jobs](scripts/jetsam-dock-jobs/README.md)
   * [The Jobs](scripts/jetsam-dock-jobs/jobs.md)
   * [Configuration](scripts/jetsam-dock-jobs/configuration.md)
