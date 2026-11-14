@@ -4,7 +4,7 @@
 
 ## Scripts
 
-* [Ferry](scripts/ferry/README.md)
+* [Drivable Ferry](scripts/ferry/README.md)
   * [Sailing the Ferry](scripts/ferry/sailing.md)
   * [Configuration](scripts/ferry/configuration.md)
   * [For Developers](scripts/ferry/developers.md)
