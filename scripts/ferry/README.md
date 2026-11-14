@@ -19,6 +19,8 @@ A 77 m car ferry that players drive. Take the helm on the bridge, lower the bow 
 
 <figure><img src="../../.gitbook/assets/ferry-under-way.jpg" alt="The blue and white car ferry under way off the Los Santos port, its ramp raised and passengers on the upper decks"><figcaption><p>Under way off Los Santos.</p></figcaption></figure>
 
+<figure><img src="../../.gitbook/assets/ferry-collage.jpg" alt="Six views of the ferry: docked at a quay with cars driving on, a full car deck from above, passengers on every deck, the bridge, the passenger lounge, and the ferry at night with its lights on"><figcaption><p>Loading at the quay, a full car deck, passengers, the bridge, the lounge, and at night.</p></figcaption></figure>
+
 ***
 
 ### Requirements
