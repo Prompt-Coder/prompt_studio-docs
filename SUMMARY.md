@@ -4,6 +4,11 @@
 
 ## Scripts
 
+* [Ferry](scripts/ferry/README.md)
+  * [Sailing the Ferry](scripts/ferry/sailing.md)
+  * [Configuration](scripts/ferry/configuration.md)
+  * [For Developers](scripts/ferry/developers.md)
+  * [Troubleshooting](scripts/ferry/troubleshooting.md)
 * [Interactive Storage](scripts/interactive-storage/README.md)
   * [Placing Cabinets](scripts/interactive-storage/placing-cabinets.md)
   * [Configuration](scripts/interactive-storage/configuration.md)
