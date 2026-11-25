@@ -15,6 +15,7 @@ icon: anchor
 | **F** | Leave the helm |
 | **G** | Show or hide the captain panel |
 | **~** | Give the captain panel the mouse while you keep driving. **ESC** gives it back |
+| **F7** | Captain panel: turn between the dashboard and the ramps page |
 | **[** / **]** (hold) | Lower / raise the bow ramp |
 | **End** / **Home** (hold) | Lower / raise the stern ramp |
 
@@ -36,14 +37,18 @@ Walk onto the bridge, up to the wheel, and press **E** at the `Take the helm` pr
 
 ### The captain panel
 
-The panel comes up at the top of the screen when you take the helm. **G** hides it and shows it again. Press **~** to use its buttons with the mouse while you keep steering, and **ESC** to give the mouse back.
+The panel comes up at the bottom right of the screen when you take the helm. **G** hides it and shows it again. Press **~** to use its dial and buttons with the mouse while you keep steering, and **ESC** to give the mouse back. It has two pages, and **F7** turns between them.
 
-| Part | What it does |
-| --- | --- |
-| **Speed and heading** | Speed in knots and km/h, the compass heading |
-| **Engine telegraph** | The cruise control: astern on the left, STOP on top, ahead on the right. Click a position and the ferry holds that speed with no key held: **SLOW / HALF / FULL AHEAD** (5, 10, 15 m/s) or **SLOW / HALF / FULL ASTERN** (2, 3.5, 5 m/s). **STOP** brings it to rest. Pressing **W** or **S** yourself hands control back to you (`Cruise control off.`) |
-| **Ramps** | Bow and stern: hold a button to lower or raise that ramp. The label shows what the ramp does: `Lowering`, `Raising`, `Fully down`, `Held`, `On the ground`, `Car on ramp` |
-| **Dock** | Docks and undocks the ferry (see [Docking](#docking)) |
+| Page | Part | What it does |
+| --- | --- | --- |
+| **Dashboard** | **Engine telegraph** | The cruise control: astern on the left, Stop on top, ahead on the right. Click a position and the ferry holds that speed with no key held: **Slow / Half / Full Ahead** (5, 10, 15 m/s) or **Slow / Half / Full Astern** (2, 3.5, 5 m/s). **Stop** brings it to rest. Pressing **W** or **S** yourself hands control back to you (`Cruise control off.`) |
+| **Dashboard** | **Speed and heading** | Speed in knots and km/h against the ferry's top speed, and the compass heading above the panel |
+| **Ramps** | **Bow and Stern** | Hold a button to lower or raise that ramp; the ship drawing shows both ramps move. The label shows what the ramp does: `Lowering`, `Raising`, `Fully down`, `Held`, `On the ground`, `Car on ramp` |
+| **Ramps** | **Dock** (the anchor, with the mouse on) | Docks and undocks the ferry (see [Docking](#docking)) |
+
+{% hint style="info" %}
+Prefer the first panel, one row with everything on it at the top of the screen? Set `Config.Captain.ui = 'old'` (see [Configuration](configuration.md#captain-panel)).
+{% endhint %}
 
 ***
 
@@ -65,7 +70,7 @@ The bow and the stern each have a car ramp. Hold the ramp key (or the panel butt
 Docking holds the ferry still and level, so cars can drive on and off over a lowered ramp without the ferry drifting away from the quay.
 
 1. Bring the ferry alongside or bow-on to the quay and slow it almost to a stop (1 m/s or less).
-2. Click **Dock** on the panel, or type `/ferry_park`. The ferry is held in place: `Docked: the ferry is held in place. Dock again to sail.`
+2. Click **Dock** on the panel's ramps page, or type `/ferry_park`. The ferry is held in place: `Docked: the ferry is held in place. Dock again to sail.`
 3. Lower a ramp and let the cars drive on or off.
 4. Raise the ramps, click **Dock** again (`Undocked: free to sail.`) and sail.
 

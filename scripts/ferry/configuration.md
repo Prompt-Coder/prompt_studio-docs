@@ -162,18 +162,32 @@ Config.Helm = {
 {% code title="config/captain.lua" %}
 ```lua
 Config.Captain = {
+    ui        = 'new',            -- 'new' = the dashboard, 'old' = the classic panel
     panelKey  = 'G',
     cursorKey = 'GRAVE',          -- the ~ key
+    viewKey   = 'F7',             -- dashboard: dashboard page <-> ramps page
+
+    -- where the dashboard ('new') sits
+    anchor    = 'bottom-right',   -- 'bottom-right', 'bottom-center', 'bottom-left',
+                                  -- 'top-right', 'top-center', 'top-left'
+    offsetX   = 24,               -- px from the left / right edge
+    offsetY   = 96,               -- px from the top / bottom edge
+    scale     = 1.0,              -- 0.5 to 2.0
+
+    -- where the classic panel ('old') sits
     position  = 'top',            -- 'top' or 'bottom' middle of the screen
     offset    = 22,               -- px from that edge
+
     ahead     = { 5.0, 10.0, 15.0 },
     astern    = { 2.0, 3.5, 5.0 },
 }
 ```
 {% endcode %}
 
-* `ahead` and `astern` are the cruise speeds in m/s for SLOW, HALF and FULL. `Config.Helm.maxSpeed` still caps them.
-* Move the panel with `position` and `offset` if your HUD has something in that spot.
+* `ui` picks the panel. `'new'` is the dashboard: an engine dial, speed and compass, and a second page with the ramps and the Dock button. `'old'` is the first panel: one row at the top of the screen with everything on it. A `config/captain.lua` from before 1.2.0 has no `ui` line and gets the dashboard.
+* Move the dashboard with `anchor`, `offsetX` and `offsetY` if your HUD has something in that corner, and size it with `scale`. Its compass floats above it and its key hints below it, so keep some `offsetY`. At `1.0` it is 630 px wide on a 1080p screen and grows with bigger screens.
+* Move the classic panel with `position` and `offset`.
+* `ahead` and `astern` are the cruise speeds in m/s for Slow, Half and Full. `Config.Helm.maxSpeed` still caps them.
 
 ***
 
@@ -186,6 +200,7 @@ The defaults below are what a player gets the first time they join. After that t
 | `Config.Core.interactKey` | `E` | Take the helm, sit, stand up |
 | `Config.Captain.panelKey` | `G` | Show / hide the captain panel |
 | `Config.Captain.cursorKey` | `GRAVE` (~) | The panel's mouse |
+| `Config.Captain.viewKey` | `F7` | Dashboard panel: dashboard page / ramps page |
 | `Config.Ramps.keys.bowDown` / `bowUp` | `LBRACKET` / `RBRACKET` | Lower / raise the bow ramp (hold) |
 | `Config.Ramps.keys.sternDown` / `sternUp` | `END` / `HOME` | Lower / raise the stern ramp (hold) |
 
