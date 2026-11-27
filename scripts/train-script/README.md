@@ -9,6 +9,10 @@ icon: train
 **Version 2** (2.1.0) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
 {% endhint %}
 
+{% hint style="success" %}
+**New here?** Start with [Quick Setup](quick-setup.md): install, start order, and choosing your trains, in 5 minutes.
+{% endhint %}
+
 ### What's new in 2.1.0
 
 * **Drive the trains yourself.** Take over a line's train in its cab, or take out a service train from a depot dispatcher at Sandy Shores, Los Santos or Davis (metro). The cab has a power/brake controller, curve speed limits, signals and train protection, and drivers are paid for every stop they serve ($150 by default). See [Driving](driving.md).
@@ -83,6 +87,7 @@ train_routes
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Assets resource loaded first    | Console should **not** say `cannot read stations and lines from prompt_train_script-assets`                                                                                                 |
 | Trains loaded first             | Console should **not** say `started after prompt_train_script` or `none of its trains is installed`                                                                                         |
+| Every train is on a line        | Console should **not** say `is installed but not running on any track`. If it does, paste the example it gives into `fleet` in `config/trains.lua` — see [Quick Setup](quick-setup.md#choose-your-trains) |
 | `train_assets_validate` passes  | Reports every line's track id, stop count, and point count, ending in `validation passed`. It also runs by itself when the assets resource starts. A line that needs a map you don't run shows as `skipped, needs <resource>` |
 | `train_routes` shows every line | Lists each line with its track id, train, fleet, and stations — no unexplained gaps. Dormant lines are listed with what they need                                                          |
 | Trains spawn                    | After the first player joins you should see trains appear on the map                                                                                                                        |

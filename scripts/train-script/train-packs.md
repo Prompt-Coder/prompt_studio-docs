@@ -26,8 +26,8 @@ ensure prompt_train_script-assets
 ensure prompt_train_script
 ```
 
-3. Put its train on the lines you want with `fleet` in `config/trains.lua` — see [Which trains run on a line](#which-trains-run-on-a-line). The Polar Express already is.
-4. Restart the server.
+3. Restart the server. The console tells you the pack isn't on a line yet, with a line to copy.
+4. Paste that line into `fleet` in `config/trains.lua` — see [Which trains run on a line](#which-trains-run-on-a-line) — and restart again. The Polar Express is already on its lines.
 
 {% hint style="warning" %}
 The script reads the installed trains **once, when it starts**. A pack that starts later isn't used, and the server console says `train pack <name> (<file>) started after prompt_train_script -- restart prompt_train_script to use it`.
@@ -43,25 +43,38 @@ The script reads the installed trains **once, when it starts**. A pack that star
 
 ### Which trains run on a line
 
-`fleet` in `prompt_train_script/config/trains.lua` sets which trains run on each line, keyed by line id. The shipped values:
+`fleet` in `prompt_train_script/config/trains.lua`: the line, then **train name = how many**.
 
 {% code title="config/trains.lua" %}
 ```lua
 fleet = {
-    default   = { polar = 50, bullet = 50 },
-    sandy     = { polar = 100 },
-    lossantos = { bullet = 100 },
-    roxwood   = { polar = 60, bullet = 40 },
+    default   = { polar = 1 },
+    sandy     = { polar = 2 },  -- 2 Polar Express
+    lossantos = { polar = 5 },  -- 5 Polar Express
+    roxwood   = { polar = 3 },
 },
 ```
 {% endcode %}
 
-* The numbers are chances. Every new train on the line picks one at random by weight: `{ polar = 60, mytrain = 40 }` runs about 60% Polar Express. They don't have to add up to 100.
-* An entry here wins over the `train` in the line's own `line.lua`. A line with neither runs `metro` if it is a metro line, or `fleet.default` if it is a freight line.
-* `bullet` is the AERION bullet train pack (`prompt_train_bullet`, coming soon). Until it is installed, the lines that list it run the Polar Express.
-* A train pack that isn't installed or running is left out. If nothing is left, the line runs the `default` train (`default = 'polar'`, the Polar Express). If that can't run either, the line goes [dormant](lines-and-stations.md#dormant-lines): `line "<id>" is dormant: none of its trains is installed (needs <resource>)`.
+* `{ polar = 2, mytrain = 1 }` = exactly 2 Polar Express and 1 of yours. The types take turns.
+* A train that isn't installed or running is skipped.
+* None of the line's trains installed? It runs that many Polar Expresses (the `default` train) instead. If that can't run either, the line goes [dormant](lines-and-stations.md#dormant-lines).
 
-This `fleet` sets **which** trains run. The `fleet` number in a line's `line.lua` sets **how many**. See also [Configuration → Fleet mix](configuration.md#fleet-mix). To give a train its own blip colour and legend name, add its key to `blips.consistColors` and `blips.consistLabels` ([Configuration § 6](configuration.md#6-train-blips)).
+{% hint style="info" %}
+Since 2.1.2. Older versions read these numbers as chances. An old config (numbers adding up to more than 20) still works the old way, and the console asks you to switch.
+{% endhint %}
+
+<details>
+
+<summary>Lines without an entry, and line.lua</summary>
+
+* A line **with** an entry here: the numbers are its trains.
+* A line **without** one runs its own number of trains (`fleet` in its `line.lua`). Their type comes from the `train` in its `line.lua`, else `metro` (metro lines) or `fleet.default` (freight lines), picked at random.
+* `npcDriven.trainsPerRoute` in `config/config.lua` overrides how many trains a line runs. Set a line to `0` to switch it off.
+
+</details>
+
+To give a train its own blip colour and legend name, add its key to `blips.consistColors` and `blips.consistLabels` ([Configuration § 6](configuration.md#6-train-blips)).
 
 ***
 
@@ -201,6 +214,8 @@ Players open and close the ramp from the ramp itself: **Open ramp** / **Close ra
 | Game console (F8)        | `train_config_index <key>`                                                                                  | The train's config number: `[train_config] "<key>" = <number>`. Add `refresh` to check it again. Without a key, it checks the `default` train                                                 |
 | Server console, at start | `train pack @<resource>/<file> could not be read: <error>`                                                  | `train_pack.lua` failed to load, or it doesn't return a table with a `key` — for example, an escrowed file that isn't in `escrow_ignore`                                                     |
 | Server console, at start | `line "<id>" asks for consist "<key>", which neither config/trains.lua nor a train pack has -- left out`    | A `fleet` entry or a line's `train` names a train that isn't installed or isn't running, or has a typo                                                                                       |
+| Server console, at start | `<train> (<resource>) is installed but not running on any track. To run it, put it on a line ... for example: ...` | The pack runs but no line uses it. Paste the example into `fleet` and restart                                                                                                 |
+| Server console, at start | `<train> (<resource>) is installed, but its line <id> is not running`                                       | The pack is in `fleet`, but only for a [dormant](lines-and-stations.md#dormant-lines) line — the warning above it says what that line needs                                                 |
 | Game console (F8)        | `[train_config] FAILED to resolve "<key>" (signature "<model>")`                                            | None of the train configs searched holds the `signature` model. Check `trains.xml`, `signature`, and that the pack is started                                                               |
 
 ***
@@ -237,8 +252,8 @@ To install them:
 ```lua
 fleet = {
     -- ...
-    lossantos = { kt_example = 100 },             -- only this train
-    sandy     = { polar = 50, kt_example = 50 },  -- mixed: the numbers are chances
+    lossantos = { kt_example = 3 },            -- 3 of this train
+    sandy     = { polar = 1, kt_example = 1 },  -- 1 Polar Express + 1 of this train
 },
 ```
 {% endcode %}

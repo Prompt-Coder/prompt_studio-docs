@@ -65,7 +65,7 @@ npcDriven = {
 | Field                     | Effect                                                                                                                                                                                              |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `enable`                  | `false` = no NPC trains at all. This also turns off player driving (§ 12) and NPC passengers (§ 13)                                                                                                 |
-| `trainsPerRoute`          | Overrides how many trains a line runs (the `fleet` number in its `line.lua`), keyed by line id. Which trains run is set in `config/trains.lua`                                                      |
+| `trainsPerRoute`          | Overrides how many trains a line runs, keyed by line id (`0` = no trains). Normally that number comes from `fleet` in `config/trains.lua` — see [Fleet mix](#fleet-mix)                          |
 | `keepTrainsOnOwnerChange` | One-sync `OrphanMode`. Left off: it stops the server's own cleanup but not the client's, and it exempts delinked carriages from cleanup — trading occasional respawns for permanent ghost carriages |
 | `autoRebuild`             | Rebuild (despawn + respawn) a consist confirmed genuinely broken — a missing carriage, or one stopped and left behind while the loco moves on                                                       |
 | `ghostCleanup`            | Delete carriages not linked to any tracked loco                                                                                                                                                     |
@@ -415,11 +415,12 @@ return {
     defaultModels = DEFAULT_MODELS, -- { 'sloco', 'rest', 'scab', 'coal' }
     maxCarriages  = 14,
 
+    -- How many trains of each type run on each line
     fleet = {
-        default   = { polar = 50, bullet = 50 },
-        sandy     = { polar = 100 }, -- Sandy Shores <-> Paleto Bay: Polar Express only
-        lossantos = { bullet = 100 }, -- Los Santos <-> Sandy Shores: AERION bullet train only (Polar Express if prompt_train_bullet is not running)
-        roxwood   = { polar = 60, bullet = 40 }, -- Los Santos -> Roxwood
+        default   = { polar = 1 },
+        sandy     = { polar = 2 }, -- Sandy Shores <-> Paleto Bay
+        lossantos = { polar = 5 }, -- Los Santos <-> Sandy Shores
+        roxwood   = { polar = 3 }, -- Los Santos -> Roxwood
     },
 
     -- Live screens: kind 'passenger' = next stop, 'cab' = driver's desk
@@ -478,7 +479,7 @@ return {
 | `default`       | The fallback train. A line runs it when none of the train packs it lists is installed                       |
 | `defaultModels` | Model list for an entry without `models` of its own. Leave it as is                                         |
 | `maxCarriages`  | The most carriages the script reads behind one locomotive. Raise it only for a train pack with longer trains |
-| `fleet`         | Which trains run on each line — see [Fleet mix](#fleet-mix)                                                 |
+| `fleet`         | Which trains run on each line, and how many — see [Fleet mix](#fleet-mix)                                   |
 | `screens`       | Live screens drawn onto a train's own textures (below)                                                      |
 | `registry`      | One entry per train type — see [Train registry](#train-registry)                                            |
 
@@ -488,15 +489,23 @@ return {
 
 ### Fleet mix
 
-`fleet` is keyed by line id. Each value lists train keys with weights, and every new train on that line picks its type at random by weight: `{ polar = 60, bullet = 40 }` runs about 60 % Polar Express. `bullet` is the AERION bullet train pack (`prompt_train_bullet`, coming soon); until it is installed, the lines that list it run the Polar Express.
+The line, then **train name = how many**: `lossantos = { polar = 3, mytrain = 1 }` runs exactly 3 Polar Express and 1 of your own train, taking turns.
 
-* An entry here wins over the `train` set in a line's own `line.lua`. Freight lines with neither use `fleet.default`; metro lines run `metro`.
-* Keys are entries from `registry` below or from an installed train pack. Trains converted from GTA5-Mods (Kitsune Trains 7) with the free [Kitsune converter](https://github.com/Prompt-Coder/prompt_train_kitsune_converter) have keys like `kt_<name>` — see [Train Packs](train-packs.md).
-* A train pack that is not running is left out of the mix. If none is left, the line runs `default`. If no train can run at all, the line goes dormant and the server console names the resource it needs.
+* **Train names** are the entries in `registry` below, or an installed train pack's `key`. Converted GTA5-Mods trains have names like `kt_<name>` — see [Train Packs](train-packs.md).
+* **Not installed** = skipped. None of the line's trains installed? It runs that many of `default` (the Polar Express). If that can't run either, the line goes dormant.
+* **A train pack on no line** makes the console say `<train> is installed but not running on any track`, with a line ready to paste here.
 
 {% hint style="info" %}
-This `fleet` sets **which** trains run. The `fleet` number in a line's `line.lua` (or `npcDriven.trainsPerRoute`) sets **how many** run.
+Since 2.1.2. Older versions read these numbers as chances. An old config (numbers adding up to more than 20) still works the old way, and the console asks you to switch.
 {% endhint %}
+
+<details>
+
+<summary>Lines without an entry</summary>
+
+A line without an entry here runs its own number of trains (`fleet` in its `line.lua`). Their type comes from the `train` in its `line.lua`, else `metro` (metro lines) or `fleet.default` (freight lines), picked at random. `npcDriven.trainsPerRoute` overrides the number for any line.
+
+</details>
 
 ***
 

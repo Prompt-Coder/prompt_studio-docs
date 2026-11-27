@@ -65,6 +65,7 @@
     * [Exports & Events](scripts/youtool-furniture-store/developers/exports-and-events.md)
   * [Troubleshooting](scripts/youtool-furniture-store/troubleshooting.md)
 * [Train Script](scripts/train-script/README.md)
+  * [Quick Setup](scripts/train-script/quick-setup.md)
   * [Lines & Stations](scripts/train-script/lines-and-stations.md)
   * [Train Packs](scripts/train-script/train-packs.md)
   * [Configuration](scripts/train-script/configuration.md)

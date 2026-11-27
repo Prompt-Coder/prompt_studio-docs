@@ -104,7 +104,7 @@ The Sandy Shores line `requires` the Sandy Shores train tunnel map (`prompt_sand
 | `stops[].platform`                  | Which of the station's `platforms` entries this stop uses (omit for a single-platform station)                                                                                                                                                       |
 | `stops[].destination`               | Overrides the label shown on departure boards for that stop, if different from the line's usual direction                                                                                                                                            |
 | `type`                              | `'freight'` (default) or `'metro'`. A metro line runs GTA's metro train unless told otherwise; a freight line takes its trains from `fleet` in `config/trains.lua` — see [Train Packs](train-packs.md)                                              |
-| `fleet`                             | How many trains run on this line (default 1). `npcDriven.trainsPerRoute` in `config/config.lua` wins. Not the same as `fleet` in `config/trains.lua`, which picks *which* trains run                                                               |
+| `fleet`                             | How many trains run on this line (default 1) when `fleet` in `config/trains.lua` has no entry for it. An entry there sets the trains and their number instead. `npcDriven.trainsPerRoute` in `config/config.lua` wins over both                   |
 | `mode`                              | `'loop'` (default): round its track for ever. `'pingpong'`: back and forth between the two ends of its track. `'oneway'`: see [One-way lines](#one-way-lines)                                                                                       |
 | `loop`                              | The older way to set the mode: `loop = false` is `mode = 'pingpong'`. Use one or the other                                                                                                                                                          |
 | `train`                             | Which train runs here: a train key (`'polar'`) or a weighted mix (`{ polar = 80, mytrain = 20 }`). An entry for this line in `fleet` in `config/trains.lua` wins — see [Train Packs](train-packs.md)                                               |
@@ -134,7 +134,7 @@ Lines may share rails: the Roxwood line shares stretches of rail with the Los Sa
 | `monorail`  | The elevated loop of `cfx-nteam-monorail-map` — loop                                     | 4 — GTA's metro train                                                                                                                        | `cfx-nteam-monorail-map`                        |
 | `freight`   | GTA's own freight loop (track 0), no stations — [fallback](#fallback-lines)              | 2 — GTA's freight train                                                                                                                      | —                                               |
 
-The number of trains is each line's `fleet`. Which trains run is set by `fleet` in `config/trains.lua` — see [Train Packs](train-packs.md#which-trains-run-on-a-line).
+Which trains run, and how many, is set by `fleet` in `config/trains.lua` — see [Train Packs](train-packs.md#which-trains-run-on-a-line). A line with no entry there runs its own `fleet` number above.
 
 ***
 
