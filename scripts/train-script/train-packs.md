@@ -41,6 +41,21 @@ The script reads the installed trains **once, when it starts**. A pack that star
 
 ***
 
+### The AERION bullet train
+
+`prompt_train_bullet` is the AERION bullet train. Its key is `bullet`.
+
+* **Where it runs:** the preset puts 5 on Los Santos and 1 on Roxwood.
+* **Inside:** doors, seats with NPC passengers, a dining car, live passenger screens, and a driver's cab.
+* **Car carrier:** the last car has a ramp. Drive a car on and it rides along.
+* **Install:** like any train pack — `ensure prompt_train_bullet` above `prompt_train_script`.
+
+{% hint style="info" %}
+The Polar Express and the bullet train are both optional. Run one or both: a line whose train you don't have runs the other one.
+{% endhint %}
+
+***
+
 ### Which trains run on a line
 
 `fleet` in `prompt_train_script/config/trains.lua`: the line, then **train name = how many**.
@@ -48,17 +63,17 @@ The script reads the installed trains **once, when it starts**. A pack that star
 {% code title="config/trains.lua" %}
 ```lua
 fleet = {
-    default   = { polar = 1 },
-    sandy     = { polar = 2 },  -- 2 Polar Express
-    lossantos = { polar = 5 },  -- 5 Polar Express
-    roxwood   = { polar = 3 },
+    default   = { polar = 1, bullet = 1 },
+    sandy     = { polar = 2 },             -- 2 Polar Express
+    lossantos = { bullet = 5 },            -- 5 bullet trains
+    roxwood   = { polar = 2, bullet = 1 }, -- 2 Polar Express + 1 bullet train
 },
 ```
 {% endcode %}
 
 * `{ polar = 2, mytrain = 1 }` = exactly 2 Polar Express and 1 of yours. The types take turns.
-* A train that isn't installed or running is skipped.
-* None of the line's trains installed? It runs that many Polar Expresses (the `default` train) instead. If that can't run either, the line goes [dormant](lines-and-stations.md#dormant-lines).
+* A train that isn't installed or running is replaced by one that is, so the line keeps its number of trains. With only the Polar Express (or only the bullet train), every line runs that one.
+* No train installed at all? The line goes [dormant](lines-and-stations.md#dormant-lines).
 
 {% hint style="info" %}
 Since 2.1.2. Older versions read these numbers as chances. An old config (numbers adding up to more than 20) still works the old way, and the console asks you to switch.

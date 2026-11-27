@@ -6,12 +6,21 @@ icon: train
 # Train Script
 
 {% hint style="info" %}
-**Version 2** (2.1.0) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
+**Version 2** (2.1.2) is documented first. Still running 1.0.x? Jump to [Version 1](#version-1).
 {% endhint %}
 
 {% hint style="success" %}
 **New here?** Start with [Quick Setup](quick-setup.md): install, start order, and choosing your trains, in 5 minutes.
 {% endhint %}
+
+### What's new in 2.1.2
+
+* **Train counts.** `lossantos = { bullet = 5 }` in `config/trains.lua` = exactly 5 bullet trains. See [Quick Setup](quick-setup.md#choose-your-trains).
+* **The console helps.** A train that's installed but on no line gets a message with a line to copy into the config.
+* **One train is enough.** Only the Polar Express or only the AERION bullet train? Every line runs the one you have.
+* **Fix:** your character stays in the driver seat in the outside train camera (V).
+
+**Updating from 2.1.1:** replace `prompt_train_script`. The assets and the tunnel didn't change. An old `config/trains.lua` still works, and the console shows how to switch.
 
 ### What's new in 2.1.0
 
@@ -42,8 +51,10 @@ icon: train
 * [`ox_lib`](https://github.com/overextended/ox_lib) started **before** every resource below
 * `prompt_train_script-assets`: ships with the script. Holds every station, line, `.dat` and streamed asset. `prompt_train_script` has no data of its own; it will not start without this resource running first.
 * `prompt_sandy_traintunnel`: ships with the script. The Sandy Shores train tunnel map. The Sandy Shores line runs through the tunnel, so it stays dormant without it.
-* A train. Trains are separate resources, not part of the script:
-  * `prompt_train_polar_express`, the **Polar Express**, runs the Sandy Shores, Los Santos and Roxwood lines. The version on the Cfx.re portal needs no update for 2.1.0. It only has to start before the script.
+* At least one train. Trains are separate resources, not part of the script. Run one or both:
+  * `prompt_train_polar_express`, the **Polar Express**. The version on the Cfx.re portal needs no update. It only has to start before the script.
+  * `prompt_train_bullet`, the **AERION bullet train**. See [Train Packs](train-packs.md#the-aerion-bullet-train).
+  * With both, the Polar Express runs Sandy Shores and the bullet train Los Santos. With one, every line runs that one.
   * Optional: trains from GTA5-Mods (Kitsune Trains 7 by Foxunitone), converted with our free [Kitsune converter](https://github.com/Prompt-Coder/prompt_train_kitsune_converter). Converted trains have no doors, seats or interior. See [Train Packs](train-packs.md).
 
 The metro, the monorail and the freight fallback use the game's own trains.
@@ -52,12 +63,13 @@ The metro, the monorail and the freight fallback use the game's own trains.
 
 ### Installation
 
-1. Copy the three folders from the zip, `prompt_train_script`, `prompt_train_script-assets` and `prompt_sandy_traintunnel`, into your `resources` folder. Add `prompt_train_polar_express` too, if it isn't there yet.
+1. Copy the three folders from the zip, `prompt_train_script`, `prompt_train_script-assets` and `prompt_sandy_traintunnel`, into your `resources` folder. Add your trains too (`prompt_train_polar_express`, `prompt_train_bullet`), if they aren't there yet.
 2. Add the following to your `server.cfg` **in this order**:
 
 ```
 ensure ox_lib
-ensure prompt_train_polar_express
+ensure prompt_train_polar_express   # if you have it
+ensure prompt_train_bullet          # if you have it
 # only if you converted GTA5-Mods trains (see Train Packs):
 # ensure [kt_trains]
 ensure prompt_sandy_traintunnel
@@ -105,7 +117,7 @@ A **dormant** line runs no trains. `train_routes` lists it as `dormant line : <i
 | nothing, and `train_routes` says `freight -- needs no other freight line running` | Normal. `freight` is a fallback line: it runs the game's own freight train (2 trains of 14 vehicles, on the game's track 0) only when no other freight line runs. Freight cars have no doors or seats, so tickets and boarding do nothing on it                |
 
 {% hint style="info" %}
-`line "lossantos": consist "bullet" left out, prompt_train_bullet is not running` is normal (and the same for `roxwood`, if you run Roxwood). These lines are set up for the AERION bullet train pack (`prompt_train_bullet`, coming soon); until it is installed they run the Polar Express. If the Polar Express isn't running either, the dormant message for the Los Santos line names `prompt_train_bullet`: start `prompt_train_polar_express` before the script.
+`line "lossantos": consist "bullet" left out, prompt_train_bullet is not running` is normal without the AERION bullet train (and the same for `roxwood`, if you run Roxwood). Its places go to the Polar Express. With only the bullet train, the Sandy Shores line runs bullet trains the same way.
 {% endhint %}
 
 ***

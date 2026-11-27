@@ -148,7 +148,7 @@ Placeholders in `label`: `{id}` train index, `{route}` line id, `{routeLabel}` i
 
 `group = true` collapses the pause-map legend instead of listing every train and station apart. Stations get one entry per kind (`stationLabels`). Trains get one entry per train type, named from `consistLabels`, or the train's `label` in `config/trains.lua` when it has no entry there. With `group` on, `label` above and any per-line or per-station blip label are ignored. Set it `false` to name every train and station apart.
 
-`consistColors` gives each train type its own [blip colour](https://docs.fivem.net/docs/game-references/blips/#blip-colors), keyed by its name in `config/trains.lua`. It wins over the colour a line sets for itself. If you empty it (`consistColors = {}`), grouped train blips go back to one entry per kind from `groupLabels` ("Train" / "Metro"). The `bullet` entries are for the AERION bullet train pack (`prompt_train_bullet`, coming soon).
+`consistColors` gives each train type its own [blip colour](https://docs.fivem.net/docs/game-references/blips/#blip-colors), keyed by its name in `config/trains.lua`. It wins over the colour a line sets for itself. If you empty it (`consistColors = {}`), grouped train blips go back to one entry per kind from `groupLabels` ("Train" / "Metro"). The `bullet` entries are for the AERION bullet train (`prompt_train_bullet`).
 
 `scale` sizes the **train** blips and `stationScale` sizes the **station** blips. A station that sets its own `blip.scale` in its station file keeps that value.
 
@@ -417,10 +417,10 @@ return {
 
     -- How many trains of each type run on each line
     fleet = {
-        default   = { polar = 1 },
-        sandy     = { polar = 2 }, -- Sandy Shores <-> Paleto Bay
-        lossantos = { polar = 5 }, -- Los Santos <-> Sandy Shores
-        roxwood   = { polar = 3 }, -- Los Santos -> Roxwood
+        default   = { polar = 1, bullet = 1 },
+        sandy     = { polar = 2 },             -- Sandy Shores <-> Paleto Bay
+        lossantos = { bullet = 5 },            -- Los Santos <-> Sandy Shores
+        roxwood   = { polar = 2, bullet = 1 }, -- Los Santos -> Roxwood
     },
 
     -- Live screens: kind 'passenger' = next stop, 'cab' = driver's desk
@@ -483,7 +483,7 @@ return {
 | `screens`       | Live screens drawn onto a train's own textures (below)                                                      |
 | `registry`      | One entry per train type — see [Train registry](#train-registry)                                            |
 
-`screens` turns a texture on the train into a live display: `kind = 'passenger'` shows the next stop, `kind = 'cab'` the driver's desk. `txd` and `txn` name the model texture to draw over (`txd` can be a list), and `image` is the background picture in `web/trainscreen/`. `screens.bullet` is for the AERION bullet train pack (`prompt_train_bullet`, coming soon) and does nothing until it is installed.
+`screens` turns a texture on the train into a live display: `kind = 'passenger'` shows the next stop, `kind = 'cab'` the driver's desk. `txd` and `txn` name the model texture to draw over (`txd` can be a list), and `image` is the background picture in `web/trainscreen/`. `screens.bullet` is for the AERION bullet train (`prompt_train_bullet`) and does nothing without it.
 
 ***
 
@@ -492,7 +492,7 @@ return {
 The line, then **train name = how many**: `lossantos = { polar = 3, mytrain = 1 }` runs exactly 3 Polar Express and 1 of your own train, taking turns.
 
 * **Train names** are the entries in `registry` below, or an installed train pack's `key`. Converted GTA5-Mods trains have names like `kt_<name>` — see [Train Packs](train-packs.md).
-* **Not installed** = skipped. None of the line's trains installed? It runs that many of `default` (the Polar Express). If that can't run either, the line goes dormant.
+* **Not installed** = replaced by a train that is, so the line keeps its number of trains: the `default` train first, then another train from `fleet`, then any train pack. With no train at all, the line goes dormant.
 * **A train pack on no line** makes the console say `<train> is installed but not running on any track`, with a line ready to paste here.
 
 {% hint style="info" %}
@@ -537,7 +537,7 @@ One entry per train type. The key (`polar`, `metro`, …) is the name lines, `fl
 The shipped entries:
 
 * `polar` — the Polar Express, from `prompt_train_polar_express`. It is the `default` train.
-* `bullet` — the AERION bullet train pack (`prompt_train_bullet`, coming soon). Only its driver's cab is set here. Until the pack is installed, this entry is skipped and the lines that list `bullet` run the Polar Express.
+* `bullet` — the AERION bullet train, from `prompt_train_bullet`. Only its driver's cab is set here; the pack brings the rest. Without the pack, this entry is skipped and its places go to the Polar Express.
 * `freight` — GTA's own freight train, 14 cars. It runs on the fallback line `lines/freight` (in `prompt_train_script-assets`) on the game's track 0, and only while no other freight line runs. Because it is `ambient`, the game's own freight trains are turned away while NPC trains are enabled.
 * `metro` — GTA's metro train. It runs every metro line (the Los Santos metro and the monorail) and carries NPC passengers.
 
